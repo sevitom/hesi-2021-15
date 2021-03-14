@@ -1,0 +1,60 @@
+公理(6)是折纸公理中最不平凡的一条，它使折纸操作超出了尺规作图的界限.
+
+\begin{definition}
+    称 $(\mathcal{P},\mathcal{L})$ 为Origami构造，若满足公理(1)到(6).
+\end{definition}
+
+同上一节，设 $T\subset\mathbb{C}$ 且 $\{0,1\}\subset T$.我们同样可以定义 $T$ “生成”的Origami构造.
+
+\begin{theorem}
+    设 $(\mathcal{P},\mathcal{L})$ 为 $T\subset\mathbb{C}$ 生成的Origami构造，那么 $\mathcal{P}$ 为 $\mathbb{C}$ 中包含 $T$ 且对共轭、开平方、开立方封闭的最小子域，$\mathcal{L}$ 为系数在 $\mathcal{P}_r$ 中的直线全体.
+\end{theorem}
+
+设 $\mathcal{M}\subset\mathbb{C}$ 是 $\mathbb{C}$ 中包含 $T$ 且对共轭、开平方、开立方封闭的最小子域，$\mathcal{S}$ 为系数在 $\mathcal{M}_r$ 中的直线全体，那么只需要证明 $(\mathcal{P},\mathcal{L})=(\mathcal{M},\mathcal{S})$.由上一节可知 $\mathcal{P}$ 为对共轭、开平方封闭的子域，剩下只用说明：
+
+\begin{enumerate}[wide,itemindent=2em,label=\bullet]
+    \item $\mathcal{P}$ 对开立方封闭；
+    \item $(\mathcal{M},\mathcal{S})$ 确为Origami构造.
+\end{enumerate}
+
+公理(6)保证了第一点成立：考虑抛物线
+$$
+\Gamma_1:(y-\frac{1}{2}p)^2=2qx,\quad \Gamma_2:y=\frac{1}{2}x^2
+$$
+的公切线 $m$.当 $p,q\in\mathcal{P}_r$ 时 $m$ 为可构造线，且斜率 $k\in\mathcal{P}_r$ 满足方程 $k^3+pk+q=0$.对复数开立方涉及辐角三等分与模长开立方的过程，而这些都可由解实系数的三次方程实现.
+
+下面验证第二点.由命题2.5知 $(\mathcal{M},\mathcal{S})$ 满足公理(1)到(5)，故还需验证其满足公理(6).事实上有更强的结论：系数在 $\mathcal{M}_r$ 中的两个圆锥曲线的公切线在 $\mathcal{S}$ 中.先回顾一些解析几何的知识：
+
+设 $A$ 为三阶实对称阵，并记 $X=(x,y,1)^t\in\mathbb{R}^3$.当 $A$ 可逆时，二次方程
+$$
+X^tAX=0
+$$
+的解 $(x,y)$ 的轨迹是一条圆锥曲线 $\Gamma_A$.过 $\Gamma_A$ 上一点 $(x_0,y_0)$ 的切线方程为
+$$
+X_0^tAX=0,
+$$
+其中 $X_0=(x_0,y_0,1)^t,X=(x,y,1)^t$.
+
+\begin{proposition}
+    设 $A,B$ 是系数在 $\mathcal{M}_r$ 中的三阶可逆对称阵，$m$ 为复平面上的直线.若 $m$ 是 $\Gamma_A,\Gamma_B$ 的公切线，则 $m\in\mathcal{S}$.
+\end{proposition}
+
+\begin{proof}
+    设 $m$ 与 $\Gamma_A,\Gamma_B$ 的切点分别为 $X=(x,y,1)^t,Y=(z,w,1)^t$，则由切线方程的形式知存在 $\lambda\neq 0$，使得 $X^tA=\lambda Y^tB$.而 $X,Y$ 分别满足圆锥曲线方程：
+    $$
+    \begin{cases}
+        X^tAX=0;\\
+        Y^tBY=0.
+    \end{cases}
+    $$
+    消去 $Y$ 得到 $(x,y)$ 满足的两个二次方程:
+    $$
+    \begin{cases}
+        X^tAX=0;\qquad &(*)\\
+        X^tAB^{-1}AX=0. &(**)
+    \end{cases}
+    $$
+    将 $(*)(**)$ 视为 $x,y$ 的二次多项式，则它们关于 $x$ 的结式 $R(y)$ 是 $y$ 的不超过四次的多项式.若 $R(y)$ 恒等于 $0$，请读者自行验证 $\Gamma_A$ 与 $\Gamma_B$ 重合\footnote{平面上五个点，任三点不共线，则唯一确定一条圆锥曲线.}，从而导致矛盾.由于 $R(y)$ 的系数均在 $\mathcal{M}_r$ 中，由四次方程求根公式，有 $y\in\mathcal{M}_r$.解方程(*)得 $x\in\mathcal{M}_r$.故 $m$ 的系数 $X^tA$ 均在 $\mathcal{M}_r$ 中，命题得证.
+\end{proof}
+
+至此，我们完整地证明了定理3.2.下面介绍两个具体的折纸问题：折纸三等分角及折纸正多边形.

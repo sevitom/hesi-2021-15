@@ -1,0 +1,382 @@
+In this section, we construct an explicit example
+of a quartic threefold which is unirational,
+but has non-trivial Brauer group.
+This example was originally due to Artin and Mumford \cite{artin-mumford},
+and slightly modified in \cite{CTP} so that it embeds in $\bbP^4$.
+
+\subsection{The example} \label{sect-4}
+
+\begin{itemize}
+    \item
+        Let $\bbk$ be an algebraically closed field with $\Char \bbk \neq 2$.
+    \item 
+        Let $A \subset \bbP^2$ be a smooth conic,
+        defined by the quadratic equation 
+        \[ \alpha (z_0, z_1, z_2) = 0. \]
+    \item
+        Let $D_1, D_2 \subset \bbP^2$ be two smooth cubics, defined by
+        \[ \delta_1 = 0 \quad \text{and} \quad \delta_2 = 0, \]
+        such that they each meet $A$ tangentially at $3$ points,
+        giving six tangent points $Q_1, \dotsc, Q_6$,
+        and such that $D_1 \cap D_2$ is nine distinct points $P_1, \dotsc, P_9$.
+        These nine points do not lie on $A$, since otherwise $D_1$ and $D_2$ will meet tangentially at that point.
+    \item
+        Let $B \subset \bbP^2$ be a cubic that intersects $A$ in the six points $Q_1, \dotsc, Q_6$.
+        In fact, for any nine given points on the plane, there exists a cubic curve passing through all of them.
+        We use these six points, and choose three other points which are non-collinear and not on $A$.
+        This ensures that the cubic does not contain $A$, and can only intersect $A$ in these six points.
+
+        As cycles of $A$, we have
+        \[ (D_1 + D_2) \cdot A = 2B \cdot A. \]
+        This means that $\alpha \mid \delta_1 \delta_2 - \beta^2$,
+        where $\beta$ is the polynomial defining $B$. Thus we may write
+        \[ \delta_1 \delta_2 = \beta^2 - 4 \alpha \gamma \]
+        for some $\gamma$ of degree $4$.
+    \item
+        Let $S \subset \bbP^3$ be the quartic surface defined by
+        \[ g = \alpha (z_0, z_1, z_2) \, z_3^2 + \beta (z_0, z_1, z_2) \, z_3
+            + \gamma (z_0, z_1, z_2) = 0. \]
+        Using the projection to $\bbP^2$ which sends $(z_0 : z_1 : z_2 : z_3)$ to $(z_0 : z_1 : z_2)$, 
+        the surface $S \setminus (0:0:0:1)$ can be seen as a double cover of $\bbP^2$,
+        ramified along the curves $D_1$ and $D_2$.
+    \item
+        After applying a linear coordinate change in $z_0, z_1, z_2$, we may assume
+        \begin{multline} \label{eq-4-coord-change}
+            \text{The hyperplane $z_0 = 0$ does not contain $Q_1, \dotsc, Q_6$,} \\
+            \text{or any point of $M \setminus \{P_0\}$, and is not tangent to $A$,}
+        \end{multline}
+        where
+        \[ M = \biggl\{ \, g = 0, \ \Bigl( 
+            \frac {\partial g} {\partial z_1} = 0
+            \ \text{or} \ 
+            \frac {\partial g} {\partial z_2} = 0
+        \Bigr),\ 
+        \frac {\partial g} {\partial z_3} = 0 \, \biggr\}, \]
+        and $P_0 = (0:0:0:1)$.
+        This is a technical assumption
+        which we make to avoid bad singularities.
+    \item
+        Now let $T \subset \bbP^4$ be the quartic threefold defined by
+        \[ f = \alpha (z_0, z_1, z_2) \, z_3^2 + \beta (z_0, z_1, z_2) \, z_3
+        + \gamma (z_0, z_1, z_2) + z_0^2 z_4^2 = 0. \]
+        It is a double cover of $\bbP^3$,
+        ramified along the surface $S$ and the hyperplane $z_0 = 0$.
+\end{itemize}
+
+We will see that $T$ has the property of
+being unirational but not having a decomposition of the diagonal.
+
+
+We next construct an explicit desingularisation of
+the threefold $T$ constructed above,
+following \cite[Appendix~A]{CTP}.
+We do this in order to get a desingularisation map 
+which is universally $\CH_0$-trivial,
+and such that the Brauer group of the desingularisation is non-trivial.
+
+\begin{itemize}
+    \item
+        We observe that the threefold $T$ is singular
+        along the line
+        \[ L \: z_0 = z_1 = z_2 = 0 \]
+        in $\bbP^4$, and outside of this line, it has
+        ordinary quadratic singularities at the points
+        $P_1, \dotsc, P_9$ on the hyperplane $z_4 = 0$.
+
+    \item
+        Let $T_1 \to T$ be the blow-up along $L$.
+        Standard computation shows that the exceptional divisor
+        is a rational surface, and $T_1$ is singular
+        along a line $L_1$ which is the inverse image of the point
+        $P = (0:0:0:0:1)$.
+
+    \item
+        Let $T_2 \to T_1$ be the blow-up along $L_1$.
+        Standard computation shows that the exceptional divisor
+        is a rational surface, and $T_2$ only has ordinary quadratic singularities, at the inverse images of
+        the nine points $P_1, \dotsc, P_9$.
+
+    \item
+        Finally, we blow up $T_2$ at the nine points $P_1, \dotsc, P_9$.
+        This gives a desingularisation of $T$.
+        The exceptional divisor over the nine points are rational surfaces,
+        and over $L$, it is a union of two rational surfaces.
+        We can thus apply Theorem~\ref{thm-4-ch0-trivial-fibre} to conclude that
+        the desingularisation map is universally $\CH_0$-trivial.
+
+    \item
+        Artin and Mumford \cite[\S2]{artin-mumford}
+        showed that over $\bbC$, there is a smooth projective threefold $V$, birational to $T$,
+        such that the singular cohomology $H^3 (V, \bbZ)$ contains non-trivial $2$-torsion.
+        It follows from the universal coefficient theorem and
+        the comparison theorem \cite[Theorem~III.3.12, p.\,117]{milne}
+        that the étale cohomology group $H^3 (V, \bbZ_2)$
+        contains non-trivial $2$-torsion. By Lemma~\ref{lem-6-br-equals-adic} below,
+        $\Br (V)$ contains non-trivial $2$-torsion,
+        and so does $\Br (T_2)$ by Theorem~\ref{thm-2-unramified-br}.
+        In particular, $\Br (T_2) \neq 0$.
+        This shows that $T$ is not retract rational, by Theorem~\ref{thm-2-brauer-trivial}.
+
+        For general $\bbk$ of characteristic zero, 
+        a consequence of the smooth base change theorem for étale cohomology 
+        \cite[Corollary~VI.4.3, p.\,231]{milne} shows that $\Br (T_2) \simeq H^2 (T_2, \Gm)$ 
+        contains non-trivial $2$-torsion.
+        Indeed, the cited theorem shows that this holds over $\bbQbar$,
+        and applying it again shows that it holds for any algebraically closed $\bbk$ of characteristic zero,
+        so that $T$ is not retract rational.
+\end{itemize}
+
+In summary, we have the following result.
+
+\begin{theorem} \label{thm-4-main}
+    Suppose that $\bbk$ is algebraically closed of characteristic zero.
+    Then the quartic threefold $T$ admits a desingularisation
+    \[ f \: \widetilde{T} \to T, \]
+    such that $f$ is universally $\CH_0$-trivial.
+    Moreover, we have $\Br (\widetilde{T}) \neq 0$. \qed
+\end{theorem}
+
+Finally, we prove the relationship between the Brauer group
+and the $\ell$-adic étale cohomology group which was used above.
+
+\begin{lemma}
+    Let $X$ be a rationally connected $\bbk$-variety, with $\Char \bbk = 0$. Then
+    \[ H^p (X, \mathscr{O}_X) = 0 \]
+    for all $p > 0$.
+\end{lemma}
+
+\begin{proof}
+    See \cite[\S3.4]{debarre}.
+\end{proof}
+
+Let $X$ be a variety over $\bbC$. 
+The exact sequence of sheaves
+\[ 0 \to \bbZ \to \mathscr{O}_X \to \mathscr{O}_X^* \to 0 \]
+on $X$ (as an analytic space) induces a long exact sequence
+\[ \cdots \to H^1(X, \mathscr{O}_X) \to \operatorname{Pic}(X) 
+    \to H^2 (X, \bbZ) \to H^2 (X, \mathscr{O}_X) \to \cdots. \]
+The image of $\operatorname{Pic}(X)$ in $H^2 (X, \bbZ)$ is called the
+\term{Néron--Severi group}, and its rank, denoted by $\rho (X)$,
+is called the \term{Picard number} of $X$.
+
+\begin{lemma} \label{lem-6-rho-equals-b2}
+    Let $X$ be a rationally connected complex variety.
+    Then the Picard number $\rho (X)$ is equal to the Betti number $b_2 (X)$. \qed
+\end{lemma}
+
+We fix some notations.
+For an abelian group $A$ and a prime number $\ell$,
+we denote
+\[ A \, \{\ell\} = \{ \, x \in A \mid \ell^n x = 0 \text{ for some } n \, \}, \]
+which is naturally a $\bbZ_\ell$-module.
+Suppose $M$ is a $\bbZ_\ell$-module \emph{of cofinite type}, i.e.\ one has
+\[ M \simeq (\bbQ_{\ell} / \bbZ_{\ell})^{\oplus r} \oplus (\text{finite group}), \]
+then we denote by $M^{\mathrm{fin}}$ its finite part, which is
+the largest finite submodule of $M$ that is a direct summand.
+
+\begin{lemma} \label{lem-6-br-equals-adic}
+    Let $X$ be a rationally connected complex variety,
+    and let $\ell$ be a prime number. Then
+    \[ \Br (X) \, \{\ell\} \simeq H^3 (X, \bbZ_\ell (1)) \, \{\ell\},  \]
+    where the right hand side is the étale cohomology of the sheaf
+    $\bbZ_\ell (1) = \liminv_n \sfmu_{\ell^n}$, which may be identified with $\bbZ_\ell$
+    over $\bbC$.
+\end{lemma}
+
+\begin{proof}
+    By \cite[II, Theorem~3.1, p.~80]{grothendieck-brauer}, we have an exact sequence 
+    \[ 0 \to \operatorname{Pic} (X) \otimes_{\bbZ} \bbQ_{\ell} / \bbZ_{\ell}
+        \longrightarrow H^2 (X, \sfmu_{\ell^\infty})
+        \longrightarrow \Br (X) \, \{ \ell \} \to 0. \]
+    Since the first term is a finite sum of copies of $\bbQ_{\ell} / \bbZ_{\ell}$, we have
+    \[ \Br (X) \, \{ \ell \} ^{\mathrm{fin}} \simeq H^2 (X, \sfmu_{\ell^\infty}) ^{\mathrm{fin}} . \]
+    By Lemma~\ref{lem-6-rho-equals-b2},
+    the ``corank'' of $\Br (X) \, \{ \ell \}$ (i.e.\ number of summands $\bbQ_{\ell} / \bbZ_{\ell}$)
+    is $b_2 - \rho = 0$, so that
+    \[ \Br (X) \, \{ \ell \} ^{\mathrm{fin}} \simeq \Br (X) \, \{ \ell \}. \]
+    By \cite[III, (8.3), p.~144]{grothendieck-brauer}, we have an exact sequence 
+    \[ 0 \to H^2 (X, \sfmu_{\ell^\infty}) ^{\mathrm{fin}}
+        \longrightarrow H^3 (X, \bbZ_\ell (1))
+        \longrightarrow \liminv_n H^3 (X, \sfmu_{\ell^\infty})\,[\ell^n] \to 0, \]
+    where $[\ell^n]$ indicates the subgroup of elements killed by $\ell^n$.
+    Since the last term is torsion-free, we have 
+    \[ H^2 (X, \sfmu_{\ell^\infty}) ^{\mathrm{fin}} \simeq H^3 (X, \bbZ_\ell (1)) \, \{\ell\} , \]
+    whence the result follows.
+\end{proof}
+
+
+\subsection{Consequences}
+
+Following Colliot-Thélène and Pirutka \cite{CTP},
+we present some consequences of the example given in the previous subsection.
+
+The first result provides examples of smooth quartic threefolds over complex numbers,
+which are not retract rational. 
+
+\begin{theorem} \label{thm-6-eg-complex}
+    Let $P \to \bbP^N_{\bbC}$ be the family of all quartic hypersurfaces in $\bbP^4_{\bbC}$.
+    Let $t \in \bbC \setminus \bbQbar$ be a transcendental number.
+    Then the set
+    \[ \biggl\{ \, z \in \bbP^N_{\bbC} \biggm| \begin{matrix}
+        \text{$z$ has coordinates in $\bbQbar(t)$, and the hyper-} \\
+        \text{surface $P_z$ is smooth but not retract rational}
+    \end{matrix} \, \biggr\} \]
+    is Zariski dense in $\bbP^N_{\bbC}$.
+\end{theorem}
+
+\begin{proof}
+    By Theorem~\ref{thm-4-main}, there is a quartic hypersurface $X \subset \bbP^4_{\bbQbar}$,
+    with a desingularisation
+    \[ f \: \widetilde{X} \to X \]
+    such that $f$ is universally $\CH_0$-trivial, and $\Br (\widetilde{X}) \neq 0$.
+
+    Let $W \subset \bbP^N_{\bbQbar}$ be the closed subset corresponding to
+    the singular hypersurfaces.
+    Let $M \in \bbP^N_{\bbQbar}$ be the point corresponding to $X$.
+    Choose a point $M' \in \bbP^N_{\bbQbar} \setminus W$,
+    and let
+    \[ L \simeq \bbP^1_{\bbQbar} \subset \bbP^N_{\bbQbar} \]
+    be the straight line connecting $M$ and $M'$, with generic point $\eta$.
+    Then Theorem~\ref{thm-5-spe-2} implies that the quartic threefold $X^\circ$ defined by $\eta$,
+    over the field $\bbQbar(x)$, is not geometrically retract rational.
+    Moreover, by Theorem~\ref{thm-5-spe-3}, for any embedding
+    \[ \bbQbar(x) \hookrightarrow \bbC, \]
+    the base change $X^\circ_{\bbC}$ is not retract rational,
+    where a desingularisation of $X^\circ$ can be obtained via Hironaka's theorem,
+    as is required by Theorem~\ref{thm-5-spe-3}. 
+
+    Let $R \in L(\bbC)$ be a point whose coordinates are in $\bbQbar(t)$, but not in $\bbQbar$.
+    Then the quartic threefold $P_R$ is isomorphic to $X^\circ_{\bbC}$,
+    for some embedding $\bbQbar(x) \hookrightarrow \bbC$.
+    Indeed, we have a diagram of pull-back squares
+    \[ \begin{tikzcd}
+        P_R \ar[d] \ar[r] &
+        P_{\ L_{\bbC}} \ar[d] \ar[r] &
+        P_{\ \bbQbar,\ L} \ar[d] &
+        X^\circ \ar[d] \ar[l] \\
+        \Spec \bbC \ar[r, "R"] &
+        L_{\bbC} \ar[r] &
+        L_{\bbQbar} &
+        \Spec \bbQbar (x) \rlap{\ ,} \ar[l, "\eta"']
+    \end{tikzcd} \]
+    where $P_{\ \bbQbar} \to \bbP^N_{\bbQbar}$ denotes the family of all quartic hypersurfaces in $\bbP^4_{\bbQbar}$.
+    By the choice of $R$, in the diagram, the image of $\Spec \bbC$ in $L_{\smash{\bbQbar}}$ is the generic point 
+    (since any other point is a $\bbQbar$-rational point, and cannot be $R$).
+    Therefore, the map $\Spec \bbC \to L_{\bbQbar}$ in the diagram factors through $\Spec \bbQbar(x)$,
+    giving the desired embedding.
+
+    Therefore, $P_R$ is not retract rational.
+    This shows that every line passing through $M$ and a point not in $W$
+    contains infinitely many points where the hypersurface is not retract rational.
+    This implies Zariski density.
+\end{proof}
+
+Together with results from \S\ref{sect-3},
+this result allows us to obtain general statements 
+on the irrationality of quartic threefolds over complex numbers.
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-3-quartic-threefold}
+    A very general quartic hypersurface in $\bbP_{\bbC}^4$ is not retract rational.
+\end{theorem}
+
+\begin{proof}
+    By Theorem~\ref{thm-3-locus-decomp}, and by Theorem~\ref{thm-6-eg-complex}.
+\end{proof}
+
+\begin{theorem} \label{thm-3-stable-eq-threefolds}
+    There are uncountably many stable equivalence classes in
+    the family of quartic hypersurfaces in $\bbP_{\bbC}^4$.
+\end{theorem}
+
+\begin{proof}
+    We apply Theorem~\ref{thm-3-stable-eq-class}.
+
+    We have seen that the family contains
+    a threefold with no decomposition of the diagonal.
+    But the (singular) hypersurface 
+    \[ X \: x_0 x_1 (x_0 + x_1) (x_0 - x_1) = 0 \]
+    has a decomposition of the diagonal.
+    Indeed, let $z = (0:0:0:0:1) \in X$,
+    and let $X_1, \dotsc, X_4$ be the irreducible components of $X$, each isomorphic to $\bbP^3$.
+    The diagonal class of $X_i \times X_i$ is rationally equivalent to $[X_i] \times [z]$,
+    up to a minor term $D$ as before.
+    Summing over $i$, we see that the diagonal of $X \times X$ is 
+    rationally equivalent to $[X] \times [z]$, up to a minor term.
+\end{proof}
+
+\begin{remark} \label{rem-3-quaric-threefold}
+    In these two theorems, the degree $4$ can be replaced by any positive multiple of $4$,
+    since one can consider quartic threefolds in $\bbP^4$ with 
+    multiplicity $m > 1$, 
+    which will be a non-reduced hypersurface of degree $4m$.
+    We use the fact that the Chow group of a ``non-reduced variety''
+    is isomorphic to that of its reduction \cite[Example~1.3.1]{fulton}.
+\end{remark}
+
+Finally, we mention a result of Colliot-Thélène and Pirutka which provides examples of smooth quartic hypersurfaces 
+in $\bbP_{\bbC}^4$, which are defined over $\bbQbar$, but not retract rational over $\bbC$.
+
+\begin{theorem}
+    There exist smooth quartic hypersurfaces in $\smash{\bbP_{\bbQbar}^4}$
+    that are not universally $\CH_0$-trivial over any field containing~$\bbQbar$, and hence
+    not retract rational over any field containing~$\bbQbar$, and in particular, over $\bbC$.
+\end{theorem}
+
+\begin{proof}
+    \newcommand*{\kappavbar}{\overline{\vphantom{t}\smash{\kappa(v)}}}
+    By Theorem~\ref{thm-4-main}, there is a singular
+    quartic hypersurface $X \subset \bbP^4_{\bbQbar}$,
+    with a desingularisation
+    \[ f \: \widetilde{X} \to X \]
+    such that $f$ is universally $\CH_0$-trivial, and $\Br (\widetilde{X}) \, \{2\} \neq 0$.
+    By Lemma~\ref{lem-6-br-equals-adic}, we thus have 
+    \[ H^3 (\widetilde{X}, \bbZ_2) \, \{2\} \neq 0. \]
+
+    By Galois descent and by Lemma~\ref{lem-5-fin-ext},
+    we choose a finite extension $K / \bbQ$,
+    over which $X$, $\widetilde{X}$ and $f$ are defined,
+    such that $f$ is universally $\CH_0$-trivial.
+
+    Let $\mathscr{O}_K$ be the ring of integers of $K$.
+    Let $U \subset \Spec \mathscr{O}_K$ be an open set,
+    such that there exists a map of $U$-schemes
+    \[ \mathscr{f} \: \widetilde{\mathscr{X}} \to \mathscr{X}, \]
+    such that it coincides with $f \: \widetilde{X} \to X$ over the generic point of $U$.
+    Indeed, we define them to be cut out by the same set of equations as $X$ and $\widetilde{X}$
+    in the projective space.
+
+    Shrinking $U$ if necessary, we assume that $U$ contains no $2$-adic points,
+    and that $\widetilde{\mathscr{X}}$ is smooth over $U$.
+
+    Shrinking $U$ again, we assume for any closed point $v \in U$, the map of geometrical fibres
+    \[ \mathscr{f}_{\kappavbar} \, \: \,
+        \widetilde{\mathscr{X}}_{\kappavbar} 
+        \ \to \ \mathscr{X}_{\kappavbar} \]
+    is a desingularisation map which is universally $\CH_0$-trivial.
+    In fact, it is what we get if we start with 
+    $\bbk = \kappavbar$ in \S\ref{sect-4}.
+
+    Applying the smooth specialisation property of étale cohomology \cite[Corollary~VI.4.2, p.~230]{milne},
+    we see that for any $v \in U$,
+    \[ H^3 (\widetilde{\mathscr{X}}_{\kappavbar}, \bbZ_2) 
+        \simeq H^3 (\widetilde{X}_{\bbQbar}, \bbZ_2). \]
+    It follows that $H^3 (\widetilde{\mathscr{X}}_{\kappavbar}, \bbZ_2) \, \{2\} \neq 0$,
+    and hence $\Br (\widetilde{\mathscr{X}}_{\kappavbar}) \neq 0$ by Lemma~\ref{lem-6-br-equals-adic}.
+
+    Fix a point $v \in U$. We regard $v$ as a discrete valuation on $K$.
+    By Lemma~\ref{lem-5-dvr}, there is an extension of discrete valuation rings 
+    \[ \mathscr{O}_{K,v} \subset A, \]
+    such that the residue field of $A$ is $\kappavbar$.
+    Let $L$ be the fraction field of $A$.
+
+    Finally, there exists a smooth $A$-scheme 
+    whose special fibre is $\mathscr{X}_{\kappavbar}$.
+    Indeed, in the projective space $\smash{\bbP_L^N}$ 
+    parametrising the quartic hypersurfaces in $\smash{\bbP_L^4}$,
+    the set of points in $\smash{\bbP_L^N}$ with coordinates in $\mathscr{O}_L$ 
+    lying over $\mathscr{X}_{\kappavbar}$ is Zariski dense.
+    But there is an open set of $\smash{\bbP_L^N}$ whose points correspond to smooth hypersurfaces.
+
+    Now we apply Theorem~\ref{thm-5-spe-3} to complete the proof.
+\end{proof}
+

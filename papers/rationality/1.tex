@@ -1,0 +1,69 @@
+For a projective variety, there are various notions
+of rationality, describing how close a variety is to the projective space.
+
+\begin{definition}
+    Let $\bbk$ be a field,
+    and let $X$ be a projective $\bbk$-variety.
+    \begin{itemize}
+        \item
+            $X$ is \term{rational},
+            if there exists $n \in \bbN$, such that 
+            \[ X \quad \text{is birational to} \quad \bbP_{\bbk}^n. \]
+            Equivalently, we have
+            $\bbk(X) \simeq \bbk(x_1, \dotsc, x_n)$ as $\bbk$-algebras.
+
+        \item 
+            $X$ is \term{stably rational},
+            if there exist $m, n \in \bbN$, such that
+            \[ X \times \bbP_{\bbk}^m \quad \text{is birational to} \quad \bbP_{\bbk}^n. \]
+            Equivalently, we have
+            $\bbk(X)(y_1, \dotsc, y_m) \simeq \bbk(x_1, \dotsc, x_n)$ as $\bbk$-algebras.
+
+        \item
+            $X$ is \term{retract rational},
+            if there exists $n \in \bbN$, and open sets $U \subset X$, $V \subset \bbP_{\bbk}^n$,
+            together with two maps 
+            \[ 
+                f \: U \to V, \quad
+                g \: V \to U,
+            \]
+            such that $g \circ f = \id_U$. 
+
+        \item
+            $X$ is \term{unirational}, 
+            if there exists a dominant rational map 
+            \[ \bbP_{\bbk}^n \mathrel{\rightdasharrow} X. \]
+            Equivalently, there exists a map 
+            $\bbk(X) \to \bbk(x_1, \dotsc, x_n)$ of $\bbk$-algebras.
+
+        \item
+            $X$ is \term{rationally connected},
+            if for every algebraically closed field $\bbK$ containing $\bbk$,
+            and any two $\bbK$-points $x, y \in X(\bbK)$,
+            there exists a rational curve 
+            \[ f \: \bbP_{\bbK}^1 \to X_{\bbK} \]
+            joining them, i.e.\ we have $f(0) = x$ and $f(\infty) = y$.
+    \end{itemize}
+\end{definition}
+
+These notions are sorted from strong to weak,
+i.e.\ every notion implies its next one.
+A natural question to ask is that whether these implications are strict.
+
+In 1972, Artin and Mumford \cite{artin-mumford}
+gave an example of a variety that is unirational but not retract rational.
+More recently, Voisin \cite{voisin}
+developed a deformation method which can show that 
+a very general member of a family of varieties is not retract rational,
+as long as it contains one particular example that is not retract rational.
+This method was then modified by Colliot-Thélène and Pirutka \cite{CTP}
+to show that over $\bbC$, a very general quartic hypersurface in $\bbP^4$
+is not retract rational.
+They also developed the specialisation method,
+with which they can provide more general examples of smooth varieties
+that are not retract rational
+over number fields and local fields.
+
+In this article, we give an exposition of
+the methods and results mentioned above.
+

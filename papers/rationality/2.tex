@@ -1,0 +1,637 @@
+In this section, we relate
+rationality with several other invariants of a variety.
+We show that retract rationality implies that 
+these invariants are trivial. 
+The results are summarised in the following diagram,
+although some assumptions are dropped:
+\[
+    \begin{array}{c}
+        \text{retract} \\
+        \text{rational}
+    \end{array}
+    \Longrightarrow
+    \begin{array}{c}
+        \text{universally} \\
+        \text{$\CH_0$-trivial}
+    \end{array}
+    \Longleftrightarrow
+    \begin{array}{c}
+        \text{decomposition} \\
+        \text{of the diagonal}
+    \end{array}
+    \Longrightarrow
+    \begin{array}{c}
+        \text{trivial} \\
+        \text{Brauer group.}
+    \end{array}
+\]
+
+
+\subsection{Chow groups}
+
+In this subsection, we recall the definition and some basic properties of the Chow groups of a variety.
+A general reference is \cite{fulton}.
+
+In the following, let $\bbk$ be a field, and let $X$ be a $\bbk$-variety.
+
+\begin{definition}
+    Let $d$ be an non-negative integer.
+    The free abelian group
+    \[ \textstyle \upZ_d (X) = \bigoplus \limits _{Z \subset X} \bbZ \cdot [Z], \]
+    where $Z$ runs through all $d$-dimensional integral closed subvarieties of $X$,
+    is called the group of \term{$d$-cycles} of $X$.
+\end{definition}
+
+In other words, a $d$-cycle of $X$ is a finite sum
+$\sum n_i [Z_i]$, where each $n_i$ is an integer,
+and each $Z_i$ is a subvariety of $X$.
+For example, a $0$-cycle is a linear combination of closed points.
+
+Let $V \subset X$ be a $(d+1)$-dimensional integral closed subvariety, 
+and let $f \in \bbk (V) ^\times$ be a rational function on $V$. 
+The principal divisor of $V$ corresponding to $f$,
+denoted by $\operatorname{div}(f)$, 
+can be naturally seen as a $d$-cycle of $X$.
+This defines a map of abelian groups
+\[ \operatorname{div} \: \bbk (V)^\times \to \upZ_d (X). \]
+
+\begin{definition}
+    The $d$-th \term{Chow group} of $X$ is defined by
+    \[ \textstyle \CH_d (X) = \operatorname{coker} \Bigl( \ 
+        \bigoplus \limits _{V \subset X} \bbk (V)^\times \to \upZ_d (X) \Bigr), \]
+    where $V$ runs through all $(d+1)$-dimensional integral closed subvarieties of~$X$.
+
+    If $X$ has dimension $n$, we write
+    \[ \upZ^d (X) = \upZ_{n-d} (X) \quad \text{and} \quad \CH^d (X) = \CH_{n-d} (X). \]
+\end{definition}
+
+An element of the Chow group is thus a class of cycles.
+We say that the cycles in the same class are \term{rationally equivalent}.
+
+Here we explain four operations of the Chow group:
+proper pushforward, flat pullback, the intersection product, and the Gysin map.
+
+\begin{definition}
+    Let $f \: X \to Y$ be a proper map of $\bbk$-varieties,
+    and let $Z \subset X$ be an integral closed subvariety of dimension $d$.
+    We define 
+    \[ f_* [Z] = \begin{cases}
+        \ 0, & \text{if } \dim f(Z) < d, \\
+        \ [\bbk(f(Z)) : \bbk(Z)] \, [f(Z)], & \text{if } \dim f(Z) = d,
+    \end{cases} \]
+    as a $d$-cycle of $Y$, where
+    \begin{itemize}
+        \item
+            $f(Z)$ is an irreducible closed subset of $Y$,
+            which we see as an integral closed subscheme. 
+        \item
+            The field extension $\bbk(f(Z)) / \bbk(Z)$ is finite
+            because it is finitely generated and of transcendence degree $0$.
+    \end{itemize}
+    This extends linearly to a \term{pushforward map}
+    \[ f_* \: \upZ_d (X) \to \upZ_d (Y). \]
+\end{definition}
+
+It turns out that proper pushforward preserves rational equivalence \cite[\S1.4]{fulton}.
+We thus obtain a \term{pushforward map} of Chow groups
+\[ f_* \: \CH_d (X) \to \CH_d (Y). \]
+
+Next, we introduce the flat pullback of Chow groups.
+
+\begin{definition}
+    Let $f \: X \to Y$ be a map of $\bbk$-varieties, which is flat of relative dimension $r$.
+    Let $Z \subset X$ be an integral closed subvariety of dimension $d$. We define
+    \[ f^*[Z] = [f^{-1}(Z)] \]
+    as a $(d+r)$-cycle of $Y$,
+    where
+    \begin{itemize}
+        \item
+            $f^{-1}(Z)$ is the scheme-theoretic inverse image, i.e., $Z \times_Y X$.
+        \item
+            $[f^{-1}(Z)]$ denotes the sum $\sum m_i [Z_i]$,
+            where the $Z_i$ are the irreducible components of $f^{-1} (Z)$,
+            and $m_i$ is the \emph{geometric multiplicity} of $Z_i$ in $f^{-1} (Z)$,
+            defined as the length of the local ring $\mathscr{O}_{f^{-1} (Z), Z_i}$.
+    \end{itemize}
+    This extends linearly to a \term{pullback map}
+    \[ f^* \: \upZ_d (Y) \to \upZ_{d+r} (X). \]
+\end{definition}
+
+It turns out again that flat pullback preserves rational equivalence \cite[\S1.7]{fulton}.
+Switching to the cohomological indexing notation,
+we get a \term{pullback map} of Chow groups
+\[ f^* \: \CH^d (Y) \to \CH^d (X). \]
+
+Now, we introduce the intersection product of cycles.
+
+Let $Z_1, Z_2 \subset X$ be two integral closed subvarieties.
+We can form their ``scheme-theoretic intersection''
+\[ Z_1 \cap Z_2 = Z_1 \times_X Z_2. \]
+However, this does not always produce cycles of the expected dimension,
+as the subvarieties may not be in a general position to intersect.
+To work around this difficulty, we use the Gysin map of the diagonal map, 
+which acts as a pullback along a closed embedding.
+
+The Gysin map is defined for vector bundles as follows.
+
+\begin{theorem} \label{thm-2-gysin}
+    Let $p \: E \to X$ be a vector bundle of rank $r$. Then the flat pullback
+    \[ p^* \: \CH_d (X) \to \CH_{d+r} (E) \]
+    is an isomorphism for all $d$. 
+    Its inverse is called the \term{Gysin map}, and denoted by $i^!$,
+    where $i$ is the zero section map $X \to E$.
+\end{theorem}
+
+See \cite[\S3.3]{fulton}.
+
+Recall that a \term{regular embedding} is a
+closed embedding of schemes, such that the ideal sheaf
+is locally generated by regular sequences.
+For example, a closed embedding of smooth varieties is always a regular embedding.
+
+For a regular embedding, the normal cone is a vector bundle.
+We can use this property to extend the definition of the Gysin map
+to this case.
+
+\begin{definition}
+    Let $i \: Z \to X$ be a regular embedding of constant codimension~$e$.
+    The \term{Gysin map}
+    \[ i^! \: \CH_d (X) \to \CH_{d-e} (Z) \]
+    is defined as follows.
+    Let $N_Z X$ denote the normal bundle of $Z$ in $X$, and let
+    \[ \sigma \: \upZ_d (X) \to \upZ_d (N_Z X) \]
+    be the map given by
+    \[ [V] \mapsto [N_{Z \cap V} V]. \]
+    This map respects rational equivalence \textup{\cite[\S5.2]{fulton}}, inducing a map
+    \[ \sigma \: \CH_d (X) \to \CH_d (N_Z X) \]
+    We then compose this map with the Gysin map defined in Theorem~\textup{\ref{thm-2-gysin}},
+    giving the desired map
+    \[ i^! \: \CH_d (X) \to \CH_{d-e} (Z). \]
+\end{definition}
+
+Using the Gysin map as a pullback along the diagonal map,
+we can define the intersection product of cycles.
+
+\begin{definition}
+    Let $X$ be an $n$-dimensional projective variety.
+    The \term{intersection product} is a map of graded abelian groups
+    \[ \cdot \: \CH^\bullet (X) \otimes \CH^\bullet (X) \to \CH^\bullet (X), \]
+    defined as follows.
+    \begin{itemize}
+        \item
+            If $X$ is smooth, we define this map by the composition
+            \[ \CH_{d_1} (X) \otimes \CH_{d_2} (X) 
+                \overset{\times}{\longrightarrow} \CH_{d_1 + d_2} (X \times X) 
+                \overset{\Delta^!}{\longrightarrow} \CH_{d_1 + d_2 - n} (X), \]
+            where $\times$ denotes the cross product map sending $[Z_1] \otimes [Z_2]$ to $[Z_1 \times Z_2]$,
+            and $\Delta \: X \to X \times X$ is the diagonal map, which is a regular embedding.
+        \item
+            If $X$ is arbitrary, we can always embed $X$ in some $\bbP^N$,
+            so that we can regard cycles of $X$ as cycles of $\bbP^N$, 
+            and intersect them in $\bbP^N$.
+    \end{itemize}
+\end{definition}
+
+This product equips the Chow groups with the structure of a graded ring,
+called the \term{Chow ring}.
+
+
+\subsection{Rationality and zero-cycles}
+
+\begin{definition}
+    We say that a map $f \: X \to Y$ of $\bbk$-varieties is
+    \term{universally $\CH_0$-trivial}, if
+    \begin{itemize}
+        \item
+            $f$ is proper.
+        \item
+            For any field extension $F / \bbk$, the pushforward map
+            \[ f_* \: \CH_0 (X_F) \to \CH_0 (Y_F) \]
+            is an isomorphism.
+    \end{itemize}
+    If $Y = \Spec \bbk$, then we say $X$ is
+    \term{universally $\CH_0$-trivial}. This means that
+    \begin{itemize}
+        \item
+            $X$ is complete.
+        \item
+            For any field extension $F / \bbk$, the degree map
+            \[ \deg_F \: \CH_0 (X_F) \to \bbZ \]
+            is an isomorphism.
+    \end{itemize}
+\end{definition}
+
+We will show that retract rationality implies universal $\CH_0$ triviality.
+The proof will need a few lemmas.
+First of all, we prove a moving lemma for $0$-cycles.
+
+\begin{lemma} \label{lem-2-moving}
+    Let $X$ be a smooth projective $\bbk$-variety, with $\bbk$ infinite and perfect,
+    and let $U \subset X$ be a dense open set.
+    Then every $0$-cycle of $X$ is rationally equivalent to one supported in $U$.
+\end{lemma}
+
+\begin{proof}
+    We follow \cite[Complément]{colliot-finitude}.
+    Write $Z = X \setminus U$, and let $p \in Z$ be a closed point.
+    It suffices to show that the $0$-cycle $[p]$ is equivalent to one supported in $U$.
+
+    Let $g \in \mathscr{O}_{X,p}$ be a locally defined non-zero function that vanishes on $Z$.
+    Since $X$ is smooth, we can find a regular sequence $f_1, \dotsc, f_{n-1}$
+    of $\mathscr{O}_{X,p}$, where $n = \dim X$, 
+    such that $g \neq 0$ in the quotient $\mathscr{O}_{X,p} / (f_1, \dotsc, f_{n-1})$.
+    This can be done by working in affine coordinates and taking the $f_i$ to be linear functions.
+
+    The ideal $(f_1, \dotsc, f_{n-1})$ defines a curve in a neighbourhood of $p$.
+    Taking its closure in $X$, we obtain a closed integral curve $C$ in $X$,
+    which is regular at $p$ and is not contained in $Z$. 
+
+    Let $f \: D \to C$ be the normalisation of $C$.
+    Then $D$ is regular (normality implies regularity in codimension one),
+    and hence smooth since $\bbk$ is perfect.
+    Also, $D$ is quasi-projective \cite[Corollary~7.4.10]{EGA2},
+    and $f$ is finite \cite[Corollary~7.4.6]{EGA2}, and hence proper \cite[Corollary~6.1.11]{EGA2}.
+    
+    Let $q$ be the inverse image of $p$, which is a single point as $C$ is regular at $p$.
+    Let $W$ be a neighbourhood of $q$ in $D$, such that $f|_W$ is an isomorphism.
+    For example, we can take $W$ to be the inverse image of the smooth locus of $C$.
+
+    The $0$-cycle $[q]$ is equivalent to a $0$-cycle supported in $W \setminus f^{-1} (Z)$.
+    Indeed, we have to find a rational function on $D$ 
+    that has a simple zero at $q$, and is defined on the finite set $(D \setminus W) \cup f^{-1}(Z)$.
+    As $D$ is quasi-projective, this can be done by taking a suitable linear function on the projective space.
+
+    Finally, we consider the pushforward along the proper map $D \to C \to X$.
+    Since it preserves rational equivalence, we are done.
+\end{proof}
+
+\begin{remark}
+    This is a special case of \cite[Proposition~7.4.9]{EGA2},
+    but the proof given here is more elementary.
+\end{remark}
+
+\begin{lemma} \label{lem-2-finite}
+    Let $\bbk$ be a finite field, and let $U \subset \bbP_{\bbk}^n$ be a non-empty open set.
+    Then for any extension $F / \bbk$ of sufficiently large degree $d$,
+    the open set $U_F \subset \bbP_{F}^n$ contains an $F$-rational point.
+\end{lemma}
+
+\begin{proof}
+    Let $q$ be the cardinality of $\bbk$.
+    Let $f$ be a non-zero homogeneous polynomial over~$\bbk$,
+    which vanishes outside $U$.
+
+    In $\bbP_{F}^n$, when $q^d > \deg f$, 
+    there are at least $(q^d - \deg f)^n$ rational points
+    where $f$ does not vanish.
+    Indeed, by induction on $n$, one easily shows that a non-zero polynomial
+    of degree $r$ on $\bbA_{F}^n$ does not vanish at at least $(q^d - r)^n$ rational points, provided that $q^d > r$.
+
+    Hence $U_F$ contains a rational point whenever $q^d > \deg f$.
+\end{proof}
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-2}
+    Let $X$ be a smooth projective $\bbk$-variety.
+    If $X$ is retract rational, then $X$ is universally $\CH_0$-trivial.
+\end{theorem}
+
+\begin{proof}
+    First, we suppose that the base field $\bbk$ is infinite.
+    Since retract rationality is preserved under change of base field,
+    it suffices to prove that $X$ is $\CH_0$-trivial over $\bbk$,
+    i.e.\ $\deg_{\bbk} \: \CH_0 (X) \to \bbZ$ is an isomorphism.
+
+    By definition, there exist non-empty open sets
+    $U \subset X$, $V \subset \bbP_{\bbk}^n$, and maps
+    \[ U \overset{f}{\longrightarrow} V \overset{g}{\longrightarrow} U, \]
+    whose composition is $\id_U$.
+
+    Let $P \in U$ be a closed point, and write $Q = f(P) \in V$.
+    Then we have induced maps of residue fields
+    $\kappa (P) \to \kappa (Q) \to \kappa (P)$, whose composition is $\id_{\kappa(P)}$.
+    Therefore, we have
+    \[ \kappa (P) \simeq \kappa (Q). \]
+    Let $F$ denote this field. We then consider the diagram
+    \[ \begin{tikzcd}
+        \llap{$\bbP_{F}^n \supset {}$} V_F \ar[d, "p"'] \ar[r, "g_F"] &
+        U_F \rlap{${} \subset X_F$} \ar[d] \\
+        \llap{$\bbP_{\bbk}^n \supset {}$} V \ar[r, "g"] &
+        U \rlap{${} \subset X$ .}
+    \end{tikzcd} \]
+    There exists $R \in p^{-1} (Q)$ such that $\kappa (R) \simeq F$.
+    This is because $p^{-1} (Q) \simeq \Spec (F \otimes_{\bbk} F)$,
+    and we can take $R$ to be the point defined by the maximal ideal
+    which is the kernel of the multiplication map $F \otimes_{\bbk} F \to F$.
+
+    Let $A \in V \subset \bbP_{\bbk}^n$ be a $\bbk$-rational point,
+    which exists since $\bbk$ is infinite.
+    Let $L \simeq \bbP_F^1 \subset \bbP_F^n$ be a line connecting $R$ and $A_F$.
+    The map $g_F$ sends $L$ to a rational line $L'$ in $U_F$,
+    which is a rational $F$-map $\bbP_F^1 \mathrel{\rightdasharrow} U_F$.
+    This map extends to a map 
+    \[ L' \: \bbP_F^1 \to X_F, \]
+    which is proper since $\bbP_F^1$ is complete \cite[Corollary~5.4.3]{EGA2}.
+    This is a line connecting the points $g_F(R)$ and $g_F(A_F)$. 
+
+    As $R$ is an $F$-rational point, we have $\kappa(g_F(R)) \simeq F$
+    and $\kappa( g_F (A_F) ) \simeq F$.
+    Hence, the pushforward map of $L'$ on $\CH_0$ gives
+    \[ [g_F(R)] = [g_F(A_F)] \quad \in \CH_0 (X_F). \]
+    Pushing forward to $X$, and noticing that $\kappa( g(A) ) \simeq \bbk$, we thus have
+    \[ [P] = [F : \bbk] \, [g(A)] \quad \in \CH_0 (X). \]
+    
+    By the moving lemma~\ref{lem-2-moving},
+    every $0$-cycle of $X$ is equivalent to one supported in $U$,
+    which, as we have shown, is equivalent to a multiple of $[g(A)]$.
+    Since $\deg_{\bbk} {} [g(A)] = 1$,
+    this shows that $X$ is $\CH_0$-trivial over $\bbk$.
+
+    Finally, if $\bbk$ is a finite field,
+    by Lemma~\ref{lem-2-finite}, we can apply the above argument
+    to an extension $F / \bbk$ of sufficiently large degree $d$. Since the composition
+    \[ \CH_0 (X) \overset{p^*}{\longrightarrow} \CH_0 (X_F) \overset{p_*}{\longrightarrow} \CH_0 (X) \]
+    is multiplication by $d$, where $p \: X_F \to X$ is the projection,
+    it follows that every $0$-cycle of $X$ of degree $0$
+    is $d$-torsion in $\CH_0 (X)$.
+    Hence it must be zero,
+    since $d$ can be chosen to be two coprime values.
+    Moreover, this also shows that $X$ has two $0$-cycles of coprime degrees,
+    and hence, the degree map $\deg \: \CH_0 (X) \to \bbZ$ is surjective.
+\end{proof}
+
+We also mention the following criterion for universal $\CH_0$-triviality of a morphism,
+which will be useful later.
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-4-ch0-trivial-fibre}
+    Let $f \: \widetilde{X} \to X$ be a proper morphism of $\bbk$-varieties.
+    Suppose that
+    \begin{itemize}
+        \item
+            For every point $M \in X$, not necessarily closed,
+            the fibre $\widetilde{X}_M$ is universally $\CH_0$-trivial
+            as a $\kappa (M)$-variety.
+    \end{itemize}
+    Then $f$ is universally $\CH_0$-trivial.
+\end{theorem}
+
+\begin{proof}
+    It suffices to show that $f_* \: \CH_0 (\widetilde{X}) \to \CH_0 (X)$ is an isomorphism.
+
+    By assumption, this map $f_*$ is surjective.
+    Let $x$ be a $0$-cycle of $\widetilde{X}$,
+    such that $f_* (x)$ is equivalent to zero.
+    We need to show that $x$ is equivalent to zero.
+
+    In this case, there exist finitely many integral curves $C_i \subset X$,
+    and functions $g_i \in \bbk (C_i)$, such that
+    \[ \textstyle f_* (x) = \sum_i \operatorname{div}_{C_i} (g_i). \]
+    Let $\eta_i$ be the generic point of $C_i$.
+    By hypothesis, each fibre $\widetilde{X}_{\eta_i}$ contains a $0$-cycle
+    \[ \textstyle \sum_j n_{ij} [D_{ij}] \]
+    of degree $1$, where $n_{ij} \in \bbZ$.
+    We regard each $D_{ij}$ as a curve in $\widetilde{X}$.
+    Then each function $g_i \circ f$ defines a rational function $g_{ij}$ on $D_{ij}$.
+    Write
+    \[ \textstyle x' = x - \sum_{i,j} n_{ij} \operatorname{div}_{D_{ij}} (g_{ij}). \]
+    Then we have an equality of \emph{cycles} $f_* (x') = 0$.
+
+    Let us write $x' = \sum_i x'_{\smash{Q_i}}$, where $Q_i \in X$ are distinct points, 
+    and $x'_{\smash{Q_i}}$ is a $0$-cycle of $\widetilde{X}$ supported in the fibre $\widetilde{X}_{Q_i}$.
+    The fact that $f_* (x') = 0$ implies that each $x'_{\smash{Q_i}}$ has degree $0$.
+    It follows from the hypothesis applied to $\widetilde{X}_{Q_i}$ that $x'_{\smash{Q_i}}$ is rationally equivalent to zero.
+    Therefore, $x'$ is equivalent to zero, and so is~$x$.
+\end{proof}
+
+
+\subsection{Decomposition of the diagonal}
+
+We now give an equivalent characterisation of universal $\CH_0$-triviality.
+We show that it is equivalent to the existence of a decomposition 
+of the diagonal class in the Chow group of $X \times X$.
+
+\begin{definition} \label{def-2-decomp}
+    Let $X$ be a complete $\bbk$-variety of dimension $n$.
+    A \term{decomposition of the diagonal} of $X$ is given by an equation
+    \[ [\Delta_X] = D + [X] \times x_0 \quad \text{in } \CH_n (X \times X), \]
+    where
+    \begin{itemize}
+        \item
+            $[\Delta_X]$ is the pushforward of $[X] \in \CH_n (X)$
+            along the diagonal map $X \to X \times X$.
+
+        \item
+            $D$ is an $n$-cycle of $X \times X$, supported in $Z \times X$
+            for some closed subvariety $Z \subset X$ of codimension at least $1$.
+
+        \item
+            $x_0$ is a $0$-cycle of $X$ of degree $1$.
+    \end{itemize}
+\end{definition}
+
+In order to show that this property is equivalent to $\CH_0$-triviality,
+we introduce the notion of a correspondence.
+
+\begin{definition}
+    Let $X$ and $Y$ be complete $\bbk$-varieties, of dimensions $m$ and $n$, respectively.
+    A \term{correspondence} from $X$ to $Y$ is an element of the set 
+    \[ \operatorname{Corr} (X, Y) = \CH_m (X \times Y). \]
+\end{definition}
+
+We view a correspondence as a generalised version of
+a graph of a map from $X$ to $Y$.
+In this way, we can compose correspondences as if we are composing graphs of maps.
+Namely, for $f \in \operatorname{Corr} (X, Y)$ and $g \in \operatorname{Corr} (Y, Z)$,
+we define
+\[ g \circ f = p_* \bigl( ([X] \times g) \cdot (f \times [Z]) \bigr)
+    \quad \in \operatorname{Corr} (X, Z), \]
+where $p \: X \times Y \times Z \to X \times Z$ is the projection map.
+
+Moreover, we have a group homomorphism
+\begin{equation} \label{eq-2-corresp-eval}
+    \begin{aligned}
+        \operatorname{Corr} (X, Y) \otimes_{\bbZ} \CH_\bullet (X) & \to \CH_\bullet (Y), \\
+        (f, \alpha) & \mapsto p_* \bigl( f \cdot (\alpha \times [Y]) \bigr),
+    \end{aligned}
+\end{equation}
+where $p \: X \times Y \to Y$ is the projection map.
+In particular, this induces an action of $\operatorname{Corr} (X, X)$ on $\CH_\bullet (X)$.
+
+\begin{proposition}
+    Complete $\bbk$-varieties and correspondences form a category,
+    which admits a functor from the category of
+    complete $\bbk$-varieties and $\bbk$-maps.
+    The functor $\CH_\bullet$ factors through this functor. \qed
+\end{proposition}
+
+Before proving the main theorem,
+we need a lemma.
+
+\begin{lemma} \label{lem-2-generic-pt}
+    Let $X$ be an integral $\bbk$-variety, and let $\eta$ be its generic point. Consider the map
+    \[ \eta \times \id_X \: \Spec ( \bbk (X) ) \times X \simeq X_{\bbk (X)} \to X \times X. \]
+    The pullback of the diagonal class is the class of the generic point of $X$, which is a $0$-cycle of $X_{\bbk (X)}$ of degree $1$.
+\end{lemma}
+
+\begin{proof}
+    We may assume $X = \Spec A$ is affine.
+    Then the pullback of the diagonal class is the closed point
+    defined by the maximal ideal, which is the kernel of
+    the multiplication map
+    \[ \bbk (X) \otimes A \to \bbk (X). \]
+    The residue field is thus $\bbk (X)$.
+\end{proof}
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-2-decomp}
+    Let $X$ be a smooth, integral, complete $\bbk$-variety. Then the following are equivalent.
+    \begin{enumerate}
+        \item \label{itm-thm-2-decomp-1}
+            $X$ is universally $\CH_0$-trivial.
+        \item \label{itm-thm-2-decomp-2}
+            $X$ has a $0$-cycle of degree $1$,
+            and the degree map $\deg \: \CH_0 (X_{\bbk (X)}) \to \bbZ$ is an isomorphism.
+        \item \label{itm-thm-2-decomp-3}
+            $X$ admits a decomposition of the diagonal.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    The implication \ref{itm-thm-2-decomp-1} $\Rightarrow$ \ref{itm-thm-2-decomp-2}
+    follows from the definition of universal $\CH_0$-triviality.
+
+    Assume \ref{itm-thm-2-decomp-2}.
+    Let $\alpha$ be a $0$-cycle of $X$ of degree $1$,
+    and let $\beta \in \CH_0 (X_{\bbk (X)})$ be the class of the generic point of $X$. 
+    Then by hypothesis, we have
+    \[ \alpha_{\bbk (X)} = \beta \quad \text{in } \CH_0 (X_{\bbk (X)}). \]
+    By \cite[Lemma~1A.1]{bloch}, we have
+    \[ \CH^n ( X_{\bbk (X)} ) \simeq \colim _{U \subset X \text{ open}} \CH^n (U \times X). \]
+    By Lemma~\ref{lem-2-generic-pt}, the map 
+    $\CH^n (X \times X) \to \CH^n \bigl( \Spec (\bbk(X)) \times X \bigr) \simeq \CH_0 (X_{\bbk (X)})$
+    maps the diagonal class $[\Delta_X]$ to $\beta$. Therefore,
+    there exists a non-empty open set $U \subset X$, such that
+    \[ [U] \times \alpha = [\Delta_U] \quad \text{in } \CH_n (U \times X). \]
+    Let $Z = X \setminus U$. By \cite[\S1.8]{fulton}, we have an exact sequence
+    \[ \CH_n (Z \times X) \to \CH_n (X \times X) \to \CH_n (U \times X) \to 0, \]
+    which implies that there exists $D \in \CH_n (Z \times X)$, such that
+    \[ D = [X] \times \alpha - [\Delta_X] \quad \text{in } \CH_n (X \times X). \]
+    This proves \ref{itm-thm-2-decomp-3}.
+
+    Now assume \ref{itm-thm-2-decomp-3}, and let
+    \[ [\Delta_X] = D + [X] \times x_0 \quad \text{in } \CH_n (X \times X) \]
+    be a decomposition, with $D$ supported in $Z \times X$.
+    Let $F$ be an extension of $\bbk$.
+
+    Consider the action of $\operatorname{Corr} (X, X)$ 
+    on $\CH_0 (X_F)$, as defined in (\ref{eq-2-corresp-eval}).
+    Since $[\Delta_X]$ acts as the identity, so does $D + [X] \times x_0$.
+
+    On the other hand, by the moving lemma \ref{lem-2-moving},
+    every $0$-cycle of $X$ can be moved out of $Z$. 
+    This shows that the action of $D$ is $0$,
+    as in the defining equation (\ref{eq-2-corresp-eval}), we are taking the intersection product of two disjoint cycles.
+    But for any $0$-cycle $\gamma$ of $X$, the action of $[X] \times x_0$ sends it to
+    \[ 
+        p_* \bigl( ([X] \times x_0) \cdot (\gamma \times [X]) \bigr) = p_* (\gamma \times x_0) = (\deg \gamma) \, x_0,
+    \]
+    where $p \: X \times X \to X$ is the second projection. This
+    implies that $\CH_0 (X_F)$ is generated by $x_0$, which has degree $1$.
+    This proves \ref{itm-thm-2-decomp-1}.
+\end{proof}
+
+% \begin{remark} \label{rem-2-decomp-mult-components}
+%     The implication \ref{itm-thm-2-decomp-3} $\Rightarrow$ \ref{itm-thm-2-decomp-1}
+%     still holds if we allow $X$ to have multiple irreducible components,
+%     each being smooth, with the extra assumption that the intersection of
+%     every two irreducible components is either empty or contains a rational point of degree $1$.
+% \end{remark}
+
+
+\subsection{The Brauer group}
+
+In this subsection, we show that the existence of a decomposition of the diagonal 
+implies the triviality of the Brauer group.
+
+\begin{definition}
+    The (cohomological) \term{Brauer group} of a scheme $X$ is the étale cohomology group
+    \[ \Br (X) = H^2 (X, \Gm). \]
+\end{definition}
+
+For a field $\bbk$, the Brauer group $\Br (\bbk) = \Br (\Spec \bbk)$
+coincides with the classical notion defined as the group of
+equivalence classes of central simple algebras.
+A classical reference is \cite{grothendieck-brauer}.
+
+The Kummer exact sequence of étale sheaves
+\[ 0 \to \sfmu_n \to \Gm \xrightarrow{(-)^n} \Gm \to 0 \]
+induces a long exact sequence
+\[ \cdots \to \operatorname{Pic} (X)
+    \to H^2 (X, \sfmu_n) \to \Br (X) \xrightarrow{\cdot n} \Br (X) \to \cdots. \]
+When $X = \Spec R$, where $R$ is a local ring,
+we have $\operatorname{Pic} (X) = 0$, so that
+\[ \Br (X) \, [n] \simeq H^2 (X, \sfmu_n), \]
+where the left hand side denotes the $n$-torsion subgroup of $\Br (X)$.
+
+\begin{definition} \label{def-2-unramified}
+    Let $M$ be a contravariant functor from schemes to abelian groups
+    (e.g.\ étale cohomology), and let $\bbk \subset \bbK$ be two fields. Let
+    \[ M_{\mathrm{nr}} ( \bbK / \bbk ) = 
+        \bigcap_{\bbk \subset A \subset \bbK} 
+        \operatorname{image} \Bigl( M (\Spec A) \to M (\Spec \bbK) \Bigr), \]
+    where $A$ runs through all discrete valuation rings with fraction field $\bbK$.
+\end{definition}
+
+This is called the \term{unramified} version of the functor $M$.
+For example, one has the \emph{unramified Brauer group} $\Br_{\mathrm{nr}} (\bbK / \bbk)$,
+and \emph{unramified cohomology} $H^q_{\mathrm{nr}} (\bbK / \bbk, \sfmu_n)$.
+
+A deep result on the cohomological purity of the Brauer group
+gives rise to the following theorem.
+
+\begin{theorem} \label{thm-2-unramified-br}
+    Let $X$ be a regular, complete, integral $\bbk$-variety.
+    Then the natural map $\Br (X) \to \Br ( \bbk (X) )$ induces an isomorphism
+    \[ \Br (X) \simeq \Br_{\mathrm{nr}} ( \bbk(X) / \bbk ). \]
+\end{theorem}
+
+See \cite[Proposition~5.2.2]{colliot-brauer}.
+
+The discussion above immediately implies the following.
+
+\begin{corollary}
+    Let $X$ be a regular, proper, integral $\bbk$-variety. Then 
+    \[ \Br (X) \, [n] \simeq H^2_{\mathrm{nr}} (\bbk (X) / \bbk, \sfmu_n). \thmqedhere \]
+\end{corollary}
+
+Since the Brauer group is a torsion group \cite[Proposition~1.3.6]{colliot-brauer},
+it can thus be computed by the unramified cohomology groups.
+
+On the other hand, the second cohomology of $\sfmu_n$ is a part of
+the cycle module (in the sense of \cite{rost})
+\[ \textstyle \bigoplus_{i} H^i (-, \sfmu_n^{\otimes (i - 1)}), \]
+which we do not give a precise definition here.
+This allows it to be regarded as a ``coefficient group'' for Chow groups.
+As a result, there is an action of correspondences
+\[ \operatorname{Corr} (X, Y) \otimes H^2_{\mathrm{nr}} (\bbk (X) / \bbk, \sfmu_n)
+    \longrightarrow H^2_{\mathrm{nr}} (\bbk (Y) / \bbk, \sfmu_n) \]
+for $\bbk$-varieties $X, Y$.
+This action will relate the Brauer group
+with the decomposition of the diagonal.
+
+\begin{theorem} \label{thm-2-brauer-trivial}
+    Let $X$ be a smooth projective $\bbk$-variety.
+    If $X$ admits a decomposition of the diagonal,
+    then the natural map induces an isomorphism
+    \[ \Br (\bbk) \similarrightarrow \Br (X). \]
+    In particular, if $\bbk$ is separably closed, then $\Br (X) = 0$.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+    The decomposition of the diagonal implies that 
+    the identity map and the constant map (to be precise, a sum of constant maps)
+    induce the same action on
+    \[ H^2_{\mathrm{nr}} (\bbk (X) / \bbk, \sfmu_n). \]
+    But the action of a constant map factors through 
+    $H^2_{\mathrm{nr}} (\bbk / \bbk, \sfmu_n)$, via the corestriction map,
+    whence the result follows.
+\end{proof}
+

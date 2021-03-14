@@ -1,0 +1,66 @@
+A transversality theorem is a theorem stating that a certain desirable 
+property can be achieved by an arbitrarily small perturbation, or that 
+the property in question is \textit{generic}. 
+We begin by making this notion precise. 
+
+Let $X$ be a topological space, $P$ a property that points of $X$ may 
+or may not satisfy. We say $P$ holds for \textit{generic} $x \in X$ if 
+the set 
+\[
+    \{ x \in X \mid P \text{ holds for } x \}
+\]
+is \textit{residual} in the sense of Baire, i.e., it contains a countable intersection 
+of dense open sets. 
+Note that residual sets in complete metric spaces are dense, 
+as a consequence of the Baire category theorem.
+
+In classical differential topology, the prototypical example of a 
+transversality theorem is the result that transversal intersection of 
+two submanifolds is generic. 
+This follows from a general parametric transversality theorem, 
+which, in turn, relies on Sard's theorem. 
+The same technique has been extended to the infinite-dimensional setting 
+so that it applies to, e.g., spaces of maps between manifolds and spaces 
+of sections of fiber bundles.
+Explaining and illustrating the use of this extension is the purpose of the present paper.
+
+Most of the transversality theorems that we shall prove fit into a larger 
+program, which can be abstractly formulated as follows. 
+Here one is interested in the moduli space $\Mc$ of a class of geometric 
+objects, typically defined by a differential equation. Such a program 
+studies the structure of $\Mc$ in the following aspects:
+
+\begin{enumerate}
+    \item Transversality.
+		
+        In the generic case, $\Mc$ is a finite-dimensional smooth manifold. 
+        The present paper concerns itself with how one proves such a result.
+    
+    \item Orientation.
+		
+        The moduli space $\Mc$ is orientable.
+		This seemingly innocent fact could be highly nontrivial. 
+        Incidentally, an important tool for proving this is the determinant 
+		line bundle on the space of Fredholm operators.
+    
+    \item Compactness.
+		
+        Any sequence in $\Mc$ has a subsequence
+        ``converging'' in a suitable sense. 
+        Adding all possible limits to $\Mc$, 
+        we obtain a compactification $\ol{\Mc}$. 
+        Of course, such results are necessarily quite analytic in nature.
+		
+    \item Gluing.
+		 
+		The compactified moduli space $\ol{\Mc}$ is a smooth manifold 
+		with an expected boundary: 
+		Taking hint from the previous step, we expect the boundary to be 
+		the space of another class of geometric objects. 
+		That all such objects arise as boundary points 
+		is proved by a gluing procedure.
+\end{enumerate}
+
+As an example, $\Mc$ could be the moduli space of flow lines in Morse 
+or Floer homology, in which case the boundary (or corner) points are 
+broken flow lines.

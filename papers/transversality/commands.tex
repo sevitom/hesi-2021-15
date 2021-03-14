@@ -1,0 +1,97 @@
+% customized numbering for Step
+\usepackage{cleveref}
+\newtheorem{mstep}{Step}
+\newtheorem*{convention}{convention}
+\newenvironment{step}[1]{%
+	\renewcommand\themstep{#1}%
+	\mstep
+}{\endmstep}
+\crefname{step}{Step}{Steps}
+
+% math letters
+\newcommand{\Ab}{{\mathbb{A}}}
+\newcommand{\Bb}{{\mathbb{B}}}
+\newcommand{\Cb}{{\mathbb{C}}}
+\newcommand{\Db}{{\mathbb{D}}}
+\newcommand{\Eb}{{\mathbb{E}}}
+\newcommand{\Fb}{{\mathbb{F}}}
+\newcommand{\Gb}{{\mathbb{G}}}
+\newcommand{\Hb}{{\mathbb{H}}}
+\newcommand{\Ib}{{\mathbb{I}}}
+\newcommand{\Jb}{{\mathbb{J}}}
+\newcommand{\Kb}{{\mathbb{K}}}
+\newcommand{\Lb}{{\mathbb{L}}}
+\newcommand{\Mb}{{\mathbb{M}}}
+\newcommand{\Nb}{{\mathbb{N}}}
+\newcommand{\Ob}{{\mathbb{O}}}
+\newcommand{\Pb}{{\mathbb{P}}}
+\newcommand{\Qb}{{\mathbb{Q}}}
+\newcommand{\Rb}{{\mathbb{R}}}
+\newcommand{\Sb}{{\mathbb{S}}}
+\newcommand{\Tb}{{\mathbb{T}}}
+\newcommand{\Ub}{{\mathbb{U}}}
+\newcommand{\Vb}{{\mathbb{V}}}
+\newcommand{\Wb}{{\mathbb{W}}}
+\newcommand{\Xb}{{\mathbb{X}}}
+\newcommand{\Yb}{{\mathbb{Y}}}
+\newcommand{\Zb}{{\mathbb{Z}}}
+\newcommand{\Ac}{{\mathcal{A}}}
+\newcommand{\Bc}{{\mathcal{B}}}
+\newcommand{\Cc}{{\mathcal{C}}}
+\newcommand{\Dc}{{\mathcal{D}}}
+\newcommand{\Ec}{{\mathcal{E}}}
+\newcommand{\Fc}{{\mathcal{F}}}
+\newcommand{\Gc}{{\mathcal{G}}}
+\newcommand{\Hc}{{\mathcal{H}}}
+\newcommand{\Ic}{{\mathcal{I}}}
+\newcommand{\Jc}{{\mathcal{J}}}
+\newcommand{\Kc}{{\mathcal{K}}}
+\newcommand{\Lc}{{\mathcal{L}}}
+\newcommand{\Mc}{{\mathcal{M}}}
+\newcommand{\Nc}{{\mathcal{N}}}
+\newcommand{\Oc}{{\mathcal{O}}}
+\newcommand{\Pc}{{\mathcal{P}}}
+\newcommand{\Qc}{{\mathcal{Q}}}
+\newcommand{\Rc}{{\mathcal{R}}}
+\newcommand{\Sc}{{\mathcal{S}}}
+\newcommand{\Tc}{{\mathcal{T}}}
+\newcommand{\Uc}{{\mathcal{U}}}
+\newcommand{\Vc}{{\mathcal{V}}}
+\newcommand{\Wc}{{\mathcal{W}}}
+\newcommand{\Xc}{{\mathcal{X}}}
+\newcommand{\Yc}{{\mathcal{Y}}}
+\newcommand{\Zc}{{\mathcal{Z}}}
+
+% general notation
+\newcommand{\id}{{\mathrm{id}}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\coim}{\operatorname{coim}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\gfr}{{\mathfrak{g}}}
+\newcommand{\GL}{{\mathrm{GL}}}
+\newcommand{\SU}{{\mathrm{SU}}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\Ad}{\operatorname{Ad}}
+
+% shorthands
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\fr}{\forall\,}
+\newcommand{\exi}{\exists\,}
+\newcommand{\pa}{\partial}
+\newcommand{\pab}{{\bar{\partial}}}
+\newcommand{\ph}{\phantom{{}={}}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}
+
+% special notation
+\newcommand{\Crit}{\operatorname{Crit}}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\reg}{{\mathrm{reg}}}
+\newcommand{\Morse}{{\mathrm{M}}}

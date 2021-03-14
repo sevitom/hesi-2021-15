@@ -1,0 +1,137 @@
+Mathematical gauge theory was inspired by physics and 
+is now a basic tool in low-dimensional geometry. 
+In this section, we sketch the proof of the fundamental transversality 
+theorem that for a generic Riemannian metric on a compact $4$-manifold, 
+the space of irreducible self-dual connections on a fixed principal 
+$\SU(2)$-bundle has the structure of a smooth $5$-manifold. 
+This is a major step in the proof of the celebrated 
+diagonalizability theorem of S.\ K.\ Donaldson.
+
+\subsection{Background material}
+The purpose of this subsection is mainly to fix notation.
+
+\subsubsection{Connections on principal bundles}
+Let $G$ be a Lie group, $\gfr$ its Lie algebra. 
+Let $M$ be a smooth manifold, 
+$P \to M$ a smooth principal $G$-bundle. 
+Given an open cover $(U_\alpha)_\alpha$ of $M$ on which 
+$P \to M$ is trivial, a connection on $P$ can be described 
+by connection $1$-forms $A_\alpha \in \Omega^1 (U_\alpha; \gfr)$. 
+The difference of two connection $1$-forms on $P$ 
+is a section $\in \Omega^1 (\ad P)$, so the space of connections 
+on $P$ is an affine space modeled on $\Omega^1 (\ad P)$. 
+For a connection $D$ on $P$, we denote by 
+$F_D \in \Omega^2 (\ad P)$ the curvature $2$-form of $D$.
+
+\subsubsection{Anti-self-dual connections}
+Let $M$ be a compact smooth $4$-manifold, 
+$P \to M$ a principal $\SU(2)$-connection. 
+We shall usually identify it with the associated vector bundle 
+$P \times_\rho \Cb^2$, where $\rho$ is 
+the standard representation of $\SU(2)$ on $\Cb^2$. 
+A connection on $P$ is \textit{reducible} if $P \times_\rho \Cb^2$ 
+splits into the direct sum of two line bundles and 
+the induced connection on it also splits. 
+Otherwise it is \textit{irreducible}.
+
+Fix a Riemannian metric $g$ on $M$. 
+This induces the Hodge star operator $* \colon \Lambda^2 \to \Lambda^2$ 
+with $*^2 = \id$. 
+The subbundles $\Lambda^2_\pm := \ker(* \mp 1)$ are called 
+the bundle of (\textit{anti-})\textit{self-dual} forms. 
+This definition extends to forms with coefficients in any vector bundle. 
+In particular, a connection $D$ on $P$ is (\textit{anti-})\textit{self-dual} 
+if so is $F_D$. 
+Such connections are automatically \textit{Yang--Mills} 
+in the sense that they are critical points of the Yang--Mills functional. 
+Since we shall make no use of this functional, we omit its definition.
+
+\subsection{Moduli spaces of self-dual connections}
+This subsubsection is devoted to sketching the proof of 
+the following equivariant transversality theorem:
+
+\begin{theorem}
+	Let $M$ be a compact smooth $4$-manifold, 
+	$P \to M$ a smooth principal $\SU(2)$-bundle. 
+	Then for a generic Riemannian metric $g$ on $M$, 
+	the moduli space $\Mc^*(P; g)$ is a smooth manifold of dimension $5$.
+\end{theorem}
+
+\noindent We intend to apply the general transversality theorem with
+\begin{itemize}
+	\item[$\Xc$:] 
+		the space $\Ac^{k - 1, 2}$ of irreducible 
+		$W^{k - 1, 2}$ connections on $P$;
+	\item[$\Yc$:] 
+		the space $\Cc^\ell := C^\ell (\GL(TM))$;
+	\item[$\Ec$:] 
+		the product bundle $\Ec^{k - 2, 2}$ with fiber 
+		$W^{k - 2, 2} (\Lambda^2_- \otimes \ad P)$;
+	\item[$\Sc$:] 
+		the map $\Ac^{k - 1, 2} \times \Cc^\ell \to \Ec^{k - 2, 2},\, 
+		(D, \varphi) \mapsto (D, \varphi, P_- ((\varphi^{-1})^*F_D))$.
+\end{itemize}
+Here $\ell \gg k$, $*$ is with respect to 
+a fixed Riemannian metric $g$ on $M$. 
+As $\varphi$ ranges over $\Cc^\ell$, 
+$\varphi^*g$ ranges over all $C^\ell$ metrics on $M$.\footnote{This 
+trick is from \cite{FU}. The technical advantage of this parameter space 
+is that it turns $\Ec$ into a trivial bundle. 
+One could also proceed with $\Yc$ the space of 
+$C^\ell$ Riemannian metrics, much like in the previous subsection.} 
+The Hodge star operator with respect to $\varphi^*g$ is 
+$\varphi^* P_- (\varphi^{-1})^*$, so 
+$\Mc^*(P; \varphi^*g) = 
+\Sc^{-1} (0) \cap (\Ac^{k - 1, 2} \times \{\varphi\}) / \Gc^k$.
+
+Let us explain the Banach manifold structures on these spaces. 
+Since $\Cc^\ell$ is an open subset of the Banach space $C^\ell(\End TM)$, 
+it is a smooth Banach manifold. 
+In fact, it is a Banach Lie group with 
+Lie algebra $T_{\id} \Cc^\ell = C^\ell(\Sym^2 T^*M)$. 
+Recall that $\Ac^{k - 1, 2}$ is an affine space modeled on 
+$W^{k - 1, 2} (\Lambda^1 \otimes \ad P)$, so it is a Banach manifold 
+with $T_D \Ac^{k - 1, 2} = W^{k - 1, 2} (\Lambda^1 \otimes \ad P)$.
+
+\medskip
+
+Now we pause for a moment. 
+The general transversality theorem only gives that 
+$\Sc^{-1} (0) \cap (\Ac^{k - 1, 2} \times \{\varphi\})$ is a smooth 
+manifold, and we have to quotient out by $\Gc^\ell$ to get the theorem. 
+However, it is not feasible to do this in the end. 
+Instead, we follow the following steps:
+\begin{enumerate}
+	\item Regular value.
+		
+		$0$ is a regular value of $\Sc$. 
+		Thus the universal moduli space $\Sc^{-1} (0)$ is a Banach manifold.
+		
+	\item Slices.
+		 
+		For $D \in \Ac^{k - 1, 2}$, $\Ac^{k - 1, 2}$ is locally 
+		$\Gc^\ell$-equivariantly diffeomorphic to $\ker D^* \times \Gc^k$ 
+		near $D$, where $\Gc^k$ is the space of $C^k$ gauge transformations. 
+		Thus the orbit space $\Xc^{k - 1, 2} := \Ac^{k - 1, 2} / \Gc^k$ 
+		is a Banach manifold. 
+		This is a simple application of the implicit mapping theorem. 
+		Similarly, $\Sc^{-1} (0) / \Gc^\ell$ is a Banach manifold.
+		
+	\item Fredholm property.
+		
+		The projection $\pi \colon \Sc^{-1} (0) / \Gc^k \to \Cc^\ell$ 
+		is Fredholm with index $5$. 
+		This follows from the Atiyah--Singer index theorem 
+		for the elliptic complex 
+		\[
+			0 \to \Omega^0 (\ad P) \xrightarrow{D} \Omega^1 (\ad P) 
+			\xrightarrow{D_1\Sc_{(D, \varphi)}} \Omega^2(\ad P) \to 0.
+		\]
+		
+	\item Application of Sard--Smale.
+		
+		The theorem now follows immediately from the Sard--Smale theorem 
+		since $\Mc^*(P; \varphi^*g) = \pi^{-1} (\varphi)$.
+\end{enumerate}
+
+See \cite{FU} for the complete proof.

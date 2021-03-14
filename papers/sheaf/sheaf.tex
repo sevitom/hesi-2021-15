@@ -1,0 +1,789 @@
+\documentclass[twoside]{article}
+
+\input{../common/preamble}
+
+\input{commands}
+
+\addbibresource{sheaf.bib}
+
+\begin{document}
+
+\title{Sheaf  Cohomology}
+\author{He Yuxin\footnote{贺宇昕，清华大学数学系数 72 班.}}
+
+
+\begin{abstract}
+    We may come across many cohomology theorems  when we study geometry and topology. Theorems like de Rham theorm and Dolbeault theorem tell us the connection between different cohomology theories. The passage will introduce the axiomatic cohomology theory to  give a more general view of the phenomenon. The connection do not rely on a particular cohomology theory,  but is a natural conclusion of the propositions in homological algebra.
+\end{abstract}
+
+\tableofcontents
+\section{Preliminaries}
+\subsection{Sheaves and presheaves}
+
+Fix $K$ to be a principal  ideal  integral domain.
+
+ \begin{definition}
+   A sheaf of $K$-modules over a topological space $M$ contains a topological space $S$ and a projection  $\pi:S\to M$ satisfying:
+   \begin{enumerate}
+     \item $\pi$ is a local homeomorphism and is surjective,
+     \item $\pi^{-1}(x)$ is a $K$-module for each $x\in M$,
+     \item the  operations for $K$-modules are continuous.
+   \end{enumerate}
+ \end{definition}
+Here the third condition means, if  $A=\{(x,y)\in S\times S|\pi(x)=\pi(y)\}\subset S\times S$ is the set of pairs of elements in S with same image in $M$, then $A\to S,(s_1,s_2)\mapsto s_1-s_2$ is continuous, and for fixed $k\in K$, $S\to S, s\mapsto ks$ is continuous. It follows that $A\to S,(s_1,s_2)\mapsto s_1+s_2$ is continuous.  While for a sheaf of $K$-algebra,  $A\to S,(s_1,s_2)\mapsto s_1\circ s_2$ should be continuous.
+
+Call $\pi^{-1}(x)$ the stalk over $x$, and for an open subset $U\subset M$, a continuous map $f:U\to S$ satisfying $\pi\circ f=id_U$ is called a section on $U$, and the set of such sections is denoted by $\Gamma(U,S)$. In particular, set $\Gamma(S)=\Gamma(M,S)$. $\Gamma(U,S)$ has a  natural $K$-module structure, play similar role of the space $C^\infty(U)$ of smooth function on $U$.
+
+ Notice that $\pi$ may not be  a covering map. The space of germs of continuous functions on $R$, for example, , is even  not  a Hausdorff space.  .
+
+
+\begin{example}
+  The constant sheaf $\mathcal{G}=M\times G$, where $G$  is a $K$-module with discrete topology.
+\end{example}
+\begin{example}
+  The smooth function sheaf $C^\infty(M)=\bigcup_{x\in M}F_x$. Here  $F_x$ is the set of germs of smooth functions at x. Here we may set the elements in $F_x$ be the equivalent  classs of $(f,U)$ with $f:U\to \mathbb{R}$ and $x\in U$, with $(f,U)\sim (g,V)$ if $\exists W\subset U\cap V$ and $x\in W$ with $f|_W=g|_W$. The topology of $C^\infty(M)$ is formed by the basis  $\bigcup_{x\in U}f_x$,    where $f:U\to R$ is smooth and $f_x $ denotes the germ of f at x.
+\end{example}
+\begin{definition}
+If $S$ and $S^\prime $ are two sheaves over M with projection $\pi,\pi^\prime$, a continuous map $\varphi\colon S\to S^\prime$ is called a sheaf homomorphism if  the following commutative diagram holds
+\begin{equation*}
+  \xymatrix{
+  S\ar[dr]^{\pi} \ar[rr]^{\varphi} & & S^\prime \ar[dl]_{\pi^\prime}\\
+  & M & \\
+  }
+\end{equation*}
+and $\varphi$ induce homomorphism of $K$-modules at each stalk.
+\end{definition}
+
+\begin{definition}An open set $R\subset S$ is called a subsheaf if $R_x=R\cap S_x$ is a $K$-submodule  of $S_x$ for each x. It is also a sheaf over $M$.
+\end{definition}
+
+For a sheaf homomorphism $\varphi\colon S\to S^\prime$,  take the kernel and image at each stalk and take the union, they are  subsheaves of $S$ or $S^\prime$. If $\varphi$ is injective, identity $S$ with $\varphi(S)$, and consider $S$ as a subsheaf of $S^\prime$. The sheaf homomorphism $\varphi\colon S\to S^\prime$ induces a sheaf isomorphism $S\colon \ker(\varphi)\to \operatorname{im}(\varphi)$.
+
+If $S$ is a subsheaf of $S^\prime$, define the quotient sheaf $$
+J=\bigcup_{x\in M} S^\prime_x/S_x,
+$$
+and equip it with the quotient topology. $J$ is called the quotient sheaf of $S^\prime $ modulo $S$.
+
+
+\begin{definition}
+An exact sequence of sheaves is a sequence of sheaves and homomorphisms:
+\begin{equation*}
+  \xymatrix{
+ \cdots\ar[r]&S^{i-1}\ar[r]^{\varphi^{i-1}}&S^i\ar[r]^{\varphi^{i}}&S^{i+1}\ar[r]^{\varphi^{i+1}}&\cdots,\\
+  }
+\end{equation*}
+ with $\operatorname{im}(\varphi^{i})=\ker(\varphi^{i+1})$. Short exact sequences are of the form
+  \begin{equation*}
+  \xymatrix{
+ 0\ar[r]&R\ar[r]&S\ar[r]&T\ar[r]&0,\\
+  }
+\end{equation*}
+  with $0$ the constant sheaf of the form $M\times G$, where $G$ is the trivial $K$-module.
+\end{definition}
+
+  The sequence is exact if and only if for each $x\in M$, the sequence
+ \begin{equation*}
+  \xymatrix{
+ \cdots\ar[r]&S_x^{i-1}\ar[r]^{\varphi_x^{i-1}}&S_x^i\ar[r]^{\varphi_x^{i}}&S_x^{i+1}\ar[r]^{\varphi_x^{i+1}}&\cdots\\
+  }
+\end{equation*} is exact. Here $\varphi_x^{i}$ is the induced $K$-module homomorphism on stalks.
+
+
+Sheaves can be also defined as some particular presheaves. The two definitions are equivalent.
+
+\begin{definition}
+  A presheaf of $K$-modules $P=\{S_U;\rho_{U,V}\}$ consists of a $K$-module $S_U$ for all open sets $U\subset M$ and  a $K$-module homomorphism $\rho_{U,V}\colon S_V\to S_U$ for each $U\subset V$, satisfying that $\rho_{U,U}=id$ and  $\rho_{U,W}=\rho_{U,V}\circ \rho_{V,W}$, for $U\subset V\subset W$. These are similar to  the set of continuous functions on U and  the restriction map.
+
+  A morphism from $P$ to $P^\prime$ consists of  $K$-module morphisms $\varphi_U:S_U\to S_U^\prime$ for each open subset U such that $\phi$ is compatible with $\rho$, that is to say,  the following commutative diagram holds for every $U\subset V$,
+
+  \begin{equation*}
+    \xymatrix{
+    S_V\ar[r]^{\rho_{U,V}}\ar[d]_{\varphi_V}&S_U\ar[d]^{\varphi_U}\\
+    S_V^\prime\ar[r]^{\rho_{U,V}^\prime}&S_U^\prime\\
+    }
+  \end{equation*}
+
+\end{definition}
+
+
+If $S$ is a sheaf, then $\{\Gamma(U,S);\rho_{U,V}\}$ is a presheaf with $\rho$ the usual restriction map. Denote the presheaf as $\alpha(S)$.
+
+If $P=\{S_U;\rho_{U,V}\}$ is a presheaf of $K$-module over $M$, then  define a sheaf $S=\cup_{x\in M} S_x$. Let$S_x=\bigcup_{x\in U}S_U/\sim,$ and let $f\in S_U\sim g\in S_V$ if and only if there exists some $x\in W\subset U\cap V$ such that $\rho_{W,U}f=\rho_{W,V}g$, similar to the construction of germs of functions.  The projection $\pi$ sends $[f]\in S_x$ to $x$, where $f\in S_U$. $\pi^{-1}(x)=S_x$ is a $K$-module by $k[f]=[kf]$ and $[f_1]+[f_2]=[\rho_{W,U}f_1+\rho_{W,V}f_2]$ where $f_1\in S_U,f_2\in S_V$ and $x\in W\subset U\cap V$. Define the map $S_U\to S_x$ with $x\in U$ by  $\rho_{x,U}$, then the topology of $S$ is given by the topology generated by the basis $\{O_f=\{\rho_{x,U}f|x\in U\}   |f\in S_U\}$. $S$ is a sheaf, denoted   by $\beta(P)$.
+
+
+
+Notice in some place  a presheaf is a sheaf if it satisfies:
+
+\begin{enumerate}
+  \item if $U=\bigcup_{i\in I} U_i$ and $f_i\in S_{U_i}$ with $f_i|_{U_i\cap U_j}=f_j|_{U_i\cap U_j}$, then there exists  $f\in S_U$ satisfying $f_{U_i}=f_i$, here if $U\cap V$ and $f\in S_V$,  use $f|_{U} $ to denote $\rho_{U,V}f$.
+  \item if $U=\bigcup_{i\in I} U_i$ and  $f,g\in S_U$ satisfies $f|_{U_i}=g|_{U_i}$, then $f=g$.
+\end{enumerate}
+
+
+If a presheaf $P=\{S_U;\rho_{U,V}\}$  satisfies the two conditions, then  say the presheaf is complete.
+
+Notice a sheaf homomorphism $\varphi:S\to S^\prime$ induce presheaf homomorphism $\varphi^*:\alpha(S)\to \alpha(S^*)$,  and $(\psi\circ \varphi)^*=\psi^*\circ \varphi^*$. Besides, a presheaf homomorphism $\{\varphi_U\}$  also induce sheaf homomorphism $\varphi_*$ between $\beta(P)$ and $\beta(P^\prime)$.
+
+If $S$ is sheaf, then the composition map  $$\begin{aligned}
+\beta(\alpha(S))&\to S\\
+\xi=\rho_{p,U}f&\mapsto f(p),\quad  where \,\, f\in \Gamma(U,S)\\
+\end{aligned}
+$$
+ is a sheaf isomorphism. The inverse map is guaranteed by the local homeomorphism of $S$.
+
+ But $P$ is a presheaf, $P$ and $\alpha(\beta(P))$ may not be isomorphic. However, the following theorem holds.
+
+ \begin{theorem}
+   $P$ and $\alpha(\beta(P))$ are isomorphic if and only if P is complete.
+ \end{theorem}
+
+  This map should be
+  $$
+  \begin{aligned}
+    S_U&\to \Gamma(U,\beta(P))\\
+    (f\in S_U)&\mapsto (p\in U\mapsto \rho_{p,U}f).\\
+  \end{aligned}
+  $$
+
+\subsection{Tensors  and exact sequences}
+
+
+\begin{definition}
+
+For two sheaves $P=\{S_U;\rho_{U,V}\}$ and $P^\prime=\{S_U^\prime;\rho_{U,V}^\prime\}$,   their tensor  presheaf  is defined as $$
+P\otimes P^\prime=\{S_U\otimes S_U^\prime|  \phi_U\otimes \phi_{U}^\prime\}.
+$$
+and for two sheaves $S$ and $S^\prime$, their tensor sheaf is defined as   $$S\otimes S^\prime=\beta(\alpha(S)\otimes \alpha(S^\prime)).$$
+
+\end{definition}
+
+
+By the construction, we have $(S\otimes S^\prime)_x\simeq S_x\otimes S_x^\prime$.
+
+The tensor of sheaf homomorphisms is defined canonially as $\varphi:S\to T$ and $\psi:S^\prime\to T^\prime$ will induce $\varphi\otimes \psi:S\otimes S^\prime\to T\otimes T^\prime$, and $\varphi\otimes \psi|_{(S\otimes S^\prime)_x}\simeq \varphi|_{S_x}\otimes \psi|_{S_x^\prime}$.
+
+Similarly,  define the direct sum of sheaves and presheaves as $$\begin{aligned}
+P\oplus P^\prime=&\{S_U\oplus S_U^\prime|  \phi_U\oplus \phi_{U}^\prime\},\\
+S\oplus S^\prime=&\beta(\alpha(S)\oplus \alpha(S^\prime)).\\
+\end{aligned}
+$$
+
+
+Notice that  smooth manifolds always guarantee the existence of   the partition of unity. For sheaves there is  a more general concept.
+
+\begin{definition}
+  A sheaf $S$ over $M$ is a fine sheaf if for any locally finite  open covering $\{U_i\}$ of $M$, there exists endomorphisms $\{l_i\}$   of $S$ satisfying that $supp(l_i)\subset U_i$ and $\sum_i l_i=id_S$. Set $supp(f_i)$ to be the closure of the points set where $l_i|_{S_x}$ is not zero. $\{l_i\}$ is called the partition of unity of sheaf $S$ subordinate to $\{U_i\}$ of $M$.
+
+\end{definition}
+
+It can be checked  that if $S$ or $S^\prime$ is fine then $S\otimes S^\prime$ is fine. It only need to  take the tensors of  endomorphisms $l_i$ with $id_{\pi^{-1}(U_i)}$.
+
+
+Notice that when
+\begin{equation*}
+  \xymatrix{
+  0\ar[r]&S^\prime\ar[r]&S\ar[r]&S^{\prime\prime}\ar[r]&0\\
+  }
+\end{equation*}
+is a  short exact sequence, the sequence
+  \begin{equation*}
+  \xymatrix{
+  0\ar[r]&\Gamma(S^\prime)\ar[r]&\Gamma(S)\ar[r]&\Gamma(S^{\prime\prime})\ar[r]&0\\
+  }
+\end{equation*}
+is not always exact.
+In fact, the sequence may not be exact at  $\Gamma(S^{\prime\prime})$.
+We only have the following exact sequence
+  \begin{equation*}
+  \xymatrix{
+  0\ar[r]&\Gamma(S^\prime)\ar[r]&\Gamma(S)\ar[r]&\Gamma(S^{\prime\prime}).\\
+  }
+\end{equation*}
+ How does the sequence differ from exact sequence  will be seen by extending the sequence to a long exact sequence.
+
+
+\begin{theorem}
+  If there is a  short exact sequence \begin{equation*}
+  \xymatrix{
+  0\ar[r]&R\ar[r]&S\ar[r]&T\ar[r]&0,\\
+  }
+\end{equation*}
+where $R=ker(S\to T)$ is a fine sheaf, then it will induce  the short exact sequence
+\begin{equation*}
+  \xymatrix{
+  0\ar[r]&\Gamma(R)\ar[r]^i&\Gamma(S)\ar[r]^\varphi&\Gamma(T)\ar[r]&0.\\
+  }
+\end{equation*}
+
+\end{theorem}
+
+\begin{proof}
+  The exactness  at $\Gamma(R)$ is easy to see pointwisely.  The exactness at $\Gamma(S)$ is just by the definition of the kernel sheaf. So it suffices to check the sufficiency at $\Gamma(T)$. For $t\in \Gamma(T)$, since sheaves are locally homeomorphic to $M$, for an open covering $\{U_i\}$ of M, there exist $s_i\in \Gamma({U_i},S)$ such that $\varphi\circ s_i=t|_{U_i}$, and $\{U_i\}$ is locally finite. Set $s_{ij}=s_i-s_j$ over $U_i\cap U_j$, and let $l_i$ be the corresponding partition of unity, then  set $$
+  s_i^\prime=\sum_jl_j\circ s_{ij},
+  $$
+  here $l_j\circ s_{ij}$ can be seen as an element in $\Gamma(S,U_i)$.
+
+  Since on $U_i\cap U_j$ the equation $$
+  s_i^\prime-s_j^\prime=\sum_k l_k\circ (s_{ik}-s_{jk})=\sum_kl_k\circ s_{ij}=s_i-s_j
+  $$
+
+  holds, then by the gluing lemma, there exists  some $s\in \Gamma(S)$ with $s|_{U_i}=s_i-s_i^\prime$, then $\varphi\circ s=t$.
+\end{proof}
+
+For the tensor product,  consider the tensor functor.
+
+\begin{proposition}
+If there is a  short exact sequence
+   \begin{equation*}
+  \xymatrix{
+  0\ar[r]&S^\prime\ar[r]&S\ar[r]&S^{\prime\prime}\ar[r]&0,\\
+  }
+\end{equation*}
+  then if either $S^{\prime\prime}$ or $T$ is torsionless, it  the short exact sequence \begin{equation*}
+  \xymatrix{
+  0\ar[r]&S^\prime\otimes T\ar[r]&S\otimes T\ar[r]&S^{\prime\prime}\otimes T\ar[r]&0.\\
+  }
+\end{equation*}
+
+Here torsionless means all the stalks are torsionless $K$-modules.
+\end{proposition}
+
+\begin{equation*}
+  \xymatrix{
+  S^\prime\otimes T\ar[r]&S\otimes T\ar[r]&S^{\prime\prime}\otimes T\ar[r]&0.\\
+  }\end{equation*}
+   holds for all sheaves since
+   \begin{equation*}
+  \xymatrix{
+ A\ar[r]^u&B\ar[r]^v&C\ar[r]&0\\
+  }\end{equation*}
+   is exact if and only if \begin{equation*}
+  \xymatrix{
+ 0\ar[r]&Hom(C,N)\ar[r]^{v^*}&Hom(B,N)\ar[r]^{u^*}&Hom(A,N)\\
+ }\end{equation*}
+   is exact for all  $K$-module $N$ and the fact that $Hom(A\otimes B,N)\simeq Hom(A,Hom(B,N))$.
+
+   While for the injectivity of $S^\prime\otimes T\to S\otimes T$,since tensor product commutes with  direct limit, it suffices  to consider the case of finitely generated torsionfree $K$-modules, and all such modules have the form $K^{\oplus n}$, for which the injectivity is clear.
+
+
+
+\begin{theorem}
+     If \begin{equation*}
+  \xymatrix{
+  0\ar[r]&S^\prime\ar[r]&S\ar[r]&S^{\prime\prime}\ar[r]&0\\
+  }
+\end{equation*}
+ is an exact  sequence of sheaves of $K$-modules over M,  $T$ is a sheaf of $K$-modules over M, and $T$ or $S^{\prime\prime}$ is torsionless, then there is  an exact sequence
+ \begin{equation*}
+  \xymatrix{
+  0\ar[r]&S^\prime\otimes T\ar[r]&S\otimes T\ar[r]&S^{\prime\prime}\otimes T\ar[r]&0.\\
+  }
+\end{equation*}
+     At the same time, if either $T$ or $S^{\prime}$ is a fine sheaf, then there is  an exact sequence
+     \begin{equation*}
+  \xymatrix{
+  0\ar[r]&\Gamma(S^\prime\otimes T)\ar[r]&\Gamma(S\otimes T)\ar[r]&\Gamma(S^{\prime\prime}\otimes T)\ar[r]&0.\\
+  }
+\end{equation*}
+\end{theorem}
+
+
+
+\section{Axiomatic sheaf cohomology}
+
+\begin{definition}
+  A sheaf cohomology theory $\mathscr {H}$ for $M$ with coefficients in sheaves of $K$-modules over M consists of
+  \begin{enumerate}
+    \item A $K$-module $H^q(M,S)$ for each sheaf $S$ and each integer $q$, called the $q$-th cohomology module of $M$ with coefficients in the sheaf $S$ relative to cohomology theory $\mathscr{H}$,
+    \item A homomorphism $H^q(M,S)\to H^q(M,S^\prime)$ for each sheaf homeomorphism $S\to S^\prime $ and integer $q$,
+    \item A homomorphism $H^q(M,S^{\prime\prime})\to H^{q+1}(M,S^\prime)$ for each $q$ and each short exact sequence $0\to S^\prime\to S\to S^{\prime\prime}\to 0,$
+  \end{enumerate}
+  and they should satisfy:
+\begin{enumerate}
+  \item $H^q(M,S)=0$ for $q<0$.
+  \item There are natural isomorphisms  $H^0(M,S)\simeq \Gamma(S)$ with the commutative diagram for each  homomorphism $S\to S^\prime$
+      \begin{equation*}
+        \xymatrix{
+        H^0(M,S)\ar[d]\ar[r]^\simeq &\Gamma(S)\ar[d]\\
+        H^0(M,S^\prime)\ar[r]^\simeq &\Gamma(S^\prime).\\
+        }
+      \end{equation*}
+  \item $H^q(M,S)=0$ for all $q$ if $S$ is fine.
+  \item For short exact sequence    $0\to S^\prime\to S\to S^{\prime\prime}\to 0$, there is the long exact sequence $$
+      \cdots\to H^q(M,S^\prime)\to H^q(M,S)\to H^q(M,S^{\prime\prime})\to H^{q+1}(M,S^\prime)\to \cdots.
+      $$
+  \item $id:S\to S$ induces $id:H^q(M,S)\to H^q(M,S)$.
+  \item The commutative diagram \begin{equation*}
+        \xymatrix{
+        S^\prime\ar[r]\ar[dr]& S\ar[d]\\
+        &S^{\prime\prime}\\
+        }
+      \end{equation*}
+      induces the commutative diagram\begin{equation*}
+        \xymatrix{
+        H^q(M,S^\prime)\ar[r]\ar[dr]& H^q(M,S)\ar[d]\\
+        &H^q(M,S^{\prime\prime})\\
+        }
+      \end{equation*}
+  \item For homomorphism of short exact sequences  \begin{equation*}
+        \xymatrix{
+       0\ar[r]& S^\prime\ar[d]\ar[r]&S\ar[r]\ar[d]&S^{\prime\prime}\ar[r]\ar[d]&0\\
+        0\ar[r]&T^\prime\ar[r]&T\ar[r]&T^{\prime\prime}\ar[r]&0,\\
+        }
+      \end{equation*}
+  it will induces commutative diagram \begin{equation*}
+    \xymatrix{
+    H^q(M,S^{\prime\prime})\ar[r]\ar[d]&H^{q+1}(M,S^\prime)\ar[d]\\
+    H^q(M,T^{\prime\prime})\ar[r]&H^{q+1}(M,T^{\prime}).\\
+    }
+  \end{equation*}
+
+\end{enumerate}
+
+
+\end{definition}
+
+\subsection{Existence of sheaf cohomology theories}
+\begin{definition}
+  A resolution of  a sheaf $A$ is an exact sequence of sheaves $$
+  0\to A\to C^0\to C^1\to \cdots.
+  $$
+  If each $C^i$ is fine(resp. torsionless), then the resolution is a fine resolution(resp. torsionless resolution).
+\end{definition}
+For  a resolution $C^*$ and a sheaf $S$, consider the  cochain complex $$
+0\to \Gamma(C^0\otimes S)\to \Gamma(C^1\otimes S)\to \cdots,
+$$
+denoted by $\Gamma(C^*\otimes S)$. The homomorphisms are induced by the tensor with  $id:S\to S$.
+
+For different $S$, the homomorphism $S\to S^\prime$ induces  $\Gamma(C^*\otimes S)\to \Gamma(C^*\otimes S^\prime)$, which is a  cochain homomorphism.
+
+If there is  a  fine and torsionless resolution $C^*$ of the constant sheaf $\mathscr{K}=M\times K$, then  it induces a sheaf cohomology theory determined by $H^q(\Gamma(C^*\otimes S))$. To be more careful, we define it as follows:
+\begin{enumerate}
+  \item $$
+  H^q(M,S)=H^q(\Gamma(C^*\otimes S)),
+  $$
+  \item $$H^q(M,S)\to H^q(M,S^\prime)$$ for $S\to S^\prime$ is induced by $H^q(\Gamma(C^*\otimes S))\to H^q(\Gamma(C^*\otimes S^\prime))$,
+  \item $H^q(M,S^{\prime\prime})\to H^{q+1}(M,S^\prime)$  for $0\to S^\prime\to S\to S^{\prime\prime}\to 0$ is induced by applying the snake lemma to the  sequence of cochain maps $$0\to \Gamma(C^*\otimes S^\prime)\to \Gamma(C^*\otimes S)\to \Gamma(C^*\otimes S^{\prime\prime})\to 0, $$
+      which is exact since the resolution is torsionless.
+\end{enumerate}
+
+To show that this gives a cohomology theory, it suffices to check that if $S$ is fine and $q>0$ then $H^q(M,S)=0$, and $H^0(M,S)=\Gamma(S)$.
+
+Set $L^q=ker(C^q\to C^{q+1})$, then the short exact sequence $$
+0\to L^q\to C^q\to L^{q+1}\to 0
+$$
+induce the short  exact sequence $$
+0\to L^q\otimes S\to C^q\otimes S\to L^{q+1}\otimes S\to 0,
+$$
+since $L^q$ is torsion free.
+Therefore we have the eaxct sequence
+$$
+0\to \Gamma(L^q\otimes S)\to \Gamma(C^q\otimes S)\to \Gamma(L^{q+1}\otimes S),
+$$
+
+it means $$\begin{aligned}
+&ker(\Gamma(C^q\otimes S)\to \Gamma(C^{q+1}\otimes S))\\
+=&\ker(\Gamma(C^q\otimes S)\to \Gamma(L^{q+1}\otimes S))\\
+=&\Gamma(L^q\otimes S).
+\end{aligned}$$
+
+So $$H^q(M,S)=\Gamma(L^q\otimes S)/Im(\Gamma(C^{q-1}\otimes S))$$.
+
+If $S$ is fine then  there is an exact sequence $$
+0\to \Gamma(L^{q-1}\otimes S)\to \Gamma(C^{q-1}\otimes S)\to \Gamma(L^q\otimes S)\to 0.
+$$
+So $H^q(M,S)=0$ if $S$ is fine.
+
+While to compute $H^0(M,S)$, the sequence $0\to H=M\times K\to C^0\to C^1\to\cdots$ means $H\simeq L^0$, so $\Gamma(S)\simeq \Gamma(H\otimes S)\simeq \Gamma(L^0\otimes S)=H^0(M,S)$.
+
+
+\subsection{Uniqueness}
+
+After proving the existence of the cohomology theory using the resolution of the constant sheaf. It left to prove that it is unique under isomorphisms. Firstly it is required to  make  clear how to describe the homomorphism between cohomology theories.
+
+\begin{definition}
+  For two sheaf cohomology theories $\mathscr{H},\tilde{\mathscr{H}}$, a homomorphism between them consists of a homomorphism $H^q(M,S)\to \tilde{H}^q(M,S)$ for each $S$ and $q$, which should satisfy the following commutative conditions.
+
+  \begin{enumerate}
+    \item  \begin{equation*}
+      \xymatrix{
+      H^0(M,S)\ar[d]\ar[r]^\simeq&\Gamma(S)\ar[d]\\
+      \tilde{H}^0(M,S)\ar[r]^\simeq&\Gamma(S).\\
+      }
+    \end{equation*}
+    Here the isomorphism is canonical   as defined before.
+    \item For homomorphism $S\to T$, \begin{equation*}
+      \xymatrix{
+      H^q(M,S)\ar[d]\ar[r]&H^q(M,T)\ar[d]\\
+      \tilde{H}^q(M,S)\ar[r]&\tilde{H}^q(M,T).\\
+      }
+    \end{equation*}
+    \item For the exact sequence  $0\to S^\prime\to S\to S^{\prime\prime}\to 0$,\begin{equation*}
+      \xymatrix{
+      H^q(M,S^{\prime\prime})\ar[d]\ar[r]&H^{q+1}(M,S^\prime)\ar[d]\\
+      \tilde{H}^q(M,S^{\prime\prime})\ar[r]&\tilde{H}^{q+1}(M,S^\prime).\\
+      }
+    \end{equation*}
+  \end{enumerate}
+
+\end{definition}
+
+
+There is always a unique homomorphism between two cohomology theory. If this holds, then there is a unique cohomology theory isomorphic to the cohomology theory given by the fine torsionless resolution providing that such resolution always exists, by using the uniqueness to
+\begin{equation*}
+  \xymatrix{\mathscr{H}\ar[dr]^{\varphi}\ar[rr]^{id}&&\mathscr{H}\ar[dl]_{\psi}\\
+  &\tilde{\mathscr{H}}&\\
+},\end{equation*}
+and \begin{equation*}
+  \xymatrix{\tilde{\mathscr{H}}\ar[dr]^{\psi}\ar[rr]^{id}&&\tilde{\mathscr{H}}\ar[dl]_{\varphi}\\
+  &\mathscr{H}&\\}.
+\end{equation*}
+
+
+
+
+\begin{lemma}
+  For each sheaf $S$, there exist a fine sheaf $S_0$ and a sheaf $\bar{S}$ with the short exact sequence$$
+  0\to S\to S_0\to \bar{S}\to 0.
+  $$
+\end{lemma}
+\begin{proof}
+  Set $S_0$ to be  the sheaf of germs of discontinuous sections of $S$, and set $\bar{S}$ to  be the quotient sheaf $S_0/S$.  To construct $S_0$,   set  $S_U$ to be  the set of discontinuous maps over $U$, that is map $f:U\to S$ with $\pi\circ f=id$. This forms a presheaf, and let $S_0$ to be the associated sheaf.
+
+  It suffices to prove that $S_0$ is a fine sheaf. Set $\{U_i\}$  to be a locally finite open covering, then there exists a refined open covering $\{V_i\}$ with $\bar{V_i}\subset U_i$. Set the function $\varphi_i=\chi_{V_i}$, and arrange every $x\in M$ a $V_i$, denoted by $V_{i_x}$  containing it. Set $\psi_i(x)=\chi_{V_i}(x)\delta_{i_x,i}$, then $\sum_i \psi_i=1$.  Now set the endomorphism of presheaf to be  $\tilde{l_i}(S)(m)=\psi_i(m)s(m)$, and the presheaf endomorphism induces sheaf endomorphism $l_i$ of $S$. That's the desired partition of unity.
+
+  The injection $S\to S_0 $ is given by the local homeomorphism at every $s\in S$. This is obviously injective and a sheaf homomorphism.
+\end{proof}
+
+
+
+
+\begin{theorem}
+  For two cohomology theories $\mathscr{H}$ and $\tilde{\mathscr{H}}$, there exists a unique homomorphism $\mathscr{H}\to \tilde{\mathscr{H}}$.
+\end{theorem}
+
+\begin{proof}
+  By the first condition in the definition of cohomology theory homomorphism, \begin{equation*}
+      \xymatrix{
+      H^0(M,S)\ar[d]\ar[r]^\simeq&\Gamma(S)\ar[d]\\
+      \tilde{H}^0(M,S)\ar[r]^\simeq&\Gamma(S).\\
+      }
+    \end{equation*}
+
+
+   So  $H^0(M,S)\to \tilde{H}^0(M,S)$ is uniquely determined by this commutative diagram.
+
+  The commutative diagram \begin{equation*}
+    \xymatrix{
+    \Gamma(S_0)\ar[r]\ar[d]^{id}&\Gamma(\bar{S})\ar[r]\ar[d]^{id}&H^1(M,S)\ar[d]\ar[r]&0\\
+    \Gamma(S_0)\ar[r]&\Gamma(S_0)\ar[r]&\tilde{H}^1(M,S)\ar[r]&0\\
+    }
+  \end{equation*}implies the uniqueness of $H^1(M,S)\to \tilde{H}^1(M,S)$.
+
+  While for $q\geq 2 $ \begin{equation*}
+    \xymatrix{
+   0\ar[r]&H^{q-1}(\bar{S})\ar[r]\ar[d]&H^q(M,S)\ar[d]\ar[r]&0\\
+   0\ar[r]&\tilde{H}^{q-1}(M,\bar{S})\ar[r]&\tilde{H}^q(M,S)\ar[r]&0\\
+    }
+  \end{equation*}
+  implies the uniqueness of $H^q(M,S)\to \tilde{H}^q(M,S)$ providing the uniqueness of $H^{q-1}(M,S)\to \tilde{H}^{q-1}(M,S)$. By induction  the uniqueness of homomorphism between two cohomology theories can be  proved.
+
+  Now focus on  the existence of the homomorphism.
+
+  In fact, the above three commutative diagram uniquely determined all the homomorphism $H^q(M,S)\to \tilde{H}^q(M,S)$. For $q\leq 0 $ and $q\geq 2$ this is clear, while for $q=1$, for any $a\in H^1(M,S)$, assume $b\in \Gamma(\bar{S})$ which maps to $a$ in the first line. Then  the image of $a$ in $H^1(M,S)\to \tilde{H}^1(M,S)$ is defined as the image of b in the second line. This is well defined since for another $b^\prime$ with image $a$, $b-b^\prime$ lies in the image of $\Gamma(S_0)$.
+
+  Then check this is a cohomology theory homomorphism. The first commutative diagram holds automatically.
+
+  The second commutative diagram can be proved by induction.
+
+  For $q\leq 0$ it holds automatically. For $q>0$, observe the  commutative diagram \begin{equation*}
+    \xymatrix{
+     H^{q-1}(M,\bar{S}) \ar[dd]\ar[rr] \ar[dr]  &          &   H^q(M,S) \ar[dd]\ar[dr]\ar[r]     &        0 &          \\
+         & \tilde{H}^{q-1}(M,\bar{S}) \ar[dd] \ar[rr]       &         &     \tilde{H}^q(M,S) \ar[dd]\ar[r]   &  0        \\
+        H^{q-1}(M,\bar{T})\ar[rr]\ar[dr] &          & H^q(M,T)  \ar[r]\ar[dr]      &      0   &          \\
+         & H^{q-1}(M,\bar{T})     \ar[rr]    &         & \tilde{H}^q(M,T) \ar[r]       &   0       \\
+    }
+  \end{equation*}
+By the assumption all the other five faces of the cube are commutative, then  the desired right face of this cubic is also commutative. Notice that  $S\to T$ will induce the   commutative diagram
+\begin{equation*}
+  \xymatrix{
+  0\ar[r]&S\ar[r]\ar[d]&S_0\ar[r]\ar[d]&\bar{S}\ar[d]\ar[r]&0\\
+  0\ar[r]&T\ar[r]&T_0\ar[r]&\bar{T}\ar[r]&0.\\
+  }
+\end{equation*}
+The first square is easy to see the commutativity, and  then map $\bar{S}\to \bar{T}$ can be canonical constructed.
+
+
+While for the third commutative diagram, the short exact sequence $0\to R \to S\to T\to 0$ can be extended to   the commutative diagram
+\begin{equation*}\xymatrix{
+  0\ar[r]&R\ar[r]\ar[d]^{id}&S\ar[r]\ar[d]&T\ar[r]&0\\
+  0\ar[r]&R\ar[r]&S_0\ar[r]&G\ar[r]&0\\
+  0\ar[r]&R\ar[r]\ar[u]_{id}&R_0\ar[u]\ar[r]&\bar{R}\ar[r]&0,\\}
+\end{equation*}
+here $G=S_0/R$.
+
+The diagram can be  extended  to \begin{equation*}\xymatrix{
+  0\ar[r]&R\ar[r]\ar[d]^{id}&S\ar[r]\ar[d]&T\ar[d]\ar[r]&0\\
+  0\ar[r]&R\ar[r]&S_0\ar[r]&G\ar[r]&0\\
+  0\ar[r]&R\ar[r]\ar[u]_{id}&R_0\ar[u]\ar[r]&\bar{R}\ar[u]\ar[r]&0,\\}
+\end{equation*}
+making it commutative. The construction has been mentioned before.
+
+it induces the commutative diagram \begin{equation*}
+  \xymatrix{
+  \ar[r]&\Gamma(S)\ar[r]\ar[d]&\Gamma(T)\ar[r]\ar[d]&H^1(M,R)\ar[d]^{id}&\\
+  \ar[r]&\Gamma(S_0)\ar[r]&\Gamma(G)\ar[r]&H^1(M,R)\ar[r]&0\\
+  \ar[r]&\Gamma(R_0)\ar[u]\ar[r]&\Gamma(\bar{R})\ar[u]\ar[r]&H^1(M,R)\ar[u]^{id}\ar[r]&0.\\
+  }
+\end{equation*}
+So $H^0(M,T)\to H^1(M,R)$ is the composition of \begin{equation*}
+  \xymatrix{
+  H^0(M,T)\ar[r]^{\simeq }&\Gamma(T)\ar[r]&\Gamma(G)/\Gamma(S_0)&\Gamma(\bar{R})/\Gamma(R_0)\ar[l]_{\simeq}\ar[r]^{\simeq}& H^1(M,R),
+  }
+\end{equation*}
+and by the construction of the the map $\mathscr{H}\to \tilde{\mathscr{H}}$, the following diagram is commutative\begin{equation*}
+  \xymatrix{
+  H^0(M,T)\ar[d]\ar[r]^{\simeq }&\Gamma(T)\ar[d]^{id}\ar[r]&\Gamma(G)/\Gamma(S_0)\ar[d]^{id}&\Gamma(\bar{R})/\Gamma(R_0)\ar[d]^{id}\ar[l]_{\simeq}\ar[r]^{\simeq}& H^1(M,R)\ar[d]\\
+  \tilde{H}^0(M,T)\ar[r]^{\simeq }&\Gamma(T)\ar[r]&\Gamma(G)/\Gamma(S_0)&\Gamma(\bar{R})/\Gamma(R_0)\ar[l]_{\simeq}\ar[r]^{\simeq}& \tilde{H}^1(M,R).\\
+  }
+\end{equation*} The left and right commutative squares are just by the construction.
+
+While for $q\geq 1$ and $H^q(M,T)\to H^{q+1}(M,R)$, consider the commutative diagram \begin{equation*}
+  \xymatrix{
+  H^q(M,S)\ar[r] & H^q(M,T)\ar[r]\ar[d]&H^{q+1}(M,R)\ar[r]\ar[d]^{id}&\\
+  0\ar[r]&H^q(M,G)\ar[r]^{\simeq } &H^{q+1}(M,R)\ar[r]&0\\
+  0\ar[r]&H^q(M,\bar{R})\ar[r]^\simeq \ar[u]&H^{q+1}(M,R)\ar[u]_{id}\ar[r]&0,\\
+  }
+\end{equation*}
+and it shows that $H^q(M,T)\to H^{q+1}(M,R)$ can be decomposed into \begin{equation*}
+  \xymatrix{
+  H^q(M,T)\ar[r]&H^q(M,G)&H^q(M,\bar{R})\ar[l]_{\simeq }\ar[r]^{\simeq } &H^{q+1}(M,R).\\
+  }
+\end{equation*}
+Therefore  the following commutative diagram holds \begin{equation*}
+  \xymatrix{
+  H^q(M,T)\ar[d]\ar[r]&H^q(M,G)\ar[d]&H^q(M,\bar{R})\ar[d]\ar[l]_{\simeq }\ar[r]^{\simeq } &H^{q+1}(M,R)\ar[d]\\
+  \tilde{H}^q(M,T)\ar[r]&\tilde{H}^q(M,G)&\tilde{H}^q(M,\bar{R})\ar[l]_{\simeq }\ar[r]^{\simeq } &\tilde{H}^{q+1}(M,R).\\
+  }
+\end{equation*}
+The first two squares have been proved to be commutative, and the third square is commutative by the construction. This complete the proof.
+\end{proof}
+
+Now it's convinced that there is a unique cohomology theory under isomorphism, given by the fine torsion free resolution of the constant sheaf, assuming the existence of such resolution. That's $H^q(M,S)\simeq H^q(\Gamma(C^*\otimes S))$, where $C^*$ is the fine torsion free resolution for the constant sheaf.
+
+\begin{theorem}\label{resdef}
+For the fine resolution of S ( not the constant sheaf)   $$
+0\to S\to C^0\to C^1\to \cdots,
+$$
+there is a  canonical isomorphism $H^q(M,S)\simeq H^q(\Gamma(C^*))$.
+\end{theorem}
+
+\begin{proof}
+   The exact sequence $0\to S\to C^0\to C^1\to \cdots$ will induce the exact sequence  $0\to \Gamma(S)\to \Gamma(C^0)\to \Gamma(C^1)\to \cdots$, then $H^0(M,S)\simeq \Gamma(S)\simeq H^0(\Gamma(C^*))$.
+  Set $H^q=ker(C^q\to C^{q+1})$ for positive $q$, and then
+  $$
+  0\to S \to C^0\to H^1\to 0,
+  $$
+   and
+  $$
+  0\to H^q\to C^q\to H^{q+1}\to 0,
+  $$
+ Since $C^1$ is fine, $H^1(M,S)\simeq H^0(M,H^1)/ImH^0(M,C^0)\simeq \Gamma(H^1)/\Gamma(C^0)\simeq H^1(\Gamma(C^*))$. And then
+$H^q(M,S)\simeq H^{q-1}(M,H^1)$ for $q>1$, so
+$$\begin{aligned}
+H^q(M,S)\simeq H^{q-1}(M,H^1)&\simeq H^{q-2}(M,H^2)\simeq \cdots\\
+\simeq H^1(M,H^{q-1})\simeq \Gamma(H^q)&/Im\Gamma(C^{q-1})\simeq H^q(\Gamma(C^*)),
+\end{aligned}
+$$
+since $H^k$ has resolution $H^k\to C^{0\prime}\to C^{1\prime}\to \cdots$, where $C^{i\prime}=C^{k+i}$.
+\end{proof}
+
+
+
+\begin{remark}
+  All the above claims are based on the assumption of the existence of fine torsionless resolution of the constant sheaf on M. There will be an example of the resolution in lemma \ref{fine} to introduce Alexander-Spanier cohomology.
+\end{remark}
+\section{Examples}
+\subsection{Alexander-Spanier cohomology}
+Assume $M$ is a paracompact compact Hausdorff space here. For open set $U\subset M$,  use $A^{p}(U,K)$ to denote the $K$ modules of pointwise functions $U^{p+1}\to K$ for each $p\geq 0$. The coboundary operator $d:A^{p}(U,K)\to A^{p+1}(U,K)$ is defined by $$
+df(x_0,x_1,\cdots,x_{p+1})=\sum_{i=0}^{p+1}(-1)^if(x_0,\cdots,\hat{x_i},\cdots,x_{p+1})$$ for $f\in A^{p}(U,K)$ and $x_i\in U,i=0,\cdots,p+1$.By direct computation $d\circ d=0$. Using the natural restriction $\rho_{V,U}:A^{p}(U,K)\to A^{p}(V,K)$, $\{A^{p}(U,K),\rho_{V,U}\}$ forms the presheaf of Alexander-Spanier p-cochains. For $p\geq1$  it's not a complete presheaf, since  $\cup U_i^{p+1}$ doesn't contain $(\cup U_i)^{p+1}$ for most times.
+
+Set $\mathscr {A}^p(M,K)$ to denote the associated sheaf of germs with respect to this presheaf. An coboundary operator  can be induced as $d:\mathscr {A}^p(M,K)\to \mathscr {A}^{p+1}(M,K)$.
+
+ \begin{lemma}\label{fine}
+
+The  cochain complex
+\begin{equation*}\xymatrix{
+ 0\ar[r]& \mathscr {K}\ar[r]& \mathscr {A}^1(M,K)\ar[r]^d &\mathscr {A}^2(M,K)\ar[r]^d&\cdots
+ }
+\end{equation*}
+is a fine torsionless resolution for $\mathscr{K}$,
+where  elements in $\mathscr {K}=M\times K$ can be seen as constant functions.
+ \end{lemma}
+
+
+ \begin{proof}
+  Since $K$ is an integral domain, $\mathscr {A}^p(M,K)$ is torsionless.
+
+  For locally finite open covering $\{U_i\}$ of $U$,  take a partition of unity $\{\phi_i\}$ subordinate to it and taking values only 0 or 1. Define  endomorphisms $l_i$ on $A^p(U,K)$ as $l_i(f)(x_0,\cdots,x_{p})=\phi_i(x_0)f(x_0,\cdots,x_{p})$. It is compatible with the restriction map so induces the desired sheaf endomorphisms. Therefore $\mathscr {A}^p(M,K)$ is fine.
+
+  It remains to show the exactness. Firstly show the exactness of the sequence \begin{equation*}\xymatrix{
+ 0\ar[r]& K\ar[r]& A^1(U,K)\ar[r]^d &A^2(U,K)\ar[r]^d&\cdots.
+ }
+\end{equation*}
+The exactness at $K$  is obviously. At $A^1(U,K)$, $df(x,y)=0$ implies $f(x)-f(y)=0$ for all $(x,y)\in U^2$, so $f$ is a constant function of $K$. For $p\geq 1$ and $f\in A^p(U,K)$ with $df=0$, then fixed $m\in U$ and define $g\in A^{p-1}(U,K)$ as $$
+g(m_0,\cdots,m_{p-1})=f(m,m_0,\cdots,m_{p-1}).
+$$
+Then compute that $dg(x_0,x_1,\cdots,x_p)=\sum_{i=0}^p(-1)^ig(x_0,\cdots,\hat{x_i},\cdots,x_p)=\sum_{i=0}^p(-1)^if(m,x_0,\cdots,\hat{x_i},\cdots,x_p)
+=f(x_0,\cdots,x_p)$, since $df(m,x_0,\cdots,x_p)=0$. $dg=f$ implies the exactness at $A^p(U,K)$.
+
+By taking the germs it implies the exactness at  $\mathscr {A}^p(M,K)$.
+\end{proof}
+
+Now the cohomology theory can be defined as $$
+H^q(M,S)=H^q(\Gamma(\mathscr {A}^*(M,K)\otimes S)),
+$$
+ but it won't bother to introduce the classical definition of Alexander-Spanier cohomology modules of $M$ with coefficients in a $K$ module $G$.
+
+ Replace all $K$ by $G$ and $\mathscr{H}$ by $\mathscr{G}$ in the above notions, since the functions can be defined as $U^{p+1}\to G$. Set $$A_0^p(M,G)=\{f\in A^p(M,G),\rho_{x,M}f=0,\forall x\in M\}.$$
+ Notice that  $A^p(M,K)$ is not a complete sheaf,and  $A^p(M,G)$ as well. The operator d on $A_0^p(M,G)$ has image in $A_0^{p+1}(M,G)$, so it induces a map $$
+ A^p(M,G)/A_0^p(M,G)\to A^{p+1}(M,G)/A_0^{p+1}(M,G),
+ $$
+and induces a cochain complex denoted by $A^*(M,G)/A_0^*(M,G)$. The $p$-th Alexander-Spanier cohomology modules for $M$ with coefficients in $G$ is the $p$-th quotient module with respect to this sequence, or
+$$
+H_{A-S}^p(M;G)=H^p(A^*(M,G)/A_0^*(M,G)).
+$$
+\begin{lemma}
+  If $P=\{P_U,\rho_{V,U}\}$ is a presheaf and $S=\beta(P)$, set $S_0=\{s\in P_M,\rho_{x,M}s=0,\forall x\in M\}$, then there is an exact sequence $$
+  0\to S_0\to P_M\to \Gamma(S)\to 0,
+  $$
+  where the morphism $P_M\to \Gamma(S)$ send an element $s\in P_M$ to a map $M\to S$, which takes value $\rho_{x,M}s$ at $x$.
+\end{lemma}
+
+By theorem \ref{resdef}, $H^q(M,\mathscr{G})\simeq H^q(\Gamma(\mathscr{A}^*(M,G)))$, and $A^*(M,G)/A_0^*(M,G)\simeq \Gamma(\mathscr{A}^*(M,G))$, so $H^q(M,\mathscr{G})\simeq H_{A-S}^p(M;G),$ a desired conclusion.
+
+\subsection{de Rham cohomology}
+De Rham cohomology can also be viewed  as a sheaf cohomology theory. Set $K=R$, and $\mathscr{R}=M\times R$ is  the constant sheaf.
+
+$\{E^p(U),\rho_{V,U}\}$ forms a presheaf, where $E^p(U)$ is the set of differential $p$-forms on $U$. The exterior differential acts as the coboundary operator. The associated sheaf can be denoted by $\mathscr{E}^p(M)$, and $d$ represents the induced coboundary operator. There is a fine torsionless resolution of $\mathscr{R}$ as \begin{equation*}
+  \xymatrix{
+  0\ar[r]&\mathscr{R}\ar[r]&\mathscr{E}^0(M)\ar[r]^d&\mathscr{E}^1(M)\ar[r]^d&\mathscr{E}^2(M)\ar[r]^d&\cdots,
+  }
+\end{equation*}
+ since Poincare lemma shows locally closed forms are exact forms. Define the cohomology theory for $M$ with ceofficients in sheaves of real vector spaces by setting $$
+ H^q(M,\mathscr{J})=H^q(\Gamma(\mathscr{E}^*(M)\otimes \mathscr{J})).
+ $$
+If $\mathscr{J}=\mathscr{R}$, then $$
+ H^q(M,\mathscr{R})=H^q(\Gamma(\mathscr{E}^*(M)\otimes \mathscr{R}))\simeq H^q(\Gamma(\mathscr{E}^*(M))).
+ $$
+ and the isomorphism is commutative with the coboundary operator.
+
+ Define the $q$-th de Rham cohomology group by $H^q(E^*(M))$ as usual,
+ then notice that $\{E^p(U),\rho_{V,U}\}$ is complete, so $E^p(M)\simeq \Gamma(\mathscr{E}^p(M))$ and it induces an isomorphism  between the cochain complexs  $\Gamma(\mathscr{E}^*(M))$ and $E^*(M)$, so  $$
+ H^q(M,\mathscr{R})\simeq H^q_{deR}(M),
+ $$
+a desired conclusion.
+
+\section{Multiplicative structure}
+\begin{definition}
+  For cochain complexes $C^*$ and $\hat{C}^*$,  define their tensor by $$
+  (C^*\otimes \hat{C^*})_r=\oplus_{p+q=r}C^p\otimes \hat{C}^q,
+  $$
+  and the $r$-th coboundary operator is defined by $$
+  \oplus_{p+q=r}(d_p\otimes \hat{id}_p+(-1)^p{id}_p\otimes \hat{d}_q)
+  $$
+\end{definition}
+There is  a canonical homomorphism $$
+H^p(C^*)\otimes H^q(\hat{C^*})\to H^{p+q}(C^*\otimes \hat{C^*}).
+$$
+
+\begin{lemma}\label{torfree}
+  The tensor of two torsionless $K$ modules is torsionless.
+
+\end{lemma}
+
+Now if there is a fine torsionless resolution of the constant sheaf $\mathscr{K}$ of the form
+$$
+0\to \mathscr{K}\to C_0\to C_1\to\cdots,
+$$
+ tensor it with itself and get a sequence $$
+0\to \mathscr{K}\simeq \mathscr{K}\otimes \mathscr{K}\to C_0\otimes C_0\to (C_0\otimes C_1)\oplus (C_1\otimes C_0)\to \cdots \to \oplus_{p+q=r}C_p\otimes C_q\to \cdots
+$$
+with the coboundary operators $$
+  \oplus_{p+q=r}(d_p\otimes {id}_p+(-1)^p{id}_p\otimes d_q),
+  $$
+This is a fine torsionless resolution of the constant sheaf $\mathscr{K}$. The sequence is fine since  tensor products and direct sums preserve fineness. Lemma \ref{torfree} shows that each term is torsionless. To show the exactness at $r$-th place($r\geq 1 $),  apply the Kunneth formula at each stalk. The conditions of Kunneth formula is satisfied automatically since $C^{\prime*}$ is torsionless, implying that the tensor product with it keeps exactness. The exactness at $\mathscr{K}$ and $C_0\otimes C_0$ can be  checked by computation.
+
+\begin{theorem}[Kunneth formula]
+If there are two cochain complexes $C^*$ and $C^{\prime *}$ such that $C^**C^{\prime *}$ is an acyclic (i.e. exact) cochain complex, there is a functional split short exact sequence $$
+0\to (H^*(C^*)\otimes H^*(C^{\prime *}))^q\to H^q(C^*\otimes C^{\prime *})\to ( H^*(C^*)*H^*(C^{\prime *})  )^{q+1}\to 0.
+$$
+Here $A*B$ is a notation representing $Tor_1(A,B)$.
+\end{theorem}
+
+If $S$ is a sheaf of algebras over $M$, which means a homomorphism $S\otimes S\to S$, it induces a homomorphism  in the form of $$
+\Gamma(C_p\otimes S)\otimes \Gamma(C_q\otimes S)\to \Gamma(C_p\otimes C_q\times S\otimes S)\to \Gamma(C_p\otimes C_q\otimes S).
+$$
+Superpose it through the pair $(p,q)$ such that $p+q=r$ and get a cochain map $$
+\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S)\to \Gamma(C^*\otimes C^*\otimes S),
+$$
+and a  homomorphism $$
+H^k(\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S))\to H^k(\Gamma(C^*\otimes C^*\otimes S)).
+$$
+Composite it with the homomorphism  $H^p(\Gamma(C^*\otimes S))\otimes H^q(\Gamma(C^*\otimes S))\to H^{p+q}(\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S))$ to get the homomorphism
+$$\begin{aligned}
+H^p(M,S)\otimes H^q(M,S)\simeq& H^p(\Gamma(C^*\otimes S))\otimes H^q(\Gamma(C^*\otimes S))\\
+\to H^{p+q}(\Gamma(C^*\otimes C^*\otimes S))&\simeq H^{p+q}(M,S),
+\end{aligned}
+$$
+since  $C^*\otimes C^*$ is a fine torsionless resolution for the constant sheaf $\mathscr{H}$.
+
+This homomorphism gives a multiplicative structure for sheaf  cohomology, but it is left to prove that the multiply is independent of the revolution $C^*$ of $\mathscr{K}$.
+
+For another fine torsionless resolution $$
+0\to \mathscr{K}\to \tilde{C_0}\to \tilde{C_1}\to \tilde{C_2}\to \cdots,
+$$
+  tensor it with $C^*$ and get a fine torsionless resolution $$
+0\to \mathscr{K}\to C_0\otimes \tilde{C_0}\to \cdots\to \oplus_{p+q=r}C_p\otimes \tilde{C_q}\to \cdots,
+$$
+which will play the role of the bridge between two tensor products  $C^*\otimes C^*$ and $\tilde{C^*}\otimes \tilde{C^*}$.
+
+Consider the injection $$
+C_p\simeq C_p\otimes \mathscr{K}\to C_p\otimes \tilde{C_0}\to \sum_{r+s=p}C_r\otimes \tilde{C_s},
+$$
+which will induce the commutative diagram \begin{equation*}
+  \xymatrix{
+C_p\ar[r]\ar[d]&C_p\otimes \mathscr{K}\ar[d]\ar[r]&C_p\otimes \tilde{C_0}\ar[r]&\sum_{r+s=p}C_r\otimes \tilde{C_s}\ar[d]\\
+C_p\ar[r]&C_{p+1}\otimes \mathscr{K}\ar[r]&C_{p+1}\otimes \tilde{C_0}\ar[r]&\sum_{r+s=p+1}C_r\otimes \tilde{C_s}.\\
+  }
+\end{equation*}
+Notice that  the arrow $C_p\otimes\tilde{C_0}\to C_{p+1}\otimes \tilde{C_0}$ can't be added, since for element $c_p\otimes \tilde{c_0}$, it maps to $d_p(c_p)\otimes \tilde{c_0}+(-1)^pc_p\otimes \tilde{d_0}(\tilde{c_0})=d_p(c_p)\otimes \tilde{c_0}$, if and only if $\tilde{c_0}$ is the  image from $\mathscr{K}$, suppose $c_p\neq 0$.
+
+The diagram induce the cochain map $\Gamma(C^*\otimes S)\to \Gamma(C^*\otimes \tilde{C^*}\otimes S)$, and will induce the identity map $H^q(M,S)\to H^q(M,S)$, since this holds for $q=0$.
+
+Furthermore consider the commutative diagram of cochain complexes and cochain maps
+\begin{equation*}
+\xymatrix{
+\Gamma(C^*\otimes S)\otimes\Gamma(C^*\otimes S)\ar[r]\ar[d]&\Gamma(C^*\otimes C^*\otimes S)\ar[d]\\
+\Gamma(C^*\otimes \tilde{C^*}\otimes S) \otimes \Gamma(C^*\otimes \tilde{C^*}\otimes S)\ar[r] & \Gamma(C^*\otimes \tilde{C^*}\otimes C^*\otimes \tilde{C^*}\otimes S),\\
+}
+\end{equation*}
+ and it induces the commutative diagram \begin{equation*}
+   \xymatrix{
+   H^p(\Gamma(C^*\otimes S))\otimes H^q( \Gamma(C^*\otimes S))\ar[r]\ar[d]& H^{p+q}(\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S))\ar[d]\ar[dl]\\
+   H^{p+q}(\Gamma(C^*\otimes \tilde{C^*}\otimes S) \otimes \Gamma(C^*\otimes \tilde{C^*}\otimes S))\ar[r]&H^{p+q}(\Gamma(C^*\otimes \tilde{C^*}\otimes C^*\otimes \tilde{C^*}\otimes S)).\\
+   }
+ \end{equation*}
+
+Similarly, induces the commutative diagram
+\begin{equation*}
+   \xymatrix{
+   H^p(\Gamma(\tilde{C^*}\otimes S))\otimes H^q(\Gamma(\tilde{C^*}\otimes S))\ar[r]\ar[d]& H^{p+q}(\Gamma(\tilde{C^*}\otimes S)\otimes \Gamma(\tilde{C^*}\otimes S))\ar[d]\ar[dl]\\
+   H^{p+q}(\Gamma(C^*\otimes \tilde{C^*}\otimes S) \otimes \Gamma(C^*\otimes \tilde{C^*}\otimes S))\ar[r]&H^{p+q}(\Gamma(C^*\otimes \tilde{C^*}\otimes C^*\otimes \tilde{C^*}\otimes S)).\\
+   }
+ \end{equation*}
+ By the two diagrams, the multiplication structure is independent of the fine torsion free resolution.
+\nocite{*}
+\printbibliography
+
+\end{document}

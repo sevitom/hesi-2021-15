@@ -1,0 +1,386 @@
+In this section, we establish the theoretical foundations for proving 
+transversality theorems. 
+Since we shall be mostly working with infinite-dimensional manifolds, 
+we first recall the relevant theory and fix our notation. 
+After that, we prove the Sard--Smale theorem and deduce from it 
+a general transversality theorem, which we shall apply 
+in the sections that follow.
+
+For a Banach space $\Xc$, we denote by 
+$\mathclose{\|} \cdot \mathclose{\|} _\Xc$ the norm defining $\Xc$.
+
+\subsection{Banach manifolds}
+Let $\Xc, \Yc$ be Banach spaces, $U \subset \Xc$ an open set. 
+A map $F \colon U \to \Yc$ is (\textit{Fr{\'e}chet}) \textit{differentiable} 
+at $x \in U$ if there is a continuous linear map $A \colon \Xc \to \Yc$ 
+such that
+\[
+    \lim_{x \to x_0} \frac {\| F(x) - F(x_0) + A(x - x_0) \|_\Yc} {\| x - x_0 \|_\Xc}
+        = 0.
+\]
+In this case, $A$ is called the \textit{differential} of $F$ at $x_0$ 
+and denoted by $DF_{x_0}$. 
+If $F$ is differentiable at each point in $U$, we consider 
+$DF \colon U \to \Lc (\Xc, \Yc)$, where $\Lc (\Xc, \Yc)$ is 
+the Banach space of continuous linear maps $X \to Y$. 
+We say $F$ is \textit{continuously differentiable} if $DF$ is continuous. 
+Iterating this definition, $F$ is $C^k$ is $DF$ is $C^{k-1}$.
+
+With this notion of differentiability, we define $C^k$ diffeomorphisms, 
+immersions, submersions, regular values, etc., just as 
+in the finite-dimensional case. 
+Similarly, a $C^k$ \textit{Banach manifold} modeled 
+on a Banach space $\Xc$ is a Hausdorff space obtained by piecing together 
+open sets in $\Xc$ by transition maps that are $C^k$ diffeomorphisms. 
+Note that we do \textit{not} require a Banach manifold to be 
+second countable, since the model space $\Xc$ itself 
+may not be second countable. 
+Tangent vectors are defined as equivalence classes of ordered triples 
+so that $T_x U = \Xc$ for an open set $U \subset \Xc$. 
+Much of the basic theory of finite-dimensional $C^k$ manifolds 
+carries over to Banach manifolds. 
+A standard reference in this direction is \cite{Lan}.
+
+\begin{theorem}[Inverse mapping theorem]
+    Let $\Xc, \Yc$ be $C^k$ Banach manifolds, 
+    $F \colon \Xc \to \Yc$ a $C^k$ map. 
+    If $x \in \Xc$ is such that $DF_x \colon T_x \Xc \to T_{F(x)} \Yc$ 
+    is an isomorphism, then there are open neighborhoods $U, V$ 
+	of $x, F(x)$ in $\Xc, \Yc$, respectively, such that 
+	$F \colon U \to V$ is a $C^k$ diffeomorphism.
+\end{theorem}
+
+\begin{theorem}[Implicit mapping theorem]
+    Let $\Xc, \Yc$ be $C^k$ Banach manifolds, 
+	$F \colon \Xc \to \Yc$ a $C^k$ map. 
+	If $y \in \Yc$ is a regular value of $F$, 
+	then $F^{-1} (y)$ is a $C^k$ Banach submanifold of $\Xc$ 
+	with $T_x F^{-1} (y) = \ker DF_x$.
+\end{theorem}
+
+For our applications, the maps are always sufficiently smooth, and 
+we shall omit the technical verifications of smoothness for reasons of space.
+
+\subsubsection{Interlude: Examples in geometry}
+Let $M$ be a compact smooth manifold, 
+$E \to M$ a smooth vector bundle. 
+Fix a Riemannian metric on $M$, a bundle metric on $E$, 
+and a metric connection on $E$. 
+For a smooth section $s \in \Gamma (M, E)$, define
+\begin{gather*}
+    \|s\|_{C^k} := \sum _{i = 0} ^k \sup_M |\nabla^i s|, \\
+    \|s\|_{W^{k, p}} 
+		:= \Bigg( \sum _{i = 0} ^k \int_M |\nabla^i s|^p \Bigg) ^{1 / p}.
+\end{gather*}
+The completions of $\Gamma (M, E)$ with respect to these norms 
+are Banach spaces which we denote by $C^k (M, E)$ or $W^{k, p} (M, E)$. 
+We also have the space $C^\infty (M, E)$, which is a Fr{\'e}chet space 
+defined by the sequence $( \mathclose{\|} \cdot \mathclose{\|} _{C^k} )_k$ 
+of norms, i.e., a sequence $s_n \to s$ in $C^\infty (M, E)$ if and only if 
+$\| s_n - s \|_{C^k (M, E)} \to 0$ for all $k$. 
+Since $M$ is compact, it is easy to check that the topology 
+on these spaces do not depend on the metrics and connections chosen.
+
+It is technically more difficult to define manifold structures 
+on spaces of sections of general fiber bundles, 
+due to lack of linear structures. 
+The case of trivial fiber bundles, which amounts to spaces of maps 
+between two manifolds, is discussed in, e.g., \cite[Remark B.1.24]{MS}. 
+We shall not bother with this, since knowledge of their tangent spaces 
+already suffices in most applications.
+
+\subsection{Fredholm theory}
+The Fredholm property is a crucial technical condition 
+for generalizing finite-dimensional phenomena. 
+Fortunately, Fredholm maps abound in geometry. 
+For example, elliptic differential operators are Fredholm. 
+In this article, we omit the analytical verification of the Fredholm property 
+and the computation of the Fredholm index for reasons of time. 
+However, we do recall the definitions:
+
+Let $\Xc, \Yc$ be Banach spaces. 
+A continuous linear map $A \colon \Xc \to \Yc$ is \textit{Fredholm} 
+if it has closed image and finite-dimensional kernel and cokernel. 
+In this case, its (\textit{Fredholm}) \textit{index} is defined to be 
+$\ind A := \dim \ker A - \dim \coker A$. 
+It is standard that the space of 
+Fredholm linear maps is open in the norm topology, and 
+the Fredholm index is locally constant on this space.
+
+Let $\Xc ,\Yc$ be Banach manifolds. 
+A $C^1$ map $F \colon \Xc \to \Yc$ is \textit{Fredholm} if 
+$DF_x \colon T_x \Xc \to T_{F(x)} \Yc$ is Fredholm for all $x \in \Xc$. 
+If $\Xc$ is connected, then by continuity, $\ind DF_x$ is independent 
+of $x \in \Xc$, so $F$ has a well-defined Fredholm index.
+
+\subsection{The Sard--Smale theorem}
+In 1965, Smale \cite{Sma} proved the following 
+generalization of Sard's theorem:
+
+\begin{theorem}[Sard--Smale]
+	Let $\Xc, \Yc$ be $C^k$ Banach manifolds with $\Xc$ separable, 
+	$F \colon \Xc \to \Yc$ a $C^k$ map Fredholm with index $m$, 
+	where $k \geq \max (1, m+1)$. 
+	Then a generic $y \in \Yc$ is a regular value of $F$, 
+	so that $F^{-1} (y)$ is an $C^k$ submanifold of $\Xc$ 
+	of dimension $m$.
+\end{theorem}
+
+The proof is by reducing to the finite-dimensional case 
+using the Fredholm property. 
+To describe this reduction, we introduce the following notion.
+
+Let $\Xc, \Yc$ be Banach spaces, 
+$A \colon \Xc \to \Yc$ a continuous linear map. 
+A \textit{pseudo-inverse} of $A$ is a continuous linear map 
+$B \colon \Yc \to \Xc$ such that $ABA = A$, $BAB = B$. 
+In this case, we have 
+$\Xc = \Xc_0 \oplus \Xc_1$, 
+$\Yc = \Yc_0 \oplus \Yc_1$, 
+where 
+$\Xc_0 := \ker A$, $\Xc_1 := \im B$, 
+$\Yc_0 := \ker B$, $\Yc_1 := \im A$. 
+With respect to these splittings,
+\[
+	A = 
+		\begin{pmatrix}
+			0 & 0 \\
+			0 & A_1
+		\end{pmatrix},
+	\quad 
+	B = 
+		\begin{pmatrix}
+			0 & 0 \\
+			0 & B_1
+		\end{pmatrix},
+\]
+where $A_1 := A |_{\Xc_1}$ and $B_1 := B |_{\Yc_1}$ 
+are mutual inverses.
+
+It is easy to see that $A$ has a pseudoinverse if and only if 
+$A$ has closed image, $\ker A$ has a complement in $\Xc$, and 
+$\im A$ has a complement in $\Yc$. 
+In fact, if 
+$\Xc = \ker A \oplus \Xc_1$, 
+$\Yc = \Yc_0 \oplus \im A$, 
+we simply define $B$ by 
+$B |_{\Yc_0} = 0$, 
+$B |_{\im A} = (A |_{\Xc_1})^{-1}$. 
+Since closed subspaces of finite dimension or codimension are 
+always complemented, linear Fredholm maps admit pseudoinverses.
+
+\begin{lemma}
+	Let $\Xc, \Yc$ be Banach spaces, 
+	$U \subset \Xc$ an open neighborhood of $0$, 
+	$F \colon U \to \Yc$ a $C^k$ map with $F(0) = 0$. 
+	Suppose $A := DF_0$ has a pseudoinverse $B$. 
+	Then there is an open neighborhood $V$ of $0$ in $\Xc$, 
+	a $C^k$ diffeomorphism $\Phi \colon V \to \Phi(V)$ 
+	onto an open set $\Phi(V) \subset U$, 
+	and a $C^k$ map $F_0 \colon V \to \Yc_0 = \ker B$ 
+	such that $( F \circ \Phi ) (x) = F_0 (x) + Ax$ for $x \in V$, 
+	and $\Phi(0) = 0$, $D\Phi_0 = \id_\Xc$, $F_0(0) = 0$, $(DF_0)_0 = 0$.
+\end{lemma}
+
+In other words, after changing the chart on the domain, 
+$F$ takes the form $(F_0, A)$ with respect to the splitting 
+$\Yc \cong \Yc_0 \oplus \Yc_1$.
+
+\begin{proof}[Proof of lemma]
+	We apply the inverse mapping theorem to 
+	$\Psi \colon U \to \Xc,\, x \mapsto x + B ( F(x) - Ax )$ at $0$. 
+	Since $\Psi(0) = 0$, $D\Psi_0 = \id_\Xc$, there is 
+	an open neighborhood $W$ of $0$ such that 
+	$\Psi \colon W \to \Psi(W)$ is a $C^k$ diffeomorphism. 
+	Let $V := \Psi(W)$, $\Phi := \Psi^{-1} \colon V\to W$, 
+	$F_0 := ( \id_{\Yc} - AB ) ( F \circ \Phi )$. 
+	Since $A\Psi = A + ABF - ABA = ABF$ on $W$, 
+	we have $A = ABF \circ \Phi$ on $V$, so 
+	$F \circ \Phi = F_0 + ABF \circ \Phi = F_0 + A$ on $V$. 
+	The rest is easy to verify.
+\end{proof}
+
+We now commence the proof proper of the Sard--Smale theorem.
+
+\begin{step}{1}
+	Any point in $X$ has a neighborhood $V$ such that 
+	the set of regular values of $F |_V$ is dense in $\Yc$.
+\end{step}
+\begin{proof}
+	Working in local charts, we are in the situation of the lemma. 
+	Thus we may assume $F = (F_0, A)$ on $V$ with respect to 
+	$\Yc = \Yc_0 \oplus \Yc_1$, where we retain the notation above. 
+	The equation $F(x) = y$ becomes $y_0 = F_0 (x_0, x_1)$, 
+	$y_1 = A_1 x_1$ for $x = x_0 + x_1 \in \Xc_0 \oplus \Xc_1$, 
+	$y = y_0 + y_1 \in \Yc_0 \oplus \Yc_1$. 
+	Thus $y$ is a regular value for $F |_V$ if and only if 
+	$y_0$ is a regular value of $x_0 \mapsto F_0 (x_0, B_1 y_1)$, 
+	which is a finite-dimensional map. 
+	Then the claim follows from Sard's theorem for $C^k$ maps.
+\end{proof}
+
+Note that we cannot conclude that the set fo regular values 
+of $F |_V$ is residual, since Sard's theorem only implies that 
+the set of regular values of $F |_V$ is residual on each section 
+$\Yc_0 \oplus \{ y_1 \}$.
+
+\begin{step}{2}
+	With $V$ constructed in Step 1, the set of regular values 
+	of $F |_K$\footnote{We say $y \in \Yc$ is a regular value 
+	of $F |_V$ if $DF_x \colon T_x \Xc \to T_y \Yc$ is surjective 
+	for $x \in V \cap F^{-1} (y)$.} 
+	is open for any closed set $K \subset V$.
+\end{step}
+\begin{proof}
+	We may assume $V$ is bounded. 
+	Let $(x_n)_n \subset K$ be a sequence of critical points of $F$ 
+	with $F(x_n) \to y \in \Yc$. 
+	Write $x_n = x_{n, 0} + x_{n, 1} \in \Yc_0 \oplus \Yc_1$. 
+	Then $x_{n, 1} = BA x_n = B y_n \to By$, since $BF_0 = 0$. 
+	In particular, $( x_{n, 0} )_n$ is bounded. 
+	Since $\Xc_0$ is finite-dimensional, passing to a subsequence, 
+	we may assume $x_{n, 0} \to x_0 \in \Xc_0$. 
+	Then $x_n \to x := x_0 + By$. 
+	Since the set of surjective continuous linear maps 
+	between Banach spaces is open in the norm topology, 
+	$DF_x = \lim DF_{x_n}$ cannot be surjective, 
+	so $y = F(x)$ is a critical value.
+\end{proof}
+
+\begin{step}{3}
+	Conclusion of the proof.
+\end{step}
+\begin{proof}[Proof of Sard--Smale]
+	We have proved that any point in $\Xc$ has a neighborhood $V$ 
+	such that the set of regular values of $F |_K$ is dense and open 
+	for any closed set $K \subset V$. 
+	Since $\Xc$ is separable, it can be covered 
+	by countably such open sets. 
+	But the set of regular values of $F$ is the intersection of those 
+	of $F |_V$ as $V$ ranges over this countable cover.
+\end{proof}
+
+\subsection{A general transversality theorem}
+Instead of applying directly the Sard--Smale theorem, 
+we shall streamline our proofs using 
+the following general transversality theorem:
+
+\begin{theorem}[General transversality theorem]
+	Let $\Xc, \Yc$ be separable Banach manifolds, 
+	$\Ec \to \Xc \times \Yc$ a Banach vector bundle, 
+	$\Sc \colon \Xc \times \Yc \to \Ec$ a section. 
+	Suppose they are sufficiently smooth 
+	and for all $(x, y) \in \Sc^{-1} (0)$,
+	\begin{enumerate}
+		\item[\emph{(a)}]
+			$D_1\Sc_{(x, y)} \colon T_x \Xc \to \Ec_{(x, y)}$ 
+			is Fredholm with index $m$;
+		
+		\item[\emph{(b)}] 
+			$D\Sc_{(x, y)} \colon T_x \Xc \times T_y \Yc \to
+			\Ec_{(x, y)}$\footnote{More precisely, this is the 
+			differential $D\Sc_{(x, y)}$ followed by the vertical 
+			projection $T_{\Sc(x, y)} \Ec \to \Ec_{(x, y)}$.
+			This is possible since $T_{\Sc(x, y)} \Ec \cong 
+			T_{(x, y)} (\Xc \times \Yc) \oplus \Ec_{(x, y)}$ 
+			splits naturally where $\Sc(x,y)=0$.} 
+			is surjective.
+	\end{enumerate}
+	Then for a generic $y \in \Yc$, 
+	$\Sc^{-1} (0) \cap ( \Xc \times \{y\} )$ is an appropriately 
+	smooth submanifold of dimensional $m$, and 
+	$D_1 \Sc_{(x, y)} \colon T_x \Xc \to \Ec_{(x, y)}$ is surjective 
+	for all $(x, y) \in \Sc^{-1} (0)$.
+\end{theorem}
+
+In applications, $\Sc$ is usually a nonlinear differential operator 
+on the space $\Xc$ that depends on an auxiliary structure 
+given by elements of $\Yc$, and the moduli space in question 
+is the solution space of $\Sc = 0$. 
+The desired transversality theorem is that the moduli space 
+is a smooth manifold for a generic auxiliary structure. 
+Incidentally, $\Sc^{-1} (0)$ is sometimes called 
+the \textit{universal moduli space} in the literature.
+
+\begin{proof}
+	By the implicit mapping theorem, 
+	(b) implies $\Sc^{-1} (0)$ is a Banach manifold. 
+	We apply the Sard--Smale theorem to the projection 
+	$\pi \colon \Sc^{-1} (0) \to \Yc$. 
+	It suffices to show $\pi$ is Fredholm with index $m$. 
+	For $(x, y) \in \Sc^{-1} (0)$, since 
+	$T_{(x, y)} \Sc^{-1} (0) = \{ (v, w) \in T_x \Xc \times T_y \Yc \mid 
+	D_1\Sc_{(x, y)} (v) + D_2\Sc_{(x, y)} (w) = 0 \}$, 
+	$D\pi_{(x, y)} \colon (v, w) \mapsto w$, we see that 
+	$\ker D\pi_{(x, y)} = \ker D_1\Sc_{(x, y)}$, 
+	$\im D\pi_{(x, y)} = (D_2\Sc_{(x, y)})^{-1} (\im D_1\Sc_{(x, y)})$ is closed, 
+	and $D_2\Sc_{(x, y)}$ induces an isomorphism 
+	$\coker D\pi_{(x, y)} \to \coker D_1\Sc_{(x, y)}$, 
+	so $D\pi_{(x, y)}$ is Fredholm with 
+	$\ind D\pi_{(x, y)} = \ind D_1\Sc_{(x, y)}$ by (a). 
+	For the last conclusion, 
+	$T_x \Xc + T_{(x, y)} \Sc^{-1} (0) = T_{(x, y)} (\Xc \times \Yc)$ 
+	since $y$ is a regular value of $\pi$, but $D\Sc_{(x, y)}$ vanishes 
+	on $T_{(x, y)} \Sc^{-1} (0)$, so 
+	$\im D_1\Sc_{(x, y)} = \im D\Sc_{(x, y)} = \Ec_{(x, y)}$.
+\end{proof}
+
+\begin{remark}
+	Note that in the finite-dimensional case, this reduces to 
+	the familiar parametric transversality theorem 
+	with $\Yc$ the space of parameters that provides room for perturbation.
+\end{remark}
+
+\medskip
+
+We have made a deliberate effort to recast the proofs 
+of transversality theorems into the following four-step streamline:
+
+\begin{enumerate}
+	\item Setting the stage.
+		
+		Specify $\Xc, \Yc, \Ec, \Sc$ and their Banach manifold structures.
+	
+	\item Fredholm property.
+		
+		Check that $D_1\Sc_{(x, y)} \colon T_x \Xc \to \Ec_{(x, y)}$ is Fredholm.
+	
+	\item Regular value.
+		
+		Check that $D\Sc_{(x, y)} \colon T_x \Xc \times T_y \Yc \to \Ec_{(x, y)}$ 
+		is surjective.
+	
+	\item Passage to $C^\infty$.
+		
+		See the next subsection.
+\end{enumerate}
+
+\subsection{Remarks on smoothness}
+So far we have been solely concerned with Banach manifolds. 
+However, many spaces in geometry do \textit{not} 
+admit a natural Banach structure. 
+This includes the space of smooth objects or objects on noncompact 
+manifolds, which are merely Fr{\'e}chet manifolds. 
+Fortunately, it is often possible to remedy this problem. 
+We shall presently describe two ways to pass to smooth objects, 
+i.e., to prove transversality theorems of the form 
+``For a generic smooth ..., we have ...''
+
+The first approach is due to Clifford H. Taubes. 
+It is based on the observation that 
+the set of good $C^\ell$ objects is open. 
+Sometimes further modification is needed. 
+Since we shall follow this approach here, 
+the reader will see this in action.
+
+The second approach is due to Andreas Floer. 
+Instead of $C^\ell$ objects, one considers 
+for $(\varepsilon_\ell)_\ell \subset \Rb^{>0}$ 
+the Banach space $C_\varepsilon^\infty$ of $C^\infty$ objects 
+with norm 
+\[
+	\mathclose{\|} \cdot \mathclose{\|} _{C_\varepsilon^\infty} := 
+		\sum _{\ell = 0} ^\infty \varepsilon_\ell 
+		\mathclose{\|} \cdot\mathcal{\|} _{C^\ell}.
+\]
+This approach is adopted by, e.g., \cite{Sch}.

@@ -1,0 +1,75 @@
+Let us fix the notations: $p$ a prime, $\ell$ a prime different from $p$, 
+$k$ a field of characteristic $p$ and $K$ a field of characteristic $0$.
+
+The motivation of a ``good" cohomology theory 
+(more precisely, Weil cohomology theory, \cite{Sta}) 
+for algebraic varieties is from Weil conjecture, 
+which is about the zeta function of algebraic variety $X$ of characteristic $p$,
+\[
+    \zeta(X, t)=\sum_{n = 1} ^ {\infty} |X(\mathbb{F} _ {q^n})| \frac {t^n} {n}.
+\]
+\begin{theorem}[Weil conjecture]
+    The following holds:
+    \begin{itemize}
+        \item (Rationality) 
+            \[
+                \zeta(X, t) = \prod _ {i = 0} ^ {2d} P_i(t) ^ {(-1) ^ {i + 1}},
+            \]
+            with $P_i(t)\in \BQ[t]$ and $d$ the dimension of $X$.
+        \item (Functional equation) 
+            For proper smooth $X$, 
+            \[
+                \zeta(X, \frac {1} {q^d t})=\pm q^{\frac {dE} {2}} t^E \zeta(X, t), 
+                \quad E = \sum_{i = 0}^{2d} \deg P_i(t).
+            \]
+        \item (Purity) 
+            The inverse of roots of $P_i(t)$ are algebraic integers 
+            with absolute value $q^{\frac{k}{2}}$, 
+            where $k$ is an integer between $0$ and $2i$. 
+            When $X$ is proper and smooth, $k=i$. 
+            (It is an analog of purity of mixed Hodge structures.)
+    \end{itemize}
+\end{theorem}
+To prove the theorem one needs a Weil cohomology theory, 
+that is, contravariant functors $H^*(X)$, $H^*_c(X)$, $H^*_Z(X)$ 
+(the usual cohomology, cohomology with compact support and cohomology supported on a closed set) 
+from varieties over a field $k$ of characteristic $p$ 
+to vector spaces over some characteristic $0$ field, satisfying:
+\begin{itemize}
+    \item (Finiteness) 
+        $H^*(X)$, $H^*_Z(X)$, $H^*_c(X)$ are finite dimensional 
+        with $H^i(X) = 0$ for $i < 0$ or $i > 2d$.
+    \item (K\"unneth formula) 
+        $H^*(X\times Y) = H^*(X) \otimes H^*(Y)$, 
+        similarly for $H^*_c$ and $H^*_Z$. 
+    \item (Poincar\'e duality) 
+        For smooth $X$, there is a trace map $H^{2d}(X) \to K$ satisfying 
+        $H^*(X) \otimes H^{2d-*}_c(X) \to H^{2d}(X) \to K$ being a perfect pairing.
+    \item (Cycle class) 
+        There is a natural tranformation of functors $A^*(X) \to H^{2*}(X)$.
+\end{itemize}
+One deduces then the Lefschetz fixed point theorem 
+and apply it to the Frobenius $F^n \colon X \to X$ 
+to gain information about the rational points.
+
+The ``Riemann hypothesis" part gives information about 
+the archimedean absolute value of the roots of $P_k(t)$ 
+and then the number of rational points. 
+It is then natural to ask about $p$-adic absolute value of those roots 
+($|\alpha|_{\ell} = 1$). 
+However, $p$ -adic \'etale cohomology behaves badly for characteristic $p$ varieties. 
+Thus, alternative cohomology theories are necessary.
+
+In characteristic zero, the de Rham cohomology theory 
+$H^i(X) = \mathbb{H}^i(\Omega_{X/K}^\cdot)$ 
+is a good cohomology theory \cite{Sta}. 
+Therefore, a rough idea is to lift $X/k$ to something over $K = \Frac(W(k))$, 
+and working out the de Rham cohomology. 
+Two ways to realize the idea are the crystalline cohomology and the rigid cohomology.
+
+Another benefit of $p$-adic cohomology theories is that 
+the Frobenius action on \'etale cohomology can not be calculated down simply. 
+However, in $p$ -adic cohomology theory, 
+one can represent it as a action of a de Rham complex. 
+There is then a convenient algorithm of counting rational points (\cite{Ke2}).
+

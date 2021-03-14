@@ -1,0 +1,687 @@
+In this section, we describe the deformation method
+which produces irrational varieties.
+We show that if we have a good family of varieties,
+and if one of them does not have a decomposition of the diagonal,
+then a very general one in the family
+will not have a decomposition, and hence, will not be retract rational.
+
+This method was developed by C. Voisin \cite{voisin},
+and modified by J.\nobreakdash-L. Colliot-Thélène and A. Pirutka \cite{CTP},
+to show that a very general
+quartic threefold in $\bbP_{\bbC}^4$ is not retract rational.
+We will present a proof of this result.
+
+
+\subsection{Families of cycles}
+
+\begin{definition} [Kollár {\cite[Definition~3.10]{kollar}}] \label{def-3-family}
+    Suppose that
+    \begin{itemize}
+        \item
+            $\bbk$ is an algebraically closed field of characteristic $0$.
+        \item
+            $S$ is a $\bbk$-scheme.
+        \item
+            $X/S$ is a projective $S$-scheme, with a chosen relatively ample line bundle.
+        \item
+            $B/S$ is a reduced normal $S$-scheme.
+        \item
+            $d$ and $d'$ are non-negative integers.
+    \end{itemize}
+    A \term{well-defined family of $d$-cycles} of $X$ of degree $d'$ parametrised by $B$
+    is a cycle 
+    \[ \textstyle C = \sum_i m_i [C_i] \quad \text{of} \quad X \times_S B, \]
+    such that
+    \begin{itemize}
+        \item
+            Each $C_i$ is an integral closed subscheme of $X \times_S B$.
+        \item
+            For each $i$, the image of the projection map $g_i \: C_i \to B$
+            is an irreducible component of $B$.
+            In particular, $g_i$ is flat over a dense open subset of $B$.
+        \item
+            Each fibre of $g_i$ defines a $d$-cycle of $X$ of degree $d'$.
+            This means that the fibre is either empty or of dimension $d$,
+            and that $g_i$ is flat over a dense open subset of $B$.
+    \end{itemize}
+\end{definition}
+
+The deep theorem below shows the existence of
+a universal family of cycles,
+in that every family of cycles is realised as its pullback.
+
+\begin{theorem}
+    Under the assumptions of Definition~\textup{\ref{def-3-family}},
+    for an $S$-scheme $Z$, define
+    \[ \mathrm{Chow}_{X/S}^{d,d'} (Z) = \biggl\{ \,
+        \begin{matrix}
+            \text{well-defined families of non-negative $d$-cycles} \\
+            \text{of $X$ of degree $d'$ parametrised by $Z$}
+        \end{matrix} \,
+    \biggr\}. \]
+    Then 
+    \begin{itemize}
+        \item
+            $\mathrm{Chow}_{X/S}^{d,d'}$
+            is a contravariant functor
+            from the semi-normal $S$-schemes to sets.
+        \item
+            Moreover, this functor is represented by a
+            projective semi-normal $S$-scheme $\Chow_{X/S}^{d,d'}$,
+            called the \term{Chow scheme},
+            so that there exists a universal
+            well-defined family of non-negative $d$-cycles
+            \[ \Univ_{X/S}^{d,d'} \quad \text{of $X$ parametrised by} \quad \Chow_{X/S}^{d,d'}, \]
+            such that every other family of cycles is its pullback.
+    \end{itemize}
+\end{theorem}
+
+See \cite[Theorem~I.3.21]{kollar}. 
+
+We also recall the existence of Hilbert schemes.
+
+\begin{theorem}
+    Let $S$ be a locally noetherian scheme.
+    Let $X \to S$ be a projective morphism.
+    For an $S$-scheme $Z$, define 
+    \[ \mathrm{Hilb}_{X/S}^{d,d'} (Z) = \biggl\{ \,
+        \begin{matrix}
+            \text{closed subschemes of $X \times_S Z$ flat over $Z$} \\
+            \text{of relative dimension $d$ and relative degree $d'$}
+        \end{matrix} \,
+    \biggr\}. \]
+    The functor $\mathrm{Hilb}_{X/S}^{d,d'}$ is represented
+    by an $S$-scheme $\Hilb_{X/S}^{d,d'}$, called the \term{Hilbert scheme},
+    whose irreducible components are projective over $S$.
+    As a result, there exists a universal family of subschemes
+    \[ U \quad \subset \quad X \times_S \Hilb_{X/S}^{d,d'}, \]
+    such that every other family of subschemes is its pullback.
+\end{theorem}
+
+Below, we will write
+\[ \Chow_{X/S} = \coprod_{d,d'} \Chow_{X/S}^{d,d'}
+    \quad \text{and} \quad 
+    \Hilb_{X/S} = \coprod_{d,d'} \Hilb_{X/S}^{d,d'}. \]
+
+
+\subsection{Locus of rational equivalence}
+
+\begin{situation} \label{sit-3-deformation}
+    Suppose
+    \begin{itemize}
+        \item
+            $\bbk$ is an algebraically closed field of characteristic $0$.
+        \item
+            $B$ is a smooth $\bbk$-scheme.
+        \item
+            $X \to B$ is a projective morphism.
+    \end{itemize}
+\end{situation}
+
+\begin{lemma} \label{lem-3-divisor}
+    In Situation~\textup{\ref{sit-3-deformation}}, for any non-negative integer $d$, there exists
+    \begin{itemize}
+        \item
+            A countable family of normal, irreducible, quasi-projective $B$-schemes $\{ T_i \}$.
+        \item
+            For each index $i$, a family of smooth $(d+1)$-dimensional varieties $W_i \to T_i$,
+            with two families of divisors $E_{i,1}, E_{i,2} \to T_i$ of~$W_i$,
+    \end{itemize}
+    such that
+    \begin{itemize}
+        \item
+            For any $b \in B$ and any subvariety $V \subset X_b$ of dimension $d+1$,
+            there exists a desingularisation $\widetilde{V}$,
+            such that for any two effective divisors $D_1, D_2$ of $\widetilde{V}$,
+            such that $D_1 - D_2$ is principal,
+            there exists $i$ and $t \in (T_i)_b (\bbk)$, 
+            such that the data $(\widetilde{V}, D_1, D_2)$ is identical to
+            $((W_i)_t, (E_{i,1})_t, (E_{i,2})_t)$.
+    \end{itemize}
+\end{lemma}
+
+The reason to consider a desingularisation of $V$, instead of $V$ itself,
+is that on a smooth variety, a Weil divisor is the same thing
+as a Cartier divisor, and the Weil divisor class group is the same as the Picard group.
+The normality of $T_i$ is required in order to (later) satisfy
+the definition of a well-defined family of cycles.
+
+\begin{proof}
+    \def\WjGj{\widetilde{W}\mkern-6mu_j/\widetilde{G}_j}
+    By \cite[Theorem~9.7.7]{EGA4-3}, the set of points in the Hilbert scheme $\Hilb_{X/B}^{d+1}$
+    corresponding to the geometrically integral subvarieties is locally constructible.
+    Let $G$ be an irreducible component of this set, equipped with the reduced scheme structure.
+    Then $G$ is quasi-projective over $S$, as the components of $\Hilb_{X/B}^{d+1}$ are projective. Let
+    \[ W \subset G \times_B X \]
+    be the universal family of $(d+1)$-dimensional subschemes.
+    The morphism $W \to G$ is thus projective, flat, with geometrically integral fibres.
+
+    The generic fibre $W_{\bbk(G)}$ is integral, 
+    as its irreducible components correspond to irreducible components of a general fibre.
+    By Hironaka's theorem, let $\widetilde{W}_{\bbk(G)} \to W_{\bbk(G)}$ be a desingularisation map. 
+    This map extends to a map
+    \[ \widetilde{W}_1 \to W_1 \]
+    of schemes over an open set $G_1 \subset G$, where $W_1 = W|_{G_1}$.
+    Shrinking $G_1$ if necessary, we can assume that for any $t \in G_1(\bbk)$, 
+    the map $\widetilde{W}_{1,t} \to W_t$ of fibres over $t$ is a desingularisation map.
+    
+    By noetherian induction, we can find a decomposition
+    \[ \textstyle G = \bigcup_{j=1}^m G_j, \]
+    with $G_j$ locally closed in $G$, together with
+    maps $\widetilde{W}_j \to W_j$ over $G_j$,
+    where $W_j = W|_{G_j}$, such that for all $t \in G_j$,
+    the map $\widetilde{W}_{j,t} \to W_t$ is a desingularisation map.
+
+    Let $\widetilde{G}_j \to G_j$ be a desingularisation,
+    and we still denote by $\widetilde{W}_j \to \widetilde{G}_j$
+    the pullback of the family $\widetilde{W}_j \to G_j$.
+
+    Since $\widetilde{W}_j$ is projective and flat over $\widetilde{G}_j$,
+    with geometrically integral fibres, there exist the schemes with a morphism
+    \[ \mathrm{Ab} \: \sfname{Div}_{\WjGj} \to \sfname{Pic}_{\WjGj}, \]
+    where $\sfname{Div}_{\WjGj}$ is the scheme parametrising the effective Cartier divisors
+    \cite[Theorem~9.3.7]{FAG},
+    which is quasi-projective over $\widetilde{G_j}$, and hence over $B$,
+    and $\sfname{Pic}_{\WjGj}$ is the Picard scheme \cite[Theorem~9.4.8]{FAG}.
+    Let
+    \[ \Delta_j \subset \sfname{Div}_{\WjGj} \times \sfname{Div}_{\WjGj} \]
+    be the inverse image of the diagonal of $\sfname{Pic}_{\WjGj} \times \sfname{Pic}_{\WjGj}$,
+    under the map $\mathrm{Ab} \times \mathrm{Ab}$, equipped with the reduced scheme structure.
+    Let $T$ be one of its irreducible components, and let $\widetilde{T}$ be the normalisation of $T$.
+    Thus $\widetilde{T}$ is quasi-projective over $B$.
+
+    The family of all the schemes $\widetilde{T}$, together with the two universal families of divisors
+    given by the $\sfname{Div}$ schemes, satisfies the requirement of the lemma.
+\end{proof}
+
+Of course, a rational equivalence of two $d$-cycles may involve
+more than one $(d+1)$-dimensional subvariety.
+The next lemma deals with this situation.
+
+For simplicity, if $V \subset X_b$ is a subvariety,
+we will say ``the desingularisation'' of $V$
+when we refer to the variety $\widetilde{V}$ given by the previous lemma,
+and we simply add a tilde to indicate this desingularisation.
+
+\begin{lemma} \label{lem-3-divisors}
+    In Situation~\textup{\ref{sit-3-deformation}}, for any non-negative integer $d$, there exists
+    \begin{itemize}
+        \item
+            A countable family of normal irreducible $B$-schemes $\{ H_i \}$.
+        \item
+            For each index $i$, an integer $n_i \geq 1$,
+            and $n_i$ triples $(W_{i,j},\ E_{i,j,1},\ E_{i,j,2})_{j=1}^{n_i}$,
+            where for each $j$, $W_{i,j} \to H_i$ is a smooth projective family of $(d+1)$-dimensional varieties,
+            and $E_{i,j,1},\ E_{i,j,2} \to H_i$ are two families of divisors of~$W_{i,j}$,
+    \end{itemize}
+    such that
+    \begin{itemize}
+        \item
+            For any $b \in B(\bbk)$, and any data $(V_j,\ D_{j,1},\ D_{j,2})_{j=1}^n$,
+            where each $V_j$ is an integral subscheme of $X_b$ of dimension $d+1$,
+            and $D_{j,1},\ D_{j,2}$ are two effective Weil divisors on 
+            the desingularisation $\widetilde{V}_j$ of $V_j$, 
+            such that $D_{j,1} - D_{j,2}$ is a principal divisor on $V_j$, 
+            there exists $i$ and $t \in (H_i)_b (\bbk)$, 
+            such that the fibre $\bigl( (W_i)_t,\ (E_{i,j,1})_t,\ (E_{i,j,2})_t \bigr)$ 
+            is identical to the given data.
+    \end{itemize}
+\end{lemma}
+
+\begin{proof}
+    For each $n$-tuple $(T_1, \dotsc, T_n)$ as given by the previous lemma,
+    we consider the normalisation $H$ of the product $T_1 \times \cdots \times T_n$,
+    equipped with the data of $n$ triples as given by the previous lemma.
+    The collection of all such $H$ satisfies the requirement of this lemma.
+\end{proof}
+
+Our effort to parametrise all possibilities for a rational equivalence
+allows us to prove the following result.
+
+\begin{lemma} \label{lem-3-rat-equiv}
+    In Situation~\textup{\ref{sit-3-deformation}}, let 
+    \[ Z_1, Z_2 \in \mathrm{Chow}_{X/B}^{d} (B) \] 
+    be two well-defined families of cycles.
+    Then there exists
+    \begin{itemize}
+        \item
+            A countable family of quasi-projective $B$-schemes $\{ M_i \}$.
+        \item
+            For each index $i$, the data $(W_{i,j},\ E_{i,j,1},\ E_{i,j,2})_{j=1}^{n_i}$ 
+            as in Lemma~\textup{\ref{lem-3-divisors}}, with $M_i$ in place of $H_i$,
+    \end{itemize}
+    such that 
+    \begin{itemize}
+        \item
+            The union of the images of $M_i(\bbk)$ in $B(\bbk)$ is exactly the set
+            \[ \{ b \in B(\bbk) \mid [Z_{1,b}] = [Z_{2,b}] \text{ in } \CH_\bullet (X_b) \}. \]
+        \item
+            For any $b \in B(\bbk)$, and any data $(V_i,\ D_{i,1},\ D_{i,2})_{i=1}^n$
+            as in Lemma~\textup{\ref{lem-3-divisors}}, such that
+            \[ \textstyle Z_{1,b} + \sum_{i=1}^n [D_{i,1}] = Z_{2,b} + \sum_{i=1}^n [D_{i,2}]
+                \quad \text{in } \upZ_\bullet (X_b), \]
+            there exists $i$ and a point $t \in (M_i)_b (\bbk)$,
+            such that the fibre $\bigl( (W_i)_t$, $(E_{i,j,1})_t$, $(E_{i,j,2})_t \bigr)$ 
+            is identical to the given data.
+    \end{itemize}
+\end{lemma}
+
+\begin{proof}
+    Let $\{ H_i \}$ be the family in Lemma~\ref{lem-3-divisors}. We define a morphism
+    \[ \begin{aligned}
+        f \: H_i & \to     \Chow_{X/B} \times \Chow_{X/B}, \\
+               t & \mapsto \textstyle \Bigl( Z_1 + \sum_{j=1}^{n_i} (E_{i,j,1})_t, \ Z_2 + \sum_{j=1}^{n_i} (E_{i,j,2})_t \Bigr),
+    \end{aligned} \]
+    where $(E_{i,j,1 \text{ or } 2})_t$ is regarded as a cycle of $X$
+    via the pushforward along the desingularisation map (onto a closed subvariety of $X$).
+    Now let $M_i$ be the inverse image of the diagonal along $f$,
+    with the reduced scheme structure,
+    equipped with the data of $n_i$ triples given by that of $H_i$.
+    This proves the second statement.
+
+    For the first statement, write $Z = Z_1 - Z_2$.
+    Let $b \in B$ be a point where $Z_b$ is rationally equivalent to zero.
+    Then, there exist subvarieties $V_j \subset X_b$, where $j = 1, \dotsc, n$,
+    and rational functions $g_j$ on $V_j$, which give rise to
+    rational functions $\widetilde{g_j}$ on a desingularisation $\widetilde{V}_j$,
+    such that
+    \[ \textstyle Z_b = \sum_{j=1}^n (f_j)_* (\operatorname{div} \widetilde{g_j}), \]
+    where $f_j$ denotes the map $\widetilde{V}_j \to X_b$.
+    Conversely, the existence of this data implies that $Z_b$ is rationally equivalent to zero,
+    since $M_j$ is taken to be the inverse image of the diagonal.
+    Therefore, the locus where $Z_b$ is equivalent to zero
+    is exactly the union of the images of the $M_i$.
+\end{proof}
+
+We are now getting close to the main theorem,
+which states that the locus where $[Z_{1,b}] = [Z_{2,b}]$
+is a countable union of closed sets.
+There is one further lemma needed.
+
+\begin{lemma} \label{lem-3-specialise}
+    Let $M$ be a smooth $\bbk$-variety of dimension $m$, with $\bbk$ algebraically closed,
+    and let $f \: W \to M$ be a flat morphism of relative dimension $r$.
+    Let $Z$ be an $n$-cycle on $W$. Suppose that
+    \begin{itemize}
+        \item
+            There is a dense open set $M^\circ \subset M$,
+            such that $Z|_{f^{-1} (M^\circ)}$ is rationally equivalent to $0$ in $f^{-1} (M^\circ)$.
+    \end{itemize}
+    Then
+    \begin{itemize}
+        \item
+            For any $t \in M (\bbk)$,
+            the fibre $Z_t$ is rationally equivalent to $0$ in $W_t$.
+    \end{itemize}
+\end{lemma}
+
+\begin{proof}
+    Let $t \in M(\bbk) \setminus M^\circ(\bbk)$ be a point.
+    As in the proof of Lemma~\ref{lem-2-moving}, we can find
+    a curve $C$ in $M$, passing through $t$, and not contained in $M \setminus M^\circ$.
+    Taking the normalisation of this curve,
+    we may thus assume that $M$ is a smooth curve.
+
+    Let $D = M \setminus M^\circ$, which is now a finite set.
+    There is an exact sequence \cite[\S1.8]{fulton}
+    \[ \CH_n (f^{-1} (D)) \overset{i_*}{\longrightarrow} \CH_n (W) 
+        \longrightarrow \CH_n (f^{-1} (M^\circ)) \to 0, \]
+    so that $Z = i_* (z)$ for some $z \in \CH_n (f^{-1} (D))$,
+    where $i \: f^{-1} (D) \to W$ denotes the inclusion.
+    But by the projection formula \cite[\S2.3]{fulton}, the intersection of $i_* (z)$
+    with the divisor $f^{-1} (D)$ of $W$ is 
+    $i_* i^* (f^{-1}(D) \cdot z) = 0$, so that $Z_t$ is rationally equivalent to $0$ for any $t \in D$.
+\end{proof}
+
+Now we are ready to prove the main result,
+and our proof follows that of \cite[Proposition~2.4]{voisin}.
+
+\begin{theorem} [Voisin] \label{thm-3-locus-equality}
+    In Situation~\textup{\ref{sit-3-deformation}}, let 
+    \[ Z_1, Z_2 \in \mathrm{Chow}_{X/B}^{d} (B) \] 
+    be two well-defined families of cycles.
+    Then there exists a countable family $\{ B_i \}$
+    of closed subschemes of $B$, such that
+    \[ \textstyle
+        \bigl\{ \, b \in B (\bbk) \bigm| 
+        [Z_{1, b}] = [Z_{2, b}] \text{ \ in \ } {\CH_d (X_b)} \, \bigr\}
+        = \bigcup_i B_i (\bbk).
+    \]
+\end{theorem}
+
+\begin{proof}
+    \def\Mibar{\mspace{2mu}\overline{\smash{\mspace{-2mu}M}\vphantom{t}}\mspace{-1mu}\vphantom{t}_i}
+    Let $\{ M_i \}$ be as in Lemma~\ref{lem-3-rat-equiv}.
+    Replacing each $M_i$ by its desingularisation, we can assume
+    that all $M_i$ are smooth.
+
+    Let $B_i \subset B$ be the closure of the image of $M_i$ in $B$,
+    as a closed integral subvariety.
+    By Lemma~\ref{lem-3-rat-equiv}, the equation $[Z_{1,b}] = [Z_{2,b}]$
+    implies $b \in B_i$ for some $i$. 
+    Thus, it suffices to show that it holds for all $b \in B_i$.
+
+    Let $B_i^\circ \subset B_i$ be an open subset contained in the image of $M_i$,
+    and let $M_i^\circ$ be the inverse image of $B_i^\circ$ in $M_i$.
+    Let $X_{M_i} = X \times_B M_i$, and $Z_i$ the pullback of $Z = Z_1 - Z_2$
+    along the morphism $X_{M_i} \to X$, 
+    which is actually the Chow pullback of families of cycles along the map $M_i \to B$.
+    Then $Z_i$ is equal to the universal cycle $\sum_{j=1}^{n_i} (E_{i,j,1} - E_{i,j,2})$ on $M_i$,
+    and hence is rationally equivalent to zero.
+
+    By taking the closure in a projective bundle, 
+    the morphism $M_i \to B_i$ extends to a projective morphism $\Mibar \to B_i$.
+    Again, taking a desingularisation, we may assume $\Mibar$ is smooth.
+    Write $X_{\Mibar} = X \times_B \Mibar$.
+    Now apply Lemma~\ref{lem-3-specialise} with $M = \Mibar$, $W = X_{\Mibar}$,
+    and $M^\circ$ the inverse image of $M_i^\circ$. 
+    This shows that for all $b \in B_i$, the cycle $Z_b$ is equivalent to zero.
+\end{proof}
+
+
+\subsection{Locus of decomposability of the diagonal}
+
+\begin{lemma} \label{lem-3-all-cycles}
+    Suppose
+    \begin{itemize}
+        \item
+            $\bbk$ is an algebraically closed field of characteristic $0$.
+        \item
+            $B$ is a smooth $\bbk$-scheme.
+        \item
+            $X \to B$ is a projective morphism, and write $Y = X \times_B X$.
+    \end{itemize}
+    Then there exists
+    \begin{itemize}
+        \item
+            A countable family of smooth irreducible $B$-schemes $\{ F_i \}$.
+        \item
+            For each index $i$, a well-defined family of non-negative
+            $d_i$-cycles $C_i$ of $Y$ of degree $d'_i$,
+            parametrised by $F_i$,
+    \end{itemize}
+    such that
+    \begin{itemize}
+        \item
+            For any $b \in B$ and any non-negative $d$-cycle $C$ of $Y_b$ of degree $d'$,
+            supported in $Z \times X_b$ for a codimension $1$ subset $Z \subset X_b$,
+            there exists $i$ and $x \in (F_i)_b$ such that $C = (C_i)_x$.
+        \item
+            For any $x \in (F_i)_b$,
+            the cycle $C = (C_i)_x$ is supported in $Z \times X_b$
+            for a codimension $1$ subset $Z \subset X_b$.
+    \end{itemize}
+\end{lemma}
+
+The condition ``supported in $Z \times X_b$'' is the main point of this lemma.
+In fact, the proof would be a lot easier if we dropped this condition.
+This lemma will be used to parametrise all possibilities for
+the term $D$ in a decomposition of the diagonal, as in Definition~\ref{def-2-decomp}.
+
+\begin{proof}
+    First, we need to parametrise all the subschemes of $X$
+    that are codimension $1$ in $X_b$ at each $b \in B$.
+    Therefore, we consider an irreducible component 
+    \[ H \subset \Hilb_{X/B}, \]
+    parametrising the codimension $1$ subschemes.
+    Let $U \subset H \times_B X$ be the universal subscheme.
+    Thus if we look at the fibre at $b \in B$,
+    then $H_b$ parametrises the codimension $1$ subschemes of $X_b$,
+    and $U_b \subset H_b \times X_b$ is a subscheme
+    whose intersection with $\{c\} \times X_b$ gives the subscheme of $X_b$ corresponding to $c$.
+
+    Next, we want to parametrise all the subschemes of $Y$ which
+    have the form $(\text{codim 1 subset}) \times X_b$ when restricted to the fibres.
+    This is given by the universal subscheme
+    \[ U' = U \times_B X \subset H \times_B X \times_B X, \]
+    which, at $b \in B$, 
+    when intersected with $\{c\} \times X_b \times X_b$,
+    gives the subscheme of $X_b \times X_b$ corresponding to $c$.
+
+    Finally, we parametrise cycles of $Y$ supported in
+    a subset of the form of the previous step.
+    Thus we consider an irreducible component
+    \[ C \subset \Chow_{U'/H}. \]
+    Let $V \in \upZ_\bullet (C \times_H U')$ be the universal family. Since
+    \[ C \times_H U' \subset C \times_H H \times_B X \times_B X \simeq C \times_B X \times_B X, \]
+    we can view $V$ as a family of cycles of $Y$ parametrised by $C$.
+
+    Thus, all choices of $H$ and $C$ will give a countable set of families,
+    which together parametrise all the cycles of $Y$ of the given form.
+
+    However, the parametrising schemes need to be smooth.
+    We thus apply Hironaka's desingularisation theorem to the schemes $C$.
+\end{proof}
+
+\begin{proposition} \label{lem-3-locus-decomp}
+    Suppose 
+    \begin{itemize}
+        \item
+            $\bbk$ is an algebraically closed field of characteristic $0$.
+        \item
+            $B$ is a smooth $\bbk$-scheme.
+        \item
+            $X \to B$ is a projective morphism.
+    \end{itemize}
+    Then there exists a countable family $\{ B_i \}$
+    of closed subschemes of $B$, such that
+    \[ \textstyle
+        \{ b \in B (\bbk) \mid X_b \text{ has a decomposition of the diagonal} \}
+        = \bigcup_i B_i (\bbk).
+    \]
+\end{proposition}
+
+\begin{proof}
+    Let $F_i, F_{i'}$ be two of the schemes as in Lemma~\ref{lem-3-all-cycles}, 
+    with $d_i = d_{i'} = \dim (X/B)$,
+    and let $C_i, C_{i'}$ be the universal cycles,
+    lying in $X \times_B X \times_B F_{i \text{ or } i'}$. 
+    
+    Let $G_j, G_{j'}$ be irreducible components of 
+    $\Chow_{X/B}^{0,d}$ and $\Chow_{X/B}^{0,d + 1}$,
+    respectively, where $d$ is arbitrary,
+    and let $D_j, D_{j'}$ be the universal cycles lying in $X \times_B G_{j \text{ or } j'}$.
+    
+    We define two cycles of $Y = F_i \times_B G_j \times_B X \times_B X \times_B G_{j'} \times_B F_{i'}$ by
+    \[ \begin{aligned}
+        Z_1 &= \Bigl( [G_j] \times C_i + [F_i] \times [G_j] \times [\Delta_{X/B}] + [F_i] \times [X] \times D_j \Bigr) 
+            \times [G_{j'}] \times [F_{i'}], \\[-3pt]
+        Z_2 &= [F_i] \times [G_j] \times \Bigl( C_{i'} \times [G_{j'}] + [X] \times D_{j'} \times [F_{i'}] \Bigr),
+    \end{aligned} \]
+    where $[\Delta_{X/B}]$ is the diagonal class.
+
+    Now apply Theorem~\ref{thm-3-locus-equality}, where we take $X$ to be $Y$, 
+    and take $B$ to be 
+    \[ F_i \times_B F_{i'} \times_B G_j \times_B G_{j'}. \]
+    At the point 
+    \[ t = (t_1, t_2, x_1, x_2) \in (F_i)_b \times (F_{i'})_b \times (G_j)_b \times (G_{j'})_b, \]
+    the cycle $Z_1$ gives $[\Delta_{X_b}] + z_1 + [X_b] \times x_1$,
+    where $z_1$ is a non-negative cycle
+    supported in $Z \times X_b$ for $Z \subset X_b$ of codimension $1$,
+    and similarly, the cycle $Z_2$ gives $[X_b] \times x_2 + z_2$,
+    with $z_2$ likewise.
+
+    Therefore, Theorem~\ref{thm-3-locus-equality} implies that
+    the locus where the equation
+    \[ [\Delta_{X_b}] + z_1 + [X_b] \times x_1 = [X_b] \times x_2 + z_2 \quad \in \CH_{\dim X_b} (X_b \times X_b) \]
+    holds (for non-negative $x_1, x_2, z_1, z_2$)
+    is the union of countably many closed subsets.
+\end{proof}
+
+This result is restated as follows.
+
+\begin{theorem} \label{thm-3-locus-decomp}
+    Suppose 
+    \begin{itemize}
+        \item
+            $\bbk$ is an algebraically closed field of characteristic $0$.
+        \item
+            $B$ is a smooth $\bbk$-scheme.
+        \item
+            $X \to B$ is a dominant projective morphism.
+        \item
+            There exists a $\bbk$-point $0 \in B$,
+            such that the fibre $X_0$ does not have a decomposition of the diagonal.
+    \end{itemize}
+    Then for a ``very general'' $\bbk$-point $b \in B$,
+    the fibre $X_b$ will not have a decomposition of the diagonal. \qed
+\end{theorem}
+
+By ``\term{very general}'', we mean ``except a countable union of closed sets of codimension $\geq 1$''.
+
+This means that if we can find one example in a family of varieties,
+which we can show has non-trivial Brauer group,
+and hence does not have a decomposition of the diagonal,
+then a very general variety in this family is not retract rational.
+
+
+\subsection{Stable equivalence}
+
+This subsection gives a variant of the above result,
+concerning stable equivalence instead of retract rationality.
+
+\begin{definition}
+    Two projective $\bbk$-varieties are \term{stably equivalent}, if
+    \[ X \times \bbP^m \quad \text{is birational to} \quad Y \times \bbP^n \]
+    for some $m, n \in \bbN$.
+\end{definition}
+
+Stable rationality is the same as stable equivalence to a point.
+
+\begin{lemma} \label{lem-3-stable-eq-cycles}
+    Let $X,Y$ be two $\bbk$-varieties, such that there exist open sets $U \subset X$,
+    $V \subset Y \times \bbP^n$, and two morphisms $p \: U \to V$, $q \: V \to U$,
+    such that $q \circ p = \id_U$.
+    Then there exist two correspondences
+    \[ f \in \operatorname{Corr} (X, Y), \quad g \in \operatorname{Corr} (Y, X), \]
+    such that
+    for any field extension $\bbK/\bbk$, the induced map
+    \[ (g \circ f)_* \: \CH_0 (X_{\bbK}) \to \CH_0 (X_{\bbK}) \]
+    is the identity map.
+    When $X$ is smooth, we have a decomposition
+    \[ [\Delta_X] = D + g \circ f \quad \text{in } \operatorname{Corr} (X, X), \]
+    where $D$ is supported in $Z \times X$
+    for some closed subvariety $Z \subset X$ of codimension at least $1$.
+\end{lemma}
+
+\begin{proof}
+    The correspondence $f$ is given by the rational map
+    \[ X \overset{\supset}{\mathrel{\rightdasharrow}} U \overset{p}{\to} V \hookrightarrow Y \times \bbP^n \to Y, \]
+    and $g$ is given by a rational map
+    \[ Y \hookrightarrow Y \times \bbP^n \overset{\supset}{\mathrel{\rightdasharrow}} V \overset{q}{\to} U \hookrightarrow X, \]
+    where the inclusion $Y \hookrightarrow Y \times \bbP^n$
+    is chosen so that the composition is defined.
+    To prove that $g \circ f$ induces the identity map on $\CH_0 (X_{\bbK})$, it suffices to prove that the map
+    \[ Y \times \bbP^n \to Y \hookrightarrow Y \times \bbP^n \]
+    induces the identity map on $\CH_0$. 
+    This is because every closed point of $Y \times \bbP^n$
+    is sent to another point that lives in the same slice of $\bbP^n$, and hence,
+    is rationally equivalent to it as a $0$-cycle.
+
+    For the second part, we use an argument as in the proof of Theorem~\ref{thm-2-decomp}.
+    Namely, we change the base field to $\bbk(X)$, to find that
+    \[ g_{\bbk (X)} \circ f_{\bbk (X)} (\beta) = \beta \quad \text{in } \CH_0 (X_{\bbk(X)}), \]
+    where $\beta$ is the class of the generic point.
+    The rest of the proof is analogous to the proof of Theorem~\ref{thm-2-decomp}, 
+    \ref{itm-thm-2-decomp-2} $\Rightarrow$ \ref{itm-thm-2-decomp-3}.
+\end{proof}
+
+Note that the assumptions of this lemma is satisfied when $X$ and $Y$ are stably equivalent.
+
+Using an argument as in the proof of Proposition~\ref{lem-3-locus-decomp},
+we obtain the following result.
+
+\begin{theorem} \label{thm-3-stable-eq-prototype}
+    Suppose 
+    \begin{itemize}
+        \item
+            $\bbk$ is an algebraically closed field of characteristic $0$.
+        \item
+            $B$ is a smooth $\bbk$-scheme.
+        \item
+            $X \to B$ and $Y \to B$ are two projective morphisms.
+    \end{itemize}
+    Then the set of all points $b \in B (\bbk)$ such that
+    there exist correspondences
+    \[ f \in \operatorname{Corr} ( X_b, Y_b ), \quad g \in \operatorname{Corr} ( Y_b, X_b ), \]
+    and $D$ as before, such that 
+    \[ [\Delta_{X_b}] = D + g \circ f, \]
+    is a countable union of closed sets.
+\end{theorem}
+
+\begin{proof}
+    We apply Theorem~\ref{thm-3-locus-equality}, 
+    where we take $X$ to be
+    \[ X \times_B X \times_B F_i \times_B F_{i'} \times_B G_j \times_B G_{j'} \times_B H_k \times_B H_{k'}, \]
+    where 
+    \begin{itemize}
+        \item 
+            $F_i$, $F_{i'}$ are given by Lemma~\ref{lem-3-divisor}.
+        \item 
+            $G_j$, $G_{j'}, H_k, H_{k'}$ are irreducible components of $\Chow_{X \times_B Y / B}$,
+            parametrising the correspondences from $X$ to $Y$ for $G_j$ and $G_{j'}$,
+            and from $Y$ to $X$ for $H_k$, $H_{k'}$.
+    \end{itemize}
+    The rest of the proof is analogous to the proof of Proposition~\ref{lem-3-locus-decomp}.
+\end{proof}
+
+\begin{corollary} \label{cor-3-stable-eq-prototype}
+    Under the assumptions of Theorem~\ref{thm-3-stable-eq-prototype},
+    the set of all points $b \in B(\bbk)$ such that $X_b$ is stably equivalent to $Y_b$
+    is contained in a countable union of closed sets.
+    Moreover, this union does not contain any point $b \in B(\bbk)$
+    such that $X_b$ is smooth and has a decomposition of the diagonal,
+    and $Y_b$ does not have a decomposition of the diagonal
+\end{corollary}
+
+\begin{proof}
+    The countable union of closed sets given by Theorem~\ref{thm-3-stable-eq-prototype}
+    satisfies this requirement.
+    Indeed, for those $b \in B(\bbk)$ such that $X_b$ and $Y_b$ are stably equivalent,
+    Lemma~\ref{lem-3-stable-eq-cycles} shows that $b$ is in this union.
+
+    To prove the last statement, let $b \in B(\bbk)$ be such a point.
+    We show that such correspondences $f,g$ as in Theorem~\ref{thm-3-stable-eq-prototype} do not exist between $X_b$ and $Y_b$.
+    In fact, if they exist, then $g \circ f$ acts on $\CH_0(X)$ by the identity map.
+    But since $\id_Y$ sends every $0$-cycle to its degree multiplied by a fixed $0$-cycle of degree~$1$,
+    so does the correspondence $g \circ f = g \circ \id_Y \circ f$.
+    Moreover, this holds over any field extension of $\bbk$. 
+    By Theorem~\ref{thm-2-decomp}, $X$ has a decomposition of the diagonal,
+    a contradiction.
+\end{proof}
+
+In particular, if we take $X$ to be a constant family which is smooth,
+we deduce that every stable equivalence class in a family of varieties is contained
+in a countable union of closed sets.
+
+\begin{corollary} \label{thm-3-stable-eq-class}
+    Suppose 
+    \begin{itemize}
+        \item
+            $\bbk$ is an uncountable algebraically closed field of characteristic $0$.
+        \item
+            $B$ is a smooth $\bbk$-scheme.
+        \item
+            $X \to B$ is a dominant projective morphism, with smooth generic fibre.
+        \item
+            There exist two $\bbk$-points $b_0, b_1 \in B$,
+            such that the fibre $X_{b_0}$ has a decomposition of the diagonal,
+            while the fibre $X_{b_1}$ does not have a decomposition of the diagonal.
+    \end{itemize}
+    Then there are uncountably many stable equivalence classes of varieties
+    in this family.
+\end{corollary}
+
+\begin{proof}
+    For those smooth fibres $X_b$ that do not have a decomposition of the diagonal,
+    we apply Corollary~\ref{cor-3-stable-eq-prototype} to the constant family $B \times X_b \to B$ and the family $X \to B$.
+    It follows that the set of $b' \in B(\bbk)$ such that $X_b$ is stably equivalent to $X_{b'}$
+    is contained in a countable union of closed sets, which can not coincide with the whole space.
+
+    By Theorem~\ref{thm-3-locus-decomp},
+    the locus of smooth fibres with no decomposition of the diagonal 
+    is the complement of a countable union of closed subsets of $B$.
+    Therefore, in order to cover this locus, 
+    there must be uncountably many stable equivalence classes of fibres of $X \to B$,
+    since each of these classes is contained in a countable union of closed sets.
+\end{proof}

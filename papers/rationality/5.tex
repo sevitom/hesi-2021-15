@@ -1,0 +1,302 @@
+\subsection{The specialisation map}
+
+The main idea of the specialisation method 
+is to build a way to transport properties
+between the generic fibre and the special fibre.
+We consider the following situation.
+
+\begin{situation} \label{sit-5-specialise}
+    Let $A$ be a discrete valuation ring,
+    with fraction field $\bbK$ and residue field $\bbk$.
+    Let $\mathscr{X}$ be an $A$-scheme. Suppose that
+    \begin{itemize}
+        \item
+            The special fibre $X^{\mathrm{s}} = \mathscr{X} \times_A \bbk$ is a $\bbk$-variety.
+        \item
+            The generic fibre $X = \mathscr{X} \times_A \bbK$ is a $\bbK$-variety.
+    \end{itemize}
+\end{situation}
+
+After Colliot-Thélène and Pirutka \cite{CTP},
+we introduce the specialisation map on the Chow groups.
+
+\begin{proposition} \label{thm-5-spe-map}
+    In Situation \textup{\ref{sit-5-specialise}}, 
+    there is a \term{specialisation map}
+    \[ \sigma \: \CH_0 (X) \to \CH_0 (X^{\mathrm{s}}), \]
+    which preserves the degree of $0$-cycles.
+\end{proposition}
+
+\begin{proof}
+    By \cite[\S1.8 and \S20.1]{fulton}, there is an exact sequence
+    \[ \CH_1 (X^{\mathrm{s}}) \overset{i_*}{\longrightarrow} \CH_1 (\mathscr{X})
+        \overset{j^*}{\longrightarrow} \CH_0 (X) \to 0, \]
+    where $i, j$ are the obvious inclusions.
+    (The last term is $\CH_0$ instead of $\CH_1$,
+    since $\Spec \bbK$ is a $1$-dimensional point in $\Spec A$.)
+
+    By \cite[\S2.6 and \S20.1]{fulton},
+    there is a Gysin map
+    \[ i^! \: \CH_1 (\mathscr{X}) \to \CH_0 (X^{\mathrm{s}}), \]
+    given by intersection with the divisor $X^{\mathrm{s}}$ of $\mathscr{X}$.
+    By \cite[Proposition~2.6~(c)]{fulton},
+    we have $i^! \circ i_* = 0$.
+    Thus the map $i^!$ factors through the cokernel of $i_*$, giving the desired map.
+\end{proof}
+
+\begin{lemma} \label{lem-5-lifting}
+    In Situation \textup{\ref{sit-5-specialise}}, suppose that $A$ is henselian,
+    and $\mathscr{X}$ is proper and flat over $A$.
+    Let $X^{\mathrm{s}}_{\mathrm{sm}} \subset X^{\mathrm{s}}$ be the open set where $X^{\mathrm{s}}$ is smooth.
+    Then every $0$-cycle of $X^{\mathrm{s}}$ supported in $X^{\mathrm{s}}_{\mathrm{sm}}$ 
+    can be lifted along the specialisation map
+    \[ \sigma \: \CH_0 (X) \to \CH_0 (X^{\mathrm{s}}) \]
+    to a $0$-cycle supported in $X_{\mathrm{sm}}$.
+\end{lemma}
+
+\begin{proof}
+    We follow \cite[\S4]{EKW}.
+    It is enough to lift the closed points of $X^{\mathrm{s}}_{\mathrm{sm}}$.
+    Let $x \in X^{\mathrm{s}}_{\mathrm{sm}}$ be a closed point,
+    and let $a_1, \dotsc, a_n \in \mathscr{O}_{X^{\mathrm{s}},x}$ be a regular sequence generating the maximal ideal.
+    Choose liftings $\bar{a}_1, \dotsc, \bar{a}_n \in \mathscr{O}_{\mathscr{X},x}$.
+    Since $\mathscr{O}_{X^{\mathrm{s}},x} \simeq \mathscr{O}_{\mathscr{X},x} / \pi \mathscr{O}_{\mathscr{X},x}$,
+    where $\pi \in A$ is a uniformiser,
+    it follows that $\pi, \bar{a}_1, \dotsc, \bar{a}_n$ is a regular sequence in 
+    the $(n+1)$-dimensional local ring $\mathscr{O}_{\mathscr{X},x}$.
+    Therefore, the ideal $(\bar{a}_1, \dotsc, \bar{a}_n) \subset \mathscr{O}_{\mathscr{X},x}$
+    defines a $1$-dimensional subset of $\Spec \mathscr{O}_{\mathscr{X},x}$,
+    whose closure in $\mathscr{X}$ is a $1$-dimensional subscheme $Z \subset \mathscr{X}$.
+    Then $Z$ is flat of relative dimension $0$ over $A$,
+    and hence quasi-finite over $A$. By properness, it is finite over $A$.
+    It follows that $Z \simeq \Spec B$ for a finite $A$-algebra $B$.
+    Since $A$ is henselian, $B$ is a product of local rings.
+    Therefore, the irreducible component of $Z$ containing $x$
+    meets $X^{\mathrm{s}}$ at a single point $x$.
+    The corresponding $0$-cycle of $X$ has the desired property.
+\end{proof}
+
+\begin{lemma} \label{lem-5-henselian}
+    In Situation \textup{\ref{sit-5-specialise}}, suppose that
+    \begin{itemize}
+        \item
+            $A$ is henselian, and $\mathscr{X}$ is proper and flat over $A$.
+        \item
+            The generic fibre $X$ has a desingularisation $p \: \widetilde{X} \to X$,
+            such that $\widetilde{X}$ is universally $\CH_0$-trivial.
+    \end{itemize}
+    Then every $0$-cycle of $X^{\mathrm{s}}$ of degree $0$,
+    supported in the open set $X^{\mathrm{s}}_{\mathrm{sm}} \subset X^{\mathrm{s}}$ where $X^{\mathrm{s}}$ is smooth,
+    is zero in $\CH_0 (X^{\mathrm{s}})$.
+\end{lemma}
+
+\begin{proof}
+    Let $U \subset X$ be a dense open set
+    such that $p \: p^{-1} (U) \to U$ is an isomorphism.
+    Let $x$ be a $0$-cycle of $X^{\mathrm{s}}_{\mathrm{sm}}$ of degree $0$.
+    By Lemma~\ref{lem-5-lifting}, $x$ lifts to a $0$-cycle of $X_{\mathrm{sm}}$ of degree $0$.
+    By the moving lemma \ref{lem-2-moving},
+    it is equivalent to a $0$-cycle supported in $U$,
+    which then lifts to a $0$-cycle of $\widetilde{X}$.
+    This $0$-cycle is equivalent to $0$ in $\widetilde{X}$ by hypothesis.
+    Therefore, applying the map
+    \[ \CH_0 (\widetilde{X}) \overset{p_*}{\longrightarrow} \CH_0 (X) 
+        \overset{\sigma}{\longrightarrow} \CH_0 (X^{\mathrm{s}}), \]
+    we see that $x = 0$ in $\CH_0 (X^{\mathrm{s}})$.
+\end{proof}
+
+
+\subsection{Rationality and specialisation}
+
+The main result is that the rationality 
+(or more precisely, universal $\CH_0$-triviality) 
+of the generic fibre 
+can be specialised to the special fibre,
+so that once we show that the special fibre is irrational,
+we know that the generic fibre is also irrational.
+
+First, we make clear what we need
+to obtain universal triviality for a desingularisation.
+
+\begin{lemma} \label{lem-5-crit-triv}
+    Let $f \: \widetilde{X} \to X$ be a desingularisation map between 
+    two projective, geometrically integral $\bbk$-varieties. Suppose that 
+    \begin{itemize}
+        \item
+            $\widetilde{X}$ has a $0$-cycle of degree $1$.
+        \item
+            $f$ is universally $\CH_0$-trivial.
+        \item
+            There exists an open set $U \subset X$, with $\widetilde{U} = f^{-1} (U)$,
+            such that $f \: \widetilde{U} \to U$ is an isomorphism,
+            and for any extension $F/\bbk$,
+            every $0$-cycle of degree $0$ supported in $U_F$
+            is rationally equivalent to zero in $X_F$.
+    \end{itemize}
+    Then $\widetilde{X}$ is universally $\CH_0$-trivial.
+\end{lemma}
+
+\begin{proof}
+    Since the conditions of the lemma is preserved by a base change, 
+    we only need to prove that $\deg_{\bbk} \: \CH_0 (\widetilde{X}) \to \bbZ$
+    is an isomorphism. By the first hypothesis, this map is surjective.
+    Thus, it suffices to show that for every $0$-cycle $x$ of $\widetilde{X}$
+    of degree $0$, $x$ is rationally equivalent to $0$.
+    But by the moving lemma \ref{lem-2-moving},
+    it is equivalent to one supported in $\widetilde{U}$,
+    which induces a cycle in $U$, which is equivalent to $0$ in $X$ by hypothesis.
+    Since $f$ is universally $\CH_0$-trivial,
+    $x$ is equivalent to $0$ in $\widetilde{X}$.
+\end{proof}
+
+Before the main theorem,
+we mention a convenient result in commutative algebra.
+
+\begin{lemma} \label{lem-5-dvr}
+    Let $A$ be a discrete valuation ring with residue field $\bbk$,
+    and let $F/\bbk$ be an extension.
+    Then there exists a complete discrete valuation ring $B$ with residue field $F$,
+    together with a local map $A \to B$ inducing the field map $\bbk \to F$.
+\end{lemma}
+
+See \cite[Chapter~IX, Appendix, \S2, Corollary, and Exercise~4]{bourbaki-commutative}.
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-5-spe-1}
+    In Situation \textup{\ref{sit-5-specialise}}, suppose that
+    \begin{itemize}
+        \item
+            $\mathscr{X}$ is faithfully flat and proper over $A$,
+            with geometrically integral fibres.
+        \item
+            The special fibre $X^{\mathrm{s}}$
+            has a desingularisation $f \: \widetilde{X}^{\mathrm{s}} \to X^{\mathrm{s}}$,
+            such that $f$ is universally $\CH_0$-trivial,
+            and $\widetilde{X}^{\mathrm{s}}$ has a $0$-cycle of degree $1$.
+        \item
+            The generic fibre $X$ 
+            has a desingularisation $\widetilde{X} \to X$.
+    \end{itemize}
+    Then if $\widetilde{X}$ is universally $\CH_0$-trivial, so is $\widetilde{X}^{\mathrm{s}}$.
+\end{theorem}
+
+\begin{proof}
+    The proof is done by putting the previous lemmas together.
+
+    \begin{itemize}
+        \item    
+            By Theorem~\ref{thm-2-decomp}, it suffices to show that
+            $\widetilde{X}^{\mathrm{s}}_{\bbk (X^{\mathrm{s}})}$ is $\CH_0$-trivial,
+            where we notice that $\bbk (\smash{\widetilde{X}^{\mathrm{s}}}) \simeq \bbk (X^{\mathrm{s}})$.
+        \item
+            By Lemma~\ref{lem-5-crit-triv}, it suffices to show that
+            the open set $U = (X^{\mathrm{s}}_{\bbk (X^{\mathrm{s}})})_{\mathrm{sm}} \subset X^{\mathrm{s}}_{\bbk (X^{\mathrm{s}})}$
+            satisfies the third assumption of Lemma~\ref{lem-5-crit-triv}.
+        \item
+            By Lemma~\ref{lem-5-henselian}, it suffices to show that
+            $X^{\mathrm{s}}_{\bbk (X^{\mathrm{s}})}$ can act the rôle of $X^{\mathrm{s}}$ in that lemma.
+        \item
+            By Lemma~\ref{lem-5-dvr}, we take a complete discrete valuation ring $B$,
+            with residue field $\bbk (X^{\mathrm{s}})$, and a local map $A \to B$
+            inducing the map of fields $\bbk \to \bbk (X^{\mathrm{s}})$.
+            Then $B$ is henselian.
+            Doing a base change along the map $A \to B$ for everything will complete the proof.
+            \qedhere
+    \end{itemize}
+\end{proof}
+
+There is a stronger variant of this result,
+which considers the geometrical generic fibre over $\bbKbar$,
+instead of over $\bbK$.
+Before introducing the result, we need a lemma.
+
+\begin{lemma} \label{lem-5-fin-ext}
+    Let $X$ be a smooth, integral, projective $\bbk$-variety.
+    If $X_{\bbkbar}$ is universally $\CH_0$-trivial,
+    then $X_F$ is universally $\CH_0$-trivial for some finite extension $F/\bbk$.
+\end{lemma}
+
+\begin{proof}
+    By Theorem~\ref{thm-2-decomp}, $X_{\bbkbar}$ has a decomposition of the diagonal
+    \[ [\Delta_{X_{\bbkbar}}] = D_{\bbkbar} + [X_{\bbkbar}] \times x_0
+        \quad \text{in } \CH_n (X_{\bbkbar} \times_{\bbkbar} X_{\bbkbar}). \]
+    By Galois descent, there exists a finite extension $F / \bbk$
+    over which everything in the equation is defined, 
+    and we have 
+    \[ \CH_n (X_{\bbkbar} \times_{\bbkbar} X_{\bbkbar}) =
+        \colim_{E/F \text{ finite}} \CH_n (X_E \times_E X_E). \]
+    Therefore, there exists a finite extension $E$ such that 
+    the equation of the decomposition of the diagonal holds over $E$.
+\end{proof}
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-5-spe-2}
+    In Situation \textup{\ref{sit-5-specialise}}, suppose that
+    \begin{itemize}
+        \item
+            The residue field $\bbk$ is algebraically closed.
+        \item
+            $\mathscr{X}$ is faithfully flat and proper over $A$,
+            with geometrically integral fibres.
+        \item
+            The special fibre $X^{\mathrm{s}}$ 
+            has a desingularisation $f \: \widetilde{X}^{\mathrm{s}} \to X^{\mathrm{s}}$,
+            such that $f$ is universally $\CH_0$-trivial.
+        \item
+            The geometrical generic fibre $\Xbar = \mathscr{X} \times_A \bbKbar$
+            is a $\bbKbar$-variety,
+            with a desingularisation $\widetilde{X} \to \Xbar$.
+    \end{itemize}
+    Then if $\widetilde{X}$ is universally $\CH_0$-trivial, so is $\widetilde{X}^{\mathrm{s}}$.
+\end{theorem}
+
+\begin{proof}
+    Our plan is to find a suitable base change in order to apply Theorem~\ref{thm-5-spe-1}.
+
+    First, we replace $A$ by its completion.
+
+    Let $F$ be a finite extension of $\bbK$, on which $\widetilde{X}$ is defined.
+    In other words, there exists a smooth variety $Y$ over $F$,
+    such that $Y_{\bbKbar} \simeq \widetilde{X}$,
+    and there is a desingularisation map $Y \to X_F$, 
+    which coincides with the map $\widetilde{X} \to \Xbar$ over $\bbKbar$.
+
+    By Lemma~\ref{lem-5-fin-ext}, we may replace $F$ by a finite extension of it,
+    so we may assume that $Y$ is universally $\CH_0$-trivial.
+
+    Let $B$ be the integral closure of $A$ in $F$.
+    By \cite[Proposition~I.3]{serre-local},
+    $B$ is also a discrete valuation ring.
+    Since $\bbk$ is algebraically closed, the residue field of $B$ is also $\bbk$.
+    We can thus do a base change along the map $A \to B$, 
+    and apply Theorem~\ref{thm-5-spe-1} to complete the proof.
+\end{proof}
+
+There is an even stronger variant of this result,
+where instead of $\bbKbar$, we consider any field containing $\bbKbar$.
+
+\begin{lemma} \label{lem-5-fin-ext-rational}
+    Let $X$ be a projective $\bbk$-variety.
+    If $X_F$ is retract rational for some extension $F/\bbk$,
+    then the same is true for a certain finite extension $F/\bbk$.
+\end{lemma}
+
+\begin{proof}
+    In the definition of the retract rationality of $X_F$, 
+    everything is defined over a finitely generated extension of $\bbk$.
+    Thus we may assume $F/\bbk$ is finitely generated.
+
+    For the same reason, the lemma is true when $F$ is the algebraic closure of~$\bbk$.
+    Therefore, we may assume that $\bbk$ is algebraically closed.
+
+    In this case, there exists a $\bbk$-variety $Y$ such that $F$ is isomorphic to $\bbk (Y)$,
+    and there exist non-empty open sets $U \subset X \times_{\bbk} Y$ and $V \subset \bbP_Y^n$,
+    such that $U$ is a retract of $V$ as a $Y$-scheme.
+    There exists a closed point $y \in Y$ such that the fibres $U_y$ and $V_y$ are non-empty.
+    This proves the lemma.
+\end{proof}
+
+\begin{theorem} [Colliot-Thélène and Pirutka] \label{thm-5-spe-3}
+    Assume that the four assumptions of Theorem~\textup{\ref{thm-5-spe-2}} are satisfied.
+    Then, if $\widetilde{X}_F$ is retract rational for a field $F$ containing $\bbKbar$,
+    then $\widetilde{X}^{\mathrm{s}}$ is universally $\CH_0$-trivial. \qed
+\end{theorem}
+

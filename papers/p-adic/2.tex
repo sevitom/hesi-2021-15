@@ -1,0 +1,946 @@
+\subsection{Divided powers and crystalline topoi}
+A few basic facts about divided power rings are enumerated here for further applications. 
+For details, see \cite{Sta}, \cite{BO}, \cite{Be2}.
+\begin{definition}
+    A divided power ring is a triple $(A, I, \gamma)$, 
+    where $A$ is a ring, $I$ an ideal of $A$ and $\gamma_n, n \in \BN$ 
+    a collection of maps $I \to A$ 
+    such that those desired properties of ``$\frac {x^n} {n!}$'' hold 
+    ( $x, y \in I,a \in A$ in the following):
+    \begin{itemize} 
+        \item 
+            $\gamma_0(I) = 1,\quad \gamma_1(x) = x, 
+            \quad \gamma_n(I) \subset I,\forall n > 0$.
+        \item 
+            $\gamma_n(x) \gamma_m(x) = 
+            \frac {(n+m)!} {n!m!} \gamma_{n+m}(x)$.
+        \item 
+            $\gamma_n(x+y) = 
+            \sum_{i = 0}^n \gamma_i (x) \gamma_{n-i}(y)$.
+        \item 
+            $\gamma_n(ax) = a^n \gamma(x)$.
+        \item 
+            $\gamma_n(\gamma_m(x)) = 
+            \frac{(nm)!} {n!(m!)^n} \gamma_{nm}(x)$.
+    \end{itemize}
+    A morphism between two divided power rings, 
+    $(A, I, \gamma)$, $(B, J, \delta)$, 
+    is a ring homomorphism $f\colon (A,I) \to (B,J)$ such that 
+    $f \circ \gamma_n = \delta_n \circ f$. 
+    Let $(A, I, \gamma)$ be a divided power ring, 
+    a divided power algebra over $A$ is a divided power ring $(B, J, \delta)$ with 
+    a morphism $(A, I, \gamma)\to (B, J, \delta)$.
+\end{definition}
+
+All divided power rings form a category with initial object $(\BZ, 0, 0)$.
+\begin{definition}
+    Let $(A, I, \gamma)$ be a divided power ring, 
+    $B$ a ring and $J$ an ideal of $B$. 
+    The divided power envelope of $B$, $(D_{B, \gamma}(J), \bar{J}, \gamma)$ 
+    is defined by the representable functor:
+    \[
+        (C, K, \delta) \mapsto Hom_A ((B, J), (C, K)).
+    \]
+    in the category of divided power algebras over $A$.
+\end{definition}
+
+\begin{example}
+    Let $(A, I, \gamma) = (\BZ, 0, 0)$, $(B, J)=(\BZ[x], (x))$. 
+    Then
+    \[
+        D_{B, \gamma}(J) = \BZ \langle x \rangle = 
+        \{\sum_{\text{finite}} a_n \frac{x^n}{n!}, a_n \in \mathbb{Z}\}.
+    \]
+\end{example}
+
+\begin{proposition}
+    If $(A, I, \gamma)$ is a divided power ring with $m A = 0$, 
+    then $J$ is nilpotent for any divided power algebra 
+    $(B, J, \delta)$ over $(A, I, \gamma)$.
+\end{proposition}
+
+\begin{proof}
+    $x^m = m! \gamma_m(x) = 0$.
+\end{proof}
+
+\begin{definition}
+    Let $(A, I, \gamma),(B, J, \delta)$ be divided power rings, 
+    $A \to B$ a ring morphism. 
+    $\delta$ is called compatible with $\gamma$ 
+    if $\delta$ extends to a divided power structure on $\bar{\delta}$ on $J + IB$ 
+    such that $(A, I, \delta)\to (B, J, \gamma)$ 
+    is a morphism between divided power rings. 
+    In particular, if $(B, J, \delta)=(B, 0, 0)$, 
+    we say that the divided power structure of $A$ extends to $B$.
+\end{definition}
+In particular, if $B$ is an $A / I$-algebra, 
+the divided power structure of $A$ extends to $B$.
+\begin{definition}
+    A PD-derivation $d \colon B \to M$, 
+    where $B$ is a divided power ring $(B, J, \delta)$ over a ring $A$, 
+    is a usual derivation with $d \gamma_n(x) = \gamma_{n-1}(x) dx$. 
+    Then there is a universal module $\tilde{\Omega}_{B/A}^1$ 
+    and the PD-de Rham complex $\tilde{\Omega}_{B/A}^\cdot$ as before. 
+    We shall denote it simply by $\Omega_{B/A}^\cdot$, 
+    which will not lead confusion.
+\end{definition}
+The crystalline cohomology is defined via the crystalline sites and topoi. 
+In the above discussion, 
+we may replace "rings" by "ringed topoi" 
+to define similar notions for divided power schemes. 
+For example:
+\begin{definition}
+    A divided power scheme is a triple $(S, \CI, \gamma)$ 
+    with $\CI$ a quasi-coherent ideal of $\CO_S$ 
+    and $\gamma$ compatible divided power structures on each open set.
+\end{definition}
+
+Other notions, such as divided power envelopes, extensions, 
+divided power de Rham complexes can be similarly defined.
+\begin{definition}
+    An arrow $U \to T$ is a divided power thickening in which 
+    $T$ is a divided power scheme with ideal $\CJ$ and 
+    $U$ the closed subscheme defined by $\CJ$ and 
+    $\CJ$ is nilpotent (This is always the case if $m \CO_S=0$ for some $m$.)
+\end{definition}
+
+Like \'etale cohomology, crystalline cohomology works well 
+only in "finite" case (or "profinite" case). 
+That is, we will assume $m \CO_S=0$ for some integer $m$ without mentioned.
+\begin{definition}
+    Let $(S, \CI, \gamma)$ be a divided power scheme, 
+    $S_0 = S / \CI$ and $X$ an $S_0$-scheme such that 
+    the divided power structure extends. 
+    The big crystalline site $CRIS(X/S)$ contains objects defined by the diagram:
+    \[
+        \begin{tikzcd}
+            U \ar[r] \ar[d] & T \ar[d] \\
+            X \ar[r] & S,
+        \end{tikzcd}
+    \]
+    with $U \to T$ a divided power thickening and 
+    the divided power structures of $T$ and $S$ are compatible and 
+    morphisms defined by 
+    morphisms of divided power thickenings with compatibility conditions. 
+    A collection of morphisms $\{(U_i \to T_i) \to (U \to T)\}$ is a covering 
+    if $\{T_i\}$ forms a open covering of $T$ and for each $i$, 
+    the commutative diagram below is cartesian.
+    \[
+        \begin{tikzcd}
+            U_1 \ar[r] \ar[d] & T_1 \ar[d] \\
+            U_2 \ar[r] & T_2.
+        \end{tikzcd}
+    \]
+The small crystalline site $Cris(X/S)$ contains those $U \to T$ 
+such that $U$ is an open subscheme of $X$ 
+with morphisms and coverings defined the same.
+\end{definition}
+
+It can be checked that $CRIS(X/S)$ and $Cris(X/S)$ are actually sites. 
+Then the big crystalline topos $(X/S)_{CRIS}$ is the topos 
+corresponding to the big crystalline site 
+and similarly for the small crystalline topos $(X/S)_{Cris}$.
+From the definition, one notices that 
+a sheaf on the crystalline site is a compatible collection of Zariski sheaves.
+
+The inclusion of sites $Cris(X/S) \to CRIS(X/S)$ is continuous and cocontinuous. 
+Hence we may define functors $i_*, i_! \colon Cris(X/S) \to CRIS(X/S)$ 
+and $i^{-1} \colon CRIS(X/S) \to Cris(X/S)$ respectively. 
+Moreover, for a morphism $f\colon X/S \to Y/S'$, 
+the natural map $CRIS(X/S)\to CRIS(Y/S')$ defines $f^{-1}, f_*$ respectively.
+
+Then we are able to define the push forward 
+and pull back of crystalline topoi. 
+For a morphism $f \colon X/S \to Y/S'$, we have arrows:
+\[
+    \begin{tikzcd}
+        (X/S)_{Cris} \ar[r, "{i_*}", bend left] & 
+        (X/S)_{CRIS} \ar[l,"{i^{-1}}", bend left] \ar[r, "{f_*}", bend left] & 
+        (Y/S')_{CRIS} \ar[l, "{f^{-1}}", bend left] \ar[r, "{i^{-1}}", bend left] & 
+        (Y/S')_{Cris} \ar[l, "{i_!}", bend left].
+    \end{tikzcd}
+\]
+Then $i^{-1} \circ f_* \circ i_*$ and $i^{-1} \circ f^{-1} \circ i_!$ 
+are morphisms of topoi $(X/S)_{Cris}$ and $(Y/S)_{Cris}$, 
+also denoted by $f_*$ and $f^{-1}$. 
+From now on, we will consider the small crystalline site only.
+
+The structure sheaf $\CO_{X/S}$ associates 
+each divided power thickening $U \to T$ with the ring $\CO(T)$. 
+For morphism $X/S \to Y/S'$, 
+there exists a canonical morphism $\CO_{Y/S'} \to \CO_{X/S}$. 
+Then we may define module push forward and pull back, 
+denoted $f_*$ and $f^*$ respectively. 
+
+The crystalline site and Zariski sites are linked. 
+There is a morphism of sites 
+\[
+    u_{X/S} \colon Cris(X/S) \to X_{Zar}, \quad (U \to T) \mapsto U.
+\]
+Moreover, for an object $U \to T$ in the crystalline site, 
+those objects lying over it form a subsite, 
+which is equivalent to the Zariski site of $T$. 
+For a sheaf $\CF \in (X/S)_{cris}$, 
+the corresponding Zariski sheaf is denoted by $\CF_T$.
+
+As in the Zariski case, 
+quasi-coherent modules are the mainly objects for study. 
+Those are, ``crystals" for some intuitive reasons.
+\begin{definition}
+    A crystal on $Cris(X/S)$ is a sheaf of $\CO_{X/S}$-modules 
+    such that for any morphism $u\colon T' \to T$, 
+    the map induced by $u$, $u^*\CF_T \to \CF_{T'}$ is an isomorphism 
+    and for each $T$, $\CF_T$ is a quasi-coherent $\CO_T$ module. 
+\end{definition}
+
+From definitions, 
+a crystal is indeed a quasi-coherent sheaf of $\CO_{X/S}$-modules.
+\begin{example}
+    The sheaf $\CO_X$ defined by $\CO_X(U \to T) = \CO(U)$ is a crystal. 
+    There is a canonical morphism: $\CO_{X/S} \to \CO_X$, which is surjective.
+\end{example}
+
+\begin{remark}
+    In the definition of the crystalline site, 
+    we require $U$ to become an Zariski open set in the object $U \to T$. 
+    We can substitute the condition by requiring 
+    $U \to X$ to be an \'etale map and all the theory still preserved. 
+\end{remark}
+
+\subsection{Calculus with divided powers}
+Firstly we recall the characteristic $0$ case. 
+Here $X$ is a smooth scheme over a field of characteristic $0$, $K$. 
+Those abelian categories are equivalent:
+\begin{itemize}
+    \item 
+        Crystals on $Cris(X/K)$,
+    \item 
+        Integrable connections of quasi-coherent sheaves on $X$,
+    \item 
+        Stratifications of quasi-coherent modules on $X$,
+    \item 
+        Quasi-coherent $\CD$ -modules.
+\end{itemize}
+Now we return to the usual case, that is $m \CO_S = 0$. 
+Similar results hold. We shall follow \cite{Sta},
+
+Let $i \colon X \to Y$ be an immersion over $S$ 
+with the ideal of definition $\CJ$ and $Y/S$ smooth. 
+Let $D_{X,\gamma}(Y)$ be the spectrum of 
+the quasi-coherent algebra $D_{\CO_Y,\gamma}(\CJ)$. 
+Then $\Hom(-,D_{X,\gamma}(Y)) \simeq i^*\Hom(-,Y)$ by definition. 
+$D_{X,\gamma}(Y^{n+1})$ is denoted by $D(n)$. 
+
+\begin{theorem}
+    The following categories are equivalent:
+    \begin{itemize}
+        \item 
+            Crystals on $Cris(X/S)$,
+        \item 
+            $D_{X,\gamma}(Y)$-modules with HPD-stratification as $\CO_Y$-modules,
+        \item 
+            $D_{X,\gamma}(Y)$-modules with integrable, 
+            quasi-nilpotent connection as $\CO_Y$ -modules,
+        \item 
+            $D_{X,\gamma}(Y)$-modules $\CE$ 
+            which are also  ``divided power" $\CD$-modules.
+    \end{itemize}
+    We shall mention the first and the third categories in the article only. 
+    ``Quasi-nilpotent" means that 
+    the ``taking derivative" action is locally nilpotent.
+\end{theorem}
+
+\begin{proof}
+    There is an exact sequence:
+    \[
+        0 \to \Omega_{Y/S} \to \CO_{D(1)} \to \CO_{D(0)} \to 0.
+    \]
+    The sequence is split by two sections $p_1^*, p_2^*$, 
+    where $p_1, p_2 \colon Y \times Y \to Y$. 
+    $D(0)$ and $D(1)$ are objects in the crystalline site. 
+    Then for a crystal $\CE$, we have an exact sequence:
+    \[
+        0\to \CE_{D(0)} \otimes \Omega_{Y/S} 
+        \to \CE_{D(1)} \to \CE_{D(0)} \to 0.
+    \]
+    The two projections $p_1, p_2$ induce 
+    $p_1^*, p_2^* \colon \CE_{D(0)} \to \CE_{D(1)}$. 
+    $p_1^* - p_2^*$ gives such a connection. 
+    One checks that the compatibility condition for a crystal 
+    translates to the integrability condition. 
+    
+    Conversely, given a module with integrable connection, $\CE$,
+    by smoothness, for any object $U \to T$ in the crystalline site, 
+    locally there is a map $T \to Y$ lifting the immersion $U \to Y$. 
+    Then locally there is a map $T \to D(0)$ 
+    by universal property of divided power envelopes. 
+    One defines $\CE_T$ by pulling $\CE$ back via the map above. 
+    From the connection and the integrability, 
+    one checks that those $\CE_T$ can form a crystal.
+\end{proof}
+
+We prove the fundamental comparison theorem in the section 
+and derive some corollaries. 
+We shall use the notations in the above sections.
+\begin{lemma}[Poincar\'e lemma]
+    \label{Poincare}
+    Let $(A, I, \gamma)$ be a divided power ring and 
+    $P = A \langle t_1, \cdots, t_n \rangle$ 
+    with the natural divided power structure, 
+    then there is an exact sequence:
+    \[
+        0 \to P \to \Omega_{P/A}^1 \to \cdots \Omega_{P/A}^n \to 0.
+    \]
+\end{lemma}
+
+\begin{proof}
+    One checks it directly by noticing
+    \[
+        \Omega_{P/A}^1 \simeq \bigoplus_{i = 1}^n Pdt_i.
+        \qedhere
+    \]
+\end{proof}
+
+\begin{lemma}
+    \label{comparison}
+    Suppose there is a commutative diagram 
+    \[
+        \begin{tikzcd}
+            & Y'\ar[d,"p"] \\
+            X \ar[r] \ar[ur] \ar[dr] & Y \ar[d] \\
+            & S,
+        \end{tikzcd}
+    \]
+    with $X, Y, S$ as above and $Y' = \BA^n_Y$. 
+    For a crystal $\CE \in (X/S)_{cris}$, 
+    there is a quasi-isomorphism of complexes:
+    \[
+        Rp_*(\CE_{D_X(Y')} \otimes \Omega_{Y'/S}^\cdot) 
+        \simeq \CE_{D_X(Y)} \otimes \Omega_{Y/S}^\cdot.
+    \] 
+\end{lemma}
+\begin{proof}
+    We have an exact sequence
+    \[
+        0 \to \Omega_{Y'/Y} \to 
+        \Omega_{Y'/S} \to p^*\Omega_{Y/S} \to 0.
+    \] 
+    We have the Gauss--Manin filtration of $\Omega_{Y'/S}$, 
+    given by 
+    \[
+        Fil^k\Omega_{Y'/S}^j = 
+        \im(\Omega_{Y'/Y}^k \otimes \Omega_{Y'/S}^{j-k} \to \Omega_{Y'/S}^j)
+    \]
+    with filtrants 
+    \[
+        gr^k \Omega_{Y'/S}^j \simeq 
+        \Omega_{Y'/Y}^k \otimes p^* \Omega_{Y/S}^{j-k}.
+    \] 
+    It suffices to check for each filtrants.
+
+    Moreover,
+    \[
+        \CE_{D_X(Y')} \simeq 
+        \CE_{D_X(Y)} \otimes_{\CO_{D_X(Y)}} \CO_{D_X(Y')}
+    \]
+    by the crystal condition. 
+    The result then follows from the Poincar\'e lemma \ref{Poincare}.
+\end{proof}
+
+\begin{lemma}
+    \label{Cech}
+    For $i \colon X\to Y$ a closed immersion with $Y/S$ smooth, 
+    $\CE$ a quasi-coherent $D_{X,\gamma}(Y)$-module with a connection. 
+    $Ru_{X/S*}\CE$ is represented by the cosimplicial module 
+    (or a complex by Dold--Kan correspondence)
+    \[
+        \CE_{D(0)} \to \CE_{D(1)} \to \CE_{D(2)} \to \cdots.
+    \]
+\end{lemma}
+
+\begin{proof}
+    $u_{X/S}$ is acyclic (indeed, an isomorphism) 
+    on the subsite of objects over $D(0)$. 
+    Moreover, $D(0)$ covers the ``final object" $*$ 
+    by the lifting property of smooth maps.
+    One applies the \v Cech resolution for $D(0) \to *$ to conclude 
+    by noticing $D(n) = D(0)^{n+1}$ in the category $Cris(X/S)$. 
+\end{proof}
+
+\begin{lemma}
+    For $A_\cdot$ a cosimplicial ring, 
+    the cosimplicial module $M_\cdot$ defined by
+    \[
+        M_n = \bigoplus_{i = 1}^n A_n e_i
+    \]
+    with obvious arrows is contractible.
+\end{lemma}
+
+\begin{proof}
+    The homotopy
+    \[
+        h \colon M_\cdot \to \Hom(\Delta[1], M_\cdot)
+    \]
+    is given by 
+    \[
+        h_n (e_i) (\alpha_j^n) = \left\{
+            \begin{array}{rr}
+                e_i & i<j \\
+                0   & i \geq j,
+            \end{array}
+        \right.
+    \]
+    where $\alpha_j^n$ is the element in $\Delta[1]_n$ given by 
+    \[
+        \alpha_j^n \colon \{0,1,\cdots,n\} \to \{0,1\}, 
+        \quad \alpha_j^n(i) = \left\{
+            \begin{array}{rr}
+                0 & i<j, \\
+                1 & i \geq j.
+            \end{array}
+        \right.
+    \]
+\end{proof}
+
+\begin{lemma}
+    \label{Poincare ii}
+    Notations as above. 
+    When $Y = \BA^n_S$, the cosimplicial module 
+    \[
+        \Omega_{D(0)/S}^1 \to \Omega_{D(1)/S}^1 
+        \to \Omega_{D(2)/S}^1 \to \cdots
+    \]
+    is contractible.
+\end{lemma}
+
+\begin{proof}
+    One has
+    \[
+        \Omega_{D(0)/S}^1 \simeq 
+        \bigoplus_{i=1}^d \CO_{D(0)} dt_d.
+    \]
+    One applies $d$ -fold of the $h$ above to conclude.
+\end{proof}
+
+\begin{theorem}
+    Situations as above. 
+    $\CE$ corresponds to a crystal on $(X/S)_{Cris}$, 
+    also denoted by $\CE$. 
+    Then there is a canonical isomorphism:
+    \[
+        Ru_{X/S*} \CE \simeq \CE \otimes_Y \Omega_{Y/S}^\cdot 
+        \simeq \CE \otimes_D \Omega_{D/S}^\cdot.
+    \]
+    In particular,
+    \[
+        R \Gamma ((X/S)_{Cris},\CE) \simeq 
+        R \Gamma (X_{Zar}, \CE \otimes \Omega_{Y/S}^\cdot). 
+    \]
+\end{theorem}
+
+\begin{proof}
+    There is a commutative diagram:
+    \[
+        \begin{tikzcd}
+            \CE_{D(0)} \ar[r]\ar[d] & 
+            \CE_{D(0)} \otimes \Omega_{D(0)/S}^1 \ar[r] \ar[d] & \cdots \\
+            \CE_{D(1)} \ar[r] \ar[d] & 
+            \CE_{D(1)} \otimes \Omega_{D(1)/S}^1 \ar[r] \ar[d] & \cdots \\ 
+            \vdots & \vdots,
+        \end{tikzcd}
+    \]
+    where the rows are de Rham complexes 
+    and the horizontal arrows are given by 
+    $p_1^* - p_2^* + \cdots + (-1)^n p_{n + 1}^*$.
+
+    The problem is \'etale local. 
+    Thus we may assume that $Y = \BA^n_S$. 
+    The left vertical arrow of the diagram represents the 
+    $Ru_{X/S*} \CE$ by \ref{Cech}. 
+    Other vertical arrows have zero cohomology for they are contractible. 
+    One applies the spectral sequence to conclude 
+    the cohomology of the total complex 
+    is the cohomology of $Ru_{X/S*} \CE$.
+
+    We apply the spectral sequence to the other direction. 
+    Applying \ref{comparison} for $p_i \colon Y^{n+1} \to Y^n$, 
+    one deduces that the $E_1$ package of the spectral sequence becomes
+    \[
+        \begin{tikzcd}
+            \CH^0 \ar[r] \ar[d, "0"] & 
+            \CH^1 \ar[r] \ar[d, "0"] & \cdots \\
+            \CH^0 \ar[r] \ar[d, "\sim" sloped] & 
+            \CH^1 \ar[r] \ar[d, "\sim" sloped] & \cdots \\ 
+            \vdots & \vdots.
+        \end{tikzcd}
+    \]
+    Here $\CH^i$ means the cohomology of the first row. 
+    Thus, all arrows except the first row are cancelled 
+    in the $E_2$ package of the spectral sequence. 
+    Thus the cohomology of the total complex is 
+    the cohomology of the first arrow in the original commutative diagram, 
+    i.e., the de Rham complex. 
+    The theorem thus follows by comparing the spectral sequence of two directions.
+\end{proof}
+
+\subsection{Verification of the desired properties}
+The theorem above provides a way to express the crystalline cohomology 
+explicitly by de Rham cohomology. 
+We shall use this to prove those results 
+that a good cohomology theory should satisfy. 
+The main reference here is \cite{BO} and \cite{Be2}.
+
+\begin{theorem}[Vanishing theorem]
+    Let $f \colon X \to S$ be quasi-compact 
+    and quasi-separated and $X/S_0$ smooth. 
+    Denote $f_{X/S} = f \circ u_{X/S}$. 
+    Then there exists an integer $r$ such that 
+    $R^i f_{X/S*} \CE$ vanishes for any $i>r$ and any crystal $\CE$.
+\end{theorem}
+
+\begin{proof}
+    Using the \v Cech-to-derived spectral sequence, 
+    we reduce to the local case. 
+    That is, $X$ admits a lifting $Y$, such that $Y/S$ smooth. 
+    Then there is an isomorphism:
+    \[
+        Rf_{X/S*} \CE \simeq Rf_* (\CE \otimes_Y \Omega_{Y/S}^\cdot).
+    \]
+    The result follows from the vanishing result of 
+    cohomology of (Zariski) quasi-coherent sheaves.
+\end{proof}
+\begin{theorem}[Base change thoerem]
+    Suppose there is a base change diagram for 
+    $f \colon X \to S$ and $f' \colon X' \to S'$,
+    \[
+        \begin{tikzcd}
+            X' \ar[r,"{u'}"] \ar[d] & X \ar[d] \\
+            S_0' \ar[r] \ar[d] & S_0 \ar[d] \\
+            S' \ar[r,"u"] & S.
+        \end{tikzcd}
+    \]
+    Then there is an isomorphism:
+    \[
+        Lu^* Rf_{X/S*} \CE \simeq Rf'_{X'/S'*} Lu'^*\CE,
+    \]
+    for any flat crystal $\CE$ on $(X/S)_{Cris}$.
+\end{theorem}
+
+\begin{proof}
+    For the case that there is a smooth lifting $Y/S$ of $X$, 
+    it follows from the base change theorem for Zariski sheaves. 
+    The general case follows from cohomological descent.
+\end{proof}
+
+\begin{theorem}[Finiteness theorem]
+    Let $X/S_0$ be proper and smooth and $S$ be noetherian. 
+    Then for any coherent crystal $\CF$ flat over $\CO_{X/S}$, 
+    the complex $Rf_{X/S*}\CF$ is quasi-isomorphic to a perfect complex, 
+    i.e. a complex whose terms are locally free sheaves of finite rank 
+    and the number of non-zero terms of which is finite.
+\end{theorem}
+
+\begin{proof}
+    By \v Cech resolution and the computation in the local case 
+    $Rf_{X/S*} \CF$ has finite tor-dimension. 
+    Hence it suffices prove that $Rf_{X/S*} \CF$ has coherent cohomology. 
+    For $S$ is noetherian, $\CI^n = 0$ for sufficiently large $n$. 
+    By d\'evissage arguments, 
+    it suffices to prove for coherent $\CO_{X/S_0}$-modules. 
+    Then 
+    \[
+        Rf_{X/S*} \CF \simeq Rf_{X/S_0*} \CF 
+        \simeq Rf_* \CF \otimes_X \Omega_{X/S}^\cdot.
+    \]
+    Then the result follows from the finiteness result 
+    of cohomology of coherent sheaves in Zariski topology.
+\end{proof}
+
+We may then define the "completed" version. 
+That is, $S$ is a $p$ -adically complete formal scheme with 
+$\CI = (p)$, $S_n = S / \CI^n$. 
+The completed crystalline site $Cris(X/\hat{S})$ is 
+the combination of all $Cris(X/S_n)$ and crystals similarly defined. 
+One defines the completed crystalline topos then.
+\begin{proposition}
+    For a crystal $\CE$ on $(X/S)_{Cris}$ 
+    with restriction $\CE_n$ on $(X/S_n)_{Cris}$, 
+    there is an isomorphism:
+    \[
+        Ru_{X/S*} \CE = R \lim_n Ru_{X/S_n*} \CE_n.
+    \]
+\end{proposition}
+
+The proof is given in \cite{BO}.
+Then completions of the comparison results hold.
+For example,
+\[
+    Ru_{X/S*} \CE \simeq \CE \otimes \Omega_{\hat{D}/S}^\cdot,
+\]
+where $\hat{D}$ is the $p$-adic completion of $D_X(Y)$ 
+and the latter $\CE$ is a $\hat{D}$ -module.
+In particular, there is an isomorphism:
+\[
+    R \Gamma((X/S)_{Cris},\CE) \simeq
+    R \Gamma(X_{Zar}, \hat{\CE} \otimes \Omega_{\hat{D}/S}^\cdot).
+\]
+Then the vanishing theorem, the base change theorem and the finiteness theorem 
+also hold in the completed case for coherent crystals, 
+since $R \lim$ works well then.
+
+If moreover $X/S_0$ is proper, $\CE$ is coherent 
+and $X$ lifts to $Y$, then $Y$ is also proper. 
+By Grothendieck's existence theorem, 
+there exists a coherent $\CO_Y$-module, 
+also denoted by $\CE$ such that 
+\[
+    R\Gamma((X/S)_{Cris},\CE) \simeq 
+    R\Gamma(X_{Zar},\CE\otimes \Omega_{Y/S}^\cdot).
+\]
+In particular,
+\[
+    R\Gamma((X/S)_{Cris}, \CO_{X/S}) \simeq 
+    R \Gamma (X_{Zar}, \Omega_{Y/S}^\cdot).
+\]
+We will denote the left hand side by $\HSd$. 
+We restrict to the case $S = \Spec W(k)$ and 
+$S_0 = \Spec k$ for some perfect field $k$ of characteristic $p$, 
+which is the crystalline cohomology for characteristic $p$ varieties.
+
+We firstly discuss the case that $X/k$ is proper and $X$ admits a lifting. 
+Then there exists a cartesian diagram 
+(if there exists an embedding $W(k) \to \BC$, which is the case for $k$ finite):
+\[
+    \begin{tikzcd}
+        X \ar[r] \ar[d] & \CX \ar[d] & X^{an} \ar[l] \ar[d] \\
+        \Spec k \ar[r] & \Spec W(k) & \Spec \BC \ar[l],
+    \end{tikzcd}
+\]
+with $\CX$ a proper smooth scheme over $W(k)$. 
+Then we have the following comparison theorem 
+between crystalline cohomology and Betti cohomology.
+\begin{theorem}
+    There is a canonical isomorphism 
+    \[
+        \Hkn \otimes \BC \simeq H^n(X^{an}, \BC),
+    \]
+    where the right hand side is the Betti cohomology.
+\end{theorem}
+
+\begin{proof}
+    There exists an canonical isomorphism:
+    \[ 
+        \Hkn \simeq \BH^n (\Omega_{\CX/W(k)}^\cdot).
+    \]
+    There exists a spectral sequence 
+    \[
+        E_1^{pq} = \BH^q(\Omega_{\CX/W(k)}^p) 
+        \Rightarrow \BH^{p+q} (\Omega_{\CX/W(k)}^\cdot).
+    \]
+    All the modules in the left hand side is locally free. 
+    After tensoring $\BC$, it becomes the spectral sequence
+    \[
+        E_1^{pq} = \BH^q(\Omega_{X^{an}/\BC}^p) 
+        \Rightarrow \BH^{p+q} (\Omega_{X^{an}/\BC}^\cdot).
+    \]
+    By (complex) Hodge theory, the spectral sequence degenerates 
+    and the right hand side is isomorphic to $H^{p+q} (X^{an},\BC)$. 
+    Hence the original spectral sequence degenerates and the result follows.
+\end{proof}
+For example, $\BP^n$, and hypersurfaces in $\BP^n$ admits a lifting. 
+Moreover, by obstruction theory, such a lifting exists if and only if 
+the obstruction class $\xi \in H^2(X, \CT_X)$ vanishes. 
+In particular, this is the case when $X$ is a curve. 
+
+\begin{theorem}[K\"unneth formula]
+    For a crystal $\CE_1$ on $X_1$ and a crystal $\CE_2$ on $X_2$, 
+    $\CE_1 \boxtimes \CE_2$ defines a crystal on $X_1\times X_2$ and 
+    \[
+        R \Gamma ((X_1\times X_2/S)_{cris}, \CE_1 \boxtimes \CE_2) \simeq 
+        R \Gamma((X_1/S)_{cris}, \CE_1) \otimes^{L} R \Gamma ((X_2/S)_{cris}, \CE_2).
+    \]
+\end{theorem}
+\begin{proof}
+    The map is natural and we may check it locally. 
+    Then there are closed immersions $X_1\to Y_1$ 
+    and $X_2\to Y_2$ with $Y_1,Y_2/S$ smooth. 
+    The result follows from the fact that 
+    the tensor product of the de Rham complex of $\CE_1$ and $\CE_2$ 
+    is isomorphic to the de Rham complex of $\CE_1\boxtimes \CE_2$.
+\end{proof}
+\begin{theorem}[Poincar\'e duality]
+    For $X/k$ proper smooth of dimension $d$, 
+    there is a trace map $\tr\colon H^{2d}_{cris}(X)\simeq W(k)$, 
+    such that for all coherent crystal $\CE$ over $X/W(k)$, the pairing
+    \[
+        R\Gamma((X/W(k))_{cris}, \CE) \times 
+        R \Gamma((X/W(k))_{cris}, \CE^\vee) \to W(k)[2d]
+    \]
+    is perfect.
+\end{theorem}
+\begin{proof}
+    We define the trace map firstly. 
+    Locally, $X$ lifts to a smooth scheme $\tilde{X}$ over $W(k)$ 
+    with $p$-adic completion by $\CX$ (though it is no longer compact)
+    . Take a compactification of $\tilde{X}$, $\bar{X}$. 
+    $\bar{X} \to \Spec W(k)$ has a dualizing complex $\omega$. 
+    Then
+    \[
+        \omega|_{\tilde{X}} \simeq \Omega_{\tilde{X}/W(k)}^d.
+    \]
+    The trace map is defined as (by the usual procedure, 
+    one checks the map is independent of $\bar{X}$)
+    \[
+        H^{2d}_{cris}(X) \simeq 
+        H^d(\CX,\Omega_{\CX}^d) \to H^d(\bar{X},\omega) \simeq W(k).
+    \]
+    By derived Nakayama lemma and the finiteness theorem, 
+    it suffices to prove after tensoring $k$. By base change theorem, 
+    it suffices to prove similar results on $(X/k)_{cris}$. 
+    Then the derived global sections is represented by de Rham complexes 
+    and the result follows from the Serre duality.
+\end{proof}
+
+\begin{remark}
+    The cycle class map can be defined: 
+    defining it locally by de Rham cohomology 
+    and then applying cohomological descent.
+\end{remark}
+
+\begin{remark}
+    Crystalline cohomology does not work well for non-proper or non-smooth schemes. 
+    See \ref{counter ex} and tag 07LI in \cite{Sta}.
+\end{remark}
+
+\begin{remark}
+    For varieties with normal crossing singularities and 
+    becoming an open set in a proper variety 
+    with complement a normal crossing divisor, 
+    there is a canonical log structure on it. 
+    One defines their log-crystalline sites 
+    (similar to the crystalline site, but requiring all objects having a log structure) 
+    and the corresponding cohomology, called the log crystalline cohomology. 
+    
+    The log crystalline cohomology has similar comparison results to de Rham cohomology 
+    and one can apply this to show that it is a good cohomology theory.
+
+    In fact, it can be proved that 
+    there is a comparison between log crystalline cohomology and rigid cohomology. 
+    However, the log crystalline cohomology is indispensable for there is an operator $N$, 
+    the log monodromy operator on it. 
+    Those operators are required in $p$-adic Hodge theory.
+\end{remark}
+
+\subsection{Frobenius action}
+For this section, let $S = \Spec W(k)$ and $S_0 = \Spec k$, 
+where $k$ is a characteristic $p$ perfect field. 
+$X$ be a smooth scheme over $k$. 
+The (absolute) Frobenius actions $F_X$ and $F_S$ induce a commutative diagram, 
+where the square is cartesian:
+\[
+    \begin{tikzcd}
+        X \ar[ddr, bend right] \ar[dr, "{F_{X/S}}"] \ar[drr, "F_X", bend left] \\
+        & X'\ar[r, "{F_S'}"] \ar[d] & X \ar[d]\\
+        & S \ar[r, "{F_S}"] & S.
+    \end{tikzcd}
+\]
+Then a morphism $\CO_{X/S} \to RF_{X*} \CO_{X/S}$ 
+and morphism $\CO_{X'/S} \to RF_{X/S*} \CO_{X/S}$, 
+the first induces the Frobenius action on $\Hkd$ and the cohomology of $X$ 
+becomes an $F$ -crystal after modulo torsion 
+and the latter induces the $W(k)$ -linearization of such action.
+
+As we have mentioned, the eigenvalues of the Frobenius action 
+provide informations of the zeta function. 
+We analyse the Frobenius in this section and the goal is to prove the Katz conjecture. 
+The main reference here is \cite{BO}.
+
+We firstly analyse the Frobenius action when there exists a lifting $(Y,F_Y)$ of $(X,F_X)$. 
+Then the above diagram lifts to a similar diagram of $Y$. 
+As the map $\Omega_{X'/k}^1 \to F_{X/k*} \Omega_{X/k}^1$ is zero, 
+the map $\Omega_{Y'/S}^1 \to F_{Y/S*} \Omega_{Y/S}^1$ 
+factors through $p F_{Y/S*} \Omega_{Y/S}^1$. 
+Thus the image of the Frobenius action 
+lies in the largest subcomplex of $p^iF_{Y/S*} \Omega_{Y/S}^i$. 
+
+\begin{proposition}
+    The image of the map above is exactly 
+    the largest subcomplex of $p^i F_{Y/S*} \Omega_{Y/S}^i$. 
+    Moreover, the map is an isomorphism to its image.
+\end{proposition}
+
+To prove this, we shall prove a general result. 
+We need some terminology:
+\begin{definition}
+    A gauge is a map $\epsilon \colon \BZ \to \BN$ 
+    such that $\epsilon(i + 1) \leq \epsilon(i) \leq \epsilon(i + 1) + 1$. 
+    A cogauge is a map: $\eta \colon \BZ \to \BN$ 
+    such that $\epsilon(i) \leq \epsilon(i + 1) \leq \epsilon(i) + 1$. 
+    For a map $\zeta \colon \BZ \to \BN$ and a complex $K$, 
+    $K_\zeta$ is the largest complex that contains in $p^{\zeta(i)} K^i$. 
+    For two gauges $\epsilon$ and $\epsilon'$, 
+    $\epsilon'$ is called a simple augmentation of $\epsilon$ at $i$ 
+    if $\epsilon(i) = \epsilon'(i) - 1$ and $\epsilon(j) = \epsilon'(j)$ for $j \neq i$. 
+\end{definition}
+
+\begin{proposition}
+    We have a quasi-isomorphism:
+    \[
+        (\Omega_{Y'/S}^\cdot)_\epsilon 
+        \simeq (F_{Y/S*} \Omega_{Y/S}^\cdot)_{\epsilon + 1}.
+    \]
+\end{proposition}
+
+To prove this, we firstly states the Cartier theorem:
+\begin{proposition}
+    There is an isomorphism:
+    \[
+        \begin{tikzcd}
+            \Omega_{X/k}^i \ar[r, "{\sim}"swap, "{c^{-1}}"] 
+            & \CH^i (\Omega_{X/k}^\cdot).
+        \end{tikzcd}
+    \]
+    with $c^{-1}(x) = x$, $c^{-1}(dx) = x^{p-1} dx$ 
+    and $c^{-1}$ is compatible with the wedge product.
+\end{proposition}
+
+\begin{proof}
+    Note that both sides are compatible with \'etale base change.
+    Hence it suffices to construct a canonical isomorphism when 
+    $X = \Spec k[t_1, \cdots, t_n]$. 
+    Then the result follows from a direct calculation.
+\end{proof}
+
+Now we are able to prove the proposition above:
+\begin{proof}
+    For the complex is left-bounded, 
+    we restrict the domain of $\epsilon$ to $\BN$. 
+    We proceed by induction: 
+    we can find a series of simple augmentations $\{\epsilon_i\}_{i=1}^{\infty}$ 
+    such that $\epsilon_1=\epsilon$ and $\epsilon_m(n)\to \infty$ when $m\to \infty$, 
+    which induces a filtration of $(\Omega_{Y/S}^\cdot)_\epsilon$. 
+    Then it suffices to prove the quasi-isomorphism for each filtrant. 
+    We then have a commutative diagram ($\eta_l=\epsilon_l+1$) 
+    and $\epsilon_{l+1}$ is the simple augmentation of $\epsilon_l$ at $j$.
+    \[
+        \begin{tikzcd}
+            (\Omega_{Y'/S}^\cdot)_{\epsilon_l} / (\Omega_{Y'/S}^\cdot)_{\epsilon_{l + 1}} 
+            \ar[r] \ar[d, "\sim"sloped]
+            & (F_{Y/S} \Omega_{Y/S}^\cdot)_{\epsilon_l} / 
+            (F_{Y/S} \Omega_{Y/S}^\cdot)_{\epsilon_{l+1}} 
+            \dar[] {\cdot p^{-\epsilon_l(j)}}[sloped, swap] {\sim} \\
+            \Omega_{X'/k}[-j] \ar[r, "c^{-1}", "\sim"swap] & 
+            \CH^j (F_{X/k*} \Omega_{Y/S_0}) [-j].
+        \end{tikzcd}
+    \]
+Hence the arrow above is an isomorphism as other arrows are.
+\end{proof}
+
+To globalize the result, we can define $(-)_\eta$ is the derived category.
+\begin{definition}
+    For a cogauge $\eta$, the functor $L \eta$ 
+    in the derived category of abelian sheaves $\CD(\CA b(X))$ 
+    is defined as follows: for a complex $K$, 
+    take a flat (as a $\BZ$ -module) resolution and then 
+    apply $(-)_\eta$ on it. 
+    For two cogauges $\eta, \eta'$, with $\eta' \leq \eta$, 
+    the functor $L\eta'/\eta$ is defined by the distinguished triangle:
+    \[
+        L\eta \to L \eta' \to L \eta'/\eta.
+    \]
+\end{definition}
+
+It can be proved that $L\eta$ is well-defined.
+\begin{theorem}
+    There is an isomorphism, where $\eta(i)=i$:
+    \[
+        Ru_{X'/S} \CO_{X'/S} \simeq F_{X/S*}L \eta Ru_{X/S} \CO_{X/S}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Choose such a lifting locally and 
+    glue the above local isomorphisms together by cohomological descent. 
+\end{proof}
+
+\begin{definition}
+    For an $F$-crystal $M$ 
+    (i.e. a finite rank free $W(k)$ -module with a semilinear Frobenius action), 
+    choose a basis of it and then the Frobenius action is represented by a matrix. 
+    The slopes of the action are the absolute values of the eigenvalues of the matrix 
+    (the slopes are independent of the choice of bases). 
+    Let $\alpha_1 \leq \cdots \leq \alpha_m$ be the slopes counted by multiplicity. 
+    Then the Newton polygon of $X$ is defined by the polygon with domain $[0, m]$ 
+    with slope $\alpha_i$ in the interval $[i - 1, i]$. 
+    If $M' = \im(F) = \bigoplus_{i = 0}^l p^i M_i$, 
+    the Hodge number of $M$ is $(e_0, \cdots, e_l)$, 
+    the ranks of $M_0, \cdots, M_l$.
+\end{definition}
+
+\begin{definition}
+    The Hodge polygon with parameter $(a_0, \cdots)$ is the polygon 
+    with slope $i$ in the interval $[a_0 + \cdots + a_{i-1}, a_0 + \cdots + a_i]$.
+\end{definition}
+
+\begin{lemma}
+    The following basic result holds:
+    \begin{itemize}
+        \item 
+            The Newton polygon of an $F$ -crystal lies on the Hodge polygon of it.
+        \item 
+            The Hodge polygon with parameter $(a_0, \cdots)$ lies on the Hodge polygon 
+            with parameter $(b_0, \cdots)$ if and only if for any $i>1$, 
+            $i a_0 + (i - 1) a_1 + \cdots + a_{i-1} 
+            \leq i b_0 + (i - 1) b_1 + \cdots b_{i - 1}$ 
+            holds for any $i$.
+        \item 
+            $\ell(M'/M' \cap p^i M) = i e_0 + \cdots + e_{i - 1}$, 
+            where $\ell$ means length.
+    \end{itemize}
+\end{lemma}
+
+We are then able to prove the Katz conjecture:
+\begin{theorem}[Katz, Mazur-Ogus]
+The Newton polygon of $M = \Hkn$ lies on the Hodge polygon 
+with parameters $a_q = h^{n-q}(X, \Omega_{X/k}^q)$. 
+\end{theorem}
+
+\begin{proof}
+    From the above facts, we are reduced to prove the following:
+    \[
+        \ell(M'/M' \cap p^i M) \leq i h^0 + (i - 1) h^1 + \cdot s+ h^{i - 1}. 
+    \]
+    There exists a commutative diagram ($L\eta Ru_{X/S}\CO_{X/S})$ is simply denoted $L\eta$)
+    \[
+        \begin{tikzcd}
+            \BH^n(X, L(\zeta_i + i)) \ar[r] \ar[d] & 
+            \BH^n(X, L\zeta_0) \ar[r, "q"] \ar[d,"\vp"] & 
+            \BH^n(X, L\zeta_0/(\zeta_i + i)) \\
+            \BH^n(X, Li) \ar[r, "\psi"] & \Hkn,
+        \end{tikzcd}
+    \]
+    where $\zeta_i(n) = \max \{0, n - i\}$.
+    After modulo torsion, the image of $\vp$ is $M'$ and the image of $\psi$ is $p^i M$. 
+    Then $M'/M' \cap p^i M$ is a quotient of $\im q$. 
+    Moreover, there is a distinguished triangle:
+    \[
+        \BH^n(X, L(\zeta_{j - 1} + j - 1)/(\zeta_j + j)) \to 
+        \BH^n(X, L\zeta_0/(\zeta_j + j)) \to 
+        \BH^n(X, L\zeta_0/(\zeta_{j-1} + j - 1))
+    \]
+    which induces a long exact sequence of cohomology. Moreover, 
+    \[
+        \BH^n(X, L(\zeta_{j - 1} + j - 1)/(\zeta_j + j)) 
+        \simeq \BH^n(X, \tau_{\leq j - 1} \Omega_{X/k}^\cdot),
+    \]
+    where $\tau$ means the truncation.
+    Then there is a spectral sequence, 
+    where the isomorphism is given by the Cartier isomorphism:
+    \[
+        E_2^{pq}(q \leq j - 1) = H^p(X, \Omega_{X/k}^q) 
+        \simeq H^p(X, \CH^q(\Omega_{X/k}^\cdot)) 
+        \Rightarrow \BH^{p+q}(X, \tau_{\leq j - 1} \Omega_{X/k}^\cdot).
+    \]
+    Thus, $\dim \BH^{p+q}(X, \tau_{\leq j - 1} \Omega_{X/k}^\cdot) \leq h^0 + \cdots + h^{j - 1}$. 
+    Combining all those $j$ gives the result.
+\end{proof}

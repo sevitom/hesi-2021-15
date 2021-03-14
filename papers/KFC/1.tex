@@ -1,0 +1,108 @@
+Before the formal discussion of this question. Let's consider a 
+question in daily life: why the McDonald's and KFC are always together
+on a street. To solve this problem, we should establish a mathematical
+model. Assume that the population density on this street is invariant
+and everyone would choose the closest restaurant to have meal ( If the
+two restaurants are at the same point, people will choose one
+randomly). If you are the owner of McDonald's and you want to build
+a restaurant first before KFC. You want to get as more customers
+as you can, which place will you choose?
+	
+As the picture shown behind, if Mc and KFC open their restaurant at $A$
+and $B$. Let $C$ be the middle point of the segment $AB$. We can easily
+prove that the customers in one side of C would go to Mc and others
+would go to KFC. So if you want more customers than your competitor,
+you should choose the middle point of the street or he could open his
+restaurant at the middle point of the street and get more than half customers.
+	
+\begin{center}
+    \begin{tikzpicture}
+	\draw[ultra thick][red](-3 , 0)--(0,0);
+	\draw[ultra thick][green](0,0)--(3,0);
+	\draw [fill] [gray](0,0) circle [radius=0.05];
+	\draw (0,0) circle [radius=0.05];
+	\node at (0,-0.35) [thick]{$C$};
+	\draw [fill] [gray](-1,0) circle [radius=0.05];
+	\draw (-1,0) circle [radius=0.05];
+	\node at (-1,-0.35) [thick]{$A$};
+	\draw [fill] [gray](1,0) circle [radius=0.05];
+	\node at (1,-0.35) [thick]{$B$};
+	\draw (1,0) circle [radius=0.05];
+	\end{tikzpicture}
+\end{center}
+	
+If you want to open $n$ restaurants on the street, it can be proved that
+the best choice is dividing the street into $n$ equal parts and choose
+middle point of each part.
+	
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[thick][blue](-3 , 0)--(-2,0);
+		\draw[thick][yellow](-2,0)--(-1.25,0);
+		\draw[thick][blue](-1.25 , 0)--(-0.55,0);
+		\draw[thick][yellow](-0.55,0)--(0.5,0);
+		\draw[thick][blue](0.5 , 0)--(2.35,0);
+		\draw[thick][yellow](2.35,0)--(3,0);
+		
+		\draw[fill][gray](-3,0) circle [radius=0.018];
+		\draw[fill][gray](-2,0) circle [radius=0.018];
+		\draw[fill][gray](-1.25,0) circle [radius=0.018];
+		\draw[fill][gray](-0.55,0) circle [radius=0.018];
+		\draw[fill][gray](0.5,0) circle [radius=0.018];
+		\draw[fill][gray](2.35,0) circle [radius=0.018];
+		\draw[fill][gray](3,0) circle [radius=0.018];
+		
+		\draw [fill] [red](-2.25,0) circle [radius=0.03];
+		\node at (-2.25,-0.15) {$A_1$};
+		\draw [fill] [red](-0.75,0) circle [radius=0.03];
+		\node at (-0.75,-0.15) {$A_2$};
+		\draw [fill] [red](0.75,0) circle [radius=0.03];
+		\node at (0.75,-0.15) {$A_3$};
+		\draw [fill] [red](2.25,0) circle [radius=0.03];
+		\node at (2.25,-0.15) {$A_4$};
+		
+		\draw [fill] [green](-1.75,0) circle [radius=0.03];
+		\node at (-1.75,-0.15) {$B_1$};
+		\draw [fill] [green](-0.35,0) circle [radius=0.03];
+		\node at (-0.35,-0.15) {$B_2$};
+		\draw [fill] [green](0.25,0) circle [radius=0.03];
+		\node at (0.25,-0.15){$B_3$};
+		\draw [fill] [green](2.45,0) circle [radius=0.03];
+		\node at (2.45,-0.15) {$B_4$};
+		
+		\draw (-2.25,0) circle [radius=0.03];
+		\draw (-0.75,0) circle [radius=0.03];
+		\draw (0.75,0) circle [radius=0.03];
+		\draw (2.25,0) circle [radius=0.03];
+		\draw (-1.75,0) circle [radius=0.03];
+		\draw (-0.35,0) circle [radius=0.03];
+		\draw (0.25,0) circle [radius=0.03];
+		\draw (2.45,0) circle [radius=0.03];
+	\end{tikzpicture}
+\end{center}
+	
+So we naturally want to know that what will happen if we change the
+street into the whole city. Could the first one always make sure
+he get at least half of the customers?
+	
+We express this question in another way:
+	
+For a convex set $T$ in $\R^2$ and a constant $n$, can we find a set
+of points $A = \{ A_1, A_2 ... A_n \}$ of $n$ points in $T$   which
+satisfy the following conditions?
+For any set $B = \{ B_1, B_2 ... B_n \} $ of $n$ points on the plane
+, we color $T$ by two colors. For a point $s$ in $T$, find the closet
+point to it in $A\cup B$. If it is a point in $A$, color it in red,
+otherwise color it in green. The area of red parts in the diagram
+is always not less than the green parts. (Here the metric is always
+the Euclidean metric)
+	
+In this article we will try to find out all pairs of $(T, n)$ which meets
+the requirement. At first we would give some lemmas in the second
+section. Then we would consider a special case ($T$ is a square)
+as an example in the third section. In the forth section, we will
+give out two strong conclusion to solve the case when $n$ is big enough.
+		
+We always use capital letters for points and domains, lower-case lette
+rs for lines,  $|AB| := d(A, B)$. For a domain $T$ we always use $S_T$
+to denote the area of $T$.

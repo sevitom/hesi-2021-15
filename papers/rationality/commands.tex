@@ -1,0 +1,67 @@
+\usepackage{xcolor}
+\definecolor{commentcolor}{rgb}{.85, .4, 0}
+\definecolor{deletedcolor}{rgb}{.9, 0, 0}
+\definecolor{addedcolor}{rgb}{0, .6, 0}
+
+\newcommand{\comment}[1]{\par\trivlist\item{\parindent=0pt\small\color{commentcolor}\textsf{\textbf{Comment.} #1}}\endtrivlist}
+\newcommand*{\commentcolor}[1]{\textcolor{commentcolor}{#1}}
+
+\renewcommand*{\:}{\colon}
+\newcommand*{\bbA}{\goodbf{A}}
+\newcommand*{\bbC}{\goodbf{C}}
+\newcommand*{\bbE}{\goodbf{E}}
+\newcommand*{\bbF}{\goodbf{F}}
+\newcommand*{\bbk}{\goodbf{k}}
+\newcommand*{\bbK}{\goodbf{K}}
+\newcommand*{\bbkbar}{\overline{\smash{\goodbf{k}\mspace{-1mu}}\vphantom{t}}\mspace{1mu}{}}
+\newcommand*{\bbKbar}{\smash{\overline{\smash{\goodbf{K}}\vphantom{t}}}{}}
+\newcommand*{\bbN}{\goodbf{N}}
+\newcommand*{\bbP}{\goodbf{P}}
+\newcommand*{\bbQ}{\goodbf{Q}}
+\newcommand*{\bbQbar}{\overline{\smash{\goodbf{Q}}\vphantom{t}}{}}
+\newcommand*{\bbR}{\goodbf{R}}
+\newcommand*{\bbZ}{\goodbf{Z}}
+\newcommand*{\Br}{\mathrm{Br}}
+\newcommand*{\CH}{\mathrm{CH}}
+\newcommand*{\Char}{\operatorname{char}}
+\newcommand*{\Chow}{\sfname{Chow}}
+\newcommand*{\colim}{\operatornamewithlimits{colim}}
+\newcommand*{\doubleparen}[1]{(\mspace{-2mu}(#1)\mspace{-2mu})}
+\renewcommand*{\deg}{\operatorname{\smash{deg}}}
+\makeatletter
+\newcommand*{\Gm}[1][*]{\goodbf{G}_{\mathrm{m}\@ifstar{}{,}#1}}
+\makeatother
+\newcommand*{\goodbf}[1]{\mathord{\smash{\mathbf{#1}}\vphantom{1}}}
+\newcommand*{\Hilb}{\sfname{Hilb}}
+\newcommand*{\id}{\mathrm{id}}
+\newcommand*{\liminv}{\mathop{\rlap{\smash{\raisebox{-1ex}{\scalebox{.9}{$\longleftarrow$}}}}\vphantom{1_1}\mathrm{lim}}}
+\newcommand*{\nablabar}{\overline{\smash{\nabla}\vphantom{t}}{}}
+\newcommand*{\sfname}[1]{\textsf{\textup{#1}}}
+\newcommand*{\sfmu}{\goodbf{μ}}
+\newcommand*{\Spec}{\operatorname{Spec}}
+\newcommand*{\Univ}{\textsf{\textup{Univ}}}
+\newcommand*{\upZ}{\mathrm{Z}}
+\newcommand*{\Xbar}{\smash{\mspace{2mu}\overline{\mspace{-2mu}\smash{X}\vphantom{t}}}{}}
+
+\newcommand*{\citestacks}[1]{\cite[\texttt{#1}]{stacks}}
+\newcommand*{\term}[1]{\emph{#1}}
+
+\usepackage{soul}
+\newcommand{\deleted}[1]{\hypersetup{allcolors=deletedcolor}{\color{deletedcolor}\st{#1}}\hypersetup{allcolors=black}}
+\newcommand{\deletednostrike}[1]{\hypersetup{allcolors=deletedcolor}{\color{deletedcolor}#1}\hypersetup{allcolors=black}}
+\newcommand{\deletedmath}[1]{\text{\color{deletedcolor}\st{$#1$}}}
+\newcommand{\added}[1]{\hypersetup{allcolors=addedcolor}{\color{addedcolor}#1}\hypersetup{allcolors=black}}
+\newcommand{\addedmath}[1]{\mathchoice{\text{\normalsize\color{addedcolor}$\displaystyle#1$}}{\text{\normalsize\color{addedcolor}$\textstyle#1$}}{\text{\normalsize\color{addedcolor}$\scriptstyle#1$}}{\text{\normalsize\color{addedcolor}$\scriptscriptstyle#1$}}}
+\newcommand{\commented}[1]{\hypersetup{allcolors=commentcolor}{\color{commentcolor}#1}\hypersetup{allcolors=black}}
+
+\AtBeginDocument{
+    \let\originalepsilon\epsilon
+    \let\epsilon\varepsilon
+    \let\varepsilon\originalepsilon
+}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\textup{(\roman*)}, ref=(\roman*)}
+\setlist[enumerate,2]{label=\textup{(\alph*)}, ref=(\alph*), parsep=6pt plus 3pt minus 3pt}
+
+\newtheorem{situation}[theorem]{Situation}

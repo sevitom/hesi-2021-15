@@ -1,0 +1,318 @@
+In this section,
+we consider a general example of a cubic hypersurface in $\bbP^4$,
+following \cite{CTP}.
+
+\begin{itemize}
+    \item
+        Let $p \neq 3$ be a prime number.
+    \item
+        Consider one of the following two situations.
+        \begin{itemize}
+            \item
+                Let $\bbk$ be either a finite extension of $\bbQ_p$, or
+                the field $\bbF_q \doubleparen{t}$, where $q$ is a power of~$p$.
+                Let $A$ be its ring of integers and $\bbF$ the finite residue field.
+                Let $\pi \in A$ be a uniformising element. 
+            \item
+                Or, let $\bbk$ be a number field in which $p$ is a prime.
+                Let $A \subset \bbk$ be the corresponding discrete valuation ring,
+                and let $\bbF$ be the finite residue field. Let $\pi = p$.
+        \end{itemize}
+    \item
+        Let $\bbK / \bbk$ be a cubic extension which is unramified at $\pi$, giving a cubic extension $\bbE / \bbF$ of residue fields.
+    \item
+        Let $\alpha$ be an element of the ring of integers of $\bbK$,
+        such that $\bbK = \bbk (\alpha)$.
+        Let $\beta \in \bbE$ be its image.
+    \item
+        Let
+        \[ \Phi \in A [ u, v, w, x, y ] \]
+        be a cubic homogeneous polynomial,
+        which defines a smooth hypersurface in $\bbP_A^4$.
+    \item
+        Let $\mathscr{X} \subset \bbP_A^4$ be the hypersurface cut out by the equation
+        \[ \Psi = \operatorname{Norm}_{\bbK / \bbk} (u + \alpha v + \alpha^2 w)
+            + x y (x - y) + \pi^m \Phi (u, v, w, x, y) = 0, \]
+        where $m > 0$ is an integer that is to be chosen.
+    \item
+        We can choose $m$ so that the generic fibre 
+        \[ X^\circ = \mathscr{X} \times_A \bbk \]
+        is smooth over $\bbk$.
+        In fact, the discriminant \cite[Article~105, p.~93]{salmon} of $\Psi$ is a polynomial in $\pi^m$,
+        which is non-zero since the coefficient of its leading term is the discriminant of $\Phi$.
+        Therefore there are only finitely many values of $m$ for which it is zero.
+    \item
+        We now look at the special fibre
+        \[ X = \mathscr{X} \times_A \bbF, \]
+        which is defined by the equation 
+        \[ \operatorname{Norm}_{\bbE / \bbF} (u + \beta v + \beta^2 w) + x y (x - y) = 0. \]
+        Let $\beta_1, \beta_2, \beta_3$ be the conjugates of $\beta$. 
+        Consider the linear coordinate change over $\bbE$
+        \begin{equation} \label{eq-6-coord-change}
+            (u, v, w) \mapsto (
+                u + \beta_1 v + \beta_1^2 w,\ 
+                u + \beta_2 v + \beta_2^2 w,\ 
+                u + \beta_3 v + \beta_3^2 w
+            ).
+        \end{equation}
+        The equation is now simplified over $\bbE$:
+        \[ uvw + xy (x - y) = 0. \]
+        Geometrically,
+        this hypersurface has three singular points
+        \begin{equation} \label{eq-6-singular-points}
+            (1 : 0 : 0 : 0 : 0), \quad
+            (0 : 1 : 0 : 0 : 0), \quad
+            (0 : 0 : 1 : 0 : 0). 
+        \end{equation}
+        They define a single point $M \in X$ with residue field $\bbE$.
+    \item
+        Let $X_1$ be the blow-up of $X$ at $M$.
+        Standard computation shows that under the map
+        \[ (X_1)_{\bbE} \to X_{\bbE}, \]
+        the inverse image of each of the $3$ singular points
+        is a union of two surfaces $\bbP_{\bbE}^2$, which intersect in a line $\bbP_{\bbE}^1$,
+        which contains $3$ singular points. 
+    \item
+        The Galois group $G = \operatorname{Gal}(\bbE/\bbF)$ acts on $X_{\bbE}$
+        by permuting $u,v,w$ cyclically. 
+        It follows that $X_1 \simeq (X_1)_{\bbE} / G$, as a blow-up of $X$,
+        has an exceptional divisor which is a union of two surfaces $\bbP_{\bbE}^2$,
+        and contains $3$ singular points with residue field $\bbE$.
+    \item
+        Let $X_2$ be the blow-up of $X_1$ at these three points.
+        Standard computation shows that $X_2$ is smooth over $\bbF$,
+        and that the exceptional divisor over each point is a rational surface.
+    \item
+        We conclude by Theorem~\ref{thm-4-ch0-trivial-fibre} that the map
+        \[ X_2 \to X \]
+        is a desingularisation map that is universally $\CH_0$-trivial.
+    \item
+        We have $\Br(X_2) \neq 0$ by Theorem~\ref{thm-6-brauer-compute} below.
+        Note that $\Br(\bbF) = 0$ by Wedderburn's theorem,
+        so that $\Br(X_2) / \Br(\bbF) \neq 0$.
+\end{itemize}
+
+In summary, we have obtained the following theorem.
+
+\begin{theorem} \label{thm-6-cubic}
+    Let $\bbk$ be one of the following:
+    \begin{itemize}
+        \item 
+            a number field,
+        \item
+            a finite extension of $\bbQ_p$ with $p \neq 3$, or
+        \item 
+            the field $\bbF_q \doubleparen{t}$ of characteristic not equal to $3$.
+    \end{itemize}
+    Then there exist smooth cubic hypersurfaces in $\bbP_{\bbk}^4$
+    that is not universally $\CH_0$-trivial over $\bbk$,
+    and hence not retract rational over $\bbk$.
+\end{theorem}
+
+\begin{proof}
+    By the above construction, and by Theorem~\ref{thm-5-spe-1},
+    the generic fibre $X^\circ$, as a smooth $\bbk$-variety,
+    is not universally $\CH_0$-trivial.
+\end{proof}
+
+Now, we complete the computation of the Brauer group of $X_2$.
+
+\begin{lemma} \label{lem-6-invertible-functions}
+    Let $\bbK$ be a field, and let
+    \[ R = \bbK [u, v, w] / (uvw - 1). \]
+    Then an element of $R$ is invertible if and only if it is of the form $t \, u^m v^n$,
+    with $t \in \bbK$ and $m, n \in \bbZ$. \qed
+\end{lemma}
+
+\begin{lemma} \label{lem-6-pic}
+    Let $p \: X \to B$ be a morphism of smooth varieties, where $B$ is an integral curve. Suppose that
+    \begin{itemize}
+        \item
+            $\operatorname{Pic}(B) = 0$.
+        \item
+            The Picard group of the generic fibre of $p$ is zero.
+        \item
+            For each $b \in B$ such that $X_b$ is not integral, 
+            every irreducible component of $X_b$ is a principal divisor of $X$.
+    \end{itemize}
+    Then $\operatorname{Pic}(X) = 0$.
+\end{lemma}
+
+\begin{proof}
+    Let $D \subset X$ be an irreducible divisor, with generic point $\eta$. 
+    We want to show that $D$ is principal.
+    There are two cases.
+    \begin{itemize}
+        \item
+            $p(\eta)$ is a closed point $b \in B$. Then $D$ is an irreducible component of the fibre $X_b$.
+            If $X_b$ is not irreducible, the result follows from the hypotheses.
+            Otherwise, we have $D = X_b$, 
+            so that the rational function on $B$ establishing the divisor $b \in B$ as principal,
+            also establishes $D$ as principal.
+        \item
+            $p(\eta)$ is the generic point.
+            Then $\eta$ defines a divisor of the generic fibre, which is principal by hypothesis.
+            We thus obtain a rational function on $X$,
+            whose divisor is the sum of $D$ and some other divisors, 
+            each being an irreducible component of a fibre of $p$.
+            We can thus apply the first case. \qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{theorem} \label{thm-6-brauer-compute}
+    Using the above notation, let $Y$ be any desingularisation of $X$.
+    For example, we may take $Y = X_2$. Then
+    \[ \Br(Y) \simeq \bbZ / 3. \]
+\end{theorem}
+
+\begin{proof}
+    As before, we consider the coordinate change (\ref{eq-6-coord-change}),
+    so that $X_{\bbE}$ is defined by the equation
+    \[ u v w = x y (x - y), \]
+    with the action of the Galois group $G = \operatorname{Gal} (\bbE/\bbF) \simeq \bbZ / 3$
+    by permuting the coordinates $u, v, w$ cyclically.
+
+    Let $U \subset X$ be the smooth locus, so that
+    $U_{\bbE} \subset X_{\bbE}$ is the complement of the three singular points (\ref{eq-6-singular-points}).
+
+    Let $V \subset U$ be the open set given by $xy \neq 0$.
+    Then $U_{\bbE} \setminus V_{\bbE}$ consists of six irreducible components
+    $\Delta_{u,x}$, $\Delta_{v,x}$, $\Delta_{w,x}$, $\Delta_{u,y}$, $\Delta_{v,y}$, $\Delta_{w,y}$, 
+    where for example, $\Delta_{u,x}$ is defined by $u = x = 0$.
+    The group $G$ acts on them by permuting $u,v,w$.
+
+    Let $p \: V_{\bbE} \to \bbA_{\bbE}^1 \setminus \{0\}$ be the projection given by $(u,v,w,x,y) \mapsto x/y$.
+    The generic fibre is isomorphic to the surface $uvw = 1$ in the affine space $\bbA_{\bbE(x)}^3$,
+    which is isomorphic to the open subset $uv \neq 0$ of \smash{$\bbA_{\bbE(x)}^2$},
+    so that its Picard group is zero.
+    Moreover, the only non-integral fibre is the fibre at $1$,
+    which consists of three irreducible components, each being a principal divisor of $V_{\bbE}$,
+    since they are defined in $V_{\bbE}$ by the equations $u=0$, $v=0$ and $w=0$ respectively.
+    Applying Lemma~\ref{lem-6-pic}, we obtain $\operatorname{Pic}(V_{\bbE}) = 0$.
+
+    Let $\operatorname{Div}_{U_{\bbE} \setminus V_{\bbE}} (U_{\bbE})$
+    denote the group of divisors of $U_{\bbE}$ supported in $U_{\bbE} \setminus V_{\bbE}$.
+    It is a free abelian group of rank $6$, generated by the divisors $\Delta_{u,x}$, etc.
+    The canonical map 
+    \[ \beta \: \operatorname{Div}_{U_{\bbE} \setminus V_{\bbE}} (U_{\bbE}) \to \operatorname{Pic} (U_{\bbE}) \]
+    is surjective, as its image is the kernel of the restriction map 
+    $\operatorname{Pic} (U_{\bbE}) \to \operatorname{Pic} (V_{\bbE})$, the latter group being zero.
+    The kernel of $\beta$ consists of those divisors that are principal in $U_{\bbE}$.
+    We thus have an exact sequence of $G$-modules
+    \begin{equation} \label{eq-6-exact-g-modules-1}
+        0   \to \bbE[V_{\bbE}]^\times / \bbE[U_{\bbE}]^\times 
+            \overset{\alpha}{\longrightarrow} \operatorname{Div}_{U_{\bbE} \setminus V_{\bbE}} (U_{\bbE}) 
+            \overset{\beta}{\longrightarrow}  \operatorname{Pic} (U_{\bbE}) \to 0.
+    \end{equation}
+
+    Let us take a closer look at the first term.
+    Suppose $f \in \bbE[V_{\bbE}]^\times$.
+    Using the projection $p \: V_{\bbE} \to \bbA_{\bbE}^1 \setminus \{0\}$ mentioned above,
+    we can apply Lemma~\ref{lem-6-invertible-functions} to $\bbK = \bbE(x)$,
+    to conclude that $f$ has the form $f = t(x/y) \, u^m \, v^n$, for $t$ a rational function, and
+    $m,n \in \bbZ$.
+    Since $f$ has to be invertible on $V_{\bbE}$,
+    we must have $m = n = 0$, and $t(x/y) = c \, (x/y)^k$ for some $c \in \bbE^\times$ and $k \in \bbZ$.
+    It follows that $\bbE[V_{\bbE}]^\times \simeq \bbE^\times \oplus \bbZ$ and $\bbE[U_{\bbE}]^\times \simeq \bbE^\times$.
+    The sequence (\ref{eq-6-exact-g-modules-1}) is thus 
+    \[
+        0   \to \bbZ
+            \overset{\alpha}{\longrightarrow} \bbZ[G] \oplus \bbZ[G]
+            \overset{\beta}{\longrightarrow}  \operatorname{Pic} (U_{\bbE}) \to 0,
+    \]
+    and the map $\alpha$ sends $k \in \bbZ$ to the divisor of the function $(x/y)^k$,
+    which is the element $(k\epsilon, -k\epsilon) \in \bbZ[G] \oplus \bbZ[G]$,
+    where $\epsilon = \sum_{g \in G} g \in \bbZ[G]$.
+
+    % Now consider the long exact sequence of
+    % Tate cohomology groups induced by (\ref{eq-6-exact-g-modules-2}).
+    % By direct computation, the $\widehat{H}^{-1}$ and $\widehat{H}^{0}$ groups of $\bbZ[G]$ vanish, so that
+    % \[ \widehat{H}^{-1} (G, \operatorname{Pic}(U_{\bbE})) \simeq \widehat{H}^0 (G, \bbZ) \simeq \bbZ/3. \]
+    
+    % On the other hand, there is a short exact sequence of $G$-modules
+    % \begin{equation} \label{eq-6-exact-g-modules-3}
+    %     0 \to \bbE(U_{\bbE})^\times / \bbE^\times 
+    %     \longrightarrow \operatorname{Div}(U_{\bbE})
+    %     \longrightarrow \operatorname{Pic}(U_{\bbE}) \to 0,
+    % \end{equation}
+    % with the middle term a direct sum of copies of $\bbZ[G]$ and $\bbZ$.
+    % Therefore, $\widehat{H}^{-1} (G, \operatorname{Div}(U_{\bbE})) = 0$.
+
+    % The natural map of short exact sequences 
+    % from (\ref{eq-6-exact-g-modules-1}) to (\ref{eq-6-exact-g-modules-3})
+    % induces the diagram
+    % \[
+    %     \begin{tikzcd}
+    %         0 \ar[r] &
+    %         \widehat{H}^{-1} (G, \operatorname{Pic}(U_{\bbE})) \ar[r, "\simeq"] \ar[d, equals] &
+    %         \widehat{H}^{0} (G, \bbE[V_{\bbE}]^\times / \bbE^\times) \rlap{${} \simeq \bbZ/3$} \ar[d] & \\
+    %         0 \ar[r] &
+    %         \widehat{H}^{-1} (G, \operatorname{Pic}(U_{\bbE})) \ar[r] &
+    %         \widehat{H}^{0} (G, \bbE(U_{\bbE})^\times / \bbE^\times) \ar[r] &
+    %         \widehat{H}^{0} (G, \operatorname{Div}(U_{\bbE})) \rlap{\ ,}
+    %     \end{tikzcd}
+    % \]
+    % where the second row is exact.
+    % It follows that the image of the element 
+    % $x/y \in \widehat{H}^{0} (G, \bbE[V_{\bbE}]^\times / \bbE^\times)$
+    % in $\widehat{H}^{0} (G, \bbE(U_{\bbE})^\times / \bbE^\times)$
+    % is not trivial.
+    % In particular, the latter group is non-zero.
+
+    Now is where the proof really begins.
+    The exact sequence (\ref{eq-6-exact-g-modules-1})
+    will not be used anywhere in this proof;
+    what we use is the sequence (\ref{eq-6-exact-g-modules-1})
+    with $Y$ in place of $U$, where $Y$ is a desingularisation of $X$
+    as in the statement of this theorem. 
+    Such a sequence is obtained by a process as in the above argument.
+    This gives an exact sequence of Tate cohomology groups
+    \begin{multline*}
+        0 \to \widehat{H}^{-1} (G, \operatorname{Pic}(Y_{\bbE}))
+        \overset{\delta}{\longrightarrow} 
+        \widehat{H}^{0} (G, \overbrace{\bbE[V_{\bbE}]{}^\times / \bbE{}^\times}^{\simeq \, \bbZ})
+        \simeq \bbZ/3 \\
+        \overset{\alpha'}{\longrightarrow} \widehat{H}^{0} (G, \operatorname{Div}_{Y_{\bbE} \setminus V_{\bbE}} (Y_{\bbE}) )
+        \to \cdots,
+    \end{multline*} 
+    where the $\widehat{H}^{-1}$ of $\operatorname{Div}_{Y_{\bbE} \setminus V_{\bbE}} (Y_{\bbE})$
+    vanishes, since the latter is a direct sum of copies of $\bbZ[G]$ and $\bbZ$, 
+    which both have zero \smash{$\widehat{H}^{-1}$} by direct computation.
+
+    The generator $x/y$ of the second non-zero term
+    goes to a divisor of $Y_{\bbE}$ which is the norm 
+    (in the $G$-module sense) of a divisor of $Y_{\bbE}$. 
+    Indeed, we have seen that the divisor of the rational function $x/y$ on $U_{\bbE}$ is the norm of an element.
+    But $Y_{\bbE} \setminus U_{\bbE}$ is the inverse image of the three singular points of $X_{\bbE}$,
+    and the action of $G$ permutes these three parts of $Y_{\bbE} \setminus U_{\bbE}$.
+    Therefore, the divisor of $x/y$ on $Y_{\bbE} \setminus U_{\bbE}$ is the norm
+    of the divisor of $x/y$ on one of these three parts.
+    This shows that $\alpha'(x/y) = 0$, so that $x/y$ is in the image of $\delta$.
+    It follows that $\widehat{H}^{-1} (G, \operatorname{Pic}(Y_{\bbE})) \simeq \bbZ/3$.
+
+    By \cite[Lemma~15]{colliot-sansuc}, there is a short exact sequence
+    \[ 0 \to \Br(\bbF, \bbE)
+        \longrightarrow \Br(Y, \bbE)
+        \longrightarrow H^1 (G, \operatorname{Pic}(Y_{\bbE})) \to 0, \]
+    where $\Br (Y, \bbE) = \ker (\Br(Y) \to \Br(Y_{\bbE}))$,
+    and similarly for $\Br (\bbF, \bbE)$.
+    Since $\bbF$ and $\bbE$ are finite, one has $\Br(\bbF, \bbE) = 0$
+    by Wedderburn's theorem.
+    Since $G$ is cyclic, one has 
+    $H^1 (G, \operatorname{Pic}(Y_{\bbE})) \simeq \widehat{H}^{-1} (G, \operatorname{Pic}(Y_{\bbE})) \simeq \bbZ/3$.
+    It follows that the middle term is $\bbZ/3$. 
+    In other words, there is a short exact sequence
+    \[ 0 \to \bbZ/3 
+        \longrightarrow \Br(Y)
+        \longrightarrow \Br(Y_{\bbE}) \to 0. \]
+
+    Recall the projection $p \: V_{\bbE} \to \bbA_{\bbE}^1$ defined above.
+    We have seen that the inverse image of the complement of $\{0,1\}$ is isomorphic
+    to the subset of $\bbA_{\bbE}^3$ defined by $uvx(x-1) \neq 0$.
+    This shows that $Y_{\bbE}$ is rational, so that
+    $\Br (Y_{\bbE}) \simeq \Br (\bbE) \simeq 0$ 
+    by Theorem~\ref{thm-2-brauer-trivial} and Wedderburn's theorem.
+    Therefore, $\Br (Y) \simeq \bbZ/3$.
+\end{proof}
+
+

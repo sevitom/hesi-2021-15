@@ -1,0 +1,498 @@
+\subsection{Basic definitions and comparison results}
+In this section, let $k$ be a perfect field with characteristic $p$, 
+$\CO = W(k)$ the Witt ring and $K = Frac(W(k))$. 
+$X, Y$ etc. are varieties over $k$ and 
+$\CP$ a formal scheme over $\CO$. 
+$\CP_K, \CP_k$ the generic fibre and special fibre of $\CP$.
+We firstly define the convergent cohomology for a basic approach.
+\begin{definition}
+    Let $X \to \CP$ be an immersion, 
+    $\Sp \colon \CP_K \to \CP_k$ the specialization map. 
+    The tube of $X$ is the inverse image $\Sp^{-1}(X) \subset \CP$, denoted $]X[_\CP$.
+\end{definition}
+
+\begin{definition}
+    If there exists an immersion $X \to \CP$ such that 
+    $\XP$ is smooth, the convergent cohomology of $X$ is defined as
+    \[
+        \HCd = R\Gamma(\DRX),
+    \]
+    where $\DRX$ is the de Rham complex.
+\end{definition}
+
+\begin{proposition}[Weak fibration theorem \cite{St}]
+    Suppose there is a commutative diagram 
+    \[
+        \begin{tikzcd}
+            & \CP'\ar[d, "p"]\\
+            X \ar[r] \ar[ur] \ar[dr] & \CP \ar[d] \\
+            & S,
+        \end{tikzcd}
+    \]
+    where $\CP' \to \CP$ is smooth in a neighbourhood of $X$. 
+    Then $]X[_{\CP'} = ]X[_{\CP} \times B^\circ(0,1)^d$ locally on $X$, 
+    for $d$ the relative dimension of $\CP' \to \CP$.
+\end{proposition}
+
+\begin{proposition}
+    The cohomology $\HCd$ is independent of the choice of $\CP$, 
+    which means the convergent cohomology is well-defined. 
+\end{proposition}
+
+\begin{proof}
+    For two immersions $X \to \CP_1$ and $X\to \CP_2$ with $\CP_1$ and $\CP_2$ smooth, 
+    $X \to \CP = \CP_1 \times \CP_2$ maps to both of them by projections $p_1$ and $p_2$. 
+    By the method of Gauss--Manin filtration and 
+    Poincar\'e lemma mentioned in \ref{comparison}, 
+    one proves that
+    \[
+        Rp_{1*} \DRX \simeq \Omega_{\XP/K}^\cdot ]X[_{\CP_1}.
+    \] 
+    Taking global sections gets the result.
+\end{proof}
+
+\begin{remark}
+    Such an immersion exists locally: for affine $X$, $X$ can be embedded into $\BA_k^n$. 
+    Then into $\widehat{\BA^n_{\CO}}$. 
+    We may use the cohomological descent method 
+    to define the convergent cohomology in general. 
+\end{remark}
+
+The convergent cohomology behaves badly for the non-proper varieties.
+\begin{example}
+    \label{counter ex}
+    Let $X = \BA_k^1$ be the affine line, $\CP = \Spf \BZ_p \langle T \rangle$, 
+    where $\BZ_p \langle T \rangle$ consists of all the convergent series. 
+    Then $\CP_K = \Spp K \langle T \rangle$ and $\XP = \CP_K$. 
+    By the "Theorem B" in rigid geometry, all the sheaves $\DRXn$ are acyclic. 
+    Then the convergent cohomology is the cohomology of the complex
+    \[
+        \begin{tikzcd}
+            K \langle T \rangle \ar[r,"d"] & K \langle T \rangle dT.
+        \end{tikzcd}
+    \]
+    However, $H^1$ is not finite dimensional 
+    for there are infinitely many linearly independent convergent series 
+    that no longer converge after integration.
+\end{example}
+
+We then introduce the rigid cohomology to resolve the problem mentioned above.
+\begin{definition}
+    A frame of $X$ contains arrows,
+    \[
+        \begin{tikzcd}
+            X \ar[r,"j"] & Y \ar[r,"i"] & \CP
+        \end{tikzcd}
+    \]
+    such that $j$ is an open immersion and $i$ a closed immersion. 
+    A proper smooth frame is a frame such that $Y$ is proper and $\YP$ is smooth. 
+\end{definition}
+
+\begin{definition}
+    Let $\CF$ be an abelian sheaf on $]Y[_\CP$, 
+    the overconvergent sheaf $j_X^\dagger \CF$ is 
+    \[
+        j_X^\dagger \CF = \colim j_{V*} j_{V}^* \CF,
+    \]
+    where $V$ runs through all the strict neighbourhood of $\XP$ in $\YP$ 
+    and $j_V$ the inclusion $V \to \YP$. 
+\end{definition}
+
+\begin{definition}
+    If there exists a proper smooth frame of $X$, the rigid cohomology $\HRd$ is 
+    \[
+        \HRd = R\Gamma(j_X^ \dagger \DRY),
+    \]
+    where $\DRY$ is the de Rham complex.
+\end{definition}
+
+\begin{proposition}
+    The rigid cohomology of $X$ is independent of the choice of the frame if such frame exists.
+\end{proposition}
+
+\begin{proof}
+    It is similar to the case of convergent cohomology. 
+    See chapter 6 in \cite{St} for details.
+\end{proof}
+
+\begin{remark}
+    A proper smooth frame of $X$ exists locally. 
+    That is, for affine $X$, $X$ can be embedded into $\BA_k^n$ and then $\BP_k^n$. 
+    Then we may take $Y$ be $\bar{X} \subset \BP_k^n$ and $\CP$ be $\widehat{\BP_\CO^n}$. 
+    Then we may use cohomological descent to define rigid cohomology in general (\cite{Tsu}).
+\end{remark}
+
+The rigid cohomology resolves the problem above.
+\begin{example}
+    Let $X = \BA_k^1$, $Y = \BP_k^1$, $\CP = \widehat{\BP_{\CO}^1}$. 
+    Then $\XP = \Spp K \langle T \rangle$. $\YP = \BP^{1,an}_K$. 
+    Then $\{V^\lambda = \Spp K \langle \lambda T \rangle \mid |\lambda| < 1 \}$ 
+    forms a cofinal system of strict neighbourhoods of $\XP$ in $\YP$. 
+    Then the cohomology becomes
+    \[
+        \begin{tikzcd}
+            K \langle T \rangle^\dagger \ar[r] & K \langle T \rangle^\dagger dT,
+        \end{tikzcd}
+    \]
+    where $K \langle T \rangle^ \dagger$ contains all the overconvergent series 
+    (i.e. converges in some radius $\mu > 1$). 
+    Then $H^1 = 0$ as the integration of overconvergent series remains overconvergent.
+
+    In general, for an affine smooth variety $X = \Spec A$, 
+    $A$ can be lifted to a finitely presented formally smooth algebra 
+    $\CA = \CO \langle T_1, \cdots, T_n \rangle/(f_1, \cdots, f_m)$. 
+    Then the rigid cohomology of $X$ becomes the cohomology of the de Rham complex 
+    $\Omega_{\CA_K^\dagger/K}^\cdot$, 
+    where $\CA_K^\dagger \simeq K \langle T_1, \cdots,T_n \rangle^\dagger/(f_1, \cdots, f_m)$. 
+    That is, the Monsky-Washnitzer cohomology.
+\end{example}
+
+\begin{remark}
+    The way considering overconvergent series can be justified by the language of adic spaces. 
+    Indeed, $\XP$ is not closed in $\YP$ when viewing them as adic spaces 
+    and we should not expect that a non-closed thing can have a good cohomology theory. 
+    Thus we should consider the closure of $\XP$ in $\YP$ and work out its cohomology. 
+    Indeed, the strict neighbourhoods are neighbourhoods of the closure of $\XP$, $\overline{\XP}$. 
+    Thus, for $i \colon \overline{\XP} \to \YP$,
+    \[
+        \HRd = R\Gamma_{\YP} i_* i^* \DRY.
+    \]
+\end{remark}
+
+In proper case, the convergent and rigid cohomology concide.
+\begin{proposition}
+    For proper $X$, there is a canonical isomorphism in derived category
+    \[
+        \HCd \simeq \HRd.
+    \]
+\end{proposition}
+
+\begin{proof}
+    The proposition is trivial for projective $X$, 
+    for there exists a closed immersion $X \to \BP_k^n$, 
+    then an immersion $X \to \widehat{\BP_\CO^n}$ and a frame $X \to X \to \widehat{\BP_\CO^n}$. 
+    In general, one checks that both convergent cohomology and rigid cohomology functors 
+    are right Kan extensions from the category of projective varieties 
+    to the category of proper varieties 
+    (for a proper variety, it has a simplicial resolution by projective varieties). 
+    See \cite{Tsu} for details. 
+\end{proof}
+
+We are now able to prove the comparison theorem 
+between crystalline cohomology and convergent/rigid cohomology.
+\begin{theorem}
+    There exists an canonical isomorphism for smooth $X$:
+    \[
+        \Hkd \otimes K \simeq \HCd.
+    \]
+\end{theorem}
+
+\begin{proof}
+    By cohomological descent, it suffices to prove that it holds locally. 
+    For affine $X$, there exists a formally smooth lift $\CP=\CX$. Then $\XP=\CX_K$ and 
+    \[
+        \Hkd \simeq \Omega_{\CX/\CO}^\cdot, \quad \HCd \simeq \Omega_{\CX_K/K}^\cdot.
+    \]
+    Hence the result follows from the fact that 
+    \[
+        \Omega_{\CX/\CO}^\cdot \otimes K \simeq \Omega_{\CX_K/K}^\cdot.
+    \]
+\end{proof}
+
+The comparison between crystalline and rigid cohomology 
+is a direct consequence of the above two facts
+\begin{corollary}[\cite{Be1}]
+    For proper smooth $X$, there exists an isomorphism 
+    \[
+        \Hkd \otimes K \simeq \HRd.
+    \]
+\end{corollary}
+
+As crystalline cohomology can be defined for crystals, 
+rigid cohomology can be defined for "overconvergent isocrystals". 
+As the categorical equivalence mentioned above, 
+the following abelian categories are equivalent 
+(chapter 7 in \cite{St}) (let $X \to Y \to \CP$ be a proper smooth frame):
+\begin{itemize}
+    \item 
+        Coherent $j^\dagger \CO_{\YP/K}$ -modules with integrable connection.
+    \item 
+        Coherent $j^\dagger \CO_{\YP/K}$ -modules with stratification,
+    \item 
+        $j^\dagger \CO_{\YP/K}$-modules 
+        which are coherent as $j^\dagger \CO_{\YP/K}$ -modules,
+    \item 
+        Overonvergent isocrystals, denoted by $Isoc^\dagger(X \to Y)$. 
+        That is, associating each morphism of frames
+        \[
+            \begin{tikzcd}
+                X' \ar[r] \ar[d] & Y' \ar[r] \ar[d] & \CP' \ar[d] \\
+                X \ar[r] & Y \ar[r]& \CP
+            \end{tikzcd}
+        \]
+    a coherent $j^\dagger \CO_{\YP/K}$-module $\CE_\CP'$, 
+    satisfying the crystal relations as above.
+\end{itemize}
+
+Moreover, those categories are "stacks" in some sense. 
+That is, taking the fifth for example, 
+there is an equivalence ($\CU = \{Y_i \to Y\}$ be an open covering):
+\[
+    Isoc^\dagger (X \to Y) \to \lim_{\CU} Isoc^\dagger (X. \to Y.)
+\]
+where $X.,Y.$ means the simplicial scheme with respect to the open covering $\CU$. 
+Then we can define those concepts for the case $X$ 
+does not admit a proper smooth frame by descent.
+
+Then for an overconvergent isocrystal $\CE$ 
+(with the corresponding coherent sheaf with integrable connection also denoted $\CE$), 
+we may define the rigid cohomology with coefficients
+\[
+    H^n_{rig}(X,\CE) := \BH^n(\CE \otimes \Omega_{\YP/K}^\cdot).
+\]
+Then there is a comparison theorem between crystalline cohomology and rigid cohomology.
+\begin{theorem}
+    There is a functor for smooth $X$:
+    \[
+        \{\textit{coherent crystals on } (X/W(k))_{Cris}\} \to Isoc(X)
+    \]
+    and a functor for proper smooth $X$
+    \[
+        \{\textit{coherent crystals on }(X/W(k))_{Cris}\} \to Isoc^\dagger(X),
+    \]
+    ($Isoc(X)$ means convergent isocrystals), 
+    denoted $\CE \mapsto \CE_K$ such that for smooth $X$,
+    \[
+        R^i\Gamma((X/S)_{Cris}, \CE) \otimes K \simeq H^i_{conv}(X, \CE_K),
+    \]
+    and for proper smooth $X$,
+    \[
+        R^i\Gamma((X/S)_{Cris}, \CE) \otimes K \simeq H^i_{rig}(X, \CE_K).
+    \]
+\end{theorem}
+
+\begin{proof}
+    For the first functor, when $X$ admits a smooth lifting $\CX$ (this is the local case), 
+    $\CE$ corresonds a $\CO_{\CX}$-module with an integrable connection, denoted $\CE$ also. 
+    $CE_K := \CE \otimes K$ is then a coherent sheaf 
+    over $\CX_K$ with induced integrable connection. 
+    The comparison then holds. 
+    We may use descent theory to work out in general case.
+
+    For the second functor, note that for projective $X$, 
+    there is a frame $X \to X \to \CP$ and thus $Isoc^\dagger(X) \simeq Isoc(X)$. 
+    Resolving general proper smooth varieties 
+    by projective smooth verieties proves the general case. 
+\end{proof}
+
+\begin{remark}
+    In practice, we shall use overconvergent $F$-isocrystals only. 
+    That is, overconvergent isocrystals with a compatible Frobenius action.
+\end{remark}
+
+One can define the cohomology with compact support and cohomology 
+supported on a closed set in rigid cohomology theory.
+\begin{definition}
+    Let $X \to Y \to \CP$ be a proper smooth frame. 
+    View $\YP$ as an adic space and then $\XP$ is an open subspace of it. 
+    Denote $i\colon \overline{\XP} \to \YP$ and $j$ its complement.
+    \[
+        H^\cdot_{c,rig}(X) = R\Gamma_{\YP} (i_*i^! \DRY) 
+        \simeq R\Gamma_{\YP} (\DRY \to j_*j^*\DRY).
+    \]
+\end{definition}
+
+\begin{definition}
+    Let $X \to Y \to \CP$ be a proper smooth frame and $Z$ a closed subvariety of $X$. 
+    Denote $j \colon \ZP \to \YP$ and $i$ its complement.
+    \[
+        H^\cdot_Z(X) = R\Gamma_{\YP} (j_! j^* \DRY) 
+        \simeq R\Gamma(\DRY \to i_*i^* \DRY).
+    \]
+\end{definition}
+
+Then we have exact sequences for $X=U\cup Z$, 
+with $U$ open and $Z$ closed 
+(we shall omit the subscript ``rig'' if there is no confusion):
+\[
+    \cdots \to H^*_Z(X) \to H^*(X) \to H^*(U) \to H^{*+1}_Z(X) \to \cdots
+\]
+and 
+\[
+    \cdots \to H^*_c(U) \to H^*_c(X) \to H^*_c(Z) \to H^{*+1}_c(U) \cdots,
+\]
+and some excision theorems. 
+For example, for $Z \subset Y \subset X$ being closed varieties, 
+there is an exact sequence
+\[
+    \cdots \to H^*_Y(X) \to H^*_Z(X) \to H^*_Z(Y) \to H^{*+1}_Y(X) \to \cdots.
+\]
+
+\subsection{Verification of the desired properties}
+We verify the assuptions in the Weil cohomology theory in remains of this section. 
+\begin{proposition}[Gysin isomorphism, \cite{St}]
+    For a smooth variety $X$ and its smooth, closed subvariety $Z$, 
+    if $X$ is liftable, there is an isomorphism
+    \[
+        H^*_Z(X) \simeq H^{*-2c}(Z),
+    \]
+    called the Gysin isomorphism, where $c$ is the codimension of $Z$ in $X$.
+\end{proposition}
+
+\begin{proof}
+    For $X$ is liftable, $Z$ is also. 
+    One represents those rigid cohomology by de Rham cohomology 
+    and then define the Gysin map. 
+    It can be checked that it is an isomorphism.
+\end{proof}
+
+\begin{theorem}[Finiteness theorem, \cite{Be3}]
+    For any variety $X / k$ and overconvergent $F$-isocrystal $\CE$ on it, 
+    the cohomology $H^*_{rig}(X, \CE)$ is finite dimensional.
+\end{theorem}
+
+\begin{proof}
+    We shall prove the case that $\CE$ is trivial only. 
+    Firstly consider the case that $X$ is smooth. 
+    We apply induction. Consider the following two propositions:
+    \begin{itemize}
+        \item [(a)\textsubscript{$n$}] 
+            $H^*(X)$ is finite dimensional for all smooth varieties $X$ 
+            with dimension no greater than $n$.
+        \item [(b)\textsubscript{$n$}] 
+            $H^*_Z(X)$ is finite dimensional for all varieties $Z$ 
+            with dimension no greater than $n$ and $X$ being smooth.
+    \end{itemize}
+    The proposition (a)\textsubscript{$0$} is clear. 
+    (b)\textsubscript{$0$} follows from the Gysin ismorphism. 
+    (One can choose an affine open set $U$ containing $Z$, 
+    $H^*_Z(U) \simeq H^*_Z(X)$ by excision. $U$ is liftable.)
+
+    The implication (b)\textsubscript{$n-1$} $\Rightarrow$ (a)\textsubscript{$n$}: 
+    for such $X$, by de Jong's alternation theorem (theorem 4.1 in \cite{dJ}), 
+    there is a projective smooth variety $X'$ and its open set $U$, 
+    such that $p \colon U \to X$ is proper and generically \'etale. 
+    There is then a dense open set $U_1$ of $X$ such that 
+    $p \colon p^{-1}(U_1) \to U_1$ is \'etale (hence finite). 
+    By finiteness theorem for crystalline cohomology, 
+    the cohomology of $X'$ is of finite dimension. 
+    By the long exact sequence above and (b)\textsubscript{$n-1$}, 
+    the cohomology of $p^{-1}(U_1)$ is also. 
+    There is a trace map for finite morphisms 
+    (it can be defined locally via de Rham cohomology, and then globally via gluing), 
+    becoming a section (up to a scalar) of the pull back map. 
+    Thus the cohomology of $U_1$ is finite dimensional. 
+    By (b)\textsubscript{$n-1$} and the long exact sequence again, 
+    the cohomology of $X$ is finite dimensional.
+
+    The implication (b)\textsubscript{$n-1$} and 
+    (a)\textsubscript{$n$} $\Rightarrow$ (b)\textsubscript{$n$}: 
+    one applies excision to reduce to the case that $X, Z$ are smooth and $X$ is liftable. 
+    Then apply (a)\textsubscript{$n$} and the Gysin isomorphism to conclude.
+
+    For general $X$, it is concluded by choosing a simplicial resolution of $X$ 
+    by smooth varieties and applying cohomological descent. 
+    See \cite{Tsu} for details. 
+\end{proof}
+
+Using similar methods, one proves that 
+the cohomology with compact support is of finite dimension.
+\begin{theorem}[K\"unneth formula, \cite{Be4}]
+    For $X,Y$ arbitrary varieties, $\CE_1$ an overconvergent isocrystal on $X$ 
+    and $\CE_2$ an overconvergent isocrystal on $Y$, 
+    there is an isomorphism 
+    (then $\CE_1 \boxtimes \CE_2$ is an overconvergent isocrystal on $X \times Y$):
+    \[
+        H^\cdot(X, \CE_1) \otimes H^\cdot(Y, \CE_2) \simeq H^\cdot(X \times Y, \CE_1 \boxtimes \CE_2).
+    \]
+    Similarly for cohomology with compact supports.
+\end{theorem}
+
+\begin{proof}
+    It is almost the same as the case for crystalline cohomology. 
+    One can check it by first working locally 
+    via the de Rham complex and then noticing that the map is canonical. 
+\end{proof}
+
+\begin{theorem}[Poincar\'e duality, \cite{Be4}]
+    For smooth $X$ of dimension $d$, 
+    there is a trace map $\tr \colon H^{2d}(X) \to K$ such that 
+    for an overconvergent $F$-isocrystal $\CE$, the pairing
+    \[
+        H^*(X, \CE) \otimes H^{2d-*}_c(X, \CE^\vee) \to H^{2d}(X) \to K
+    \]
+    is perfect.
+\end{theorem}
+
+\begin{proof}
+    The trace map is defined almost the same as the case for crystalline cohomology. 
+    We shall prove the case that $\CE$ is trivial. We consider two propositions:
+    \begin{itemize}
+        \item [(a)\textsubscript{$n$}] 
+            Poincar\'e duality holds 
+            for all smooth varieties of dimension no greater than $n$.
+        \item [(b)\textsubscript{$n$}] 
+            The pairing ($d$ is the dimension of $Z$)
+            \[
+                H^*_Z(X) \times H^{2d-*}_c(Z) \to K
+            \] 
+            (the trace map can be similarly defined) is perfect 
+            for $Z$ (may not be smooth) of dimension no greater than $n$ and $X$ smooth.
+    \end{itemize}
+    The case (a)\textsubscript{$0$} is trivial. 
+    (b)\textsubscript{$0$} is from the Gysin isomorphism. 
+    (b)\textsubscript{$n-1$} $\Rightarrow$ (a)\textsubscript{$n$} is done 
+    by de Jong's alternation theorem 
+    and the Poincar\'e duality for crystalline cohomology 
+    (note that the trace map for finite morphisms are compatible with all those constructions). 
+    (b)\textsubscript{$n-1$} and 
+    (a)\textsubscript{$n$} $\Rightarrow$ (b)\textsubscript{$n$} is done 
+    by excision and Gysin isomorphism. 
+    The whole process is similar to the proof of finiteness and we shall omit it.
+\end{proof}
+
+\begin{remark}
+    The case for general overconvergent $F$-isocrystals $\CE$ 
+    can be proved by ``$p$-adic local monodromy theorem'', 
+    which claims that after a suitable base change, 
+    the isocrystal is unipotent, i.e., 
+    has a filtration with each subquotient becoming trivial. 
+    See \cite{Ke1} for details.
+\end{remark}
+
+\begin{remark}
+    The cycle class map can be defined 
+    firstly by de Rham cohomology locally 
+    and then applying cohomological descent.
+\end{remark}
+
+All requirements for a good cohomology theory are therefore proved. 
+We end this article by remarking an example.
+\begin{example}
+    If a family of varieties over $k$ comes from reduction of a proper smooth family, 
+    the cohomology of all varieties in the family has the same dimension. 
+    The family of hypersurfaces in the projective space is the case. 
+    For example, all plane cubic curves have 
+    $h^0 = 1$, $h^1 = 2$, $h^2=1$ and $h^k = 0$ for $k > 2$. 
+    Here $h^k := \dim H^k$.
+\end{example}
+
+\begin{proof}
+    The first statement is from the fact that 
+    Betti numbers are invariant over a family and 
+    the comparison theorem between de Rham cohomology and Betti cohomology. 
+
+    The second statement is from the fact that 
+    for any homogenous polynomial $f\in k[x_0, \dots, x_n]$, 
+    there is a element $\tilde{f} \in W(k)[x_0, \dots, x_n]$ 
+    defining a smooth hypersurface of $\BP_K^n$, 
+    as the set of singular hypersurfaces is Zariski closed in the parameter space 
+    and all $\tilde{f}$ is Zariski dense in the the parameter space.
+
+    The last statement follows from computations of Betti numbers of cubic curves. 
+\end{proof}
+
+The example illustrates that for singular varieties, 
+rigid cohomology may not be the ``intuitive'' one. 
+For example, the first Betti number of a cuspidal cubic curve over $\BC$ is $0$ 
+and the first rigid cohomology of a cuspidal cubic curve over $k$ is of dimension 2. 

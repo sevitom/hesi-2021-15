@@ -1,0 +1,54 @@
+{
+    "parts": [
+        {
+            "name": "专题介绍",
+            "articles": [
+                {
+                    "fileName": "p-adic",
+                    "title": "$p$-adic Cohomology Theories",
+                    "author": "陈起渊"
+                },
+				{
+                    "fileName": "sheaf",
+                    "title": "Sheaf Cohomology",
+                    "author": "贺宇昕"
+                }
+            ]
+        },
+        {
+            "name": "研究讨论",
+            "articles": [
+                {
+                    "fileName": "rationality",
+                    "title": "Stable Irrationality of Varieties",
+                    "author": "卜辰璟"
+                },
+                {
+                    "fileName": "lq",
+                    "title": "Applications of the Eells–Kuiper Invariant to Exotic $7$-Spheres",
+                    "author": "蓝青"
+                },
+                {
+                    "fileName": "transversality",
+                    "title": "Transversality Theorems by Example",
+                    "author": "谢雨潇"
+                }
+            ]
+        },
+		{
+		    "name": "数学小品",
+            "articles": [
+			    {
+                    "fileName": "Paper folding",
+                    "title": "折纸问题的进一步讨论",
+                    "author": "黄虞来"
+                },
+                {
+                    "fileName": "KFC",
+                    "title": "A Game About Competing Area",
+                    "author": "尚鉴桥"
+                }
+            ]
+		}
+    ]
+}

@@ -1,0 +1,281 @@
+Pseudoholomorphic curves were introduced by M. Gromov in 1985 
+and soon became an indispensable tool in modern symplectic geometry. 
+In this section, we prove the fundamental transversality theorem that 
+for a generic almost complex structure on a compact symplectic manifold, 
+the space of simple pseudoholomorphic curves has the structure 
+of a finite-dimensional smooth manifold.
+
+\subsection{Background material}
+
+\subsubsection{Pseudoholomorphic curves}
+Let $(M, J)$ be an almost complex manifold, 
+$(\Sigma, j)$ a Riemann surface. 
+A \textit{pseudo-holomorphic} or \textit{$J$-holomorphic curve} 
+on $M$ parametrized by $\Sigma$ is a smooth map 
+$u \colon \Sigma \to M$ such that $du$ is complex linear, 
+i.e., $J \circ du = du \circ j$, or $\pab_J u = 0$, where 
+\[
+	\pab_J u := \frac{1}{2} (du + J \circ du \circ j) 
+		\in \Omega^{0, 1} (\Sigma, u^*TM).
+\] 
+We shall always consider the case that $\Sigma$ is compact.
+
+A $J$-holomorphic curve $u \colon \Sigma \to M$ is 
+\textit{multiply covered} if it factors nontrivially through another 
+Riemann surface, i.e., if there is a compact Riemann surface $\Sigma'$, 
+a holomorphic branched covering $\varphi \colon \Sigma \to \Sigma'$ 
+with $\deg \varphi > 1$, and a $J$-holomorphic curve 
+$u' \colon \Sigma' \to M$ such that $u = u' \circ \varphi$. 
+Otherwise $u$ is \textit{simple}.
+
+A smooth map $u \colon \Sigma \to M$ is \textit{somewhere injective} 
+if it has an \textit{injective point}, a point $z \in \Sigma$ such that 
+$du(z) \neq 0$, $u^{-1} (u(z)) = \{z\}$.
+
+\begin{proposition}
+	Let $M$ be a smooth manifold, 
+	$J$ a $C^2$ almost complex structure on $M$, 
+	$\Sigma$ a compact Riemann surface, 
+	$u \colon \Sigma \to M$ a $J$-holomorphic curve. 
+	Then $u$ is simple if and only if it is somewhere injective, 
+	in which case the complement of the set of injective points 
+	is countable and can only accumulate at critical points of $u$.
+\end{proposition}
+See \cite[Proposition~2.5.1]{MS} for a proof.
+
+\subsubsection{The symplectic setting}
+Let $(M, \omega)$ be a symplectic manifold. 
+An almost complex structure $J$ on $M$ is \textit{$\omega$-compatible} 
+if $\omega(\cdot, J \cdot)$ defines a Riemannian metric on $M$. 
+Fix such a $J$, a compact Riemann surface $\Sigma$, and 
+a homology class $A \in H_2 (M; \Zb)$. 
+The \textit{moduli space of $J$-holomorphic curves} on $M$ 
+that are parametrized by $\Sigma$ and represent $A$, denoted by 
+$\Mc(A, \Sigma; J)$, is the space of all $J$-holomorphic curves $u$ 
+such that $[u] = A$. 
+The subspace of simple curves is denoted by $\Mc^*(A, \Sigma; J)$.
+
+\subsection{Moduli spaces of $J$-holomorphic curves}
+This subsection is devoted to proving the following theorem:
+
+\begin{theorem}
+	Let $(M, \omega)$ be a compact symplectic $2n$-manifold, 
+	$A \in H_2 (M; \Zb)$, $(\Sigma, j)$ a compact Riemann surface. 
+	Then for a generic $\omega$-compatible almost complex structure 
+	$J$ on $M$, the moduli space $\Mc^*(A, \Sigma; J)$ 
+	is a smooth manifold of dimension $n \chi(\Sigma) + 2 c_1(A)$, 
+	where $c_1(A)$ denotes the first Chern number.
+\end{theorem}
+
+\subsubsection{Setting the stage}
+We shall apply the general transversality theorem with
+\begin{itemize}
+	\item[$\Xc$:] 
+		the space $\Bc^{k, p}$ of somewhere injective $W^{k, p}$ maps
+		$\Sigma \to M$ that represent $A$;
+	\item[$\Yc$:] 
+		the space $\Jc^\ell$ of $C^\ell$ $\omega$-compatible 
+		almost complex structures on $M$;
+	\item[$\Ec$:] 
+		the bundle $\Ec^{k - 1, p} \to \Bc^{k, p} \times \Jc^\ell$ 
+		with fibers $\Ec_{(u, J)}^{k - 1, p} = 
+		W^{k - 1, p} (\Sigma, \Lambda^{0, 1} \otimes_J u^*TM)$, 
+		where $\Lambda^{0, 1} \otimes_J u^*TM$ is the bundle 
+		of $J$-antilinear $1$-forms;
+	\item[$\Sc$:] 
+		the section $\Bc^{k, p} \times \Jc^\ell \to \Ec^{k - 1, p},\, 
+		(u, J) \mapsto \pab_J u$.
+\end{itemize}
+Here 
+\[
+	k \geq 2, \quad p > 2, \quad
+	\ell \geq k + 1 + \max (1, n\chi(\Sigma) + 2 c_1(A) + 1).
+\] 
+Clearly 
+$\Mc^*(A, \Sigma; J) = \{ (u, J) \in \Sc^{-1} (0) \mid u\text{ is simple} \}$.
+
+\medskip
+
+Let us explain the Banach manifold structures on these spaces. 
+It is easy to see that $\Jc^\ell$ is a smooth Banach manifold 
+with $T_J \Jc^\ell = C^\ell (M, \End(TM, J, \omega))$, where 
+$\End(TM, J, \omega)$ is the vector bundle of $(1, 1)$-tensors on $M$ 
+that preserves $J$ and $\omega$. 
+By the Sobolev embedding theorem, $W^{k, p} \subset C^1$ on $\Sigma$, 
+so $\Bc^{k, p}$ is open in $W^{k, p}(\Sigma, M)$. 
+Similarly to the space $\Pc^{1, 2}$ of $W^{1, 2}$ curves discussed 
+in the previous section, the latter is a smooth Banach manifold with 
+$T_u W^{k, p} (\Sigma, M) = T_u \Bc^{k, p} = W^{k, p} (\Sigma, u^*TM)$ 
+and charts are given by the exponential map. 
+One can show that $\Ec^{k - 1, p} \to \Bc^{k, p} \times \Jc^\ell$ 
+is a $C^{\ell - k}$ bundle and $\Sc$ is a $C^{\ell - k}$ section 
+(\cite[p.50]{MS}).
+
+\medskip
+
+For a $J$-holomorphic curve $u$, write 
+\[
+	D_u := D_1\Sc_{(u, J)} \colon W^{k, p} (\Sigma, u^*TM) 
+		\to W^{k - 1, p} (\Sigma, \Lambda^{0, 1} \otimes_J u^*TM)
+\] 
+and its formal adjoint 
+\[
+	D_u^* \colon W^{k, p'} (\Sigma, \Lambda^{0, 1} \otimes_J u^*TM)
+		\to W^{k - 1, p'} (\Sigma, u^*TM).
+\] 
+Clearly 
+\[
+	D\Sc_{(u, J)} (\xi, Y) = D_u \xi + \tfrac{1}{2} Y(u) \circ du\circ j.
+\]
+
+\subsubsection{Fredholm property}
+
+\begin{proposition}
+	For $(u, J) \in \Sc^{-1} (0)$, 
+	\[
+		D_1\Sc_{(u, J)} = D_u \colon W^{k, p} (\Sigma, u^*TM)
+			\to W^{k - 1, p} (\Sigma, \Lambda^{0, 1} \otimes_J u^*TM)
+	\] 
+	is Fredholm with index $n\chi(\Sigma) + 2 c_1(A)$.
+\end{proposition}
+
+This follows from the generalized Riemann--Roch theorem 
+for the Cauchy--Riemann operator $D_u$, cf.\ \cite[Theorem~C.1.10]{MS}.
+
+\subsubsection{Regular value}
+
+\begin{lemma}
+	Let $J_0, \omega_0$ be the standard linear almost complex 
+	and symplectic structures on $\Rb^{2n}$. 
+	Then $\End(\Rb^{2n}, J_0, \omega_0)$ acts transitively on 
+	$\Rb^{2n} \setminus \{0\}$. 
+	In other words, for any $\xi, \eta \in \Rb^{2n} \setminus \{0\}$, 
+	there exists $Y \in \Rb^{2n \times 2n}$ such that 
+	$Y = Y^\intercal = J_0 Y J_0$, $Y \xi = \eta$.
+\end{lemma}
+
+\begin{proof}
+	Simply take 
+	\begin{align*}
+		Y & := \frac {1} {|\xi|^2} \big( \eta \xi^\intercal + \xi \eta^\intercal 
+			+ J_0 ( \eta \xi^\intercal + \xi \eta^\intercal ) J_0 \big) \\
+		& \ph - \frac {1} {|\xi|^4} \big( \la \eta, \xi \ra (\xi \xi^\intercal 
+			+ J_0 \xi \xi^\intercal J_0 ) + \la \eta, J_0 \xi \ra 
+			( J_0 \xi \xi^\intercal - \xi \xi^\intercal J_0 ) \big).
+		\qedhere
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	For $(u, J) \in \Sc^{-1} (0)$, 
+	\[
+		D\Sc_{(u, J)} \colon W^{k, p} (\Sigma, u^*TM) 
+			\times C^\ell (M, \End(TM, J, \omega)) \to 
+			W^{k - 1, p} (\Sigma, \Lambda^{0, 1}\otimes_J u^*TM)
+	\] 
+	is surjective.
+\end{proposition}
+\begin{proof}[Proof for $k=1$]
+	Since $D_1\Sc_{(u, J)}$ is Fredholm, $\im D_1\Sc_{(u, J)}$ and hence 
+	$\im D\Sc_{(u, J)}$ is closed and has finite codimension. 
+	Thus by the Hahn--Banach theorem, it suffices to show 
+	$(\im D\Sc_{(u, J)})^\perp = 0$, where $^\perp$ denotes its 
+	annihilator in the dual space.
+
+	Suppose $\eta \in L^{p'} (\Sigma, \Lambda^{0, 1} \otimes_J TM)$ and 
+	\begin{gather*}
+		\int_\Sigma \la \eta, D_u\xi \ra = 0, \quad
+			\fr \xi \in W^{1, p} (\Sigma, u^*TM), \\
+		\int_\Sigma \la \eta, Y(u) \circ du \circ j \ra = 0, \quad
+			\fr Y \in C^\ell (M, \End(TM, J, \omega)).
+	\end{gather*} 
+	By elliptic regularity for $D_u^*$ 
+	(\cite[Proposition~3.1.11 and Theorem~C.2.3]{MS}), 
+	the first equation implies $\eta\in W^{1, p}$. 
+	Thus $\eta$ is continuous by the Sobolev embedding theorem. 
+	We claim that $\eta$ vanishes at injective point of $u$. 
+	Since $u$ is simple, the set of such points is open and dense, so by continuity, the claim implies $\eta = 0$.
+
+	Let $z$ be an injective point of $u$. 
+	If $\eta(z) \neq 0$, then by the lemma, there exists 
+	$Y \in \End(T_{u(z)} M, J_{u(z)}, \omega_{u(z)})$ with 
+	$\la \eta(z), Y \circ du(z) \circ j(z) \ra > 0$. 
+	Extend $Y$ to a section $\in C^\ell (M, \End(TM, J, \omega))$. 
+	By continuity, $\la \eta, Y \circ du \circ j \ra > 0$ 
+	in some neighborhood $V$ of $z$ in $\Sigma$. 
+	By injectivity and compactness, take a neighborhood $U$ of $z$ 
+	in $M$ disjoint from $u ( \Sigma \setminus V )$. 
+	If $\phi$ is a smooth cutoff function supported in $U$, then 
+	$\la \eta, (\phi Y) \circ du \circ j \ra \geq 0$ on $M$, $>0$ near $z$. 
+	This contradicts the second equation.
+\end{proof}
+
+\begin{proof}[Proof for general $k$]
+	Let $\eta \in W^{k - 1, p} (\Sigma, \Lambda^{0, 1} \otimes_J u^*TM)$. 
+	By the case $k = 1$, there exist $(\xi, Y) \in W^{1, p} (\Sigma, u^*TM) 
+	\times C^\ell(M, \End(TM, J, \omega))$ with 
+	$D\Sc_{(u, J)} (\xi, Y) = D_u\xi + \frac{1}{2} Y(u) \circ du \circ j = \eta$. 
+	Then $D_u\xi = \eta - \frac{1}{2} Y(u) \circ du \circ j \in W^{k - 1, p}$, 
+	since $u \in W^{\ell, p}$ by elliptic regularity for $\pab_J$ 
+	(\cite[Theorem~B.4.1]{MS}). 
+	By elliptic regularity for $D_u$ (\cite[Theorem~C.2.3]{MS}), 
+	this implies $\xi \in W^{k, p}$. 
+	Thus $D\Sc_{(u, J)}$ is surjective.
+\end{proof}
+
+\subsubsection{Passage to \texorpdfstring{$C^\infty$}{C^infty}}
+We shall use the argument of Taubes to pass to 
+$C^\infty$ almost complex structures.
+
+\begin{proof}[Proof of main theorem]
+	From the proof of the general transversality theorem, we have 
+	$\Mc(A, \Sigma; J)$ is a manifold if $D_u$ is surjective for any 
+	$J$-holomorphic curve $u \colon \Sigma \to M$. 
+	Let $\Jc_\reg^\ell$ be the set of such $C^\ell$ almost complex structures. 
+	We have proved $\Jc_\reg^\ell$ is dense in $\Jc^\ell$. 
+	For $K>0$, let $\Jc_{\reg, K}^\ell$ be the set of 
+	$C^\ell$ almost complex structures $J$ such that $D_u$ is surjective 
+	for any $J$-holomorphic curve $u \colon \Sigma \to M$ 
+	representing $A$ such that (1) $\|du\|_{L^\infty} \leq K$, and 
+	(2) there exists $z \in \Sigma$ with 
+	$\inf_{w \neq z} \frac {d(u(w), u(z))} {d(w, z)} \geq 1 / K$. 
+	Note that (2) implies $u$ is injective at $z$ and hence simple, 
+	so $\Jc_\reg^\ell \subset \Jc_{\reg, K}^\ell$. 
+	We claim that $\Jc_{\reg, K}^\infty$ is open and dense in $\Jc^\infty$, 
+	so that $\Jc_\reg^\infty = \bigcap_{K > 0} \Jc_{\reg, K}^\infty$ is residual.
+
+	To see that $\Jc_{\reg, K}^\infty$ is open in $\Jc^\infty$, let 
+	$(J_n)_n, (u_n)_n, (z_n)_n$ be sequences where 
+	$u_n \colon \Sigma \to M$ is $J_n$-holomorphic with 
+	$\|du_n\|_{L^\infty}\leq K$, 
+	$\inf_{w \neq z_n} \frac {d(u_n(w), u_n(z_n))} {d(w,z_n)} \geq 1 / K$, 
+	and $D_{u_n}$ not surjecitve. 
+	Suppose $J_n \to J$ in $\Jc^\infty$. 
+	By elliptic regularity estimates (\cite[Theorem B.4.2]{MS}) 
+	and compactness, passing to a subsequence, we may assume 
+	$u_n \to u$ in $C^\infty$, $z_n \to z$. 
+	Then $u$ is $J$-holomorphic with $\|du\|_{L^\infty} \leq K$, 
+	$\inf_{w \neq z} \frac {d(u(w), u(z))} {d(w, z)} \geq 1 / K$, and 
+	$D_u=\lim D_{u_n}$ is not surjective, so $J \notin \Jc_{\reg, K}^\infty$. 
+	The same argument shows $\Jc_{\reg, K}^\ell$ is open 
+	in $\Jc^\ell$ for all $\ell$.
+
+	That $\Jc_{\reg, K}^\infty$ is dense in $\Jc^\infty$ 
+	is proved by a $1 / \ell$-argument as before: 
+	Let $J \in \Jc^\infty$. 
+	For each $\ell$, take $J_\ell\in\Jc_\reg^\ell$ with 
+	$\| J_\ell - J \|_{C^\ell} \leq 1 / \ell$, 
+	take $\delta_\ell > 0$ such that $\| \wt{J} - J_\ell \|_{C^\ell} < \delta_\ell$ 
+	implies $\wt{J} \in \Jc_{\reg, K}^\ell$, 
+	then take $\wt{J}_\ell \in \Jc^\infty$ with 
+	$\| \wt{J}_\ell - J_\ell \|_{C^\ell} < \min (1 / \ell, \delta_\ell)$. 
+	Then $\wt{J}_\ell \in \Jc_{\reg, K}^\infty$ and 
+	$\wt{J}_\ell \to J$ in $\Jc^\infty$.
+\end{proof}
+
+\begin{remark}
+	The smooth structure on $\Mc^*(A, \Sigma; J) \subset W^{k, p}(\Sigma, M)$
+	does \textit{not} depend on $k, p$, since from the proof we see that 
+	charts are given by $\xi \mapsto \exp_u \xi$ for a fixed $J$-holomorphic 
+	curve $u$, which does not depend on $k, p$.
+\end{remark}

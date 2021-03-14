@@ -1,0 +1,402 @@
+This section presents the result of Hassett, Pirutka and Tschinkel \cite{hassett-pirutka-tschinkel},
+which states that over complex numbers,
+a very general fourfold which is a quadric surface bundle over $\bbP^2$
+is not retract rational, while those fourfolds that are rational are \emph{dense}
+in the family, in euclidean topology.
+
+\begin{definition}
+    Let $S$ be an integral surface.
+    A \term{quadric surface bundle} over $S$,
+    is a fourfold $X \subset S \times \bbP^3$, 
+    such that the composition
+    \[ \pi \: X \hookrightarrow S \times \bbP^3 \xrightarrow{\mathrm{pr}_1} S \]
+    is flat with smooth generic fibre.
+\end{definition}
+
+\subsection{Irrationality}
+
+We are interested in the case $S = \bbP^2$,
+and we consider the family of 
+all hypersurfaces of $\bbP^2 \times \bbP^3$ of bidegree $(2,2)$.
+A general member of this family is a quadric surface bundle over $\bbP^2$.
+
+As before, we use a specific example to establish the irrationality of a very general member.
+
+\begin{itemize}
+    \item 
+        Consider the fourfold $X \subset \bbP^2 \times \bbP^3$, given by
+        \[ yzs^2 + xzt^2 + xyu^2 + F(x,y,z)v^2 = 0, \]
+        where $x,y,z$ are the coordinates of $\bbP^2$, and $s,t,u,v$ the coordinates of $\bbP^3$, with
+        \[ F(x,y,z) = x^2 + y^2 + z^2 - 2yz - 2xz - 2xy. \]
+    \item
+        Hassett, Pirutka and Tschinkel \cite[\S5]{hassett-pirutka-tschinkel}
+        constructed a universally $\CH_0$-trivial desingularisation of $X$.
+\end{itemize}
+
+Let $A$ be a discrete valuation ring, with valuation $\nu$,
+fraction field $\bbK$, and residue field $\kappa$.
+There is a residue map
+\[ \partial_{\nu} \: H^2 (\bbK, \bbZ/2) \to H^1 (\kappa, \bbZ/2) \simeq \kappa^\times / \kappa^{\times 2}, \]
+which sends
+\[ (a,b) \mapsto (-1)^{\nu(a)\,\nu(b)} a^{\nu(b)} / b^{\nu(a)}, \]
+where $a,b \in \bbK^\times$, and $(a,b) = a \cup b$ is the cup product of $a$ and $b$.
+The kernel of $\partial_{\nu}$ coincides with the image of $H^2 (\Spec A, \bbZ/2)$, 
+so that an element of $H^2 (\bbK, \bbZ/2)$ is unramified (Definition~\ref{def-2-unramified})
+if and only if it is in the kernel of $\partial_{\nu}$ for all $\nu$.
+See \cite{colliot-unramified} for more details.
+
+\begin{proposition}
+    $\Br (X)$ contains non-trivial $2$-torsion. 
+    In fact, let
+    \[ \alpha = (x/z, y/z) \in \Br ( \bbC(\bbP^2) ) \, [2] , \]
+    and let $\alpha' \in \Br (\bbC(X))$ be its image.
+    Then $\alpha'$ is non-zero and unramified, i.e., lies in $\Br (X)$.
+\end{proposition}
+
+\begin{proof}
+    The generic fibre $X^\circ$ of $X \to \bbP^2$ is a quadric surface over the field $\bbK = \bbC (x/z, y/z)$,
+    and its discriminant is not a square in $\bbK$.
+    Applying \cite[Proposition~6.2.3~(c)]{colliot-brauer}, the natural map 
+    \[ i \: \Br (\bbK) \to \Br (X^\circ) \]
+    is an isomorphism. As $\bbK (X^\circ) \simeq \bbC (X)$,
+    it remains to show that $\alpha'$ is unramified, 
+    i.e., $\partial_{\nu} (\alpha') = 0$ for all valuations $\nu$ on $\bbC (X) / \bbC$.
+
+    Let us first look at the residues of $\alpha$.
+    By definition, only the following residues are non-trivial:
+    \begin{itemize}
+        \item 
+            $\partial_x (\alpha) = y/z \in \bbC (y/z)^\times / \bbC (y/z)^{\times 2}$, along the line $L_x \: x = 0$.
+        \item 
+            $\partial_y (\alpha) = x/z \in \bbC (x/z)^\times / \bbC (x/z)^{\times 2}$, along the line $L_y \: y = 0$.
+        \item 
+            $\partial_z (\alpha) = x/y \in \bbC (x/y)^\times / \bbC (x/y)^{\times 2}$, along the line $L_z \: z = 0$.
+    \end{itemize}
+
+    Now let $\nu$ be a valuation on $\bbC (X) / \bbC$.
+    We need to show that $\partial_{\nu} (\alpha') = 0$.
+
+    Let $\mathscr{O}_{\nu} \subset \bbC (X)$ be the valuation ring of $\nu$.
+    If $\mathscr{O}_{\nu}$ contains $\bbK$, then $\partial_{\nu} (\alpha') = 0$.
+    Therefore, if we consider the centre of $\nu$ in $\bbP^2$, there are two remaining cases.
+
+    \begin{itemize}
+        \item 
+            \emph{The centre is the generic point of a curve $C \subset \bbP^2$.}
+            The inclusion of discrete valuation rings $\mathscr{O}_{\bbP^2,C} \subset \mathscr{O}_{\nu}$
+            induces a commutative diagram
+            \[ \begin{tikzcd}
+                \llap{$\alpha \in {}$} H^2 (\bbK, \bbZ/2) \ar[d] \ar[r, "\partial_{\nu}"] &
+                H^1 (\kappa(C), \bbZ/2) \ar[d] \\
+                \llap{$\alpha' \in {}$} H^2 (\bbC (X), \bbZ/2) \ar[r, "\partial_{\nu}"] &
+                H^1 (\kappa(\nu), \bbZ/2) \rlap{\ .}
+            \end{tikzcd} \]
+            It follows that if $C$ is different from $L_x$, $L_y$ or $L_z$,
+            then $\partial_{\nu} (\alpha') = 0$, since $\partial_{\nu} (\alpha) = 0$.
+            If, for example, $C = L_x$, 
+            then $\partial_{\nu} (\alpha') = y$ in the residue field
+            \[ \textstyle \bbC (y,t,u) \bigl[ s = \sqrt{F(0,y,1) / y} \bigr] 
+                \simeq \bbC \bigl( \sqrt{y}, t, u \bigr), \]
+            where we have set $z = 1$ and $v = 1$. Therefore, $\partial_{\nu} (\alpha')$
+            is a square in the residue field, and hence is trivial.
+            (The key point is that $F(x,y,z)$ is a square modulo any one of $x,y,z$.)
+        \item
+            \emph{The centre is a closed point $P \in \bbP^2$}.
+            There are three cases.
+
+            \begin{enumerate}
+                \item
+                    $P \notin L_x \cup L_y \cup L_z$.
+                    Then $\nu (x/z) = \nu (y/z) = 0$, so that $\partial_{\nu} (\alpha') = 0$.
+
+                \item
+                    $P$ lies on one of the three lines, say $L_x$.
+                    Then $y/z \neq 0$ at $P$,
+                    so that $y/z$ is a square in the completion $\widehat{\mathscr{O}_{\bbP^2,P}}$,
+                    which embeds in $\widehat{\mathscr{O}_{\nu}}$, 
+                    whose fraction field is the completion $\bbC (X)_{\nu}$.
+                    Thus $y/z$ is a square in $\bbC (X)_{\nu}$, 
+                    and $\alpha' = 0$ in $H^2 (\bbC (X)_{\nu}, \bbZ/2)$, so that $\partial_{\nu} (\alpha') = 0$.
+
+                \item
+                    $P$ lies on two of the three lines, say $L_x$ and $L_y$.
+                    As in the previous case, $F (x,y,z) / z^2$ is a square in the completion $\smash{\widehat{\bbK}}$.
+                    Applying \cite[Proposition~6.2.3~(c)]{colliot-brauer} to the quadric $\smash{X^\circ_{\widehat{\bbK}}}$,
+                    we see that the image of $\alpha$ in $H^2 (\smash{\widehat{\bbK}} (X^\circ), \bbZ/2)$ is zero.
+                    The natural map of fields $\smash{\widehat{\bbK}} (X^\circ) \to \bbC (X)_{\nu}$
+                    shows that $\alpha$ is zero in $H^2 (\bbC (X)_{\nu}, \bbZ/2)$.
+                    Therefore, $\partial_{\nu} (\alpha') = 0$. \qedhere
+            \end{enumerate}
+    \end{itemize}
+\end{proof}
+
+Applying Theorem~\ref{thm-2-brauer-trivial}, and applying Theorem~\ref{thm-3-locus-decomp}
+to the family of bidegree $(2,2)$ hypersurfaces in $\bbP^2 \times \bbP^3$, we obtain the following.
+
+\begin{corollary}
+    A very general bidegree $(2,2)$ hypersurface in $\bbP^2 \times \bbP^3$
+    is not retract rational. \qed
+\end{corollary}
+
+
+\subsection{Density of the rational locus}
+
+Now, we begin to prove a remarkable fact about this example,
+that those rational members in the family of quadric surface bundles over $\bbP^2$ is dense.
+This also shows that in Theorem~\ref{thm-3-locus-decomp},
+``a countable union of closed sets'' can not be improved to ``a closed set''.
+
+By a \term{multisection} of $X/S$ degree~$d$, 
+we mean a family of $0$-cycles of degree~$d$, in the sense of Definition~\ref{def-3-family}.
+
+\begin{lemma} \label{lem-7-multisection}
+    Let $S$ be a rational surface, and $X \to S$ a quadric surface bundle.
+    Suppose that $X/S$ has a multisection of odd degree. Then $X$ is rational.
+\end{lemma}
+
+\begin{proof}
+    $X$ is rational, if and only if the generic fibre $X^\circ$ is rational over the field $\bbC (S)$.
+    Since $X^\circ$ is a smooth quadric surface, it is rational if and only if
+    it has a rational point, as the projection from a rational point 
+    will give a birational map between $X^\circ$ and $\bbP^2$.
+    Thus it suffices to show that $X^\circ$ has a $\bbC (S)$-rational point.
+
+    By a theorem of Springer \cite{springer},
+    $X^\circ$ has a $\bbC (S)$-rational point, 
+    if and only if $X^\circ$ has a $\bbK$-rational point for some extension $\bbK / \bbC(S)$ of odd degree.
+    Thus, we only need to show that $X^\circ$ has a $0$-cycle of odd degree,
+    which will imply that $X^\circ$ has a closed point of odd degree.
+
+    But by hypothesis, $X/S$ has a multisection of odd degree,
+    which gives rise to a $0$-cycle of $X^\circ$ of odd degree.
+\end{proof}
+
+For a quadric surface bundle $X \to S$, and an \emph{integral $(2,2)$-class},
+that is, an element $\alpha \in H^{2,2} (X) \cap H^4 (X; \bbZ)$,
+we say that $\alpha$ \emph{meets the fibre $X_s$ in degree $d$}, where $s \in S$,
+if the pairing of $\alpha$ with the homology class of $X_s$ equals~$d$.
+
+\begin{lemma} \label{lem-7-rational}
+    Let $S$ be a rational surface, and $\pi \: X \to S$ a quadric surface bundle.
+    Suppose that $X$ has an integral $(2,2)$-class meeting the fibres of $\pi$ in odd degree.
+    Then $X$ is rational.
+\end{lemma}
+
+\begin{proof}
+    Let $S_0 \subset S$ be the locus where the rank of the quadratic form
+    is $\geq 3$ (the full rank is $4$),
+    and let $X_0 = X \times_S S_0$.
+
+    Let $F_1 \to S$ be the relative variety of lines of $\pi$,
+    i.e., the points of the fibre $(F_1)_s$ correspond to
+    straight lines contained in the fibre $X_s$. 
+    When $X_s$ is non-degenerate, it contains $2$ families of lines, each parametrised by $\bbP^1$.
+    When the rank of the quadratic form drops by $1$, $X_s$ becomes a quadric cone,
+    which contains $1$ family of lines parametrised by $\bbP^1$.
+    
+    This shows that $F_1 |_{S_0} \to S_0$ factors as
+    \[ F_1 |_{S_0} \overset{p}{\longrightarrow} T_0 \longrightarrow S_0, \]
+    where $p$ is an étale $\bbP^1$-bundle, 
+    and $T_0 \to S_0$ is a double cover branched along $S_0 \cap D$,
+    where $D \subset \bbP^2$ is the locus of degenerate fibres.
+
+    Let $F$ be a desingularisation of the closure of $F_1 |_{S_0}$ in $F_1$.
+    The correspondence $\Gamma_1 = \{ (x,\ell) \mid x \in \ell \} \subset X \times_S F_1$
+    induces a correspondence $\Gamma$ from $X$ to $F$, 
+    which induces a map 
+    \[ \Gamma_* \: H^{2,2} (X) \to H^{1,1} (F). \]
+
+    On the other hand, let $\eta$ be the generic point of $S$. There is a map
+    \[ \Xi_* \: \operatorname{Pic} (F_\eta) \simeq \CH_0 (F_\eta) \to \CH_0 (X_\eta) \]
+    constructed as follows.
+    For a divisor $Z \subset F_\eta$, i.e.\ a choice of $n$ lines
+    from each family of lines on each quadric surface, let $\Xi_*(Z) \subset X_\eta$
+    be the $n^2$ points where these lines intersect.
+    Note that $\Xi_*$ sends a divisor of odd degree on each geometric component of $F_\eta$ to a multisection of odd degree.
+
+    Now let us prove the lemma.
+    By hypothesis, $X$ has an integral $(2,2)$-class meeting the fibres in odd degree.
+    Applying the map $\Gamma_*$,
+    we obtain an integral $(1,1)$-class of $F$ of meeting the fibres in odd degree.
+    By the Lefschetz theorem on $(1,1)$-classes \cite[p.~163]{griffiths-harris},
+    $F$ has a divisor which meets the fibres in odd degree.
+    Finally, applying the map $\Xi_*$ to this divisor,
+    we obtain a multisection of $X/S$ which meets the fibres in odd degree.
+    Applying Lemma~\ref{lem-7-multisection} completes the proof.
+\end{proof}
+
+Next, we analyse the Hodge classes in the case $S = \bbP^2$,
+in order to verify the assumption of this lemma.
+The key tool is the following technique of Voisin.
+
+\begin{lemma} \label{lem-7-voisin}
+    Let $Y \to B$ be a flat, projective family of complex varieties.
+    Suppose there exists $b \in B$ and $\lambda \in H^{p,p} (Y_b, \bbR)$, 
+    such that the infinitesimal period map
+    \[ \nablabar (\lambda) \: T_{B,b} \to H^{p-1,p+1} (Y_b) \]
+    is surjective, where $T_{B,b}$ denotes the tangent space of $B$ at $b$.
+    Then for any open set $U \subset B$ \textup{(in euclidean topology)} containing $b$, 
+    such that $Y|_U \to U$ is a trivial bundle, the map \textup{(notations are explained below)}
+    \[ \phi \: \mathscr{H}^{p,p}_{\bbR} |_U 
+        \hookrightarrow \mathscr{H}^{2p}_{\bbR} |_U 
+        \simeq H^{2p} (Y_b, \bbR) \times U 
+        \to H^{2p} (Y_b, \bbR) 
+        \to F^{p-1} H^{2p} (Y_b, \bbR) \]
+    is submersive at $\lambda$.
+\end{lemma}
+
+We use the notation $\mathscr{H}^{p,q}$, $\mathscr{H}^{p,q}_{\bbR}$, etc.,
+to refer to the vector bundles over $B$,
+whose fibres are the cohomology of the fibres of $Y \to B$.
+The notation $F^{p-1} H^{2p}$ refers to the Hodge filtration,
+and in this case, it is equal to $H^{p-1,p+1} \oplus H^{p,p} \oplus \cdots \oplus H^{2p,0}$.
+
+\begin{proof}
+    See, for example, \cite[\S5.3.4]{voisin-book-2}.
+\end{proof}
+
+In the following, we use the notation
+\[ Y \to B \]
+for the family of all smooth bidegree $(2,2)$ hypersurfaces in $\bbP^2 \times \bbP^3$,
+and the notation $Y_b$ refers to its fibres.
+
+\begin{proposition}
+    The Hodge and Betti numbers of $Y_b$ are given by 
+    \begin{itemize}
+        \item
+            $b_0 = b_8 = 1$.
+        \item
+            $b_1 = b_3 = b_5 = b_7 = 0$.
+        \item
+            $b_2 = h_{1,1} = b_6 = h_{3,3} = 2$.
+        \item
+            $b_4 = 46$, $h_{0,4} = h_{4,0} = 0$, $h_{1,3} = h_{3,1} = 3$, $h_{2,2} = 40$.
+    \end{itemize}
+\end{proposition}
+
+\begin{proof}
+    The Lefschetz hyperplane theorem shows that
+    \[ b_k (Y_b) = b_k (\bbP^2 \times \bbP^3) \quad \text{and} \quad
+        h_{p,q} (Y_b) = h_{p,q} (\bbP^2 \times \bbP^3) \]
+    for $k < 4$ and $p + q < 4$.
+    This, together with Poincaré/Serre duality, gives the first three items.
+
+    We compute $b_4$ by analysing the map $Y_b \to \bbP^2$.
+    Let $D \subset \bbP^2$ be the locus of degenerate fibres.
+    If $Y_b$ is defined by the equation
+    \[\textstyle \sum_{i,j=0}^2 \sum_{k,l=0}^3 a_{ijkl} x_i x_j y_k y_l = 0, \]
+    where the coefficients $a_{ijkl}$ are assumed to be symmetric with respect to $i,j$ and $k,l$,
+    then $D$ is cut out by the equation
+    \[\textstyle \det {} \bigl( \sum_{i,j=0}^2 a_{ijkl} x_i x_j \bigr) _{\substack{0 \leq k \leq 3 \\ 0 \leq l \leq 3}} = 0. \]
+    Therefore, $D$ is an octic curve, and hence has genus $21$ and Euler number $-40$.
+
+    Recall that for a complex variety $X$ and a closed subvariety $Z \subset X$,
+    we have an additive formula $\chi (X) = \chi (Z) + \chi (X \setminus Z)$ of Euler numbers.
+    Hence we have
+    \[ \begin{aligned}
+        \chi (Y_b)
+        & = \chi ( \bbP^1 \times \bbP^1 ) \, \chi ( \bbP^2 \setminus D ) 
+        + \chi ( \text{quadric cone} ) \, \chi (D) \\
+        & = 4 \cdot (3 - (-40)) + 3 \cdot (-40) = 52,
+    \end{aligned} \]
+    and it follows that $b_4 (Y_b) = \chi (Y_b) - b_0 - b_2 - b_6 - b_8 = 46$.
+
+    To compute the remaining Hodge numbers,
+    we apply the result of Batyrev and Cox on hypersurfaces in toric varieties \cite[Theorem~10.13]{batyrev-cox},
+    which implies that the \emph{vanishing cohomology}, defined by
+    \[ H^{p,q} (Y_b)_{\mathrm{van}} = H^{p,q} (Y_b) / H^{p,q} (\bbP^2 \times \bbP^3) \]
+    is given by the formula
+    \[ H^{p,4-p} (Y_b)_{\mathrm{van}} \simeq \operatorname{Jac}(F)_{(7-2p,6-2p)}, \]
+    where $F$ is the defining equation of $Y_b$, and
+    \[ \operatorname{Jac} (F) = \bbC [x,y,z;s,t,u,v] / \mathscr{I}(F) \]
+    is the $\bbZ^2$-graded Jacobian ring of $F$, 
+    where $\mathscr{I}(F)$ is the ideal generated by the partial derivatives of $F$.
+
+    Using this method, we obtain
+    \begin{itemize}
+        \item
+            $h_{4,0} = \dim \operatorname{Jac}(F)_{(-1,-2)} = 0$, and hence $h_{0,4} = 0$ as well.
+        \item
+            $h_{3,1} = \dim \operatorname{Jac}(F)_{(1,0)} = 3$, and hence $h_{1,3} = 3$ as well.
+        \item
+            $h_{2,2} = b_4 - (h_{0,4} + h_{1,3} + h_{3,1} + h_{4,0}) = 40$. \qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    There exists $b \in B$ which satisfies the assumption of Lemma~\textup{\ref{lem-7-voisin}}, with $p=2$.
+\end{corollary}
+
+\begin{proof}
+    Since $B \subset \bbP(\bbC[x,y,z;s,t,u,v]_{(2,2)})$, we may identify
+    \[ T_{B,b} \simeq \bbC[x,y,z;s,t,u,v]_{(2,2)} / (\bbC \cdot F), \]
+    where $F$ is the defining equation of $Y_b$.
+    The infinitesimal period map
+    \[ \nablabar \: T_{B,b} \times H^{2,2} (Y_b) \to H^{1,3} (Y_b) \]
+    is given by multiplication
+    \[ (\bbC[x,y,z;s,t,u,v]/(F))_{(2,2)} \times \operatorname{Jac} (F) _{(3,2)} 
+        \to \operatorname{Jac} (F) _{(5,4)}, \]
+    by \cite[Theorem~6.13]{voisin-book-2}, which applies by the identifications
+    \cite[Corollary~10.2, Theorem~10.6, and Theorem~10.13]{batyrev-cox}.
+    We consider the fibre $Y_b$ given by
+    \[ F = x^2 s^2 + y^2 t^2 + z^2 u^2 + y z s^2 + x z t^2 + x y u^2
+        + x^2 s v + y^2 t v + z^2 u v = 0. \]
+    One verifies that it is a smooth hypersurface in $\bbP^2 \times \bbP^3$,
+    and that $\operatorname{Jac} (F) _{(5,4)}$ is generated by the basis elements $xz^4v^4$, $yz^4v^4$ and $z^5v^4$,
+    using computer software.
+    Therefore, if we take $\lambda = z^3 v^2 \in \operatorname{Jac} (F) _{(3,2)}$, then the map
+    \[ {} \cdot \lambda \: \bbC[x,y,z;s,t,u,v]_{(2,2)} \to \operatorname{Jac} (F) _{(5,4)} \]
+    is surjective.
+\end{proof}
+
+% Macaulay2 source:
+% S = QQ[s, t, u, v, x, y, z]
+% F = x^2 * s^2 + y^2 * t^2 + z^2 * u^2 + y * z * s^2 + x * z * t^2 + x * y * u^2 + x^2 * s * v + y^2 * t * v + z^2 * u * v
+% I = ideal(F, diff(s, F), diff(t, F), diff(u, F), diff(v, F), diff(x, F), diff(y, F), diff(z, F))
+% R = S / I
+% p = map(R, QQ)
+% q = map(R^1, QQ^3, p, matrix{{x * z^4 * v^4, y * z^4 * v^4, z^5 * v^4}})
+
+\begin{theorem}
+    The set of those $b \in B$ such that $Y_b$ has an integral $(2,2)$-class
+    meeting the fibres of $Y_b \to \bbP^2$ in odd degree is dense in $B$, in euclidean topology.
+\end{theorem}
+
+\begin{proof}
+    Instead of finding an integral class, we only need to find such a class with the coefficient ring
+    \[ R = \{ m/n \mid m,n \in \bbZ,\ 2 \nmid n \}, \]
+    as we can multiply by an odd integer to turn such a class into an integral class.
+    (We have an obvious definition of an odd element in $R$.)
+
+    Let $b_0 \in B$ be as in the previous corollary, and let $U \subset B$ be an open set which trivialises $Y \to B$ near $b_0$.
+    Such a trivialisation preserves the homology classes of the fibres of $Y_b \to \bbP^2$.
+
+    We have shown that $H^{0,4} (Y_{b_0}) = 0$.
+    Thus, Lemma~\ref{lem-7-voisin} shows that the image of the map
+    \[ \phi \: \mathscr{H}^{2,2}_{\bbR} |_U \to H^{4} (Y_{b_0}, \bbR) \]
+    contains an open set.
+    Since the image consists of those classes that are of type $(2,2)$ over some $b \in U$,
+    it suffices to show that the elements of $H^4 (Y_{b_0}, R)$ 
+    that meet the fibres of $Y_{b_0} \to \bbP^2$ in odd degree are dense in $H^4 (Y_{b_0}, \bbR)$,
+    so that one such element lies in the image.
+    We only need to prove this for $b_0 \in B$,
+    as the set of such $b_0$ is Zariski open in $B$.
+
+    The quadric surface bundle $Y_{b_0}$ has
+    a constant section $\bbP^2 \to Y_{b_0}$ given by $s=t=u=0$.
+    This gives rise to an element $\alpha \in H^4 (Y_{b_0}, \bbZ)$,
+    which intersects the fibres of $Y_{b_0} \to \bbP^2$
+    in degree $1$.
+    For any $\beta \in H^4 (Y_{b_0}, R)$, the class $\alpha + 2\beta$
+    also intersects the fibres of $Y_{b_0} \to \bbP^2$ in odd degree.
+    Such classes are dense in $H^4 (Y_{b_0}, R)$.
+\end{proof}
+
+The results are summarised as follows.
+
+\begin{theorem}
+    In the family of all bidegree $(2,2)$ hypersurfaces in $\bbP^2 \times \bbP^3$,
+    a very general member is not retract rational,
+    while the rational members form a dense subset in the family, in euclidean topology. \qed
+\end{theorem}
+
