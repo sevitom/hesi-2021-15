@@ -20,6 +20,8 @@
 # *.ps
 # *.eps
 
+.temp/
+
 *.pdf
 !**/src/*.pdf
 
