@@ -1,0 +1,264 @@
+%在这一小节中，我们介绍超实数的定义，和超实数上的一些基本运算. 
+
+\textbf{超实数}%
+\footnote{也常译作\textbf{超现实数}.}
+(surreal number)
+是在实数中添加无穷大、无穷小元素得到的数系.
+在这一节中，我们介绍超实数的构造过程，并在超实数上定义一些基本运算. 
+
+%我们先回忆一下自然数基于集合论的构造. 
+%我们把空集 $\emptyset$ 定义成 $0$, 而把集合 $\{\emptyset\}$ 定义成 $1$,
+%这样子 $0$ 和 $1$ 都是一个集合. 
+%更加一般地, 如果有一个自然数 $A$, 那么我们定义 
+%\[A+1=A\cup \{A\}.\]
+%这样归纳地定义, 就有了所有自然数.
+
+\subsection{超实数的构造}
+
+超实数的构造过程如下. 首先, 记 
+\[0=(\quad:\quad),\] 
+然后让 
+\[1=(0:\quad), \hspace{2em} -1=(\quad:0).\] 
+这里我们用 $(L:R)$ 表示一个比 $L$ 中数大且比 $R$ 中数小的数.
+同样, 我们让 
+\[2=(1:\quad), \hspace{2em} -2=(\quad:-1).\]
+利用这样的归纳构造, 我们可以构造出所有的整数.  
+
+接下来, 我们让 
+\[\frac{1}{2}=(0:1), \hspace{2em} \frac{3}{2}=(1:2).\] 
+用这种方式可以得到所有半整数: 
+\[\frac{2k+1}{2}=(k:k+1).\]
+进一步地, 我们令 
+\[\frac{4k+1}{4}=\left(k:k+\frac{1}{2}\right), \hspace{2em} 
+\frac{4k+3}{4}=\left(k+\frac{1}{2}:k+1\right). \]
+这样就得到了所有 $1/4$ 的整数倍.
+如此下去, 我们能得到所有二进制下的有限小数.
+这些数在实数中是稠密的, 因此, 其它的实数就可以通过类似 Dedekind 分割的方式来得到.
+
+超实数除了包含一般的实数之外, 还有一些其它的数.
+例如，\[\omega = (1,2,3,\cdots:\quad)\] 是一个比所有实数都要大的数,
+而 \[\epsilon = \left(0:\frac{1}{2},\frac{1}{4},\frac{1}{8},\cdots\right)\] 
+是一个比所有正实数都要小的正数.  这两个数也是合法的超实数. 
+
+以上的操作可以一直持续下去: 只要我们有两个超实数的集合 $X_L$ 和 $X_R$,
+使得对任意的 $x_L\in X_L$ 和 $x_R\in X_R$, 都有 $x_L<x_R$, 
+那么 $(X_L:X_R)$ 就是一个合法的超实数. 
+这样不断递归得到的全体对象就是所有的超实数.
+
+超实数的大小关系按照如下方式递归定义: 
+对于两个超实数 \[x=(X_L:X_R), \hspace{2em} y=(Y_L:Y_R),\]
+我们说 $x\le y$, 如果对任意的 $x_L\in X_L$ 和 $y_R\in Y_R$,
+都有 $x_L\ngeq y$ 和 $x\ngeq y_R$ 成立; 
+$x$ 和 $y$ 满足 $x<y$, 如果 $x\le y$ 且 $y\nleq x$.
+我们记 $x=y$, 如果 $x\le y$ 且 $y\le x$, 
+并将 $x$ 和 $y$ 视作相等的超实数. 
+
+全体超实数构成的类，我们叫它 $\mathbb{S}$.
+这是一个真类, 也就是说, 它的大小比任何的集合都要大, 它因而不是集合.
+
+根据超实数的构造过程, 我们可以通过超实数的``复杂度''来对超实数进行分类.
+我们记 $\mathbb{S}_0$ 为可以用空集 $\emptyset$ 构造的超实数的集合, 即 \[\mathbb{S}_0=\{0\}.\]
+而对每个序数 $\alpha$, 
+我们记 $\mathbb{S}_\alpha$ 为可以用 $\mathbb{S}_{<\alpha}$ 构造的超实数的集合,
+其中 \[\mathbb{S}_{<\alpha}=\bigcup_{\beta<\alpha}\mathbb{S}_\beta.\] 
+我们称一个超实数 $x$ 在\textbf{第 $\alpha$ 天}被定义,
+若 $x\in \mathbb{S}_{\alpha}$ 而 $x\notin \mathbb{S}_{<\alpha}$.
+
+例如, 按照这个记号, $\mathbb{S}_1$ 为可以用 $\mathbb{S}_0$ 构造的超实数, 即 \[\mathbb{S}_1=\{-1,0,1\};\]
+而 $\mathbb{S}_{<\omega}$ 为所有可以在有限步内得到的超实数的集合,
+也就是所有的``二进制下的有限小数'', 这里 $\omega$ 是最小的无限序数. 
+进一步地, 可以验证, %$\mathbb{S}_\omega$ 包含了所有实数, 
+%且 $\omega$ 和 $\epsilon$ 都属于 $\mathbb{S}_\omega$.
+\[
+    \mathbb{S}_\omega = \mathbb{R} \cup \{ \pm \omega, \ \mathbb{S}_{< \omega} \pm \epsilon \}.
+\]
+
+这样对于超实数的分类方式可以帮助对超实数的大小进行比较:
+$\mathbb{S}_\alpha$ 中超实数和 $\mathbb{S}_\beta$ 中超实数的大小比较,
+依赖于 $\mathbb{S}_{<\alpha}$ 中超实数和 $\mathbb{S}_\beta$ 中超实数的大小比较,
+以及 $\mathbb{S}_\alpha$ 中超实数和 $\mathbb{S}_{<\beta}$ 中超实数的大小比较. 
+利用归纳法, 我们可以验证以下的关于超实数的大小关系的性质:
+
+\begin{itemize}
+    \item 任何两个超实数都可以比较大小;
+    \item 超实数的大小关系具有自反性和传递性;
+    \item 若 $x=(X_L:X_R)$ 是一个超实数, 那么 $X_L<x<X_R$. 
+\end{itemize}
+
+一个超实数可以有多种不同表示形式. 例如, 可以验证
+\[ 2=(1:\quad)=(0,1:\quad). \]
+  
+%   基于此有简单的方法来判断超实数是否相等,
+%   如果有两个超实数的集合$Y_L,Y_R$, 里面的元素满足$y_L<x<y_R$, 那么$x\equiv (X_L\cup Y_L:X_R\cup Y_R)$.
+
+% 有了以上的直观理解, 我们给出一个``严格''的定义:
+% \begin{definition}
+% 一个\textbf{超实数}由两个集合组成, 记为$x=(X_L,X_R)$.这两个集合中的元素都是超实数, 用记号$x_l,x_R$表示两个集合中的某超实数, 并且满足, 任意一对$x_L,x_R$, 有大小关系$x_l<x_R$.
+%  两个超实数$x,y$的比较方法是, $x\leq y$当且仅当, 对于任意的$x_L\in X_L,y_R\in Y_R$, 有$y\nleq x_L$并且$y_R\nleq x$.而$x<y$代表$x\leq y$且$y\nleq x$.
+%  \end{definition}
+
+
+%   这个定义里面的大小比较的符号和我们常用的略有差别, 但是我们仍然叫它们“大于”, “小于”, “大于等于”, “小于等于”.
+  
+%   从这个定义上面看, 超实数还是看起来很奇怪的, 比如说, 判定两个集合构成一个超实数, 需要满足第一个集合的数小于第二个集合的数；而判定两个数的大小关系, 同样依赖于另外一些数的大小关系的比较.
+  
+%   这个过程仿佛需要不断地进行“递归”的操作.为此需要根据超实数的“复杂度”分类超实数.
+%   用$S_0$表示用空集$\Phi$可构造的超实数, 即$\{0\}$, 再用$S_{d+1}$代表用$S_d$可以构造的超实数, 这是说, 对于$S_{d+1}$里面的元素$x=(X_L:X_R)$, $x_l,x_r$属于$S_d$, 比如,  $S_1=\{-1<0<1\}$.
+%   直观上, 这个归纳过程中, 这个$d$ 可以不限制在自然数上, 它可以是一个序数, 但是目前可以先只考虑自然数的情形. 记$S_*=\cup_{i\in N}S_i$表示所有有限步得到的超实数. 不难发现, $S_*$就是前面所讲的“二进制表示下位数有限的实数”. 
+%   
+  
+%   前面还提到了两个特殊的超实数, $\omega$和$\epsilon$,它们不属于任何一个$S_d$,但是是通过$S_*$里面的元素构成超实数, 我们把用$S_*$组成的超实数全体记为$S_\omega$. $S_\omega$中的$\omega$表示这里面的元素会在“无穷”步之后被构造出来.对于任意的实数$x$, 可以把$S_*$中小于$x$的超实数放到$X_L$中, 大于$x$的超实数都放到$X_R$中, 那么实际上可以就发现, $(X_L,X_R)$就是$x$.现在已经看到, $S_\omega$包含了熟知的所有实数, 同时, 还包含了$\omega,\epsilon$这些奇怪的超实数.在此之上还可以继续做下去, 例如, 用$S_\omega$中超实数构成的超实数地集合就可以记为$S_{\omega+1}$, 在此之后还有$S_{\omega+2}$等, 可以一直做下去.
+  
+%   通过不断比较超实数的大小, 可以严格证明超实数大小关系的传递性, 自反性等等, 这让人确信了, 之前的超实数的大小比较是一个合理的关系, 并且超实数大致可以像实数一样排在“一条线”上面,可以自然地像实数集一样定义区间, 尽管这之间实际上会有一些细微的差别, 会在第$2$节讲到.
+
+  
+%   前面提到了$2=(1:\emptyset)=(0,1:\emptyset)$,作为例子说明一个超实数可以有不同的形式. 例如, $S_2$中总共有以下这些超实数：
+ 
+ 
+ 
+% 
+
+%   通过把超实数按照$S_d$分类的方法, 可以知道这些数都是可以通过有限步骤进行大小比较的.事实上, 这些超实数里面, 只有$7$个不相等的超实数.
+  
+%   这种现象是因为在判断$(X_L:X_R)$是否是一个超实数, 以及它与其他超实数的大小比较的时候, 起作用的仅仅只有$X_L$中最大的元素, 和$X_R$中最小的元素.
+  
+%   基于此有简单的方法来判断超实数是否相等,
+%   如果有两个超实数的集合$Y_L,Y_R$, 里面的元素满足$y_L<x<y_R$, 那么$x\equiv (X_L\cup Y_L:X_R\cup Y_R)$.
+
+% 事实上, 可以归纳给出$S_d$中的所有元素.
+
+% \begin{theorem}
+% 如果$S_d=\{x_1<x_2<\cdots<x_m\}$, 那么有不等式链$$
+%  (\emptyset:x_1)<x_1<(x_1:x_2)<x_2<\cdots<(x_{m-1}:x_m)<x_m<(x_m:\emptyset), 
+%  $$
+%  这恰好为$S_{d+1}$中所有超实数.
+%  \end{theorem}
+
+% 具体而言, 如果对于$S_{d+1}$中元素x, $X_L$和$X_R$都不是空集, 那么一定存在$i,j$满足$x=(X_L:X_R)\equiv(x_{i-1}:x_{j+1})$, 它等于$x_i,\cdots,x_j$中最早出现的超实数, 这里的最早指所属的$S_i$中让$i$最小.
+% 对于$x=(\emptyset:X_R)\equiv(\emptyset:x_{j+1})$, 它等于$x_1,\cdots,x_j$中最早出现的超实数.对于$x=(X_L:\emptyset)\equiv(x_{i-1},\emptyset )$, 它等于$x_i,\cdots,x_m$中最早出现的超实数.
+
+
+
+% 运用这个结论, 可以很容易看出来$S_d$中包含哪些元素, 并且$S_d$恰好包含$2^{d+1}-1$个元素.
+
+\subsection{超实数的运算}
+
+超实数不仅仅可以做大小比较, 它们还可以像实数一样, 做加减法, 乘除法. 
+我们首先定义加减法, 为此只需要定义超实数的加法, 和超实数的相反数.
+\begin{definition}
+设有超实数 \[x=(X_L:X_R),\hspace{2em} y=(Y_L:Y_R).\]
+我们定义
+\[-x=(-X_R:-X_L),\]
+以及
+\[x+y=((x+Y_L)\cup(y+X_L):(x+Y_R)\cup(y+X_R)).\] 
+这里 
+\[-S=\{-s\mid s\in S\},\hspace{2em} x+S=\{x+s\mid s\in S\}.\]
+\end{definition}
+
+
+% 可以发现, 这种构造是个很聪明的构造, 整个过程都围绕着$X_L<x<X_R$这一点展开.
+
+\begin{example}
+我们给出一些超实数间加减法的例子.
+\begin{itemize}
+    \item 对于任何超实数 $x=(X_L:X_R)$ 我们都有 
+    \[x+0=(X_L:X_R)+(\quad:\quad)=(X_L:X_R)=x.\]
+    \item 我们有 \[1+1=(0:\quad)+(0:\quad)=(1:\quad)=2.\]
+    \item 
+        我们有 \[\omega+1=(0,1,\cdots,\omega:\quad)=(\omega:\quad),\]
+        又比如, \[2\omega=\omega+\omega=(\omega+1,\omega+2,\cdots:\quad).\]
+\end{itemize}
+\end{example}
+
+
+
+超实数的乘除法的定义要略复杂一些. %, 但是整体的构造仍然围绕着 $X_L<x<X_R$ 的思想进行.
+% 我们这里只给出超实数间乘法的定义.
+我们略过严格的定义; 读者可以参见 \cite{Gon86}.
+
+% \begin{definition}
+% 设有超实数 \[x=(X_L:X_R),\hspace{2em} y=(Y_L:Y_R).\]
+% 我们定义
+% \[xy=(Z_L:Z_R),\]
+% 其中 
+% \[\begin{aligned}Z_L&=(xY_L+yX_L-X_LY_L)\cup(xY_R+yX_R-X_RY_R),\\
+% Z_R&=(xY_L+yX_R-X_RY_L)\cup(xY_R+yX_L-X_LY_R).\end{aligned}\]
+% 这里 \[xY_L+yX_L-X_LY_L=\{xy_L+yx_L-x_Ly_L:x_L\in X_L,y_L\in Y_L\},\]
+% 其他几个集合有相同含义.
+  
+% %  对于倒数, 如果$y>0$,那么定义
+ 
+% %   $\frac{1}{y}=\left\{0, \frac{1+\left(y_{R}-y\right)\left(\frac{1}{y}\right)_{L}}{y_{R}}, \frac{1+\left(y_{L}-y\right)\left(\frac{1}{y}\right)_{R}}{y_{L}} \mid \frac{1+\left(y_{L}-y\right)\left(\frac{1}{y}\right)_{L}}{y_{L}}, \frac{1+\left(y_{R}-y\right)\left(\frac{1}{y}\right)_{R}}{y_{R}}\right\}.$
+  
+% \end{definition}
+
+ 
+%   注意到倒数的定义之中, 构造$(\frac{1}{y})_L$和$(\frac{1}{y})_R$都依赖于$(\frac{1}{y})_L,(\frac{1}{y})_R$,需要不断重复用已知的元素构造未知的元素的过程. 
+  
+%  \begin{example}
+%  计算$3=(2:\emptyset)$的倒数.在公式里面可以不去考虑那些$y_R$的项.一开始可以有一个$(\frac{1}{y})_L$是$0$,那么用右边的第一个公式可以得到一个$(\frac{1}{y})_R=\frac{1+(2-3)\times 0}{2}=\frac{1}{2}$,大于$\frac{1}{3}$.新的元素可以产生一个$(\frac{1}{y})_L=\frac{1+(2-3)\times \frac{1}{2}}{2}=\frac{1}{4}$,小于$\frac{1}{3}$.不断做下去有$\frac{1}{3}=(0,\frac{1}{4},\frac{5}{16},\cdots:\frac{1}{2},\frac{3}{8},\cdots)$.
+%  \end{example} 
+  
+% 可以验证如上定义的四则运算和实数上的四则运算是相容的. 
+  
+\begin{example}
+我们给出一些超实数乘法的例子.
+\begin{itemize}
+    \item $2$ 和 $\omega$ 的乘积就是 $2\omega = \omega + \omega$.
+    \item 超实数 $\epsilon$ 和 $\omega$ 的乘积是 $1$, 
+    也就是说这两个超实数互为倒数.
+\end{itemize}
+\end{example}
+
+超实数可以做 $\omega$-进制展开. 设 $x=(X_L:X_R)$ 是一个超实数, 我们定义 
+\[\omega^x=(Y_L:Y_R),\]
+其中 \[\begin{aligned}
+    Y_L&=\{0\}\cup\{s\cdot\omega^{x_l}\mid s\in\mathbb{R},\ s>0,\ x_l\in X_L\},\\
+    Y_R&=\{s\cdot\omega^{x_r}\mid s\in\mathbb{R},\ s>0,\ x_r\in X_R\}.\\
+\end{aligned}\]
+可以验证, 对每个超实数 $x$, 都存在一个实数 $r$ 和一个超实数 $y$, 
+使得对任意的实数 $s$ 都有 
+\[s\cdot(x-r\cdot\omega^y)<x.\]
+进一步的, 这样的 $r$ 和 $y$ 是唯一的.
+不断使用 $x-r\cdot\omega^y$ 代替 $x$, 我们便得到了如下定理:
+
+\begin{theorem}
+    \label{thm-base-omega-expansion}
+    对于每个超实数 $x$, 存在唯一的序数 $\alpha$, 
+    且对每个小于 $\alpha$ 的序数 $\beta$, 存在唯一的实数 $r_\beta$ 和超实数 $y_\beta$,
+    使得:
+    \begin{itemize}
+        \item 序列 $(y_\beta)$ 是单调递减的;
+        \item 有 \[x=\sum_{\beta<\alpha}r_\beta \cdot \omega^{y_\beta}.\]
+    \end{itemize}
+    这个表达式叫做 $x$ 的 \textbf{$\omega$ 进制展开}.
+\end{theorem}
+  
+与实数类似, 超实数上也可以定义指数函数, $x\mapsto \exp(x)$. 
+具体的定义请读者参见 \cite[第 10 章]{Gon86}.
+我们这里只给出一些超实数上的指数函数的性质和例子:
+
+\begin{itemize}
+    \item 映射 $\exp$ 在实数上的限制就是实数上的指数函数. 
+    例如, $\exp(0)=1$, $\exp(1)=e$.
+    \item 映射 $\exp$ 的值域是所有的正超实数 $\mathbb{S}_+$.
+    并且, 映射 \[\exp:\mathbb{S}\to\mathbb{S}_+\] 是单调递增的, 从而是一一映射.
+    它的逆映射我们记作 $\log$, 叫做对数函数.
+    \item 对任意的超实数 $x,y$, 我们都有 \[\exp(x+y)=\exp(x)\cdot\exp(y).\]
+\end{itemize}
+
+\begin{example}
+    我们有
+    \begin{itemize}
+        \item
+            $\exp \omega = \omega^\omega$.
+        \item
+            $\log \omega = \omega^\epsilon$.
+    \end{itemize}
+    特别地, 这说明 $\omega^\omega$ 与
+    $\exp (\omega \log \omega)$
+    是不同的:
+    前者只是我们定义的记号,
+    而不是真正的指数函数.
+\end{example}
+  

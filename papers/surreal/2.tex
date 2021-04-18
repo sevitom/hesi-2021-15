@@ -1,0 +1,346 @@
+
+
+% 建立在上面的一些内容之上，数学家发展了一门叫做非标准分析的学科.非标准实数是实数的扩充，保持了实数大量的性质，并且最有趣的是，很多数学研究上面的结论，例如分析，代数，拓扑，概率，方程等，都有一个更加丰富的非标准分析的版本与之对应.非标准分析的优点在于，首先，非标准的版本的理论会表现得更加直观，并且因此更加容易证明,其次，在原本的理论和非标准版本的理论之间有一种普遍的转移机制，如果证明了二者之一，那与之对应的理论也会成立.
+
+在数学分析中, 函数的极限、连续性、导数等概念都是通过 $\epsilon$-$\delta$ 语言来定义的.
+在超实数中, 我们有一个现成的无穷小元素 $\epsilon$,
+它可以用来绕过 $\epsilon$-$\delta$ 语言, 而直接定义极限、连续性、导数等概念,
+这样定义能与我们的直观更加相符.
+这一门学科叫做\textbf{非标准分析} (nonstandard analysis).
+
+\subsection{非标准实数}
+
+% 首先，应用的数并不是所有超实数，那太多了，而是其中$S_{\omega^\omega}$的部分.对于这部分超实数，叫它们非标准实数,非标准实数的全体用$*\mathbb{R}$来表示.对于非标准实数，有不同于超实数定义方式的等价刻画.
+
+在非标准分析中,
+我们并不使用所有的超实数, 因为它们太多了, 不构成集合.
+非标准分析使用的是\textbf{非标准实数}%
+\footnote{也常译作\textbf{超实数}.}
+(hyperreal number) $^* \mathbb{R}$,
+也就是直到第 $\omega_1$ 天定义出来的超实数,
+其中 $\omega_1$ 是最小的不可数序数. 严格地说, 我们定义
+\[
+    ^* \mathbb{R} =
+    \mathbb{S}_{< \omega_1},
+\]
+可以说明它对四则运算封闭,
+从而是一个域.
+它包含所有的实数,
+它的大小 (势) 和实数集相同.
+
+% 一个数学理论和它的非标准分析的版本之间的对应需要用到抽象的集合论中的概念，这里只是粗浅地描述这件事情.一个转移包含了两方面的内容:
+
+% \begin{enumerate}
+%     \item $\mathbb{R}$到$*\mathbb{R}$的数学实体之间的转移.
+%     \item 语言$\mathscr{L}_{\mathbb{R}}$中关于$\mathbb{R}$中数学实体的语句$\Phi$到语言$\mathscr{L}_{*\mathbb{R}}$中关于$*\mathbb{R}$中数学实体的语句$*\Phi$的转移.
+% \end{enumerate}
+
+% 这些转移是用逻辑学很严密地定义的，但是这里可以简单地理解这件事情，把实数的对象看成超实数的对象，把关于实数的具有一定结构的命题变成关于超实数的命题.
+
+% 对于一个关于实数的性质，可以把它抽象成语言$\mathscr{L}_{\mathbb{R}}$中的语句$\Phi$，然后证明语言$\mathscr{L}_{*\mathbb{R}}$中的语句$*\Phi$,之后用这个转移逆运算，证明想要的结论.
+
+非标准分析的威力实际上不在于非标准实数的构造,
+而在于一个叫做\textbf{转移原理} (transfer principle) 的性质:
+对任意关于实数 $\mathbb{R}$ 的命题 (当然, 对命题有些限制),
+它为真当且仅当对应的关于非标准实数 $^* \mathbb{R}$ 的命题为真.
+这意味着, 要证明一个关于 $\mathbb{R}$ 的定理,
+只需要在 $^* \mathbb{R}$ 上证明这个定理,
+就能直接知道原来的关于 $\mathbb{R}$ 的定理是正确的.
+
+转移原理也意味着,
+$\mathbb{R}$ 上的函数可以转移到 $^* \mathbb{R}$ 上,
+成为 $^* \mathbb{R}$ 上的函数,
+然后在 $^* \mathbb{R}$ 上定义其极限、连续性、导数等概念,
+定义出来的概念与 $\mathbb{R}$ 上的定义是相同的.
+
+为了做到这种转移,
+在非标准分析中,
+我们用另一种等价的方式来定义非标准实数.
+我们把非标准实数定义为形如 $\{ a_n \}_{n \in \mathbb{N}}$ 的实数列, 例如:
+\begin{align*}
+    x &= (x, x, x, x, x, \dotsc) \qquad (x \in \mathbb{R}), \\
+    \omega &= (1, 2, 3, 4, 5, \dotsc), \\
+    \omega + 1 &= (2, 3, 4, 5, 6, \dotsc), \\
+    \omega^2 &= (1, 4, 9, 16, 25, \dotsc), \\
+    \epsilon = 1/\omega &= (1, \ 1/2, \ 1/3, \ 1/4, \ \dotsc), \\
+    \sqrt{\omega} + \epsilon &= (1 + 1, \ \sqrt{2} + 1/2, \ \sqrt{3} + 1/3, \ \dotsc),
+\end{align*}
+等等. 严格的定义如下:
+
+% 首先看$*\mathbb{R}$的刻画.取一个$\mathbb{R}^{\mathbb{N}}$的极大真子理想$F$,然后定义$*\mathbb{R}=\mathbb{R}^{\mathbb{N}}/F$.这里的商掉一个极大理想可以视为把一些$\mathbb{R}^{\mathbb{N}}$中的元素$u=(u_n),v=(v_n)\in \mathbb{R}^{\mathbb{N}}$等同起来.数学中，一个“环”商掉一个“极大理想”生成一个“域”.这个过程是依赖于$F$的选取的.如果这里的$F$并不形如$F=\{(u_n):u_i=0\}$,那么这个域扩张的$r\in\mathbb{R}\mapsto (r,r,\cdots)\in \mathbb{R}^{\mathbb{N}}$是严格的域扩张. $*\mathbb{R}$上面的运算都是逐位运算的.
+
+\begin{construction}
+    记 $\mathbb{R}^{\mathbb{N}}$ 是所有形如 $\{ a_n \}_{n \in \mathbb{N}}$ 的实数列构成的环,
+    其中加法、乘法都按照分量来定义.
+    我们注意到, 形如
+    \[
+        I_k =
+        \bigl\{
+            \{ a_n \}_{n \in \mathbb{N}} \in \mathbb{R}^{\mathbb{N}} \bigm|
+            a_k = 0
+        \bigr\}
+    \]
+    的集合是 $\mathbb{R}^{\mathbb{N}}$ 的极大理想,
+    并且 $\mathbb{R}^{\mathbb{N}} / I_k \simeq \mathbb{R}$.
+    但是, $\mathbb{R}^{\mathbb{N}}$ 还有别的极大理想:
+    例如, 理想
+    \[
+        \bigl\{
+            \{ a_n \}_{n \in \mathbb{N}} \in \mathbb{R}^{\mathbb{N}} \bigm|
+            \text{只有有限个 $a_n$ 非零}
+        \bigr\}
+    \]
+    一定包含于某个极大理想, 而这个极大理想不可能是任一个 $I_k$.
+    我们就取一个不同于所有 $I_k$ 的极大理想 $I$, 并定义
+    \[
+        ^* \mathbb{R} = \mathbb{R}^{\mathbb{N}} / I.
+    \]
+    因为交换环商去极大理想能得到域,
+    所以这里 $^* \mathbb{R}$ 是一个域.
+    我们就把这个 $^* \mathbb{R}$ 叫做\textbf{非标准实数}.
+    可以证明这样得到的 $^* \mathbb{R}$ 和之前的定义相同,
+    不过这超出了本文的范围. 读者可参见 \cite{unification}.
+\end{construction}
+
+\begin{remark}
+    这里, 极大理想 $I$ 的存在性依赖于选择公理.
+    也就是说, 我们无法直接构造出一个极大理想, 只能证明其存在性.
+    下文的一些构造将会依赖于 $I$ 的选取,
+    但无论 $I$ 如何选取, 转移原理都是正确的.
+\end{remark}
+
+\begin{remark}
+    非标准实数域 $^* \mathbb{R}$ 是一个完备有序域,
+    这里完备性是指所有 Cauchy 序列都收敛.
+    在数学分析中, 我们知道满足 Archimedes 原理的完备有序域一定同构于 $\mathbb{R}$.
+    这里, $^* \mathbb{R}$ 是一个不满足 Archimedes 原理的完备有序域的例子.
+\end{remark}
+
+% \begin{remark}
+% 可以取$\mathbb{N}^{\mathbb{N}}/F$记为$*\mathbb{N}$,同样还可以有$*\mathbb{Q}$.
+% \end{remark}
+
+\begin{remark}
+    我们可以定义\textbf{非标准整数} $^* \mathbb{Z}$
+    为 $\mathbb{Z}^{\mathbb{N}} \subset \mathbb{R}^{\mathbb{N}}$
+    在 $^* \mathbb{R}$ 中的像,
+    也可以定义\textbf{非标准有理数} $^* \mathbb{Q}$
+    为 $\mathbb{Q}^{\mathbb{N}} \subset \mathbb{R}^{\mathbb{N}}$
+    在 $^* \mathbb{R}$ 中的像, 等等.
+    例如, $\omega$ 是一个非标准整数;
+    $\omega + 1/2$ 不是非标准整数, 但它是非标准有理数.
+\end{remark}
+
+% \begin{example}
+% $\omega=(1,2,3,\cdots)$是一个不落在$\mathbb{R}$里面的非标准整数.
+% \end{example}
+
+% 如果让$U=\{Z(s):s\in F\}$，这里$s$作为一个$\mathbb{N}\to \mathbb{R}$的函数，$Z(s)$代表它的零点集.我们在$*\mathbb{R}$上面可以定义序：$(u_n)\leq (v_n)$当且仅当$\{n:u_n\leq v_n\}\in U$.我们发现这个序是和原来的$\mathbb{R}$在嵌入$*$之下是一致的.
+% \begin{remark}
+% 这里的$U$实际上是一个超滤子，它和极大理想$F$之间有一个一一对应的关系.
+% \end{remark}
+
+
+% 运用这个$U$,可以定义关系的转移.
+% 如果有一个$\mathbb{R}$上的$n$元关系$P$,那么我们定义$*\mathbb{R}$上关于$s^i$的$n$元关系$*P$为$\{j:P<s^1_j,s^2_j,\cdots,s^n_j>\}\in U$,这里$s^i=(s^i_j)_{j\in N}$.因为当$r\in \mathbb{R}$的时候$r=*r\in*\mathbb{R}$,$*P$看做$P$的一个扩张.
+
+% 通过这个定义，我们可以把$\mathbb{R}$上的$n$元函数推广成$*\mathbb{R}$上的$n$元函数.$f(r^1,\cdots,r^n)=r^{n+1}\in \mathbb{R}$作为一个$n+1$元关系$P$，得到一个$n+1$元关系$*P(s^1,\cdots,s^{n+1})$,具体写出来为$\{j:s^{n+1}_j=f(s^1_j,\cdots,s^n_j)\}\in U$.这恰好对应一个非标准实数域上的$n$元函数,并且是由$f$的定义域扩张得到的.
+% \begin{example}
+% 对于$\mathbb{R}$上的函数$f(x)=\cos(x)$,$(*f)(1,2,3,\cdots)=(\cos {1},\cos{2},\cos{3},\cdots)$.
+% \end{example}
+
+通过这种方式, 我们可以把 $\mathbb{R}$ 上的函数转移到 $^* \mathbb{R}$ 上.
+
+\begin{construction}
+    设 $f \colon \mathbb{R} \to \mathbb{R}$
+    是任何一个函数 (不一定连续).
+    它转移到 $^* \mathbb{R}$ 上得到的函数
+    $^* f \colon {}^* \mathbb{R} \to {}^* \mathbb{R}$
+    定义为
+    \[
+        (^* f) (a_1, a_2, a_3, \dotsc) =
+        \bigl( f (a_1), f (a_2), f (a_3), \dotsc \bigr) .
+    \]
+    在无歧义时, 也直接把 $^* f$ 记为 $f$.
+\end{construction}
+
+\begin{example}
+    由这个构造, 我们有
+    \[
+        \sin \omega =
+        \bigl( \sin 1, \sin 2, \sin 3, \dotsc \bigr).
+    \]
+    我们也可以得出一个奇怪但正确的等式:
+    \[
+        \sin (\omega \uppi) = (0, 0, 0, 0, \dotsc) = 0.
+    \]
+    然而,
+    \[
+        \cos (\omega \uppi) = (-1, 1, -1, 1, \dotsc),
+    \]
+    注意到它的平方等于 $1$, 而在域 $^* \mathbb{R}$ 中, $1$ 的平方根至多有两个, 从而
+    \[
+        \cos (\omega \uppi) = \pm 1.
+    \]
+    那么, 它到底是 $1$ 还是 $-1$ 呢?
+    这取决于构造非标准实数时,
+    极大理想 $I \subset \mathbb{R}^{\mathbb{N}}$ 的选取,
+    两个值都是有可能的.
+\end{example}
+
+\begin{example}
+    我们也有
+    \begin{align*}
+        \sin \epsilon
+        & = \bigl( \sin 1, \sin (1/2), \sin (1/3), \dotsc \bigr) \\
+        & = \sum_{n=0}^\infty \frac{(-1)^n}{(2n + 1)!} \epsilon^{2n + 1},
+    \end{align*}
+    这是因为, 我们知道
+    \[
+        \epsilon^n = (1, \ 1 / 2^n, \ 1 / 3^n, \ \dotsc),
+    \]
+    按照这个公式计算上面的和式, 就能得到
+    $\bigl( \sin 1, \sin (1/2), \sin (1/3), \dotsc \bigr)$.
+    
+    这个例子展示了非标准分析的威力:
+    我们还没有引入任何微积分,
+    就已经得到了函数的 Taylor 展开!
+\end{example}
+
+% 逻辑学中会把一个集合，和上面的一些多元关系，多元函数的全体叫做一个简单系统.先把实数集$\mathscr{R}$作为一个集合，然后加入上面所有的关系和函数，成为一个简单系统.按照之前的论述，可以把这些对象全部延拓到一个非标准实数的简单系统上面去.
+
+% 如果用$mon(0)$表示那些绝对值小于所有正实数的非标准实数，再用$Gal(0)$表示那些绝对值小于某个正实数的非标准实数，前者表示所有的无穷小非标准实数，后者表示所有有界的非标准实数，它们和$*\mathbb{Q}$的交记为${mon}_{\mathbb{Q}}(0),{Gal}_{\mathbb{Q}}(0)$,那么存在唯一的满代数同态$st:{Gal}_{\mathbb{Q}}(0)\to R$满足$s-st(s)\in {mon}_{\mathbb{Q}}(0)$，所以有域同构$\mathbb{R}={Gal}_{\mathbb{Q}}(0)/{mon}_{\mathbb{Q}}(0)$.这是一种类似于$Cauchy$完备化的方式，用有理数域构造实数域.  同样还有$\mathbb{R}=Gal(0)/mon(0)$.
+
+\subsection{非标准微积分}
+
+使用非标准分析的语言, 我们可以重新构建微积分的理论.
+作为例子, 我们使用非标准分析来定义函数的极限、导数等概念.
+
+\begin{construction}
+    我们回忆, 每个超实数 $x$ 能唯一地写成
+    \[
+        x = \sum_{n \in \mathbb{S}} a_n \, \omega^n
+    \]
+    的形式 (定理 \ref{thm-base-omega-expansion}), 其中 $a_n \in \mathbb{R}$.
+    在这个展开式中, $\omega^0 = 1$ 这一项的系数 $a_0$
+    被称为 $x$ 的\textbf{标准部分} (standard part),
+    记为 $\st x$.
+    例如, $\st \epsilon = 0$, $\st 1 = 1$, $\st \omega = 0$.
+\end{construction}
+
+% 微积分中极限之类的定义用“$\epsilon-\delta$语言”可以照搬到非标准实数域上面,只要把这里面的$\epsilon-\delta$都取非标准实数.
+
+% 因为映射$st$本身就反映了一些逼近和极限的信息，可以证明一些微积分相关的有趣结论.
+
+% \begin{theorem}\label{cts}
+% 一个区间$[a,b]$上的实值函数$f$,它是连续的当且仅当对于任意非标准实数$x\in*[a,b]$,有$*f(x)=*f(st(x))$.
+% \end{theorem}
+
+% \begin{theorem}\label{dif}
+% 一个实值函数$f$在$x\in \mathbb{R}$处可微当且仅当对于任意$h\in mon(0)$，$st(\frac{*f(x+h)-*f(x)}{h})$存在并且独立于$h$的选取，并且此时该值就定义为$f^\prime(x)$.
+% \end{theorem}
+
+\begin{definition}
+    我们说 $h \in {}^* \mathbb{R}$ 是一个\textbf{无穷小},
+    如果它非零, 并且它的绝对值 (作为非标准实数) 小于任何正实数.
+\end{definition}
+
+\begin{definition} [极限]
+    设 $f \colon \mathbb{R} \to \mathbb{R}$ 是一个函数, 设 $x_0 \in \mathbb{R}$.
+    如果存在 $y \in \mathbb{R}$, 使得对任何无穷小 $h \in {}^* \mathbb{R}$, 都有
+    \[
+        \st f (x_0 + h) = y,
+    \]
+    就说 $y$ 是 $f (x)$ 在 $x \to x_0$ 时的\textbf{极限}, 记为
+    \[
+        \lim _{x \to x_0} f (x) = y.
+    \]
+\end{definition}
+
+在数学分析中, 函数的连续性、函数的导数都是通过极限来定义的.
+现在, 我们更换了极限的定义,
+连续性和导数的概念可以以直观的方式写下来.
+
+\begin{definition}
+    设 $f \colon \mathbb{R} \to \mathbb{R}$ 是一个函数, 设 $x \in \mathbb{R}$.
+    我们说 $f$ 在 $x$ 处\textbf{连续}, 如果对任何无穷小 $h \in {}^* \mathbb{R}$, 有
+    \[
+        \st f (x + h) = f (x).
+    \]
+\end{definition}
+
+\begin{definition}
+    设 $f \colon \mathbb{R} \to \mathbb{R}$ 是一个函数, 设 $x \in \mathbb{R}$.
+    我们说 $f$ 在 $x$ 处\textbf{可导},
+    如果存在实数 $f' (x) \in \mathbb{R}$, 称为 $f$ 在 $x$ 处的\textbf{导数},
+    使得对任何无穷小 $h \in {}^* \mathbb{R}$, 有
+    \[
+        \st \frac{f (x + h) - f(x)}{h} = f' (x).
+    \]
+\end{definition}
+
+% 可以定义$f$在点$a$处是微连续的，如果$x\approx a$，则有$f(x)\approx f(a)$，换句话说，$f(x)=f(st(x))$.可以看出，这种微连续的定义中，是只用无穷小的非标准实数去逼近$0$的，并且不像“$\epsilon-\delta$语言”中的那样，需要对任意的$\epsilon$和$\delta$去判断，只需要对所有的无穷小一致地去判断.
+
+% 所以定理\ref{cts}意味着，一个实值函数$f$连续当且仅当$*f$微连续.定理\ref{dif}意味着，实值函数$f$在$x$处可微当且仅当，$g(h):=\frac{*f(x+h)-*f(x)}{h}$在$0$处微连续.
+
+% 这表示，对于一个可导的函数$f$，它在$x$处的导数为$f^\prime(x)=st(\frac{f(x+\epsilon)-f(x)}{\epsilon})$.（这里的$\epsilon$可以用任意的$mon(0)$中元素代替）
+
+% 我们可以用这种观点简单证明链式法则：
+% 如果$g(x+\epsilon)\neq g(x)$,
+% \[\begin{aligned}
+%     &st(\frac{f(g(x+\epsilon))-f(g(x))}{\epsilon})\\
+%     =&st(\frac{f(g(x+\epsilon))-f(g(x))}{g(x+\epsilon)-g(x)})\times st(\frac{g(x+\epsilon)-g(x)}{\epsilon})\\
+%     =&f^\prime(g(x))\times g^\prime(x).\\
+% \end{aligned}\]
+% 这是因为$g(x+\epsilon)-g(x)$是无穷小的.并且$st$是个代数同态，和乘法交换.
+
+% \begin{example}
+% 计算指数函数$f(x)=e^x$在$x_0=(x_1,x_2,\cdots)$处的导数. 若$h=(h_1,h_2,\cdots)\in {mon}(0)$,则$f^\prime(x_0)=st((\frac{e^{x_1+h_1}-e^{x_1}}{h_1},\cdots))\equiv (e^{x_1},e^{x_2},\cdots)=f(x_0)$. 因此$f^\prime(x)=f(x)$.
+% \end{example}
+
+\begin{example}
+    我们来计算指数函数 $\exp \colon \mathbb{R} \to \mathbb{R}$ 的导数:
+    \[
+        \exp' (0)
+        = \st \frac{\exp h - 1}{h}
+        = \st \left( \sum _{n=0} ^\infty \frac{h^{n - 1}}{n!} - \frac{1}{h} \right)
+        = 1.
+    \]
+\end{example}
+
+这样的定义也能够简化很多命题的证明, 这里我们举一个例子.
+
+\begin{example}
+    我们来证明求导的链式法则
+    \[
+        (f \circ g)' (x) = f' (g (x)) \, g' (x).
+    \]
+    如果 $g(x + \epsilon) \neq g(x)$, 那么
+    \begin{align*}
+        \text{左边}
+        & =
+        \st \frac{f(g(x + \epsilon)) - f(g(x))}{\epsilon} \\
+        & =
+        \st \frac{f(g(x + \epsilon)) - f(g(x))}{g(x + \epsilon) - g(x)}
+        \st \frac{g(x + \epsilon) - g(x)}{\epsilon}
+        = \text{右边}.
+    \end{align*}
+    这是因为对有限大的数而言, $\st$ 与乘法相容.
+    如果 $g(x + \epsilon) = g(x)$, 那么上式为 $0$,
+    链式法则也成立.
+\end{example}
+
+% 积分的理论可以抽象出来.
+
+% 如果$F$是$\mathbb{R}^E$的一个向量子空间，那么一个泛函$I:F\to\mathbb{R}$叫做一个$F$上面的积分,如果$f\in F,f\geq0$时$If\geq0$.$(I,F)$是一个$E$上的积分结构. 它对于一个函数，会给出那个函数值积分之后的数. 对Riemann可测函数和Riemann积分,Lebesgue可测函数和Lebesgue积分都具有这样子的结构.
+
+% 相应地，如果把上面的$\mathbb{R}$都换成$*\mathbb{R}$,相应的$(I,F)$是一个$E$上的非标准积分结构.
+
+% 运用$*$转移，可以得到结论：
+
+% \begin{proposition}
+% 如果$(I,F)$是$E$上的积分结构，那么$(*I,*F)$是$E$上的非标准积分结构.
+% \end{proposition}
+
+
+

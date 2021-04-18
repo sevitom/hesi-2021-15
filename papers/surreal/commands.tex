@@ -1,0 +1,29 @@
+\renewcommand{\:}{\colon}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\uppi}{\mathrm{π}}
+\newcommand{\mean}{\operatorname{mean}}
+\newcommand{\st}{\operatorname{st}}
+\AtBeginDocument{
+    \let\temp\phi
+    \let\phi\varphi
+    \let\varphi\temp
+    \let\temp\epsilon
+    \let\epsilon\varepsilon
+    \let\varepsilon\temp
+}
+
+\theoremstyle{cjk-definition}
+\renewtheorem{notation}[theorem]{记号}
+\renewtheorem{exercise}[theorem]{习题}
+
+\newtheorem{construction}[theorem]{构造}
+
+\usepackage{enumitem}
+\setlist{itemsep=0pt}
+\setlist[enumerate]{nosep,label=\roman*)}
+
+\usepackage{cases}
