@@ -80,8 +80,8 @@ the divided power structure of $A$ extends to $B$.
     where $B$ is a divided power ring $(B, J, \delta)$ over a ring $A$, 
     is a usual derivation with $d \gamma_n(x) = \gamma_{n-1}(x) dx$. 
     Then there is a universal module $\tilde{\Omega}_{B/A}^1$ 
-    and the PD-de Rham complex $\tilde{\Omega}_{B/A}^\cdot$ as before. 
-    We shall denote it simply by $\Omega_{B/A}^\cdot$, 
+    and the PD-de Rham complex $\tilde{\Omega}_{B/A}^\bullet$ as before. 
+    We shall denote it simply by $\Omega_{B/A}^\bullet$, 
     which will not lead confusion.
 \end{definition}
 The crystalline cohomology is defined via the crystalline sites and topoi. 
@@ -315,8 +315,8 @@ We shall use the notations in the above sections.
     For a crystal $\CE \in (X/S)_{cris}$, 
     there is a quasi-isomorphism of complexes:
     \[
-        Rp_*(\CE_{D_X(Y')} \otimes \Omega_{Y'/S}^\cdot) 
-        \simeq \CE_{D_X(Y)} \otimes \Omega_{Y/S}^\cdot.
+        Rp_*(\CE_{D_X(Y')} \otimes \Omega_{Y'/S}^\bullet) 
+        \simeq \CE_{D_X(Y)} \otimes \Omega_{Y/S}^\bullet.
     \] 
 \end{lemma}
 \begin{proof}
@@ -368,10 +368,10 @@ We shall use the notations in the above sections.
 \end{proof}
 
 \begin{lemma}
-    For $A_\cdot$ a cosimplicial ring, 
-    the cosimplicial module $M_\cdot$ defined by
+    For $A^\bullet$ a cosimplicial ring, 
+    the cosimplicial module $M^\bullet$ defined by
     \[
-        M_n = \bigoplus_{i = 1}^n A_n e_i
+        M^n = \bigoplus_{i = 1}^n A^n e_i
     \]
     with obvious arrows is contractible.
 \end{lemma}
@@ -379,7 +379,7 @@ We shall use the notations in the above sections.
 \begin{proof}
     The homotopy
     \[
-        h \colon M_\cdot \to \Hom(\Delta[1], M_\cdot)
+        h \colon M^\bullet \to \Hom(\Delta[1], M^\bullet)
     \]
     is given by 
     \[
@@ -428,13 +428,13 @@ We shall use the notations in the above sections.
     also denoted by $\CE$. 
     Then there is a canonical isomorphism:
     \[
-        Ru_{X/S*} \CE \simeq \CE \otimes_Y \Omega_{Y/S}^\cdot 
-        \simeq \CE \otimes_D \Omega_{D/S}^\cdot.
+        Ru_{X/S*} \CE \simeq \CE \otimes_Y \Omega_{Y/S}^\bullet 
+        \simeq \CE \otimes_D \Omega_{D/S}^\bullet.
     \]
     In particular,
     \[
         R \Gamma ((X/S)_{Cris},\CE) \simeq 
-        R \Gamma (X_{Zar}, \CE \otimes \Omega_{Y/S}^\cdot). 
+        R \Gamma (X_{Zar}, \CE \otimes \Omega_{Y/S}^\bullet). 
     \]
 \end{theorem}
 
@@ -504,7 +504,7 @@ The main reference here is \cite{BO} and \cite{Be2}.
     That is, $X$ admits a lifting $Y$, such that $Y/S$ smooth. 
     Then there is an isomorphism:
     \[
-        Rf_{X/S*} \CE \simeq Rf_* (\CE \otimes_Y \Omega_{Y/S}^\cdot).
+        Rf_{X/S*} \CE \simeq Rf_* (\CE \otimes_Y \Omega_{Y/S}^\bullet).
     \]
     The result follows from the vanishing result of 
     cohomology of (Zariski) quasi-coherent sheaves.
@@ -550,7 +550,7 @@ The main reference here is \cite{BO} and \cite{Be2}.
     Then 
     \[
         Rf_{X/S*} \CF \simeq Rf_{X/S_0*} \CF 
-        \simeq Rf_* \CF \otimes_X \Omega_{X/S}^\cdot.
+        \simeq Rf_* \CF \otimes_X \Omega_{X/S}^\bullet.
     \]
     Then the result follows from the finiteness result 
     of cohomology of coherent sheaves in Zariski topology.
@@ -575,14 +575,14 @@ The proof is given in \cite{BO}.
 Then completions of the comparison results hold.
 For example,
 \[
-    Ru_{X/S*} \CE \simeq \CE \otimes \Omega_{\hat{D}/S}^\cdot,
+    Ru_{X/S*} \CE \simeq \CE \otimes \Omega_{\hat{D}/S}^\bullet,
 \]
 where $\hat{D}$ is the $p$-adic completion of $D_X(Y)$ 
 and the latter $\CE$ is a $\hat{D}$ -module.
 In particular, there is an isomorphism:
 \[
     R \Gamma((X/S)_{Cris},\CE) \simeq
-    R \Gamma(X_{Zar}, \hat{\CE} \otimes \Omega_{\hat{D}/S}^\cdot).
+    R \Gamma(X_{Zar}, \hat{\CE} \otimes \Omega_{\hat{D}/S}^\bullet).
 \]
 Then the vanishing theorem, the base change theorem and the finiteness theorem 
 also hold in the completed case for coherent crystals, 
@@ -595,16 +595,16 @@ there exists a coherent $\CO_Y$-module,
 also denoted by $\CE$ such that 
 \[
     R\Gamma((X/S)_{Cris},\CE) \simeq 
-    R\Gamma(X_{Zar},\CE\otimes \Omega_{Y/S}^\cdot).
+    R\Gamma(X_{Zar},\CE\otimes \Omega_{Y/S}^\bullet).
 \]
 In particular,
 \[
     R\Gamma((X/S)_{Cris}, \CO_{X/S}) \simeq 
-    R \Gamma (X_{Zar}, \Omega_{Y/S}^\cdot).
+    R \Gamma (X_{Zar}, \Omega_{Y/S}^\bullet).
 \]
 We will denote the left hand side by $\HSd$. 
-We restrict to the case $S = \Spec W(k)$ and 
-$S_0 = \Spec k$ for some perfect field $k$ of characteristic $p$, 
+We restrict to the case $S = \Spec (W(k))$ and 
+$S_0 = \Spec (k)$ for some perfect field $k$ of characteristic $p$, 
 which is the crystalline cohomology for characteristic $p$ varieties.
 
 We firstly discuss the case that $X/k$ is proper and $X$ admits a lifting. 
@@ -613,7 +613,7 @@ Then there exists a cartesian diagram
 \[
     \begin{tikzcd}
         X \ar[r] \ar[d] & \CX \ar[d] & X^{an} \ar[l] \ar[d] \\
-        \Spec k \ar[r] & \Spec W(k) & \Spec \BC \ar[l],
+        \Spec (k) \ar[r] & \Spec (W(k)) & \Spec (\BC) \ar[l],
     \end{tikzcd}
 \]
 with $\CX$ a proper smooth scheme over $W(k)$. 
@@ -630,18 +630,18 @@ between crystalline cohomology and Betti cohomology.
 \begin{proof}
     There exists an canonical isomorphism:
     \[ 
-        \Hkn \simeq \BH^n (\Omega_{\CX/W(k)}^\cdot).
+        \Hkn \simeq \BH^n (\Omega_{\CX/W(k)}^\bullet).
     \]
     There exists a spectral sequence 
     \[
         E_1^{pq} = \BH^q(\Omega_{\CX/W(k)}^p) 
-        \Rightarrow \BH^{p+q} (\Omega_{\CX/W(k)}^\cdot).
+        \Rightarrow \BH^{p+q} (\Omega_{\CX/W(k)}^\bullet).
     \]
     All the modules in the left hand side is locally free. 
     After tensoring $\BC$, it becomes the spectral sequence
     \[
         E_1^{pq} = \BH^q(\Omega_{X^{an}/\BC}^p) 
-        \Rightarrow \BH^{p+q} (\Omega_{X^{an}/\BC}^\cdot).
+        \Rightarrow \BH^{p+q} (\Omega_{X^{an}/\BC}^\bullet).
     \]
     By (complex) Hodge theory, the spectral sequence degenerates 
     and the right hand side is isomorphic to $H^{p+q} (X^{an},\BC)$. 
@@ -683,7 +683,7 @@ In particular, this is the case when $X$ is a curve.
     Locally, $X$ lifts to a smooth scheme $\tilde{X}$ over $W(k)$ 
     with $p$-adic completion by $\CX$ (though it is no longer compact)
     . Take a compactification of $\tilde{X}$, $\bar{X}$. 
-    $\bar{X} \to \Spec W(k)$ has a dualizing complex $\omega$. 
+    $\bar{X} \to \Spec (W(k))$ has a dualizing complex $\omega$. 
     Then
     \[
         \omega|_{\tilde{X}} \simeq \Omega_{\tilde{X}/W(k)}^d.
@@ -732,7 +732,7 @@ In particular, this is the case when $X$ is a curve.
 \end{remark}
 
 \subsection{Frobenius action}
-For this section, let $S = \Spec W(k)$ and $S_0 = \Spec k$, 
+For this section, let $S = \Spec (W(k))$ and $S_0 = \Spec (k)$, 
 where $k$ is a characteristic $p$ perfect field. 
 $X$ be a smooth scheme over $k$. 
 The (absolute) Frobenius actions $F_X$ and $F_S$ induce a commutative diagram, 
@@ -786,8 +786,8 @@ We need some terminology:
 \begin{proposition}
     We have a quasi-isomorphism:
     \[
-        (\Omega_{Y'/S}^\cdot)_\epsilon 
-        \simeq (F_{Y/S*} \Omega_{Y/S}^\cdot)_{\epsilon + 1}.
+        (\Omega_{Y'/S}^\bullet)_\epsilon 
+        \simeq (F_{Y/S*} \Omega_{Y/S}^\bullet)_{\epsilon + 1}.
     \]
 \end{proposition}
 
@@ -797,7 +797,7 @@ To prove this, we firstly states the Cartier theorem:
     \[
         \begin{tikzcd}
             \Omega_{X/k}^i \ar[r, "{\sim}"swap, "{c^{-1}}"] 
-            & \CH^i (\Omega_{X/k}^\cdot).
+            & \CH^i (\Omega_{X/k}^\bullet).
         \end{tikzcd}
     \]
     with $c^{-1}(x) = x$, $c^{-1}(dx) = x^{p-1} dx$ 
@@ -807,7 +807,7 @@ To prove this, we firstly states the Cartier theorem:
 \begin{proof}
     Note that both sides are compatible with \'etale base change.
     Hence it suffices to construct a canonical isomorphism when 
-    $X = \Spec k[t_1, \cdots, t_n]$. 
+    $X = \Spec (k[t_1, \cdots, t_n])$. 
     Then the result follows from a direct calculation.
 \end{proof}
 
@@ -818,17 +818,17 @@ Now we are able to prove the proposition above:
     We proceed by induction: 
     we can find a series of simple augmentations $\{\epsilon_i\}_{i=1}^{\infty}$ 
     such that $\epsilon_1=\epsilon$ and $\epsilon_m(n)\to \infty$ when $m\to \infty$, 
-    which induces a filtration of $(\Omega_{Y/S}^\cdot)_\epsilon$. 
+    which induces a filtration of $(\Omega_{Y/S}^\bullet)_\epsilon$. 
     Then it suffices to prove the quasi-isomorphism for each filtrant. 
     We then have a commutative diagram ($\eta_l=\epsilon_l+1$) 
     and $\epsilon_{l+1}$ is the simple augmentation of $\epsilon_l$ at $j$.
     \[
         \begin{tikzcd}
-            (\Omega_{Y'/S}^\cdot)_{\epsilon_l} / (\Omega_{Y'/S}^\cdot)_{\epsilon_{l + 1}} 
+            (\Omega_{Y'/S}^\bullet)_{\epsilon_l} / (\Omega_{Y'/S}^\bullet)_{\epsilon_{l + 1}} 
             \ar[r] \ar[d, "\sim"sloped]
-            & (F_{Y/S} \Omega_{Y/S}^\cdot)_{\epsilon_l} / 
-            (F_{Y/S} \Omega_{Y/S}^\cdot)_{\epsilon_{l+1}} 
-            \dar[] {\cdot p^{-\epsilon_l(j)}}[sloped, swap] {\sim} \\
+            & (F_{Y/S} \Omega_{Y/S}^\bullet)_{\epsilon_l} / 
+            (F_{Y/S} \Omega_{Y/S}^\bullet)_{\epsilon_{l+1}} 
+            \dar[] {\bullet p^{-\epsilon_l(j)}}[sloped, swap] {\sim} \\
             \Omega_{X'/k}[-j] \ar[r, "c^{-1}", "\sim"swap] & 
             \CH^j (F_{X/k*} \Omega_{Y/S_0}) [-j].
         \end{tikzcd}
@@ -908,7 +908,7 @@ with parameters $a_q = h^{n-q}(X, \Omega_{X/k}^q)$.
 \begin{proof}
     From the above facts, we are reduced to prove the following:
     \[
-        \ell(M'/M' \cap p^i M) \leq i h^0 + (i - 1) h^1 + \cdot s+ h^{i - 1}. 
+        \ell(M'/M' \cap p^i M) \leq i h^0 + (i - 1) h^1 + \cdots+ h^{i - 1}. 
     \]
     There exists a commutative diagram ($L\eta Ru_{X/S}\CO_{X/S})$ is simply denoted $L\eta$)
     \[
@@ -931,16 +931,16 @@ with parameters $a_q = h^{n-q}(X, \Omega_{X/k}^q)$.
     which induces a long exact sequence of cohomology. Moreover, 
     \[
         \BH^n(X, L(\zeta_{j - 1} + j - 1)/(\zeta_j + j)) 
-        \simeq \BH^n(X, \tau_{\leq j - 1} \Omega_{X/k}^\cdot),
+        \simeq \BH^n(X, \tau_{\leq j - 1} \Omega_{X/k}^\bullet),
     \]
     where $\tau$ means the truncation.
     Then there is a spectral sequence, 
     where the isomorphism is given by the Cartier isomorphism:
     \[
         E_2^{pq}(q \leq j - 1) = H^p(X, \Omega_{X/k}^q) 
-        \simeq H^p(X, \CH^q(\Omega_{X/k}^\cdot)) 
-        \Rightarrow \BH^{p+q}(X, \tau_{\leq j - 1} \Omega_{X/k}^\cdot).
+        \simeq H^p(X, \CH^q(\Omega_{X/k}^\bullet)) 
+        \Rightarrow \BH^{p+q}(X, \tau_{\leq j - 1} \Omega_{X/k}^\bullet).
     \]
-    Thus, $\dim \BH^{p+q}(X, \tau_{\leq j - 1} \Omega_{X/k}^\cdot) \leq h^0 + \cdots + h^{j - 1}$. 
+    Thus, $\dim \BH^{p+q}(X, \tau_{\leq j - 1} \Omega_{X/k}^\bullet) \leq h^0 + \cdots + h^{j - 1}$. 
     Combining all those $j$ gives the result.
 \end{proof}

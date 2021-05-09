@@ -1,6 +1,6 @@
 \subsection{Basic definitions and comparison results}
 In this section, let $k$ be a perfect field with characteristic $p$, 
-$\CO = W(k)$ the Witt ring and $K = Frac(W(k))$. 
+$\CO = W(k)$ the Witt ring and $K = \Frac(W(k))$. 
 $X, Y$ etc. are varieties over $k$ and 
 $\CP$ a formal scheme over $\CO$. 
 $\CP_K, \CP_k$ the generic fibre and special fibre of $\CP$.
@@ -46,7 +46,7 @@ We firstly define the convergent cohomology for a basic approach.
     Poincar\'e lemma mentioned in \ref{comparison}, 
     one proves that
     \[
-        Rp_{1*} \DRX \simeq \Omega_{\XP/K}^\cdot ]X[_{\CP_1}.
+        Rp_{1*} \DRX \simeq \Omega_{\XP/K}^\bullet ]X[_{\CP_1}.
     \] 
     Taking global sections gets the result.
 \end{proof}
@@ -61,9 +61,9 @@ We firstly define the convergent cohomology for a basic approach.
 The convergent cohomology behaves badly for the non-proper varieties.
 \begin{example}
     \label{counter ex}
-    Let $X = \BA_k^1$ be the affine line, $\CP = \Spf \BZ_p \langle T \rangle$, 
+    Let $X = \BA_k^1$ be the affine line, $\CP = \Spf (\BZ_p \langle T \rangle)$, 
     where $\BZ_p \langle T \rangle$ consists of all the convergent series. 
-    Then $\CP_K = \Spp K \langle T \rangle$ and $\XP = \CP_K$. 
+    Then $\CP_K = \Spp (K \langle T \rangle)$ and $\XP = \CP_K$. 
     By the "Theorem B" in rigid geometry, all the sheaves $\DRXn$ are acyclic. 
     Then the convergent cohomology is the cohomology of the complex
     \[
@@ -125,8 +125,8 @@ We then introduce the rigid cohomology to resolve the problem mentioned above.
 The rigid cohomology resolves the problem above.
 \begin{example}
     Let $X = \BA_k^1$, $Y = \BP_k^1$, $\CP = \widehat{\BP_{\CO}^1}$. 
-    Then $\XP = \Spp K \langle T \rangle$. $\YP = \BP^{1,an}_K$. 
-    Then $\{V^\lambda = \Spp K \langle \lambda T \rangle \mid |\lambda| < 1 \}$ 
+    Then $\XP = \Spp (K \langle T \rangle)$, $\YP = \BP^{1,an}_K$. 
+    Then $\{V^\lambda = \Spp (K \langle \lambda T \rangle) \mid |\lambda| < 1 \}$ 
     forms a cofinal system of strict neighbourhoods of $\XP$ in $\YP$. 
     Then the cohomology becomes
     \[
@@ -138,13 +138,13 @@ The rigid cohomology resolves the problem above.
     (i.e. converges in some radius $\mu > 1$). 
     Then $H^1 = 0$ as the integration of overconvergent series remains overconvergent.
 
-    In general, for an affine smooth variety $X = \Spec A$, 
+    In general, for an affine smooth variety $X = \Spec (A)$, 
     $A$ can be lifted to a finitely presented formally smooth algebra 
     $\CA = \CO \langle T_1, \cdots, T_n \rangle/(f_1, \cdots, f_m)$. 
     Then the rigid cohomology of $X$ becomes the cohomology of the de Rham complex 
-    $\Omega_{\CA_K^\dagger/K}^\cdot$, 
+    $\Omega_{\CA_K^\dagger/K}^\bullet$, 
     where $\CA_K^\dagger \simeq K \langle T_1, \cdots,T_n \rangle^\dagger/(f_1, \cdots, f_m)$. 
-    That is, the Monsky-Washnitzer cohomology.
+    That is, the Monsky--Washnitzer cohomology.
 \end{example}
 
 \begin{remark}
@@ -191,11 +191,11 @@ between crystalline cohomology and convergent/rigid cohomology.
     By cohomological descent, it suffices to prove that it holds locally. 
     For affine $X$, there exists a formally smooth lift $\CP=\CX$. Then $\XP=\CX_K$ and 
     \[
-        \Hkd \simeq \Omega_{\CX/\CO}^\cdot, \quad \HCd \simeq \Omega_{\CX_K/K}^\cdot.
+        \Hkd \simeq \Omega_{\CX/\CO}^\bullet, \quad \HCd \simeq \Omega_{\CX_K/K}^\bullet.
     \]
     Hence the result follows from the fact that 
     \[
-        \Omega_{\CX/\CO}^\cdot \otimes K \simeq \Omega_{\CX_K/K}^\cdot.
+        \Omega_{\CX/\CO}^\bullet \otimes K \simeq \Omega_{\CX_K/K}^\bullet.
     \]
 \end{proof}
 
@@ -248,7 +248,7 @@ Then for an overconvergent isocrystal $\CE$
 (with the corresponding coherent sheaf with integrable connection also denoted $\CE$), 
 we may define the rigid cohomology with coefficients
 \[
-    H^n_{rig}(X,\CE) := \BH^n(\CE \otimes \Omega_{\YP/K}^\cdot).
+    H^n_{rig}(X,\CE) := \BH^n(\CE \otimes \Omega_{\YP/K}^\bullet).
 \]
 Then there is a comparison theorem between crystalline cohomology and rigid cohomology.
 \begin{theorem}
@@ -297,7 +297,7 @@ supported on a closed set in rigid cohomology theory.
     View $\YP$ as an adic space and then $\XP$ is an open subspace of it. 
     Denote $i\colon \overline{\XP} \to \YP$ and $j$ its complement.
     \[
-        H^\cdot_{c,rig}(X) = R\Gamma_{\YP} (i_*i^! \DRY) 
+        H^\bullet_{c,rig}(X) = R\Gamma_{\YP} (i_*i^! \DRY) 
         \simeq R\Gamma_{\YP} (\DRY \to j_*j^*\DRY).
     \]
 \end{definition}
@@ -306,7 +306,7 @@ supported on a closed set in rigid cohomology theory.
     Let $X \to Y \to \CP$ be a proper smooth frame and $Z$ a closed subvariety of $X$. 
     Denote $j \colon \ZP \to \YP$ and $i$ its complement.
     \[
-        H^\cdot_Z(X) = R\Gamma_{\YP} (j_! j^* \DRY) 
+        H^\bullet_Z(X) = R\Gamma_{\YP} (j_! j^* \DRY) 
         \simeq R\Gamma(\DRY \to i_*i^* \DRY).
     \]
 \end{definition}
@@ -315,17 +315,17 @@ Then we have exact sequences for $X=U\cup Z$,
 with $U$ open and $Z$ closed 
 (we shall omit the subscript ``rig'' if there is no confusion):
 \[
-    \cdots \to H^*_Z(X) \to H^*(X) \to H^*(U) \to H^{*+1}_Z(X) \to \cdots
+    \cdots \to H^\bullet_Z(X) \to H^\bullet(X) \to H^\bullet(U) \to H^{\bullet+1}_Z(X) \to \cdots
 \]
 and 
 \[
-    \cdots \to H^*_c(U) \to H^*_c(X) \to H^*_c(Z) \to H^{*+1}_c(U) \cdots,
+    \cdots \to H^\bullet_c(U) \to H^\bullet_c(X) \to H^\bullet_c(Z) \to H^{\bullet+1}_c(U) \cdots,
 \]
 and some excision theorems. 
 For example, for $Z \subset Y \subset X$ being closed varieties, 
 there is an exact sequence
 \[
-    \cdots \to H^*_Y(X) \to H^*_Z(X) \to H^*_Z(Y) \to H^{*+1}_Y(X) \to \cdots.
+    \cdots \to H^\bullet_Y(X) \to H^\bullet_Z(X) \to H^\bullet_Z(Y) \to H^{\bullet+1}_Y(X) \to \cdots.
 \]
 
 \subsection{Verification of the desired properties}
@@ -334,7 +334,7 @@ We verify the assuptions in the Weil cohomology theory in remains of this sectio
     For a smooth variety $X$ and its smooth, closed subvariety $Z$, 
     if $X$ is liftable, there is an isomorphism
     \[
-        H^*_Z(X) \simeq H^{*-2c}(Z),
+        H^\bullet_Z(X) \simeq H^{\bullet-2c}(Z),
     \]
     called the Gysin isomorphism, where $c$ is the codimension of $Z$ in $X$.
 \end{proposition}
@@ -348,7 +348,7 @@ We verify the assuptions in the Weil cohomology theory in remains of this sectio
 
 \begin{theorem}[Finiteness theorem, \cite{Be3}]
     For any variety $X / k$ and overconvergent $F$-isocrystal $\CE$ on it, 
-    the cohomology $H^*_{rig}(X, \CE)$ is finite dimensional.
+    the cohomology $H^\bullet_{rig}(X, \CE)$ is finite dimensional.
 \end{theorem}
 
 \begin{proof}
@@ -357,16 +357,16 @@ We verify the assuptions in the Weil cohomology theory in remains of this sectio
     We apply induction. Consider the following two propositions:
     \begin{itemize}
         \item [(a)\textsubscript{$n$}] 
-            $H^*(X)$ is finite dimensional for all smooth varieties $X$ 
+            $H^\bullet(X)$ is finite dimensional for all smooth varieties $X$ 
             with dimension no greater than $n$.
         \item [(b)\textsubscript{$n$}] 
-            $H^*_Z(X)$ is finite dimensional for all varieties $Z$ 
+            $H^\bullet_Z(X)$ is finite dimensional for all varieties $Z$ 
             with dimension no greater than $n$ and $X$ being smooth.
     \end{itemize}
     The proposition (a)\textsubscript{$0$} is clear. 
     (b)\textsubscript{$0$} follows from the Gysin ismorphism. 
     (One can choose an affine open set $U$ containing $Z$, 
-    $H^*_Z(U) \simeq H^*_Z(X)$ by excision. $U$ is liftable.)
+    $H^\bullet_Z(U) \simeq H^\bullet_Z(X)$ by excision. $U$ is liftable.)
 
     The implication (b)\textsubscript{$n-1$} $\Rightarrow$ (a)\textsubscript{$n$}: 
     for such $X$, by de Jong's alternation theorem (theorem 4.1 in \cite{dJ}), 
@@ -403,7 +403,7 @@ the cohomology with compact support is of finite dimension.
     there is an isomorphism 
     (then $\CE_1 \boxtimes \CE_2$ is an overconvergent isocrystal on $X \times Y$):
     \[
-        H^\cdot(X, \CE_1) \otimes H^\cdot(Y, \CE_2) \simeq H^\cdot(X \times Y, \CE_1 \boxtimes \CE_2).
+        H^\bullet(X, \CE_1) \otimes H^\bullet(Y, \CE_2) \simeq H^\bullet(X \times Y, \CE_1 \boxtimes \CE_2).
     \]
     Similarly for cohomology with compact supports.
 \end{theorem}
@@ -419,7 +419,7 @@ the cohomology with compact support is of finite dimension.
     there is a trace map $\tr \colon H^{2d}(X) \to K$ such that 
     for an overconvergent $F$-isocrystal $\CE$, the pairing
     \[
-        H^*(X, \CE) \otimes H^{2d-*}_c(X, \CE^\vee) \to H^{2d}(X) \to K
+        H^\bullet(X, \CE) \otimes H^{2d-\bullet}_c(X, \CE^\vee) \to H^{2d}(X) \to K
     \]
     is perfect.
 \end{theorem}
@@ -434,7 +434,7 @@ the cohomology with compact support is of finite dimension.
         \item [(b)\textsubscript{$n$}] 
             The pairing ($d$ is the dimension of $Z$)
             \[
-                H^*_Z(X) \times H^{2d-*}_c(Z) \to K
+                H^\bullet_Z(X) \times H^{2d-\bullet}_c(Z) \to K
             \] 
             (the trace map can be similarly defined) is perfect 
             for $Z$ (may not be smooth) of dimension no greater than $n$ and $X$ smooth.
