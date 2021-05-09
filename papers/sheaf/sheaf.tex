@@ -20,28 +20,28 @@
 \section{Preliminaries}
 \subsection{Sheaves and presheaves}
 
-Fix $K$ to be a principal  ideal  integral domain.
+Fix $K$ to be a principal ideal domain.
 
  \begin{definition}
-   A sheaf of $K$-modules over a topological space $M$ contains a topological space $S$ and a projection  $\pi:S\to M$ satisfying:
+   A sheaf of $K$-modules over a topological space $M$ contains a topological space $S$ and a projection  $\pi \colon S\to M$ satisfying:
    \begin{enumerate}
      \item $\pi$ is a local homeomorphism and is surjective,
      \item $\pi^{-1}(x)$ is a $K$-module for each $x\in M$,
      \item the  operations for $K$-modules are continuous.
    \end{enumerate}
  \end{definition}
-Here the third condition means, if  $A=\{(x,y)\in S\times S|\pi(x)=\pi(y)\}\subset S\times S$ is the set of pairs of elements in S with same image in $M$, then $A\to S,(s_1,s_2)\mapsto s_1-s_2$ is continuous, and for fixed $k\in K$, $S\to S, s\mapsto ks$ is continuous. It follows that $A\to S,(s_1,s_2)\mapsto s_1+s_2$ is continuous.  While for a sheaf of $K$-algebra,  $A\to S,(s_1,s_2)\mapsto s_1\circ s_2$ should be continuous.
+Here the third condition means, if  $A=\{(x,y)\in S\times S \mid \pi(x)=\pi(y)\}\subset S\times S$ is the set of pairs of elements in S with same image in $M$, then $A\to S,(s_1,s_2)\mapsto s_1-s_2$ is continuous, and for fixed $k\in K$, $S\to S, s\mapsto ks$ is continuous. It follows that $A\to S,(s_1,s_2)\mapsto s_1+s_2$ is continuous.  While for a sheaf of $K$-algebra,  $A\to S,(s_1,s_2)\mapsto s_1\circ s_2$ should be continuous.
 
-Call $\pi^{-1}(x)$ the stalk over $x$, and for an open subset $U\subset M$, a continuous map $f:U\to S$ satisfying $\pi\circ f=id_U$ is called a section on $U$, and the set of such sections is denoted by $\Gamma(U,S)$. In particular, set $\Gamma(S)=\Gamma(M,S)$. $\Gamma(U,S)$ has a  natural $K$-module structure, play similar role of the space $C^\infty(U)$ of smooth function on $U$.
+Call $\pi^{-1}(x)$ the stalk over $x$, and for an open subset $U\subset M$, a continuous map $f\colon U\to S$ satisfying $\pi\circ f=id_U$ is called a section on $U$, and the set of such sections is denoted by $\Gamma(U,S)$. In particular, set $\Gamma(S)=\Gamma(M,S)$. $\Gamma(U,S)$ has a  natural $K$-module structure, play similar role of the space $C^\infty(U)$ of smooth function on $U$.
 
  Notice that $\pi$ may not be  a covering map. The space of germs of continuous functions on $R$, for example, , is even  not  a Hausdorff space.  .
 
 
 \begin{example}
-  The constant sheaf $\mathcal{G}=M\times G$, where $G$  is a $K$-module with discrete topology.
+  The constant sheaf $\mathcal{G} = M\times G$, where $G$  is a $K$-module with discrete topology.
 \end{example}
 \begin{example}
-  The smooth function sheaf $C^\infty(M)=\bigcup_{x\in M}F_x$. Here  $F_x$ is the set of germs of smooth functions at x. Here we may set the elements in $F_x$ be the equivalent  classs of $(f,U)$ with $f:U\to \mathbb{R}$ and $x\in U$, with $(f,U)\sim (g,V)$ if $\exists W\subset U\cap V$ and $x\in W$ with $f|_W=g|_W$. The topology of $C^\infty(M)$ is formed by the basis  $\bigcup_{x\in U}f_x$,    where $f:U\to R$ is smooth and $f_x $ denotes the germ of f at x.
+  The smooth function sheaf $C^\infty(M)=\bigcup_{x\in M}F_x$. Here  $F_x$ is the set of germs of smooth functions at x. Here we may set the elements in $F_x$ be the equivalent  classs of $(f,U)$ with $f\colon U\to \mathbb{R}$ and $x\in U$, with $(f,U)\sim (g,V)$ if $\exists W\subset U\cap V$ and $x\in W$ with $f|_W=g|_W$. The topology of $C^\infty(M)$ is formed by the basis  $\bigcup_{x\in U}f_x$,    where $f\colon U\to R$ is smooth and $f_x $ denotes the germ of f at x.
 \end{example}
 \begin{definition}
 If $S$ and $S^\prime $ are two sheaves over M with projection $\pi,\pi^\prime$, a continuous map $\varphi\colon S\to S^\prime$ is called a sheaf homomorphism if  the following commutative diagram holds
@@ -94,7 +94,7 @@ Sheaves can be also defined as some particular presheaves. The two definitions a
 \begin{definition}
   A presheaf of $K$-modules $P=\{S_U;\rho_{U,V}\}$ consists of a $K$-module $S_U$ for all open sets $U\subset M$ and  a $K$-module homomorphism $\rho_{U,V}\colon S_V\to S_U$ for each $U\subset V$, satisfying that $\rho_{U,U}=id$ and  $\rho_{U,W}=\rho_{U,V}\circ \rho_{V,W}$, for $U\subset V\subset W$. These are similar to  the set of continuous functions on U and  the restriction map.
 
-  A morphism from $P$ to $P^\prime$ consists of  $K$-module morphisms $\varphi_U:S_U\to S_U^\prime$ for each open subset U such that $\phi$ is compatible with $\rho$, that is to say,  the following commutative diagram holds for every $U\subset V$,
+  A morphism from $P$ to $P^\prime$ consists of  $K$-module morphisms $\varphi_U\colon S_U\to S_U^\prime$ for each open subset U such that $\phi$ is compatible with $\rho$, that is to say,  the following commutative diagram holds for every $U\subset V$,
 
   \begin{equation*}
     \xymatrix{
@@ -108,11 +108,11 @@ Sheaves can be also defined as some particular presheaves. The two definitions a
 
 If $S$ is a sheaf, then $\{\Gamma(U,S);\rho_{U,V}\}$ is a presheaf with $\rho$ the usual restriction map. Denote the presheaf as $\alpha(S)$.
 
-If $P=\{S_U;\rho_{U,V}\}$ is a presheaf of $K$-module over $M$, then  define a sheaf $S=\cup_{x\in M} S_x$. Let$S_x=\bigcup_{x\in U}S_U/\sim,$ and let $f\in S_U\sim g\in S_V$ if and only if there exists some $x\in W\subset U\cap V$ such that $\rho_{W,U}f=\rho_{W,V}g$, similar to the construction of germs of functions.  The projection $\pi$ sends $[f]\in S_x$ to $x$, where $f\in S_U$. $\pi^{-1}(x)=S_x$ is a $K$-module by $k[f]=[kf]$ and $[f_1]+[f_2]=[\rho_{W,U}f_1+\rho_{W,V}f_2]$ where $f_1\in S_U,f_2\in S_V$ and $x\in W\subset U\cap V$. Define the map $S_U\to S_x$ with $x\in U$ by  $\rho_{x,U}$, then the topology of $S$ is given by the topology generated by the basis $\{O_f=\{\rho_{x,U}f|x\in U\}   |f\in S_U\}$. $S$ is a sheaf, denoted   by $\beta(P)$.
+If $P=\{S_U;\rho_{U,V}\}$ is a presheaf of $K$-module over $M$, then  define a sheaf $S=\cup_{x\in M} S_x$. Let$S_x=\bigcup_{x\in U}S_U/\sim,$ and let $f\in S_U\sim g\in S_V$ if and only if there exists some $x\in W\subset U\cap V$ such that $\rho_{W,U}f=\rho_{W,V}g$, similar to the construction of germs of functions.  The projection $\pi$ sends $[f]\in S_x$ to $x$, where $f\in S_U$. $\pi^{-1}(x)=S_x$ is a $K$-module by $k[f]=[kf]$ and $[f_1]+[f_2]=[\rho_{W,U}f_1+\rho_{W,V}f_2]$ where $f_1\in S_U,f_2\in S_V$ and $x\in W\subset U\cap V$. Define the map $S_U\to S_x$ with $x\in U$ by  $\rho_{x,U}$, then the topology of $S$ is given by the topology generated by the basis $\{O_f=\{\rho_{x,U}f\mid x\in U\} \mid f\in S_U\}$. $S$ is a sheaf, denoted   by $\beta(P)$.
 
 
 
-Notice in some place  a presheaf is a sheaf if it satisfies:
+Notice in some place a presheaf is a sheaf if it satisfies:
 
 \begin{enumerate}
   \item if $U=\bigcup_{i\in I} U_i$ and $f_i\in S_{U_i}$ with $f_i|_{U_i\cap U_j}=f_j|_{U_i\cap U_j}$, then there exists  $f\in S_U$ satisfying $f_{U_i}=f_i$, here if $U\cap V$ and $f\in S_V$,  use $f|_{U} $ to denote $\rho_{U,V}f$.
@@ -122,7 +122,7 @@ Notice in some place  a presheaf is a sheaf if it satisfies:
 
 If a presheaf $P=\{S_U;\rho_{U,V}\}$  satisfies the two conditions, then  say the presheaf is complete.
 
-Notice a sheaf homomorphism $\varphi:S\to S^\prime$ induce presheaf homomorphism $\varphi^*:\alpha(S)\to \alpha(S^*)$,  and $(\psi\circ \varphi)^*=\psi^*\circ \varphi^*$. Besides, a presheaf homomorphism $\{\varphi_U\}$  also induce sheaf homomorphism $\varphi_*$ between $\beta(P)$ and $\beta(P^\prime)$.
+Notice a sheaf homomorphism $\varphi\colon S\to S^\prime$ induce presheaf homomorphism $\varphi^*\colon \alpha(S)\to \alpha(S^*)$,  and $(\psi\circ \varphi)^*=\psi^*\circ \varphi^*$. Besides, a presheaf homomorphism $\{\varphi_U\}$  also induce sheaf homomorphism $\varphi_*$ between $\beta(P)$ and $\beta(P^\prime)$.
 
 If $S$ is sheaf, then the composition map  $$\begin{aligned}
 \beta(\alpha(S))&\to S\\
@@ -145,13 +145,13 @@ $$
   \end{aligned}
   $$
 
-\subsection{Tensors  and exact sequences}
+\subsection{Tensors and exact sequences}
 
 
 \begin{definition}
 
-For two sheaves $P=\{S_U;\rho_{U,V}\}$ and $P^\prime=\{S_U^\prime;\rho_{U,V}^\prime\}$,   their tensor  presheaf  is defined as $$
-P\otimes P^\prime=\{S_U\otimes S_U^\prime|  \phi_U\otimes \phi_{U}^\prime\}.
+For two sheaves $P=\{S_U;\rho_{U,V}\}$ and $P^\prime=\{S_U^\prime;\rho_{U,V}^\prime\}$, their tensor presheaf is defined as $$
+P\otimes P^\prime=\{S_U\otimes S_U^\prime\mid  \phi_U\otimes \phi_{U}^\prime\}.
 $$
 and for two sheaves $S$ and $S^\prime$, their tensor sheaf is defined as   $$S\otimes S^\prime=\beta(\alpha(S)\otimes \alpha(S^\prime)).$$
 
@@ -160,16 +160,16 @@ and for two sheaves $S$ and $S^\prime$, their tensor sheaf is defined as   $$S\o
 
 By the construction, we have $(S\otimes S^\prime)_x\simeq S_x\otimes S_x^\prime$.
 
-The tensor of sheaf homomorphisms is defined canonially as $\varphi:S\to T$ and $\psi:S^\prime\to T^\prime$ will induce $\varphi\otimes \psi:S\otimes S^\prime\to T\otimes T^\prime$, and $\varphi\otimes \psi|_{(S\otimes S^\prime)_x}\simeq \varphi|_{S_x}\otimes \psi|_{S_x^\prime}$.
+The tensor of sheaf homomorphisms is defined canonially as $\varphi\colon S\to T$ and $\psi\colon S^\prime\to T^\prime$ will induce $\varphi\otimes \psi\colon S\otimes S^\prime\to T\otimes T^\prime$, and $\varphi\otimes \psi|_{(S\otimes S^\prime)_x}\simeq \varphi|_{S_x}\otimes \psi|_{S_x^\prime}$.
 
 Similarly,  define the direct sum of sheaves and presheaves as $$\begin{aligned}
-P\oplus P^\prime=&\{S_U\oplus S_U^\prime|  \phi_U\oplus \phi_{U}^\prime\},\\
+P\oplus P^\prime=&\{S_U\oplus S_U^\prime\colon \phi_U\oplus \phi_{U}^\prime\},\\
 S\oplus S^\prime=&\beta(\alpha(S)\oplus \alpha(S^\prime)).\\
 \end{aligned}
 $$
 
 
-Notice that  smooth manifolds always guarantee the existence of   the partition of unity. For sheaves there is  a more general concept.
+Notice that smooth manifolds always guarantee the existence of   the partition of unity. For sheaves there is  a more general concept.
 
 \begin{definition}
   A sheaf $S$ over $M$ is a fine sheaf if for any locally finite  open covering $\{U_i\}$ of $M$, there exists endomorphisms $\{l_i\}$   of $S$ satisfying that $supp(l_i)\subset U_i$ and $\sum_i l_i=id_S$. Set $supp(f_i)$ to be the closure of the points set where $l_i|_{S_x}$ is not zero. $\{l_i\}$ is called the partition of unity of sheaf $S$ subordinate to $\{U_i\}$ of $M$.
@@ -312,7 +312,7 @@ Here torsionless means all the stalks are torsionless $K$-modules.
   \item For short exact sequence    $0\to S^\prime\to S\to S^{\prime\prime}\to 0$, there is the long exact sequence $$
       \cdots\to H^q(M,S^\prime)\to H^q(M,S)\to H^q(M,S^{\prime\prime})\to H^{q+1}(M,S^\prime)\to \cdots.
       $$
-  \item $id:S\to S$ induces $id:H^q(M,S)\to H^q(M,S)$.
+  \item $id\colon S\to S$ induces $id\colon H^q(M,S)\to H^q(M,S)$.
   \item The commutative diagram \begin{equation*}
         \xymatrix{
         S^\prime\ar[r]\ar[dr]& S\ar[d]\\
@@ -353,7 +353,7 @@ Here torsionless means all the stalks are torsionless $K$-modules.
 For  a resolution $C^*$ and a sheaf $S$, consider the  cochain complex $$
 0\to \Gamma(C^0\otimes S)\to \Gamma(C^1\otimes S)\to \cdots,
 $$
-denoted by $\Gamma(C^*\otimes S)$. The homomorphisms are induced by the tensor with  $id:S\to S$.
+denoted by $\Gamma(C^*\otimes S)$. The homomorphisms are induced by the tensor with  $id\colon S\to S$.
 
 For different $S$, the homomorphism $S\to S^\prime$ induces  $\Gamma(C^*\otimes S)\to \Gamma(C^*\otimes S^\prime)$, which is a  cochain homomorphism.
 
@@ -448,7 +448,7 @@ and \begin{equation*}
   $$
 \end{lemma}
 \begin{proof}
-  Set $S_0$ to be  the sheaf of germs of discontinuous sections of $S$, and set $\bar{S}$ to  be the quotient sheaf $S_0/S$.  To construct $S_0$,   set  $S_U$ to be  the set of discontinuous maps over $U$, that is map $f:U\to S$ with $\pi\circ f=id$. This forms a presheaf, and let $S_0$ to be the associated sheaf.
+  Set $S_0$ to be  the sheaf of germs of discontinuous sections of $S$, and set $\bar{S}$ to  be the quotient sheaf $S_0/S$.  To construct $S_0$,   set  $S_U$ to be  the set of discontinuous maps over $U$, that is map $f\colon U\to S$ with $\pi\circ f=id$. This forms a presheaf, and let $S_0$ to be the associated sheaf.
 
   It suffices to prove that $S_0$ is a fine sheaf. Set $\{U_i\}$  to be a locally finite open covering, then there exists a refined open covering $\{V_i\}$ with $\bar{V_i}\subset U_i$. Set the function $\varphi_i=\chi_{V_i}$, and arrange every $x\in M$ a $V_i$, denoted by $V_{i_x}$  containing it. Set $\psi_i(x)=\chi_{V_i}(x)\delta_{i_x,i}$, then $\sum_i \psi_i=1$.  Now set the endomorphism of presheaf to be  $\tilde{l_i}(S)(m)=\psi_i(m)s(m)$, and the presheaf endomorphism induces sheaf endomorphism $l_i$ of $S$. That's the desired partition of unity.
 
@@ -601,14 +601,16 @@ since $H^k$ has resolution $H^k\to C^{0\prime}\to C^{1\prime}\to \cdots$, where 
 
 
 \begin{remark}
-  All the above claims are based on the assumption of the existence of fine torsionless resolution of the constant sheaf on M. There will be an example of the resolution in lemma \ref{fine} to introduce Alexander-Spanier cohomology.
+  All the above claims are based on the assumption of the existence of fine torsionless resolution of the constant sheaf on M. There will be an example of the resolution in lemma \ref{fine} to introduce Alexander--Spanier cohomology.
 \end{remark}
 \section{Examples}
-\subsection{Alexander-Spanier cohomology}
-Assume $M$ is a paracompact compact Hausdorff space here. For open set $U\subset M$,  use $A^{p}(U,K)$ to denote the $K$ modules of pointwise functions $U^{p+1}\to K$ for each $p\geq 0$. The coboundary operator $d:A^{p}(U,K)\to A^{p+1}(U,K)$ is defined by $$
-df(x_0,x_1,\cdots,x_{p+1})=\sum_{i=0}^{p+1}(-1)^if(x_0,\cdots,\hat{x_i},\cdots,x_{p+1})$$ for $f\in A^{p}(U,K)$ and $x_i\in U,i=0,\cdots,p+1$.By direct computation $d\circ d=0$. Using the natural restriction $\rho_{V,U}:A^{p}(U,K)\to A^{p}(V,K)$, $\{A^{p}(U,K),\rho_{V,U}\}$ forms the presheaf of Alexander-Spanier p-cochains. For $p\geq1$  it's not a complete presheaf, since  $\cup U_i^{p+1}$ doesn't contain $(\cup U_i)^{p+1}$ for most times.
+\subsection{Alexander--Spanier cohomology}
+Assume $M$ is a paracompact compact Hausdorff space here. For open set $U\subset M$,  use $A^{p}(U,K)$ to denote the $K$ modules of pointwise functions $U^{p+1}\to K$ for each $p\geq 0$. The coboundary operator $d\colon A^{p}(U,K)\to A^{p+1}(U,K)$ is defined by 
+$$
+df(x_0,x_1,\cdots,x_{p+1})=\sum_{i=0}^{p+1}(-1)^if(x_0,\cdots,\hat{x_i},\cdots,x_{p+1})$$ 
+for $f\in A^{p}(U,K)$ and $x_i\in U,i=0,\cdots,p+1$. By direct computation $d\circ d=0$. Using the natural restriction $\rho_{V,U}\colon A^{p}(U,K)\to A^{p}(V,K)$, $\{A^{p}(U,K),\rho_{V,U}\}$ forms the presheaf of Alexander--Spanier p-cochains. For $p\geq1$  it is not a complete presheaf, since  $\cup U_i^{p+1}$ does not contain $(\cup U_i)^{p+1}$ for most times.
 
-Set $\mathscr {A}^p(M,K)$ to denote the associated sheaf of germs with respect to this presheaf. An coboundary operator  can be induced as $d:\mathscr {A}^p(M,K)\to \mathscr {A}^{p+1}(M,K)$.
+Set $\mathscr {A}^p(M,K)$ to denote the associated sheaf of germs with respect to this presheaf. An coboundary operator  can be induced as $d\colon \mathscr {A}^p(M,K)\to \mathscr {A}^{p+1}(M,K)$.
 
  \begin{lemma}\label{fine}
 
@@ -645,11 +647,11 @@ H^q(M,S)=H^q(\Gamma(\mathscr {A}^*(M,K)\otimes S)),
 $$
  but it won't bother to introduce the classical definition of Alexander-Spanier cohomology modules of $M$ with coefficients in a $K$ module $G$.
 
- Replace all $K$ by $G$ and $\mathscr{H}$ by $\mathscr{G}$ in the above notions, since the functions can be defined as $U^{p+1}\to G$. Set $$A_0^p(M,G)=\{f\in A^p(M,G),\rho_{x,M}f=0,\forall x\in M\}.$$
+ Replace all $K$ by $G$ and $\mathscr{H}$ by $\mathscr{G}$ in the above notions, since the functions can be defined as $U^{p+1}\to G$. Set $$A_0^p(M,G)=\{f\in A^p(M,G)\mid \rho_{x,M}f=0,\forall x\in M\}.$$
  Notice that  $A^p(M,K)$ is not a complete sheaf,and  $A^p(M,G)$ as well. The operator d on $A_0^p(M,G)$ has image in $A_0^{p+1}(M,G)$, so it induces a map $$
  A^p(M,G)/A_0^p(M,G)\to A^{p+1}(M,G)/A_0^{p+1}(M,G),
  $$
-and induces a cochain complex denoted by $A^*(M,G)/A_0^*(M,G)$. The $p$-th Alexander-Spanier cohomology modules for $M$ with coefficients in $G$ is the $p$-th quotient module with respect to this sequence, or
+and induces a cochain complex denoted by $A^*(M,G)/A_0^*(M,G)$. The $p$-th Alexander--Spanier cohomology modules for $M$ with coefficients in $G$ is the $p$-th quotient module with respect to this sequence, or
 $$
 H_{A-S}^p(M;G)=H^p(A^*(M,G)/A_0^*(M,G)).
 $$
@@ -687,10 +689,11 @@ a desired conclusion.
 \section{Multiplicative structure}
 \begin{definition}
   For cochain complexes $C^*$ and $\hat{C}^*$,  define their tensor by $$
-  (C^*\otimes \hat{C^*})_r=\oplus_{p+q=r}C^p\otimes \hat{C}^q,
+  (C^*\otimes \hat{C^*})_r=\bigoplus_{p+q=r}C^p\otimes \hat{C}^q,
   $$
-  and the $r$-th coboundary operator is defined by $$
-  \oplus_{p+q=r}(d_p\otimes \hat{id}_p+(-1)^p{id}_p\otimes \hat{d}_q)
+  and the $r$-th coboundary operator is defined by 
+  $$
+  \bigoplus_{p+q=r}(d_p\otimes \hat{id}_p+(-1)^p{id}_p\otimes \hat{d}_q)
   $$
 \end{definition}
 There is  a canonical homomorphism $$
@@ -699,7 +702,6 @@ $$
 
 \begin{lemma}\label{torfree}
   The tensor of two torsionless $K$ modules is torsionless.
-
 \end{lemma}
 
 Now if there is a fine torsionless resolution of the constant sheaf $\mathscr{K}$ of the form
@@ -707,10 +709,10 @@ $$
 0\to \mathscr{K}\to C_0\to C_1\to\cdots,
 $$
  tensor it with itself and get a sequence $$
-0\to \mathscr{K}\simeq \mathscr{K}\otimes \mathscr{K}\to C_0\otimes C_0\to (C_0\otimes C_1)\oplus (C_1\otimes C_0)\to \cdots \to \oplus_{p+q=r}C_p\otimes C_q\to \cdots
+0\to \mathscr{K}\simeq \mathscr{K}\otimes \mathscr{K}\to C_0\otimes C_0\to (C_0\otimes C_1)\oplus (C_1\otimes C_0)\to \cdots \to \bigoplus_{p+q=r}C_p\otimes C_q\to \cdots
 $$
 with the coboundary operators $$
-  \oplus_{p+q=r}(d_p\otimes {id}_p+(-1)^p{id}_p\otimes d_q),
+  \bigoplus_{p+q=r}(d_p\otimes {id}_p+(-1)^p{id}_p\otimes d_q),
   $$
 This is a fine torsionless resolution of the constant sheaf $\mathscr{K}$. The sequence is fine since  tensor products and direct sums preserve fineness. Lemma \ref{torfree} shows that each term is torsionless. To show the exactness at $r$-th place($r\geq 1 $),  apply the Kunneth formula at each stalk. The conditions of Kunneth formula is satisfied automatically since $C^{\prime*}$ is torsionless, implying that the tensor product with it keeps exactness. The exactness at $\mathscr{K}$ and $C_0\otimes C_0$ can be  checked by computation.
 
@@ -721,8 +723,8 @@ $$
 Here $A*B$ is a notation representing $Tor_1(A,B)$.
 \end{theorem}
 
-If $S$ is a sheaf of algebras over $M$, which means a homomorphism $S\otimes S\to S$, it induces a homomorphism  in the form of $$
-\Gamma(C_p\otimes S)\otimes \Gamma(C_q\otimes S)\to \Gamma(C_p\otimes C_q\times S\otimes S)\to \Gamma(C_p\otimes C_q\otimes S).
+If $S$ is a sheaf of algebras over $M$, which means a homomorphism $S\otimes S\to S$, it induces a homomorphism in the form of $$
+\Gamma(C_p\otimes S)\otimes \Gamma(C_q\otimes S)\to \Gamma(C_p\otimes C_q\otimes S\otimes S)\to \Gamma(C_p\otimes C_q\otimes S).
 $$
 Superpose it through the pair $(p,q)$ such that $p+q=r$ and get a cochain map $$
 \Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S)\to \Gamma(C^*\otimes C^*\otimes S),
@@ -730,7 +732,7 @@ $$
 and a  homomorphism $$
 H^k(\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S))\to H^k(\Gamma(C^*\otimes C^*\otimes S)).
 $$
-Composite it with the homomorphism  $H^p(\Gamma(C^*\otimes S))\otimes H^q(\Gamma(C^*\otimes S))\to H^{p+q}(\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S))$ to get the homomorphism
+Composite it with the homomorphism $H^p(\Gamma(C^*\otimes S))\otimes H^q(\Gamma(C^*\otimes S))\to H^{p+q}(\Gamma(C^*\otimes S)\otimes \Gamma(C^*\otimes S))$ to get the homomorphism
 $$\begin{aligned}
 H^p(M,S)\otimes H^q(M,S)\simeq& H^p(\Gamma(C^*\otimes S))\otimes H^q(\Gamma(C^*\otimes S))\\
 \to H^{p+q}(\Gamma(C^*\otimes C^*\otimes S))&\simeq H^{p+q}(M,S),
@@ -744,7 +746,7 @@ For another fine torsionless resolution $$
 0\to \mathscr{K}\to \tilde{C_0}\to \tilde{C_1}\to \tilde{C_2}\to \cdots,
 $$
   tensor it with $C^*$ and get a fine torsionless resolution $$
-0\to \mathscr{K}\to C_0\otimes \tilde{C_0}\to \cdots\to \oplus_{p+q=r}C_p\otimes \tilde{C_q}\to \cdots,
+0\to \mathscr{K}\to C_0\otimes \tilde{C_0}\to \cdots\to \bigoplus_{p+q=r}C_p\otimes \tilde{C_q}\to \cdots,
 $$
 which will play the role of the bridge between two tensor products  $C^*\otimes C^*$ and $\tilde{C^*}\otimes \tilde{C^*}$.
 
@@ -782,7 +784,7 @@ Similarly, induces the commutative diagram
    H^{p+q}(\Gamma(C^*\otimes \tilde{C^*}\otimes S) \otimes \Gamma(C^*\otimes \tilde{C^*}\otimes S))\ar[r]&H^{p+q}(\Gamma(C^*\otimes \tilde{C^*}\otimes C^*\otimes \tilde{C^*}\otimes S)).\\
    }
  \end{equation*}
- By the two diagrams, the multiplication structure is independent of the fine torsion free resolution.
+ By the two diagrams, the multiplication structure is independent of the fine torsion free resolution \cite{ATspanier}.
 \nocite{*}
 \printbibliography
 
