@@ -57,7 +57,7 @@ latexmk -pdf -xelatex YourPaper.tex
 
 ## LaTeX 排版规范
 
-作者在提交代码时，应确保 LaTeX 代码满足以下要求。
+作者在提交代码时，应确保 LaTeX 代码满足以下要求（虽然这里面的很多代码并不满足这些要求）。
 
 ### 代码风格
 
