@@ -1,1 +1,2331 @@
+\documentclass[twoside]{article}
 
+\input{../common/preamble}
+\input{commands}
+
+\addbibresource{kfh.bib}
+
+\begin{document}
+
+\title{An Introduction to Factorization Algebras and Factorization Homology}
+\author{Kong Fanhao\footnote{孔繁浩，清华大学数学系数 72 班.}}
+
+\begin{abstract}
+	We introduce the theory of factorization algebras and factorization homology.
+    They are based on the theory on higher operads and algebras over them.
+    We also give two applications of factorization algebras and factorization homology:
+    the Deligne conjecture and the Bar constructions.
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+
+It has been many years since people try to study quantum field theories
+using the tool of mathematics. People introduce a number of physical ideas into mathematics,
+including fields, phase spaces, quantization, Feynman diagrams, observables,
+etc. Roughly speaking, we know that observables on small sets induce
+observables on large sets. The study of this property of observables
+yields a new structure, called the ``factorization algebra''. Since the
+start of the 21st century, where the notion of factorization algebras was
+introduced, it has been studied by a number of mathematicians, and many
+notable results have been developed.
+
+On the other hand, there exists another mathematical structure which is 
+closely related to the factorization algebra, called ``factorization
+homology''. It is a structure to describe homology theories specific
+to manifolds of a specific dimension, with some specific structures. 
+The specific structures can be smooth structures, framings, or simply
+no structure at all. They are introduced by axioms similar to the Eilenberg-Steenrod
+axioms for homology theory for spaces, including the monoidal axiom and the
+excision axiom.
+
+In order to examine factorization homology and factorization algebras, 
+a number of preliminaries are required; they include the theory of operads
+and $E_n$-algebras. The theory of operads is used to study the structures of
+multimorphisms and the relations that the multimorphisms must satisfy,
+while the $E_n$-algebras are introduced to study iterated loop spaces and
+configuration spaces, and have been heavily studied in algebraic topology
+ever since the seventies. 
+
+It has been proved that factorization homology and factorization algebras
+are highly related. This leads to more studies on $E_n$-algebras, together
+with related concepts in algebraic topology related to quantum mechanics, including
+deformations of $E_n$-algebras, the (higher) Deligne conjecture, (higher) 
+string topology and Bar constructions of iterated loop spaces. It is also
+related to Hoschchild homology and cohomology, which arise as specific
+examples of factorization homology.
+
+In this article, we will present the preliminaries we need for defining
+factorization algebras and factorization homology in Section 1.
+In Section 2, we will give the definition of
+factorization algebras, and present some basic operations, such as pullbacks,
+pushforwards, extending from a basis and gluing. The definition of 
+homology theories for manifolds, factorization homology, together with their
+properties, relationships with factorization algebras and basic examples,
+will be given in Section 3. In the final section, two applications will be 
+introduced, including the Bar constructions and the Deligne conjecture.
+
+\begin{notation}
+    We fix the following notations throughout the whole article:
+    \begin{itemize}
+    \item All manifolds are assumed to be smooth.
+    \item When we talk about a ``topological space'', we mean a $K$-space, whose
+    definition and basic properties may be found in \cite{Hov99}. The category
+    of $K$-spaces is demoted by $\K$.
+    \item $\SSet$ is the category of simplicial sets. By \cite{Hov99},
+    there exists a singular functor $\Sing:\K\to\SSet$.
+    \item The definitions and basic properties of model categories are from
+    \cite{Hov99} as well. Note that the definitions are slightly different from
+    other references.
+    \item An introduction to the language of $\infty$-categories can be found in \cite{Lur09}.
+    Further reference for $\infty$-categories include \cite{Lur16}.
+    \item $\S$ denotes the $\infty$-category of topological spaces, and $\H$
+    denotes the homotopy category of topological spaces. 
+    The $1$-morphisms in $\S$ are continuous maps between spaces, and
+    the $n$-morphisms in $\S$ are homotopies between $(n-1)$-morphisms;
+    and the morphisms in $\H$ are homotopy classes of continuous maps.
+    \item For any commutative ring with unit $R$, we use $\Ch(R)$ to denote
+    the (ordinary) category of chain complexes over $R$, and we use $\Chinf(R)$
+    to denote the $\infty$-category of chain complexes over $R$. 
+    For a minimal supply to $\infty$-category of chain complexes, the first chapter of
+    \cite{Lur16} may be helpful.
+    \item For a topological space $X$, $C_\bullet(X)$ denotes the singular chain
+    complex of $X$, and $C^\bullet(X)$ denotes the singular cochain
+    complex of $X$.
+    \end{itemize}
+\end{notation}
+
+\section{Preliminaries: Operads, higher operads and algebras over them}
+
+In this section, we introduce the language of operads, that will be used in
+the sections below. We will see how these operads represent different
+structures on multilinear operators in a single, simple language.
+We will also introduce the language of higher operads, which allows us to
+intepret multilinear operators in different categories in one
+single language, as well as homotopy coherent algebras. Finally, we introduce 
+the little cubes operad, and $E_n$-algebras, as we will use them
+in the third section.
+
+\subsection{Basic definitions}
+
+Operads are first introduced by Peter May in his book \cite{May72}. 
+We first introduce its definition and give some evident generalizations.
+
+\begin{definition}
+    Suppose $(\cal C,\ox,\mathbb1)$ is a symmetric monoidal category.
+    An \term{operad} with values in $\cal C$ consists of:
+    \begin{enumerate}[i)]
+        \item A sequence of objects $F(n)\in\cal C$ for all nonnegative integers $n$;
+        \item A unit map $e\:\mathbb1\to F(1)$;
+        \item A right action $\rho_n$ of the symmetric group $S_n$ on $F(n)$;
+        \item A composition map 
+        
+        \[c\:F(k)\ox F(n_1)\ox\cdots\ox F(n_k)
+        \to F(n_1+\cdots+n_k)\]
+        
+        for nonnegative integers $k,n_1,\cdots,n_k$;
+    \end{enumerate}
+    such that the following conditions are satisfied:
+    \begin{enumerate}[i)]
+        \item The unital identity: The following maps are the identity maps:
+        
+        \[F(n)\xrightarrow{\cong}\mathbb1\ox F(n)\xrightarrow{e\ox\mathbb1}
+        F(1)\ox F(n)\xrightarrow{c}F(n),\]
+        \[F(n)\xrightarrow{\cong}F(n)\ox\mathbb1^{\ox n}
+        \xrightarrow{\mathbb1\ox e^{\ox n}}F(n)\ox F(1)^{\ox n}\xrightarrow{c}F(n);\]
+
+        \item The associativity diagram: The following diagram is commutative:
+        
+        \begingroup
+        \footnotesize
+        \[\xymatrix{
+        F(k)\ox\9\bigox_{i=1}^k F(n_i)\0\ox\9\bigox_{i=1}^k\bigox_{j=1}^{n_i}F(m_{ij})\0
+        \ar[dd]_{c\ox\9\bigox_{i=1}^k\bigox_{j=1}^{n_i}\mathbb1\0}\ar[r]^\cong&
+        F(k)\ox\bigox_{i=1}^k\9F(n_i)\ox\bigox_{j=1}^{n_i}F(m_{ij})\0
+        \ar[d]^{\mathbb1\ox\bigox_{i=1}^kc}\\&
+        F(k)\ox\bigox_{i=1}^kF\9\sum\limits_{j=1}^{n_i}m_{ij}\0\ar[d]^c\\
+        F\9\sum\limits_{i=1}^kn_i\0\ox\9\bigox_{i=1}^k\bigox_{j=1}^{n_i}F(m_{ij})\0
+        \ar[r]^c&F\9\sum\limits_{i=1}^k\sum\limits_{j=1}^km_{ij}\0;}\]
+        \endgroup
+
+        \item Compatibility with the $S_n$-action: The following diagram
+        is commutative: 
+        
+        \[\xymatrix{
+        F(k)\ox\bigox_{i=1}^k F(n_i)\ar[r]^\cong\ar[d]_{\rho_\sigma\ox\mathbb1}&
+        F(k)\ox\bigox_{i=1}^k F(n_{\sigma^{-1}(i)})\ar[d]^{c}\\
+        F(k)\ox\bigox_{i=1}^k F(n_i)\ar[r]^c&F(n_1+\cdots+n_k)
+        }\]
+        
+        for any $\sigma\in S_k$; and the following diagram is commutative:
+
+        \[\xymatrix{F(k)\ox\bigox_{i=1}^k F(n_i)\ar[d]_{\mathbb1\ox
+        \bigox_{i=1}^k\rho_{\sigma_i}}\ar[r]^c&F(n_1+\cdots+n_k)
+        \ar[d]^{\rho_{(\sigma_1,\cdots,\sigma_r)}}\\F(k)\ox\bigox_{i=1}^k F(n_i)
+        \ar[r]^c&F(n_1+\cdots+n_k)}\]
+        
+        for any $\sigma_i\in S_{n_i}$, where
+        $(\sigma_1,\cdots,\sigma_r)$ denotes its image under the evident inclusion
+        $S_{n_1}\times\cdots\times S_{n_k}\to S_{n_1+\cdots+n_k}$.
+    \end{enumerate}
+    If $\mathcal C=\SSet$, we call such an operad with values in $\SSet$
+    a \term{simplicial operad}.
+\end{definition}
+
+What an operad describes is some sort of ``multimorphisms on a single object'';
+that is, we may regard $F(n)$ as some sort of ``the space of $n$-ary operations'', 
+$e$ to be the ``identity operation'', $\rho$ to be ``permuting the inputs'';
+$c$ to be the ``composition'', and these operations satisfy a number of
+coherent diagrams. To be more explicitly, we have the following example:
+
+\begin{example}
+    Suppose $\cal C$ is a symmetric monoidal category, $\cal D$ is a
+    symmetric monoidal $\cal C$-enriched category, and $X\in\cal D$.
+    There exists a canonical operad given by \[F(n)=\Map(X^{\ox n},X),\]
+    where $e$ is the identity map \[\mathbb1_X\:\mathbb1_{\cal C}\to\Map(X,X)\]
+    (regarded as an object in $\Map(X,X)$), and the $S_n$-actions and 
+    compositions are given in the obvious way. This operad indeed describes 
+    multimorphisms on the object $X$. We denote this operad by $\End(X)$,
+    and call it the \term{endomorphism operad} of $X$.
+\end{example}
+
+More examples of operads include Examples \ref{eg1} and \ref{eg2}.
+
+In many cases we also need to consider multimorphisms on not only
+one object but maybe more than one: for example, observables in small sets
+lead to observables in large sets. In order to deal with this situation,
+we introduce a structure called colored operads. The following definition
+is from \cite{nLab}.
+
+\begin{definition}
+    Suppose $C$ is a set, called the set of \term{colors}. 
+    A \term{colored operad} with values taken in a symmetric monoidal category
+    $\cal C$ consists of: 
+    \begin{enumerate}[i)]
+        \item An object $\Hom(c_1,\cdots,c_n;c)$ in $\cal C$ for every nonnegative integer $n$
+        and $c_1,\cdots,c_n,c\in C$;
+        \item A unit map $e\:\mathbb1\to\Hom(c;c)$ for all $c\in C$;
+        \item An action by the symmetric group 
+        \[\rho_\sigma\:\Hom(c_1,\cdots,c_n;c)
+        \to\Hom(c_{\sigma(1)},\cdots,c_{\sigma(n)};c)\] 
+        for $\sigma\in S_n$ and $c_1,\cdots,c_n,c\in C$;
+        \item A composition law \[\Hom(c_1,\cdots,c_k;c)\ox\bigox_{i=1}^k
+        \Hom(c_{i1},\cdots,c_{in_i};c_i)\to\Hom(c_{11},\cdots,c_{kn_k};c);\]
+    \end{enumerate}
+    such that the composition is associative, unital and compatible
+    with the $S_n$-action.
+
+    If $\mathcal C=\SSet$, we call such a colored operad with values in $\SSet$
+    a \term{simplicial colored operad}.
+\end{definition}
+
+From this definition, we see that an operad is a special case
+of a colored operad: it is a colored operad with only one color.
+In this case, we have 
+\[F(n)=\Hom(\underbrace{*,\cdots,*}_{n\text{ copies}};*).\]
+For this reason, unless focusing on specific examples, we aim at
+colored operads instead of single-colored operads.
+
+The endomorphism operad can also be generalized to the colored case,
+as follows:
+
+\begin{example}
+    Suppose $\cal C$ is a symmetric monoidal category, $\cal D$ is a
+    symmetric monoidal $\cal C$-enriched category, $X=\{X_c\}_{c\in C}$ is a set of objects
+    in $\cal D$, where $C$ is the set of colors. Consider the colored operad given by
+    \[\Hom(c_1,\cdots,c_n;c)=\Map(X_{c_1}\ox\cdots\ox X_{c_n},X_c),\]
+    where the identity maps, $S_n$-actions and compositions are given in the obvious way.
+    We denote this operad by $\End(X)$, and call it the \term{endomorphism operad}
+    of $X$. If $X$ is the set of all objects in $\cal D$, we also write it as
+    $\End(\cal D)$.
+\end{example}
+
+Next we discuss morphisms between (colored) operads.
+
+\begin{definition}
+    Suppose $\mathcal O_1,\mathcal O_2$ are colored operads,
+    with colorings $C_1,C_2$, respectively. A map $F$ from $\mathcal O_1$ to 
+    $\mathcal O_2$ consists of a map $F:C_1\to C_2$ of colors, and a map
+    \[F\:\Hom(c_1,\cdots,c_n;c)\to\Hom(F(c_1),\cdots,F(c_n);F(c))\] of morphisms
+    for any objects $c_1,\cdots,c_n,c\in C_1$, such that the map of morphisms
+    preserves unit, composition, and is $S_n$-equivariant.
+\end{definition}
+
+Thus, we may define the category of single-colored operads and colored operads
+with values in $\cal C$, which we will denote by $\Op(\cal C)$ 
+and $\COp(\cal C)$.
+
+Now we are ready to introduce what an algebra over a (colored) operad is.
+
+\begin{definition}
+    Suppose $\cal O$ is a colored operad, taking values in a symmetric
+    monoidal category $\cal C$, with coloring $C$, and $\cal D$ is a 
+    symmetric monoidal $\cal C$-enriched category. 
+    
+    An \term{algebra over $\cal O$}
+    in $\cal D$ is a pair $(X,\theta)$, where $X=\{X_c\}_{c\in C}$ is a collection
+    of objects in $\cal D$ indexed by $C$, and $\theta:\mathcal O\to\End(X)$
+    is a map of colored operads, such that $\theta(c)=X_c$ for all $c\in C$.
+    Equivalently, an algebra over $\cal O$ in $\cal D$ is a map 
+    $\mathcal O\to\End(\cal D)$ of colored operads. 
+    
+    A map $f$ between algebras
+    $(X,\theta)$ and $(Y,\xi)$ over $\cal O$ in $\cal D$ consists a map
+    $f\:X_c\to Y_c$ for every $c\in C$, such that the following diagram
+    is commutative for any colors $c_1,\cdots,c_n,c\in C$:
+    \[\xymatrix{
+    \Hom(c_1,\cdots,c_n;c)\ar[r]^\theta\ar[d]_\xi&\Hom(X_{c_1},\cdots,X_{c_n};X_c)
+    \ar[d]^{f_*}\\\Hom(Y_{c_1},\cdots,Y_{c_n};Y_c)\ar[r]^{f^*}&
+    \Hom(X_{c_1},\cdots,X_{c_n};Y_c).}\]
+    The category of algebras over $\cal O$ in $\cal D$ will be denoted by
+    $\Alg(\cal O,D)$.
+\end{definition}
+
+Loosely speaking, an algebra over an operad is a structure such that the
+``formal operations'' in an operad turn into ``actual operations'' 
+between certain objects.
+
+The language of operads allows us to inteprete different structures
+in a common language. We first state a lemma, whose proof is simply reinterpreting
+the definitions:
+
+\begin{lemma}
+    Suppose $\cal O$ is a colored operad, taking values in a symmetrical
+    monoidal category $\cal C$, with coloring $C$, and $\cal D$ is a 
+    symmetric monoidal $\cal C$-enriched category that is tensored over $\cal C$. Giving an algebra
+    $(X,\theta)$ over $\cal O$ in $\cal D$ is equivalent to giving a set of objects
+    $X=\{X_c\}_{c\in C}$ in $\cal D$ indexed by $C$, and maps 
+    \[\theta\:\Hom(c_1,\cdots,c_n;c)\ox X_{c_1}\ox\cdots\ox X_{c_n}\to X_c,\]
+    such that the unital, $S_n$-equivariance and associativity diagrams are satisfied.
+\end{lemma}
+
+We now state some basic examples.
+
+\begin{example}\label{eg1}
+    Suppose $\cal C$ is a symmetric monoidal cocomplete category,
+    $\cal D$ is a symmetric monoidal $\cal C$-enriched category. Define the 
+    (single-colored) operad $\Assoc$ to be the operad with:
+    \begin{enumerate}[i)]
+        \item $\Assoc(n)=\coprod_{\sigma\in S_n}(\mathbb1_{\cal C})_{\sigma}$;
+        \item The unit map is the identity map of the unit object;
+        \item The $S_n$-action is given by right multiplication;
+        \item The composition map is induced by the inclusion 
+        $S_k\times S_{n_1}\times\cdots\times S_{n_k}\to S_{n_1+\cdots+n_k}$,
+        which is again induced by an $S_k\times S_{n_1}\times\cdots\times S_{n_k}$%
+        -action on $\{1,\cdots,n_1+\cdots+n_k\}$, where we first divide
+        the set into $k$ block with the $i$-th block has size $n_i$, permute the blocks
+        by the element in $S_k$, and permute each block by the element in $S_{n_i}$.
+    \end{enumerate}
+    Then an algebra over $\Assoc$ is equivalent to a monoidal object in $\cal D$,
+    and a map of algebras over $\Assoc$ is equivalent to a homomorphism
+    between two monoidal objects. In particular, if $\mathcal D=\Mod_R$ for some
+    ring $R$, the two assertions are equivalent to associative $R$-algebras
+    and homomorphisms between associative $R$-algebras; if $\mathcal D=\Ch_R$
+    for some ring $R$, the two assertions are equivalent to
+    associative dg-$R$-algebras and homomorphisms between 
+    associative dg-$R$-algebras.
+\end{example}
+
+\begin{example}\label{eg2}
+    Suppose $\cal C$ is a symmetric monoidal category, 
+    $\cal D$ is a symmetric monoidal $\cal C$-enriched category. Define the 
+    (single-colored) operad $\Comm$ to be the operad with:
+    \begin{enumerate}[i)]
+        \item $\Comm(n)=\mathbb1_{\cal C}$;
+        \item The unit map and composition map is the identity map of the unit object;
+        \item The $S_n$-action is the trivial action.
+    \end{enumerate}
+    Then an algebra over $\Comm$ is equivalent to a commutative monoidal object
+    in $\cal D$, and a map of algebras over $\Comm$ is equivalent to a homomorphism
+    between two commutative monoidal objects. In particular, if $\mathcal D=\Mod_R$
+    for some ring $R$, the two assertions are equivalent to
+    commutative $R$-algebras and homomorphisms between commutative $R$-algebras;
+    if $\mathcal D=\Ch_R$ for some ring $R$, the two assertions are equivalent to
+    commutative dg-$R$-algebras and homomorphisms between 
+    commutative dg-$R$-algebras.
+\end{example}
+
+\subsection{Higher operads}
+
+In practice we often have to change the underlying category of an operad. 
+For example, we sometimes face the problem of changing
+the underlying category of an operad $\cal O$ from the category of
+topological spaces to some other category (for example $\Ch(R)$ for a ring $R$).
+If there exists a symmetric monoidal
+functor between the underlying categories (in the case $\Ch(R)$
+we have the singular chain complex functor), then we may take the pushforward of $\cal O$
+along the symmetric monoidal functor; however this is not always the case.
+In this section, we will introduce the notion of a higher operad,
+which solves this problem nicely for topological operads.
+
+To do this, we first review how we get a symmetric monoidal 
+$\infty$-category from an ordinal symmetric monoidal 
+category. 
+
+\begin{construction}
+    For a symmetric monoidal category $\cal C$, we may construct a 
+    category $\cal C^\ox$, as follows:
+
+    \begin{enumerate}[i)]
+        \item The objects of $\cal C^\ox$ are finite (possibly empty) sequences
+        of objects in $\cal C$, which will be expressed in the form $[C_1,\cdots,C_n]$;
+
+        \item For any $[C_1,\cdots,C_n],[D_1,\cdots,D_m]\in\cal C^\ox$, a morphism
+        \[f\:[C_1,\cdots,C_n]\to[D_1,\cdots,D_m]\] consists of a subset 
+        $S\subseteq\{1,\cdots,n\}$, a map $f\:S\to\{1,\cdots,m\}$, and a map 
+        \[f_i\:\bigotimes_{j\in f^{-1}(i)}C_j\to D_i\] for any $1\le i\le m$;
+
+        \item Suppose \[f\:[C_1,\cdots,C_n]\to[D_1,\cdots,D_m],\hspace{2em}
+        g\:[D_1,\cdots,D_m]\to[E_1,\cdots,E_l]\] are morphisms in $\cal C^\ox$,
+        determining subsets $S\subseteq\{1,\cdots,n\}$ and $T\subseteq\{1,\cdots,m\}$.
+        The composition $g\circ f$ consists of the set 
+        $S'=f^{-1}(T)\subseteq\{1,\cdots,n\}$, the map \[g\circ(f|_{S'})\:
+        S'\to\{1,\cdots,l\},\] and the composition \[(g\circ f)_{i}\:
+        \bigox_{k\in(g\circ(f|_{S'}))^{-1}(i)}C_k\cong\bigox_{j\in g^{-1}(i)}
+        \bigox_{k\in f^{-1}(j)}C_k\to\bigox_{j\in g^{-1}(i)}D_j\to E_i\] for every
+        $1\le i\le l$.
+    \end{enumerate}
+\end{construction}
+
+Next, take the category $\Fin_*$, the category of pointed finite sets,
+where the objects are $\<n\>:=\{*,1,\cdots,n\}$ for all
+nonnegative integers $n$, and the morphisms are all maps that preserve the base point.
+Then we have a forgetful functor 
+$p:\cal C^\ox\to\Fin_*$, that carries an object $[C_1,\cdots,C_n]$ to the set
+$\<n\>$. Moreover, $p$ satisfies the following properties:
+
+\begin{proposition}
+    \begin{enumerate}[i)]
+        \item $p$ is a \term{coCartesian fibration}, which means for any 
+        \[\alpha\:\<n\>\to\<m\>\in\Fin_*,\hspace{2em}C=[C_1,\cdots,C_n]\in\cal C^\ox,\]
+        there exists a map \[C\to D=[D_1,\cdots,D_m]\in\cal C^\ox\] lifting $\alpha$
+        that is \term{coCartesian} in the following sense: for any $E\in\cal C^\ox$
+        the map \[\Hom_{\cal C^\ox}(D,E)\to\Hom_{\cal C^\ox}(C,E)
+        \mathop{\operatorname{\times}}\limits_{\Hom_{\Fin_*}(\<n\>,p(E))}
+        \Hom_{\Fin_*}(\<m\>,p(E))\] is an isomorphism. This implies that there exists
+        a functor $\alpha_!\:\mathcal C^\ox_{\<n\>}\to\mathcal C^\ox_{\<m\>}$
+        between the fibers.
+    
+        \item The map \[\mathcal C^\ox_{\<n\>}\to(\mathcal C^\ox_{\<1\>})^n\cong {\cal C}^n\] induced by
+        the $n$ maps $\rho_i\:\<n\>\to\<1\>$ for every $1\le i\le n$, where $\rho_i(i)=1$
+        and $\rho_i(j)=*$ if $i\ne j$, is an equivalence of categories.
+    \end{enumerate}
+\end{proposition}
+
+Thus the following definition is reasonable:
+
+\begin{definition}
+    A \term{symmetric monoidal $\infty$-category} is an $\infty$-category 
+    $\cal C^\ox$ equipped with a coCartesian fibration $p\:\cal C^\ox\to\N(\Fin_*)$
+    (where $\N$ is the nerve functor that takes a category to its nerve),
+    such that for every $n\ge 0$, the map $\mathcal C^\ox_{\<n\>}
+    \to(\mathcal C^\ox_{\<1\>})^n$ induced by the $n$ maps $\rho_i\:\<n\>\to\<1\>$
+    for every $1\le i\le n$, is an equivalence of $\infty$-categories.
+    The \term{underlying category} of $\cal C^\ox$
+    is defined to be $\mathcal C:=\mathcal C^\ox_{\<1\>}$.
+\end{definition}
+
+We now turn back to the case of (colored) operads. 
+
+\begin{construction}\label{constr}
+    For any colored operad
+    $\cal O$ over $\Set$, we may define a category $\cal O^\ox$ as follows:
+    
+    \begin{enumerate}[i)]
+        \item The objects of $\cal O^\ox$ are finite (possibly empty) sequences
+        of colors in $\cal O$, which will be expressed in the form $[C_1,\cdots,C_n]$;
+    
+        \item For any $[C_1,\cdots,C_n],[D_1,\cdots,D_m]\in\cal O^\ox$, a morphism
+        \[f\:[C_1,\cdots,C_n]\to[D_1,\cdots,D_m]\] consists of a map $f\:\<n\>\to\<m\>$, 
+        and a map $f_i\in\Hom((C_j)_{j\in f^{-1}(i)};D_i)$ for any $1\le i\le m$;
+    
+        \item Composition of morphisms in $\cal O^\ox$ is determined by
+        the composition on $\Fin_*$ and on the colored operad $\cal O$.
+    \end{enumerate}
+\end{construction}
+
+Then we have a forgetful functor $p\:\cal O^\ox\to\Fin_*$, 
+that carries an object $[C_1,\cdots,C_n]$ to the set
+$\<n\>$. Moreover, $p$ satisfies properties similar to the $\cal C^\ox$
+constructed above. Consequencely, we may define $\infty$-operads in a way
+similar to that of symmetric monoidal $\infty$-categories. We make the following
+definition, which is due to \cite{Lur16}:
+
+\begin{definition}
+    An \term{$\infty$-operad} is an $\infty$-category $\cal O^\ox$ equipped with 
+    a functor $p\:\cal O^\ox\to\N(\Fin_*)$, such that:
+    \begin{enumerate}[i)]
+        \item For any \term{inert} morphism $f\:\<n\>\to\<m\>$, which means that
+        $f^{-1}(\{1,\cdots,m\})\to\{1,\cdots,m\}$ is an isomorphism, 
+        and any $C\in\cal O^\ox_{\<n\>}$, there exists
+        a $p$-coCartesian morphism $C\to D\in\cal O^\ox$ lifting $f$;
+
+        \item For every $C_1,\cdots,C_n\in\mathcal O^\ox_{\<1\>}$, there exists 
+        $C\in\mathcal O^\ox_{\<n\>}$ and $p$-coCartesian morphisms $C\to C_i$ covering 
+        $\rho_i$;
+
+        \item For any objects $C\in\mathcal O^\ox_{\<n\>},C'\in\mathcal O^\ox_{\<m\>}$,
+        and a morphism $f\in\Hom_{\Fin_*}(\<n\>,\<m\>)$, take
+        \[\Map_{\cal O^\ox}^f(C,C')=\Map_{\cal O^\ox}(C,C')
+        \mathop{\operatorname{\times}}\limits_{\Map_{\N(\Fin_*)}(\<n\>,\<m\>)}\{f\},\]
+        take $p$-coCartesian morphisms $C'\to C'_i$ covering $\rho_i$ 
+        for every $1\le i\le m$, then the induced map \[\Map_{\cal O^\ox}^f(C,C')\to
+        \prod_{1\le i\le m}\Map_{\cal O^\ox}^{\rho_i\circ f}(C,C_i')\] is an isomorphism
+        in $\H$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}[i)]
+        \item By this definition, for any $\Set$-valued colored operad $\cal O$,
+        $\N(\cal O^\ox)$ is an $\infty$-operad. Thus this definition
+        generalizes the definition of a ($\Set$-valued colored) operad
+        to the higher categorial sense. 
+
+        \item If $\cal O^\ox$ is an $\infty$-operad, we define the \term{underlying
+        category} of $\cal O^\ox$ to be $\mathcal O:=\mathcal O^\ox_{\<1\>}$. This is an
+        $\infty$-category, since $p$ must be an inner fibration by \cite{Lur09},
+        Proposition 2.3.1.5.
+
+        \item By definition, for every $n\ge 0$ the map $\mathcal O^\ox_{\<n\>}
+        \to\mathcal O^n$, induced by the $n$ maps $\rho_i:\<n\>\to\<1\>$
+        for every $1\le i\le n$, is an equivalence of $\infty$-categories. Thus,
+        as in the ordinary case, we may regard objects in $\mathcal O^\ox_{\<n\>}$ as
+        finite sequences of objects in $\mathcal O$ of length $n$.
+
+        \item Any symmetric monoidal $\infty$-category $\cal C^\ox$ is an $\infty$-operad.
+        This is because the condition that $p$ is a coCartesian fibration gaurantees
+        i) and ii), and the equivalence between $\mathcal C^\ox_{\<n\>}$ and 
+        $\mathcal C^n$ gaurantees iii).
+    \end{enumerate}
+\end{remark}
+
+Next we define morphisms between $\infty$-operads.
+
+\begin{definition}
+    Suppose $\cal O^\ox,O'^\ox$ are $\infty$-operads. A \term{map 
+    of $\infty$-operads} from $\cal O^\ox$ to $\cal O'^\ox$ is a map
+    of $\infty$-categories $f:\cal O^\ox\to O'^\ox$, such that:
+    \begin{enumerate}[i)]
+        \item $f$ is compatible with the forgetful maps to $\N(\Fin_*)$;
+        \item $f$ preserves inert morphisms, where a morphism in $\cal O^\ox$
+        is \term{inert} if it is $p$-coCartesian, and its image in $\N(\Fin_*)$
+        is inert.
+    \end{enumerate}
+    The full sub-$\infty$-category of $\Fun_{\N(\Fin_*)}(\cal O^\ox,O'^\ox)$
+    spanned by maps of $\infty$-operads will be denoted $\Alg(\cal O,\cal O')$.
+    A map of $\infty$-operads from $\cal O^\ox$ to $\cal O'^\ox$ is also called
+    an \term{algebra over $\cal O^\ox$ in $\cal O'^\ox$}, if $\cal O'^\ox$
+    is a symmetric monoidal $\infty$-category.
+\end{definition}
+
+\begin{remark}\label{a}
+    \begin{enumerate}[i)]
+        \item Since by definition, if $f\:\cal O\to O'$ is a map of (ordinary) operads,
+        the map $\N(f^\ox)\:\N(\cal O^\ox)\to\N(O'^\ox)$ is a map of $\infty$-operads,
+        this is really a generalization of the original definition.
+
+        \item By this definition, we obtain an $\infty$-category of algebras
+        over $\cal O^\ox$ in $\cal O'^\ox$.
+
+        \item If $\cal O'^\ox$ is a symmetric monoidal $\infty$-category,
+        then the symmetric monoidal structure on $\cal O'^\ox$ induces a 
+        symmetric monoidal structure on $\Alg(\cal O,\cal O')$, where for any 
+        $f,g\in\Alg(\cal O,\cal O')$ and $p\in\cal O^\ox$, $(f\ox g)(p)=f(p)\ox g(p)$.
+        Verifications of the axioms are straightforward.
+    \end{enumerate}
+\end{remark}
+
+We now show how these definitions solve the problem mentioned in the beginning of
+the section. We first notice that the construction of $\cal O^\ox$ also makes
+sense in the case of a simplicial colored operad, except that we need to
+change ii) of Construction \ref{constr} into the following construction:
+
+\begin{enumerate}[ii')]
+\item For any $[C_1,\cdots,C_n],[D_1,\cdots,D_m]\in\cal O^\ox$, we define
+\[\begin{aligned}&\Hom_{\cal O^\ox}([C_1,\cdots,C_n],[D_1,\cdots,D_m])\\
+&\hspace{3em}=\coprod_{f\in\Hom_{\Fin_*}(\<n\>,\<m\>)}\prod_{1\le i\le m}
+\Hom((C_j)_{j\in f^{-1}(i)},D_i).\end{aligned}\]
+\end{enumerate}
+
+Since $\cal O^\ox$ is a simplicial category, we may take its simplicial nerve
+to obtain a simplicial set $\N^\ox(\cal O)$, which we will call 
+the \term{operadic nerve} of $\cal O$. This simplicial set may or may not be an
+$\infty$-category, but we have the following proposition:
+
+\begin{proposition}\label{d}
+Suppose all the Hom-spaces of $\cal O$ are Kan complexes. Then $\N^\ox(\cal O)$
+is an $\infty$-operad.
+\end{proposition}
+
+We refer the reader to \cite{Lur16}, Proposition 2.1.1.27 for the proof.
+
+In the case that $\cal O$ is a topological operad,
+we may take the pushforward of $\cal O$ along the symmetric monoidal functor 
+$\Sing\:\K\to\SSet$, and repeat the above constructions, obtaining
+a simplicial set $\N^\ox(\Sing\cal O)$, which we will simply denote by
+$\N^\ox(\cal O)$, called the \term{operadic nerve} of $\cal O$.
+Now the operadic nerve of a topological operad is \textit{always} 
+an $\infty$-operad, since $\Sing(X)$ is always a Kan complex for any topological space $X$.
+
+Since any symmetric monoidal category $\cal C$ is a symmetric monoidal 
+$\infty$-category, we may regard an algebra over $\cal O$ in $\cal C$
+as an algebra over $\N^\ox(\cal O)$ in $\N^\ox(\cal C)$.
+
+\begin{remark}
+    If a map of topological colored operads induces weak equivalences on all
+    morphism spaces, then the operadic nerve of the topological colored operads
+    are equivalent $\infty$-categories, thus the associated $\infty$-categories
+    of algebras over the topological colored operads are equivalent.
+\end{remark}
+
+\subsection{The little cubes operads and \texorpdfstring{$E_n$}{En}-algebras}
+
+The little cubes operads are one of the most often discussed types of operads. We
+give the definitions of the little cubes operads and $E_n$-algebras,
+and basic examples of $E_n$-algebras.
+
+\begin{definition}
+A \term{rectilinear morphism} is a map $f\:\R^n\to\R^n$, such that $f$
+can be written as the form $f_1\times\cdots\times f_n$, where each $f_i\:\R\to\R$
+is an affine morphism. 
+\end{definition}
+
+\begin{definition}
+    Suppose $n\ge 1$ is an integer. We define the topological single-colored
+    operad $\E_n$, called the \term{little $n$-cubes operad}, as follows:
+    \begin{enumerate}[i)]
+        \item For any $r\ge 0$, the morphism space $\E_n(r)$ is the configuration space
+        of $r$ ordered disjoint open rectangles whose edges are parallel to the coordinate axes (each called a \term{little $n$-cube})
+        lying in the unit open cube; in other words,
+        $\E_n(r)$ is the space of rectilinear embeddings
+        from $\coprod_{i=1}^r(0,1)^n$ to $(0,1)^n$, which will be denoted by \[\Rect\9\coprod_{i=1}^r(0,1)^n,(0,1)^n\0;\]
+        \item The $S_r$-action is given by permuting the $r$ little $n$-cubes;
+        \item The unit map is the identity map of $(0,1)^n$;
+        \item Composition is given by the composition of the rectilinear embeddings.
+    \end{enumerate}
+    An \term{$E_n$-algebra} is an algebra over $\E_n$. The $\infty$-category
+    of $E_n$-algebras in a symmetric monoidal $\infty$-category $\cal C$
+    will be denoted $\E_n\-\Alg({\cal C})=\Alg(\N^\ox(\E_n),{\cal C})$.
+\end{definition}
+
+By definition, there exists a canonical map $i\:\E_n\to \E_{n+1}$,
+given by \[\begin{aligned}i(r)\:\Rect\9\coprod_{i=1}^r(0,1)^n,(0,1)^n\0&\to
+\Rect\9\coprod_{i=1}^r(0,1)^{n+1},(0,1)^{n+1}\0,\\
+f&\mapsto f\times\mathbb1_{(0,1)},\end{aligned}\] which is an inclusion of topological spaces,
+for all $r\ge 0$. Taking colimits, we obtain an operad, which we will call
+the \term{little $\infty$-cubes operad}, denoted $\E_\infty$.
+Explicitly, we have $\E_\infty(r)=\colim_{n\to\infty}\E_n(r)$.
+An \term{$E_\infty$-algebra} is an algebra over $\E_\infty$. 
+The $\infty$-category of $E_\infty$-algebras in a symmetric monoidal
+$\infty$-category $\cal C$ will be denoted $\E_\infty\-\Alg({\cal C})=\Alg(\N^\ox(\E_\infty),{\cal C})$.
+
+Note that the inclusion $i\:\E_n\to \E_{n+1}$ induces a functor \[i^*\:\E_n\-\Alg(\mathcal C)\to 
+{\E}_{m}\-\Alg(\cal C)\] for any $1\le m\le n\le\infty$, which shows that
+any $E_n$-algebra can be regarded as an $E_m$-algebra if $n\ge m$.
+
+For one of the basic properties of $\E_n$ we have the following proposition,
+which is stated and proved in Theorem 4.8, \cite{May72}:
+
+\begin{proposition}
+For any $1\le n\le\infty,r\ge 0$, the space $\E_n(r)$ is $S_r$-equivariantly
+homotopy equivalent to $\Conf(\R^n,r)$, the configuration space of $r$ ordered points in $\R^n$.
+\end{proposition}
+
+It is well known that the configuration space $\Conf(\R^n,r)$ is 
+$(n-2)$-connected for $n\ge 2$ (See, for instance, \cite{FN62}).
+This proposition shows that an $E_n$-algebra may be regarded as an algebra
+that is ``homotopy commutative up to the $(n-1)$-th degree''. Also, note that
+$\E_1(r)$ is a disjoint union of $r!$ contractible spaces.
+Therefore, the maps $\pi_0\:\E_1\to\Assoc$ and $\pi_0\:\E_\infty\to\Comm$ induce
+weak equivalences in all morphism spaces. Thus, $E_1$-algebras
+and $E_\infty$-algebras can be regarded as ``homotopy refinements''
+of associative algebras and commutative algebras.
+
+\begin{example}
+Iterated loop spaces. This is one of the first examples of $E_n$-algebras
+that have been studied. Suppose $(X,*)$ is a pointed topological space.
+We define a map \[\theta\:\E_n(r)\times(\Omega^nX)^r\to\Omega^nX\] as follows:
+for any \[\E_n(r)\ni f\:\coprod_{i=1}^r(0,1)^n\to(0,1)^n\] given by 
+$f_1,\cdots,f_r\:(0,1)^n\to(0,1)^n$, and $\alpha_1,\cdots,\alpha_r\:[0,1]^n\to X$
+representing $r$ elements in $\Omega^nX$, $\theta(f,\alpha_1,\cdots,\alpha_r)$
+is the map $\beta\:[0,1]^n\to X$ such that for any $u\in(0,1)^n$, if $u=f_k(v)$
+for some $1\le k\le r$ and $v\in(0,1)^n$, then $\beta(u)=\alpha_k(v)$;
+otherwise $\beta(u)=*$. It is easy to verify that this gives the iterated
+loop space $\Omega^nX$ an $E_n$-algebra structure. Moreover, the singular chain
+complex $C_\bullet(\Omega^nX)$ is an $E_n$-algebra in chain complexes.
+\end{example}
+
+$E_n$-algebras play an important role in the study of homology theories
+of manifolds and factorization homology; we will see this in the following 
+sections.
+
+\section{Factorization algebras}
+
+Factorization algebras are a way to describe multilinear structures 
+that satisfy certain homotopy coherent properties. It is a bit similar to
+an algebra over the little cubes operad, but this time the operad is replaced
+by a colored operad, with the cubes $(0,1)^n$ replaces by manifolds.
+We shall now present the definitions and the basic properties,
+which are mostly based on \cite{CG16} and \cite{Gin13}.
+
+\subsection{Basic definitions}
+
+\begin{definition}
+    Suppose $X$ is a topological space (which in the case of a factorization
+    algebra is often taken to be a manifold). Define the colored operad
+    $\Fact(X)$ to be the following operad:
+    \begin{enumerate}[i)]
+        \item The colors of $\Fact(X)$ are the connected open sets in $X$。
+        
+        \item For any connected open sets $U_1,\cdots,U_n,U$ in $X$,
+        define $\Hom(U_1,\cdots,U_n;U)$ to be the single-element set, if
+        the $U_i$'s are pairwise disjoint and all contained in $U$;
+        and the empty set if otherwise。
+
+        \item The unit morphism, $S_n$-action, and the composition are given in the
+        obvious way.
+    \end{enumerate}
+\end{definition}
+
+The morphism from $(U_1,\cdots,U_n)$ to $U$ is some sort of ``putting an element
+into each of the open sets $U_i$ and get an element in $U$''. We now state this
+precisely.
+
+\begin{definition}
+    Suppose $\cal C$ is a symmetric monoidal $\infty$-category, $X$ is a
+    topological space. A \term{prefactorization algebra $A$ over $X$ with values in
+    $\cal C$} is an algebra over $\Fact(X)$ in $\cal C$. The $\infty$-category of 
+    prefactorization algebras over $X$ in $\cal C$ is denoted $\PreFA(X,\cal C)$.
+    If $U=\coprod_{i\in I}U_i$ is an open set in $X$ where each $U_i$ is connected,
+    we define $A(U)$ to be $\bigotimes_{i\in I}A(U_i)$; and we define 
+    $A(\varnothing)$ to be the tensor identity. A morphism between 
+    prefactorization algebras is called an \term{equivalence} if it induces
+    an equivalence on every open subset.
+\end{definition}
+
+Loosely speaking, a prefactorization algebra assigns an open set with an object,
+and a morphism from a small open set to a large one. 
+
+\begin{example}
+    Suppose $A$ is an associative algebra. We construct a prefactorization algebra
+    on the real line $\R$: for any open interval $(a,b)\subseteq\R$ we set 
+    $A(a,b)=A$; for any \[-\infty\le a\le a_1<b_1\le a_2<b_2\le\cdots\le a_n<b_n\le b
+    \le\infty\] we set the map \[A(a_1,b_1)\ox\cdots\ox A(a_n,b_n)\to A(a,b)\]
+    to be the map \[A^{\ox n}\to A,(x_1,\cdots,x_n)\mapsto x_1\cdots x_n.\]
+    It is easy to show that this forms a prefactorization algebra on $\R$.
+\end{example}
+    
+We now discuss the definition of a factorization algebra. 
+Factorization algebras are to prefactorization algebra as cosheaves
+are to precosheaves. We first introduce a special type of cover, called a 
+factorization cover.
+
+\begin{definition}
+    Suppose $U$ is an open set in a topological space $X$. A cover 
+    $\{U_i\hookrightarrow U\}_{i\in I}$ is called a \term{factorizing cover}
+    if for any $x_1,\cdots,x_n\in U$ there exists a finite collection of pairwise
+    disjoint open sets $U_{i_1},\cdots,U_{i_m}$ in the open cover such that
+    $x_1,\cdots,x_n\in U_{i_1}\coprod\cdots\coprod U_{i_m}$. 
+\end{definition}
+
+\begin{remark}
+    Note that a nontrivial factorization cover exists whenever $X$ is Hausdorff.
+    If $X$ is a manifold, we may take a factorization cover by take a neighborhood
+    basis at every point of $X$.
+\end{remark}
+
+For a factorization cover $\{U_i\hookrightarrow U\}_{i\in I}$, we denote 
+$PI$ to be the set of finite subsets of $I$, such that for every $\alpha\in PI$
+and $i,j\in\alpha$, the sets $U_i$ and $U_j$ are disjoint. $PI$ describes
+the tuples of open sets that appear in the structure maps of a 
+prefactorization algebra. 
+
+Now, for any $A$ a prefactorization algebra and any $\alpha_1,\cdots,\alpha_n
+\in PI$, we denote \[A(\alpha_1,\cdots,\alpha_n)
+=A\9\coprod_{i_1\in\alpha_1,\cdots,i_n\in\alpha_n}
+U_{i_1}\cap\cdots\cap U_{i_n}\0,\] then there exists a natural map
+\[d_i\:A(\alpha_1,\cdots,\alpha_n)\to A(\alpha_1,\cdots,\widehat{\alpha_i},
+\cdots,\alpha_n)\] for every integer $1\le i\le n$, and a natural map
+\[s_i\:A(\alpha_1,\cdots,\alpha_n)\to A(\alpha_1,\cdots,\alpha_i,\alpha_i,
+\cdots,\alpha_n)\] for every integer $1\le i\le n$. Together this defines
+a simplicial object $\check{C}_\bullet(I,A)$ in $\cal C$, where
+\[\check{C}_n(I,A)=\coprod_{\alpha\in PI^{n+1}}A(\alpha),\] and the face and
+degeneracy maps are given above. We call this the \term{simplicial \v{C}ech
+complex} of $I$. Note that there exists a map of simplicial objects
+$\check{C}_\bullet(I,A)\to A(U)$, where we regard $A(U)$ as the
+constant simplicial object.
+
+We now assume that $\cal C$ is a stable $\infty$-category, whose tensor product
+is compatible with colimits over simplicial diagrams (say, for example,
+$\Chinf(\Bbbk)$). Then by the $\infty$-categorical Dold-Kan correspondence 
+and taking the direct colimit, we obtain an object $\check{C}(I,A)$
+from the simplicial \v{C}ech complex. We call this the \term{\v{C}ech complex}
+of $I$. Moreover we have a canonical map $\check{C}(I,A)\to A(U)$.
+
+We are now ready to state the definition of a factorization algebra:
+
+\begin{definition}
+    A prefactorization algebra $A$ is said to be a \term{homotopy factorization
+    algebra}, or a \term{factorization algebra} for short, if for any 
+    factorization covering $\{U_i\hookrightarrow U\}_{i\in I}$, the morphism
+    $\check{C}(I,A)\to A(U)$ is an equivalence in $\cal C$.
+    The full subcategory of $\PreFA(X,\cal C)$ spanned by factorization algebras
+    will be denoted $\FA(X,\cal C)$. 
+\end{definition}
+
+Note that in the case that ${\cal C}=\Chinf(\Bbbk)$ where $\Bbbk$ is a field,
+the above definition is equivalent to that the chain map
+$C_\bullet(I,A)\to A(U)$ being a quasi-isomorphism; a morphism between
+factorization algebras is an equivalence if and only if it induces a
+quasi-isomorphism on every open subset.
+
+Naively speaking, homotopy factorization algebras are to prefactorization
+algebras as homotopy cosheaves are to precosheaves, where we change the
+underlying site to the category of open subsets of $X$ with open coverings
+being factorization coverings.
+
+In the case that $X$ is a manifold, there exists a notion of a locally constant
+factorization algebra, which we will give as follows:
+
+\begin{definition}
+    Suppose $X$ is an $n$-dimensional topological manifold. We say that an open
+    subset $U$ of $X$ is a \term{disk} if it is homeomorphic to $\R^n$.
+    A (pre-)factorization algebra $A$ on $X$ is called \term{locally constant},
+    if for any inclusion $U\hookrightarrow V$ of disks, the map $A(U)\to A(V)$
+    is an equivalence.
+\end{definition}
+
+\begin{remark}\label{g}
+    In Example \ref{h}, we will prove that a locally constant prefactorization
+    algebra can be reformed to a factorization algebra, using 
+    factorization homology. We denote the full subcategory of $\FA(X,\cal C)$
+    spanned by locally constant factorization algebras by $\FA^{lc}(X,\cal C)$.
+\end{remark}
+
+\subsection{Basic properties}
+
+We now discuss basic operations and properties of factorization algebras. Most
+of them will be useful in the next section.
+
+Firstly, we have the following proposition.
+
+\begin{proposition}
+    The categories $\PreFA(X,\mathcal C),\FA(X,\mathcal C),\FA^{lc}(X,\mathcal C)$
+    are symmetric monoidal $\infty$-categories.
+\end{proposition}
+
+\begin{proof}
+    By Remark \ref{a}, the $\infty$-category $\PreFA(X,\cal C)$
+    is symmetric monoidal. In order to verify $\FA(X,\cal C),$ $\FA^{lc}(X,\cal C)$
+    are symmetric monoidal, it suffices to verify for any $f,g\in\FA(X,\cal C)$
+    (resp. $\FA^{lc}(X,\cal C)$), the tensor product of $f$ and $g$ again satisfies
+    the axiom of $\FA(X,\cal C)$ (resp. $\FA^{lc}(X,\cal C)$). But this is
+    straightforward since the tensor product in $\cal C$ is compatible with
+    colimits over simplicial diagrams and equivalences are compatible with
+    the tensor product.
+\end{proof}
+
+Next we discuss changing the underlying topological space $X$. Suppose we are
+given a continuous map $f:X\to Y$ of topological spaces. Just like precosheaves
+and cosheaves, we can take the \term{pushforward} of a (pre-)factorization algebra $A$
+on $X$ to a (pre-)factorization algebra $f_*(A)$ on $Y$, given by
+\[f_*(A)(V)=A(f^{-1}(V))\] for every open set $V\subseteq Y$. If $A$
+is a prefactorization algebra, then $f_*(A)$ is a prefactorization algebra, since
+it is the composite \[\Fact(Y)\xrightarrow{f^{-1}}\Fact(X)\xrightarrow{A}
+\cal C^\ox;\] If $A$ is a factorization algebra, then since the pullback of 
+any factorizing cover on $Y$ by $f$ is again a factorizing cover, 
+$f_*(A)$ is a factorization algebra. Furthermore, we have
+the following property:
+
+\begin{proposition}\label{b}
+    Suppose $f:X\to Y$ is a locally trivial fibration between manifolds. Then
+    the pushforward of any locally constant factorization algebra $A$ is again
+    locally constant.
+\end{proposition}
+
+\begin{proof}
+    Suppose $U\hookrightarrow V$ is an inclusion of disks in $Y$. Since $V$
+    is contractible, by assumption, we may assume that $f^{-1}(V)=V\times F$
+    for some manifold $F$. Take a factorizing cover of $F$ by disks, namely
+    $\{F_i\to F\}_{i\in I}$. Then $\{V\times F_i\to V\times F\}
+    _{i\in I}$ and $\{U\times F_i\to U\times F\}_{i\in I}$ are factorizing covers
+    by disks. On the other hand, for any $i\in I$, the map $A(U\times F_i)
+    \to A(V\times F_i)$ is an equivalence. Thus the map $\check{C}(I,U\times F)
+    \to\check{C}(I,V\times F)$ is an equivalence, which means that the map
+    $f_*(A)(U)\to f_*(A)(V)$ is an equivalence.
+\end{proof}
+
+On the other hand, if we have an inclusion $i:Y\to X$ such that $Y$ is an
+open subspace of $X$, and $A$ a (locally constant) (pre-)factorization algebra,
+then we may \term{restrict} $A$ to $Y$; namely, reduce the domain of $A$
+to the smaller colored operad $\Fact(Y)$. We denote this restriction
+by $A|_{Y}$. When $A$ is (locally constant) (pre-)factorization algebra,
+so is $A|_{Y}$.
+
+We next discuss how to extend a ``partially defined'' factorization algebra
+to a ``real'' factorization algebra.
+
+\begin{definition}
+    Suppose $\mathscr U$ is an open cover of $X$. Define $\Fact(\mathscr U)$
+    to be the full suboperad of $\Fact(X)$ spanned by those colors in $\mathscr U$.
+    A \term{$\mathscr U$-prefactorization algebra} is an algebra over 
+    $\Fact(\mathscr U)$. A \term{$\mathscr U$-factorization algebra}
+    is a $\mathscr U$-prefactorization algebra $A$ such that for any 
+    factorization covering $\{U_i\hookrightarrow U\}_{i\in I}$ with all open sets
+    in $\mathscr U$, the morphism $\check{C}(I,A)\to A(U)$ is an equivalence.
+\end{definition}
+
+Now, suppose $\mathscr U$ is a topological basis of $X$ that is stable
+under finite intersections (such $\mathscr U$ is called a 
+\term{factorizing basis}). We state the following proposition, that allows us
+to extend a $\mathscr U$-factorization algebra to an ordinary
+factorization algebra:
+
+\begin{proposition}\label{c}
+    Suppose $A$ is a $\mathscr U$-factorization algebra. For any open subset $V$
+    of $X$, define $$i_*^{\mathscr U}(A)(V):=\check{C}({\mathscr U}_V,A),$$
+    where ${\mathscr U}_V$ consists of those open sets in ${\mathscr U}$ that is
+    contained in $V$. Then $i_*^{\mathscr U}(A)$ is a factorization algebra,
+    whose restriction to $\Fact(\mathscr U)$ is equivalent to $A$. Moreover,
+    if $A'$ is a factorization algebra, whose restriction to $\Fact(\mathscr U)$
+    is equivalent to $A$, then $A'$ is equivalent to $i_*^{\mathscr U}(A)$.
+    Furthermore, the construction $i_*^{\mathscr U}$ is functorial.
+\end{proposition}
+
+The proof to this is really technical, so we refer the interested readers to Appendix B, \cite{CG16}.
+We note that the uniqueness directly follows from
+the definition of a factorization algebra.
+
+This proposition tells us that a factorization algebra is ``in some sense''
+defined by its values on a few of its open subsets. This proposition is
+in particular very useful in the case of a smooth manifold, 
+since open disks form a factorizing basis, and the value of 
+a factorization algebra on a disk is usually easy to determine.
+
+Next, we discuss what happens if we take the product of two spaces. Suppose $X,Y$
+are topological spaces and $\pi\:X\times Y\to X$ is the projection. 
+By Proposition \ref{b}, $\pi$ induces a functor $\pi_*\:\PreFA(X\times Y)
+\to\PreFA(X)$. We make a stronger claim:
+
+\begin{proposition}
+    There exists a canonical functor \[\underline\pi_*\:\PreFA(X\times Y)\to\PreFA(X,\PreFA(Y))\]
+    such that the following diagram is commutative:
+    \[\xymatrix{
+        \PreFA(X\times Y)\ar[r]^{\underline\pi_*}\ar[rd]_{\pi_*}
+        &\PreFA(X,\PreFA(Y))\ar[d]^{\PreFA(X,p_*)}
+        \\&\PreFA(X).
+    }\]
+    Here $p\:Y\to*$ is the canonical map.
+\end{proposition}
+
+\begin{proof}
+    We do the construction as follows. Suppose $A$ is a prefactoriation algebra on 
+    $X\times Y$. For any $U\subseteq X$, we set $\underline\pi_*(A)(U)$ to be
+    the prefactoriation algebra on $Y$, which asserts an open set $V\subseteq Y$
+    with $\underline\pi_*(A)(U)(V)=A(U\times V)$, and for any $V_1,\cdots,V_n,V$
+    being connected open sets in $Y$, such that the $V_i$'s are pairwise disjoint
+    and all contained in $V$, define the map \[\underline\pi_*(A)(U)(V_1)\ox\cdots
+    \ox\underline\pi_*(A)(U)(V_n)\to\underline\pi_*(A)(U)(V)\] to be the structure
+    map \[A(U\times V_1)\ox\cdots\ox A(U\times V_n)\to A(U\times V).\] Since 
+    $A$ is a prefactoriation algebra, the axioms of a prefactoriation algebra
+    ensure that $\underline\pi_*(A)(U)$ is a prefactoriation algebra on $Y$. 
+    Moreover, the axioms of a prefactoriation algebra ensure that for any
+    $U_1,\cdots,U_n,U$ being connected open sets in $Y$, such that the $U_i$'s are
+    pairwise disjoint and all contained in $U$, the collection of the maps
+    \[\begin{aligned}&\underline\pi_*(A)(U_1)(V)\ox\cdots\ox\underline\pi_*(A)(U_n)(V)
+    \\&\hspace{3em}\cong A(U_1\times V)\ox\cdots\ox A(U_n\times V)\to A(U\times V)\cong
+    \underline\pi_*(A)(U)(V)\end{aligned}\] for all $V\subseteq Y$ forms a map
+    \[\underline\pi_*(A)(U_1)\ox\cdots\ox\underline\pi_*(A)(U_n)
+    \to\underline\pi_*(A)(U)\] of prefactoriation algebras on $Y$, the collection
+    of which again forms a prefactoriation algebra on $X$ with values in 
+    prefactoriation algebras on $Y$. Finally, since $p_*$ sends a prefactoriation
+    algebra on $Y$ to its global sections, the identity $\PreFA(X,p_*)
+    \circ\underline\pi_*=\pi_*$ is straightforward.
+\end{proof}
+
+The above construction also holds for factorization algebras, and has a
+more interesting property:
+
+\begin{proposition}\label{j}
+    There exist functors \[\underline\pi_*\:\FA(X\times Y)\to\FA(X,\FA(Y))\]
+    and \[\underline\pi_*\:\FA^{lc}(X\times Y)\to\FA^{lc}(X,\FA^{lc}(Y))\] between
+    $\infty$-categories, and the latter is an equivalence.
+\end{proposition}
+
+\begin{proof}
+    We first check that if $A$ is a factorization algebra on $X\times Y$, then for
+    any $U\subset X$, $\underline\pi_*(A)(U)$ is a factorization algebra on $Y$.
+    To prove this, take any factorizing cover $\mathscr V$ of $V\subseteq Y$ where
+    $V$ is open, then $U\times\mathscr V$ forms a factorizing cover of $U\times V$,
+    and the \v{C}ech complex $\check{C}(\mathscr V,\underline\pi_*(A)(U))$
+    is equal to $\check{C}(U\times\mathscr V,A)$. Hence the map 
+    $\check{C}(\mathscr V,\underline\pi_*(A)(U))\to\underline\pi_*(A)(U)(V)$
+    is equal to $\check{C}(U\times\mathscr V,A)\to A(U\times V)$, which is
+    an equivalence since $A$ is a factorization algebra. 
+
+    Next we check that if $A$ is a factorization algebra on $X\times Y$,
+    then $\underline\pi_*(A)$ is a factorization algebra on $X$ with values in
+    $\FA(Y)$. To prove this, take any factorizing cover $\mathscr U$ 
+    of $U\subseteq X$ where $U$ is open, it suffices to show that the map
+    $\check{C}(\mathscr U,\underline\pi_*(A)(-)(V))\to\underline\pi_*(A)(U)(V)$
+    is an equivalence for all $V\subseteq Y$. But this follows from the same argument
+    as above. Therefore, $\underline\pi_*$ restricts to a functor 
+    $\FA(X\times Y)\to\FA(X,\FA(Y))$.
+
+    If $A$ is locally constant, applying Proposition \ref{b} to the two natural
+    projections, it is shown that $\underline\pi_*(A)\in\FA^{lc}
+    (X,\FA^{lc}(Y))$.
+
+    We shall now show that $\underline\pi_*$ is an equivalence in the
+    locally constant case by giving an inverse to it. Take a metric on $X,Y$,
+    and take $\mathscr U,\mathscr V$ to be the collection of all
+    strictly convex subset of $X,Y$, respectively. Then $\mathscr U,\mathscr V$
+    are stable under intersection, form bases of $X,Y$, and are factorization bases
+    of $X,Y$, respectively. By Proposition \ref{b}, in order to give a
+    factorization algebra on $X\times Y$, it suffices to give a
+    factorization algebra on $\mathscr U\times\mathscr V$,
+    since this is a factorizing basis for $X\times Y$. Now for any
+    $U\in\mathscr U,V\in\mathscr V$, $U,V$ must be homeomorphic to the euclidean
+    disks. Thus the construction of the structure maps for opens in 
+    $\mathscr U\times\mathscr V$ that lies in $U\times V$, restricts the problem
+    to the case that $X=\R^m,Y=\R^n$ for some integers $m,n$. By 
+    Theorem \ref{k}\footnote{The only usage of the proposition
+    is to prove the Fubini formula in Example \ref{u}, so there is no circularity.}
+    and the Dunn's theorem (Theorem \ref{v}), the functor
+    \[\underline\pi_*\:\FA^{lc}(\R^{m+n})\to\FA^{lc}(\R^m,\FA^{lc}(\R^n))\] is indeed
+    an equivalence, making it possible to define a
+    $\mathscr U\times\mathscr V$-factorization algebra $j(B)$ for arbitrary
+    manifolds $X,Y$ from any $B\in\FA^{lc}(X,\FA^{lc}(Y))$, by previous discussion.
+    We denote $j(B)$ again to be the factorization algebra on $X\times Y$ obtained
+    from the $\mathscr U\times\mathscr V$-factorization algebra $j(B)$ by extending
+    from a basis. Again, by Dunn's theorem, $j(B)$ is locally constant.
+
+    It remains to show that $j$ is an inverse to $\underline\pi_*$. This is
+    again from Proposition \ref{b}, which tells us that the factorization algebra
+    extending a factorization algebra on a factorizing basis is unique.
+\end{proof}
+
+We next discuss how to define the pullback of a factorization algebra.
+We do this in the case that $f\:X\to Y$ is an open immersion of smooth manifolds.
+Suppose $B$ is a factorization algebra on $Y$. Define \[\mathscr U_f=
+\{U\subseteq X\mid U\text{ open, }f\:U\xrightarrow{\cong}f(U)\}.\]
+Then $\mathscr U_f$ is a factorizing basis for $X$. For any $U\in\mathscr U_f$,
+define $f^*(B)(U)=B(f(U))$. The axioms of a factorization algebra ensure that
+$f^*(B)$ is a $\mathscr U_f$-factorization algebra. By Proposition \ref{c}
+it can be extended to a factorization algebra on $X$. We denote this 
+factorization algebra again by $f^*(B)$ and call it the \term{pullback}
+of $B$ along $f$. By the functoriality of the construction above and 
+Proposition \ref{c}, $f^*\:\FA(Y)\to\FA(X)$ is a functor. Moreover by the 
+uniqueness property of Proposition \ref{c}, for any open immersions 
+$f\:X\to Y, g\:Y\to Z$ and $C$ a factorization algebra on $Z$, the restriction
+of $(g\circ f)^*(C)$ and $f^*g^*(C)$ on \[\mathscr U:=\{U\subseteq X\mid 
+U\in\mathscr U_f,U\in \mathscr U_{g\circ f},f(U)\in \mathscr U_g\}\] are 
+equal, since $\mathscr U$ is a factorizing basis, $(g\circ f)^*(C)$ 
+and $f^*g^*(C)$ are equivalent. Since the above construction is functorial,
+the functors $(g\circ f)^*$ and $f^*g^*(C)$ are equivalent.
+
+\begin{remark}
+    We note that the functors $f_*$ and $f^*$ are \textit{not} adjoint functors.
+    To see this, take $X=\{c,d\}$ to be the discrete space with two points,
+    and $Y=*$. A factorization algebra $B$ on $Y$ in $\cal C$ is an object
+    $B\in\cal C$ and a map $b\:\mathbb1\to B$ in $\cal C$; while a
+    factorization algebra $A$ on $X$ in $\cal C$ consists of two objects 
+    $C,D\in\cal C$, two maps $c:\mathbb1\to C,d:\mathbb1\to D$ in $\cal C$,
+    corresponding to the objects $A(c)$ and $A(d)$. By direct computation,
+    the factorization algebra $f_*(f^*(B))$ is $B\ox B$, and the 
+    factorization algebra $f^*(f_*(A))$ is $A\ox A$. But there does not exist a
+    natural map $A\ox A\to A$, nor does there exist a natural map $B\ox B\to B$,
+    thus $f_*$ and $f^*$ are not adjoint functors.
+
+    Nevertheless, if $f\:X\to Y$ is an open immersion of smooth manifolds,
+    $A$ is a factorization algebra on $A$, then for any $U\in\mathscr U_f$
+    there exists a map $$A(U)\xrightarrow{\text{induced by }U\hookrightarrow
+    f^{-1}(f(U))}A(f^{-1}(f(U)))\cong (f^*(f_*(A)))(U),$$ thus inducing a map of
+    $\mathscr U_f$-factorization algebras $A\to f^*(f_*(A))$. By Proposition
+    \ref{c}, it induces a map of factorization algebras $A\to f^*(f_*(A))$.
+    Moreover this construction is compatible with morphisms between
+    factorization algebra. Therefore we \textit{do} obtain a natural transformation
+    between functors $\mathbb1\to f^*f_*\:\FA(X)\to\FA(X)$.
+\end{remark}
+
+We end this section by gluing factorization algebras. Suppose 
+$\mathscr U=\{U_i\}_{i\in I}$ is an open cover of a space $X$,
+such that any point is contained in only finitely many open sets 
+in $\mathscr U$. We define a set of ``gluing data'' to be as follows:
+
+\begin{definition}
+    A set of \term{gluing data} for $\mathscr U$ consists of a factorization algebra $A_J$
+    on the intersection $V_j$ of the elements of the collection $\{U_j\}_{j\in J}$ 
+    for every finite set $J\subseteq I$, an equivalence $r_{J,j}:A_J
+    \to(A_{J-\{j\}})|_{V_J}$ for any $J$ and $j\in J$, such that the following
+    diagram commutes for every $J$ and $j,k\in J$: \[\xymatrix{
+    A_J\ar[r]^{r_{J,j}}\ar[d]_{r_{J,k}}&(A_{J-\{j\}})|_{V_J}\ar[d]^{r_{J-\{j\},k}}\\
+    (A_{J-\{k\}})|_{V_J}\ar[r]^{r_{J-\{k\},j}}&A_{J-\{j,k\}}.}\]
+\end{definition}
+
+Now, if we have a set of gluing data, we may take a factorizing basis $\mathscr V$ 
+of $X$, which is given by all open subsets of $U_i$ for all $i\in I$. We define
+$A(V)=A_J(V)$ where $J$ is the largest subset of $I$ satisfying 
+$V_J\supseteq V$. It is easy to verify that the coherent property of the
+structure maps $r_{J,j}$ gives $A$ a structure of a $\mathscr V$-factorization
+algebra. Moreover, if we define $r_J$ to be the canonical restriction 
+equivalence $A_J\to A|_{V_J}$, the maps $r_J$ and $r_{J-\{j\}}\circ r_{J,j}$
+are equal for any $J$ and $j\in J$. Combining Proposition \ref{b}, we obtain
+the following proposition:
+
+\begin{proposition}\label{t}
+    Given a set of gluing data, there exists a factorization algebra $A$ on $X$ that is unique up to equivalence,
+    whose restriction to each $V_J$ is canonically equivalent to $A_J$.
+\end{proposition}
+
+In particular, given two open sets $U,V$ of $X$ such that $X=U\cup V$, there 
+exists an equivalence of $\infty$-categories \[\FA(X)\cong\FA(U)
+\mathop{\operatorname{\times}}\limits_{\FA(U\cap V)}\FA(V).\]
+
+In the case of locally constant factorization algebras, we state the
+following proposition, which says that being locally constant is some sort of a
+``local property'':
+\begin{proposition}\label{l}
+    Suppose $M$ is a topological manifold and $A$ is a factorization algebra on $M$.
+    If there exists an open cover $\mathscr U$ of $M$ such that $A|_U$ is
+    locally constant for every $U\in\mathscr U$, then $A$ is locally constant.
+\end{proposition}
+
+This is Proposition 13, \cite{Gin13}, whose proof is given in Section 9.1
+of the paper. It is really technical, and does not give much enlightenment
+to the proof of other propositions; so we will omit it here.
+
+Combining the two propositions above, we see that if we have a gluing data
+consisting of locally constant factorization algebras, the resulting global
+factorization algebra is locally constant. 
+
+\section{Factorization homology}
+
+Factorization homology is a type of homology theory on
+manifolds. They produce invariants of manifolds, just as classical
+homology theories produce invariants of topological spaces. In some specific
+manifolds, factorization homology reduces to some well-known structures,
+such as Hoschchild homology. In this section, we will introduce homology
+theories on manifolds and factorization homology, and study their properties,
+as well as their relationships with factorization algebras, especially locally
+constant factorization algebras.
+
+\subsection{Homology theory for manifolds}
+
+We first specify an interesting category of manifolds that we will study.
+
+\begin{definition}
+    Consider the topological category of $n$-dimensional manifolds
+    (without boundaries), with morphism spaces the spaces of all topological embeddings.
+    We define the nerve of the topological category to be $\Mfld_n$, and regard
+    this $\infty$-category as the \term{$\infty$-category of
+    $n$-dimensional manifolds}.
+\end{definition}
+
+Note that we consider topologial manifolds instead of smooth manifolds.
+However, we may also consider smooth manifolds, whose terminology will be
+introduced later.
+
+We may also add other structures that we may be interested in, such as
+orientations, framings, etc. These structures may be interpreted as follows:
+
+\begin{definition}
+    Suppose $E\to X$ is a topological $n$-dimensional vector bundle, which is 
+    equivalent to a space $X$ together with a homotopy class of maps
+    $e\in[X,B\Aut(\R^n)]$, classifying $E$, where $\Aut(\R^n)$ is the
+    automorphism topological group of $\R^n$. We define an \term{$(X,e)$-structure}
+    on an $n$-dimensional manifold $M$ to be a map $f\:M\to X$, such that
+    the tangent bundle $TM$ is classified by the map $e\circ f$.
+    (In other words, if we pullback $E$ along $f$, we obtain $TM$.)
+    We consider the (homotopy) pullback \[\Mfld_n^{(X,e)}:=\Mfld_n
+    \mathop{\operatorname{\times}}\limits_{\S_{/B\Aut(\R^n)}}\S_{/X},\]
+    we regard this $\infty$-category as the \term{$\infty$-category of 
+    $n$-dimensional manifolds with an $(X,e)$-structure}. We define
+    $\Emb^{(X,e)}(M,N)$ to be the space of $(X,e)$-embeddings from $M$ to $N$.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}[i)]
+        \item If $X=*$, then $E$ is trivial, and an $(X,e)$-structure on $M$ is
+        a trivialization of $TM$. Hence $\Mfld_n^{(X,e)}$ consists of framed manifolds.
+        We define $\Mfld_n^{\mathrm{fr}}$ to be $\Mfld_n^{(*,e)}$, and call it the 
+        \term{$\infty$-category of framed $n$-dimensional manifolds}. Note that
+        a morphism in $\Mfld_n^{\mathrm{fr}}$ from $(M,f)$ to $(N,g)$ is an embedding from $M$
+        to $N$ together with a homotopy between the framing that already exists on 
+        $TM$ and the pullback of the framing on $TN$.
+
+        \item If $X=BO(n)$, and $e$ is the canonical map $BO(n)\to B\Aut(\R^n)$,
+        then $\Mfld_n^{(X,e)}$ consists of smooth manifolds. This is essentially because
+        the map from $O(n)$ to the topological group of all diffeomorphisms on $\R^n$ and the characterization
+        of smooth manifolds in terms of their microbundle structure, which is shown in
+        \cite{KS77}. We define $\Mfld_n^{\mathrm{un}}$ to be $\Mfld_n^{(BO(n),e)}$,
+        and call it the \term{$\infty$-category of smooth $n$-dimensional manifolds}.
+        A morphism in $\Mfld_n^{\mathrm{un}}$ is equivalent to a smooth embedding.
+
+        \item If $X=BSO(n)$, and $e$ is the canonical map $BSO(n)\to B\Aut(\R^n)$,
+        then $\Mfld_n^{(X,e)}$ consists of oriented smooth manifolds. We define
+        $\Mfld_n^{\mathrm{or}}$ to be $\Mfld_n^{(BSO(n),e)}$, and call it the 
+        \term{$\infty$-category of smooth oriented $n$-dimensional manifolds}.
+        A morphism in $\Mfld_n^{un}$ is equivalent to a smooth oriented embedding.
+
+        \item If $X$ is an $n$-dimensional manifold, then we may take $e$ to be the
+        canonical map characterizing $TX$. We define $\Mfld_n^{(X,TX)}$ to be the
+        associated $\infty$-category with respect to $(X,e)$. Note that every open set
+        of $X$ is canonically an object of $\Mfld_n^{(X,TX)}$.
+    \end{enumerate}
+\end{example}
+
+For any $M,N\in\Mfld_n^{(X,e)}$, $M\amalg N$ is canonically a manifold with
+an $(X,e)$-structure. therefore, $(\Mfld_n^{(X,e)},\amalg)$
+is a symmetric monoidal $\infty$-category, where the axioms are easily
+verified. Note that there is no embedding $M\amalg M\to M$ in general, 
+so that $\amalg$ is not a coproduct on $\Mfld_n^{(X,e)}$. Indeed, 
+$\Mfld_n^{(X,e)}$ does not admit finite coproducts.
+
+We now take a special $n$-dimensional manifold, $\R^n$. Since it is
+contractible, for any $(X,e)$ there exists a canonical framing on $\R^n$
+such that it lies in the $\infty$-category $\Mfld_n^{(X,e)}$.
+Moreover, unlike other manifolds, there exists $(X,e)$-structured embeddings
+$\coprod_{i=1}^m\R^n\to\R^n$ for any integers $m,n$ and any $(X,e)$. We define 
+$\Disk_n^{(X,e)}$ to be the full subcategory of $\Mfld_n^{(X,e)}$,
+spanned by the disjoint unions of $\R^n$. We observe the following property:
+
+\begin{proposition}
+    $\Disk_n^{(X,e)}$ is an $\infty$-operad, with only one color, being
+    $\R^n$.
+\end{proposition}
+
+\begin{proof}
+    This is by Proposition \ref{d}, since it is the nerve of a topological
+    single colored operad, with morphism space $\Disk_n^{(X,e)}(r)$ the subspace
+    of $\Hom(\coprod_r\R^n,\R^n)$ consisting of all $(X,e)$-structured embeddings
+    $\coprod_r\R^n\to\R^n$.
+\end{proof}
+
+We now specify a case: $X=*$. In this case $\Disk_n^{\mathrm{fr}}(r)$ is the subspace
+of $\Hom(\coprod_r\R^n,\R^n)$ consisting of all framed embeddings 
+$\coprod_r\R^n\to\R^n$. In this case we have the following proposition, see \cite{MO181828}:
+
+\begin{proposition}
+    The $\infty$-operads $\Disk_n^{\mathrm{fr}}$ and $\E_n$ are equivalent.
+\end{proposition}
+
+Thus, the $\infty$-category of algebras over the $\infty$-operad $\Disk_n^{\mathrm{fr}}$
+is equivalent to the $\infty$-category of $E_n$-algebras.
+
+\begin{definition}
+    Suppose $\cal C$ is a symmetric monoidal $\infty$-category.
+    We define $\Disk_n^{(X,e)}\-\Alg(\cal C)$ to be the $\infty$-category of 
+    algebras over $\Disk_n^{(X,e)}$ in $\cal C$. In some cases we give 
+    the $\infty$-category $\Disk_n^{(X,e)}\-\Alg(\cal C)$ some special names:
+    \begin{enumerate}[i)]
+        \item If $X=BO(n)$, and $e$ is the canonical map $BO(n)\to B\Aut(\R^n)$,
+        we call the objects of $\Disk_n^{\mathrm{un}}\-\Alg$ the \term{unoriented (smooth) $E_n$-algebras};
+        \item If $X=BSO(n)$, and $e$ is the canonical map $BSO(n)\to B\Aut(\R^n)$,
+        we call the objects of $\Disk_n^{\mathrm{or}}\-\Alg$ the \term{oriented (smooth) $E_n$-algebras}.
+    \end{enumerate}
+\end{definition}
+    
+We are now able to present what a homology theory for ($n$-dimensional)
+manifolds is. We interprete this in a way similar to the Eilenberg--Steenrod
+axioms. First, we consider the excision axiom. 
+
+\begin{proposition}\label{s}
+    Suppose $H\:(\Mfld_n^{(X,e)},\coprod)\to\cal C$ is a symmetric monoidal functor. Then:
+    \begin{enumerate}[i)]
+        \item For any $(n-s)$-dimensional manifold $N$ such that $N\times\R^s$ 
+        is endowed with an $(X,e)$-structure, $H(N\times\R^s)$ is an $E_s$-algebra in
+        $\cal C$;
+
+        \item Suppose $M$ is an $(X,e)$-structured manifold such that an end of $M$
+        is trivialized as $N\times\R$ such that $N$ is of codimension $1$ and the open
+        part of $M$ lies in the neighborhood of $N\times\{-\infty\}$, then
+        $H(M)$ is a left (pointed) module\footnote{We assume once and for all that
+        all modules are pointed.} of the $E_1$-algebra $H(N\times\R)$; dually, if
+        the open part of $M$ lies in the neighborhood of $N\times\{+\infty\}$, then
+        $H(M)$ is a right module of the $E_1$-algebra $H(N\times\R)$;
+
+        \item $H(\R^n)$ is a $\Disk_n^{(X,e)}$-algebra.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}[i)]
+        \item Notice that for any finite sets $I,J$, any framed embedding 
+        $\coprod_I\R^s\to\coprod_J\R^s$ induces a $(X,e)$-embedding
+        $\coprod_I(N\times\R^s)\to\coprod_J(N\times\R^s)$, thus it induces a map 
+        $\gamma_{I,J}^N$ from the space of framed embeddings from $\coprod_I\R^s$ to
+        $\coprod_J\R^s$ to the space of $(X,e)$-embeddings from 
+        $\coprod_I(N\times\R^s)$ to $\coprod_J(N\times\R^s)$. Therefore, $N\times\R^s$
+        is an $E_s$-algebra object in the $\infty$-category $\Mfld_n^{(X,e)}$. Since $H$ 
+        is symmetric monoidal, $H(N\times\R^s)$ is an $E_s$-algebra in $\cal C$.
+
+        \item It suffices to give a map $$\Emb^{\mathrm{fr}}_0\9\9\coprod_I\R\0
+        \amalg(-\infty,0],(-\infty,0]\0\ox\bigox_IH(N\times\R)\ox H(M)\to H(M),$$
+        where $\Emb^{\mathrm{fr}}_0$ is the subspace of $\Emb^{\mathrm{fr}}$ consisting of maps
+        that map $0$ in the last component to $0$. Using i), the map is given by
+        $$\begin{aligned}&\Emb^{\mathrm{fr}}_0\9\9\coprod_I\R\0\amalg(-\infty,0],(-\infty,0]\0
+        \ox\bigox_IH(N\times\R)\ox H(M)\\\xrightarrow{\gamma^N_{I\amalg*,*}}&
+        \Emb^{\mathrm{fr}}\9\9\coprod_I(N\times\R)\0\amalg(N\times(-\infty,0]),
+        N\times(-\infty,0]\0\\&\hspace{3em}\ox\bigox_IH(N\times\R)\ox H(M)\\\to&\Emb^{\mathrm{fr}}_0
+        \9\9\coprod_I(N\times\R)\0\amalg M,M\0\ox H\9\9\coprod_I(N\times\R)\0
+        \amalg M\0\\\to& H(M).\end{aligned}$$
+
+        \item This is because by definition $\R^n$ is an $\Disk_n^{(X,e)}$-algebra
+        object in the $\infty$-category $\Mfld_n^{(X,e)}$ and $H$ is symmetric monoidal.
+    \end{enumerate}
+\end{proof}
+
+With this proposition, we are able to express the excision axiom for
+homology theories for manifolds, which is again due to \cite{Gin13}:
+
+\begin{definition}
+    A \term{homology theory} for $(X,e)$-manifolds with values in a symmetric
+    monoidal stable $\infty$-catgeory $\cal C$ is a functor 
+    $$H:\Mfld_n^{(X,e)}\to\mathcal C,\qquad M\mapsto H(M),$$ 
+    such that $H$ is symmetric monoidal, preserves sequential colimits,
+    and satisfies the \term{excision axiom}:
+    \begin{itemize}
+        \item For any $(X,e)$-manifold $M$, if there exists a codimension $1$
+        submanifold $N$ of $M$ and a trivialization $N\times\R$ of its neighborhood
+        such that $M$ is decomposible as $R\amalg_{N\times\R}L$, where $R, L$ are
+        submanifolds of $M$ glued along $N\times\R$, then the natural map 
+        $$H(L)\mathop{\operatorname{\ox}}\limits_{H(N\times\R)}H(R)\to H(M)$$
+        is an equivalence.
+    \end{itemize}
+    The \term{$\infty$-category of homology theories} is defined to be the
+    full subcategory of $\Alg(\Mfld_n^{(X,e)})$ spanned by homology theories,
+    denoted $\HT(\Mfld_n^{(X,e)})$.
+\end{definition}
+
+\subsection{Factorization homology}
+
+Now we will introduce a specific homology theory, called factorization
+homology. We will discuss the properties of factorization homology,
+and we will prove the following result, which is from \cite{AF12}:
+
+\begin{theorem}\label{e}
+    For any $\Disk_n^{(X,e)}$-algebra $A$, there exists, up to contractible choices,
+    a \textnormal{unique} homology theory for $(X,e)$-manifolds, satisfying the
+    \term{dimension axiom}:
+    \begin{itemize}
+        \item The value of the homology theory on $\R^n$ is naturally equivalent to $A$;
+    \end{itemize} 
+    which is exactly the factorization homology with coeffecients in $A$
+    (whose definition will be given below).
+\end{theorem}
+
+We start with the definition of the factorization homology.
+
+\begin{definition}
+    Any $\Disk_n^{(X,e)}$-algebra $A$ defines a functor 
+    $\Disk_n^{(X,e)}\to\cal C$. On the other hand, if $M$ is in $\Mfld_n^{(X,e)}$,
+    then $M$ defines a functor $E_M:(\Disk_n^{(X,e)})^{\mathrm{op}}\to\K$, which maps
+    an object in $\Disk_n^{(X,e)}$ to the space of $(X,e)$-embeddings from that
+    object to $M$. Together $M$ and $A$ defines a functor:
+    $$E_M\ox A\:(\Disk_n^{(X,e)})^{op}\times\Disk_n^{(X,e)}\to\K\times\cal C
+    \xrightarrow{\ox}\cal C.$$ We define the
+    \term{factorization homology} of $M$ with coeffecients in $A$ to be the
+    (homotopy) coend of the above functor: $$\int_MA:=E_M\oxx_{\Disk_n^{(X,e)}}A.$$
+\end{definition} 
+
+Note that by the definition of a coend, factorization homology can also be
+interpreted as $$\int_MA=\colim((\Disk_n^{(X,e)})_{/M}\to\Disk_n^{(X,e)}
+\xrightarrow{A}\cal C).$$ Thus, factorization homology preserves
+sequential colimits.
+
+We shall now verify some properties of factorization homology. 
+The fully faithful symmetric monoidal functor $i\:\Disk_n^{(X,e)}
+\to\Mfld_n^{(X,e)}$ induces a functor $$i^*\:\Alg(\Mfld_n^{(X,e)},\mathcal C)
+\to\Disk_n^{(X,e)}\-\Alg(\cal C).$$ The following proposition identifies
+factorization homology as a left adjoint to this functor provided $\cal C$
+admits some additional properties:
+
+\begin{proposition}\label{r}
+    Suppose $\cal C$ is \term{$\ox$-presentable} (which means that $\cal C$
+    is presentable and the monoidal structure distributes over small colimits). Then
+    there exists a left adjoint $$i_!\:\Disk_n^{(X,e)}\-\Alg(\mathcal C)\to
+    \Alg(\Mfld_n^{(X,e)},\mathcal C)$$ to $i_*$, which is given by 
+    $$i_!(A)(M)=\int_MA.$$
+\end{proposition}
+
+\begin{proof}
+    From the theory of $\infty$-categories, we know that there exists a functor
+    $$i_!\:\Fun(\Disk_n^{(X,e)},\mathcal C)\to\Fun(\Mfld_n^{(X,e)},\mathcal C),$$
+    that is the left adjoint to the restriction functor $$i^*\:\Fun(\Mfld_n^{(X,e)},
+    \mathcal C)\to\Fun(\Disk_n^{(X,e)},\mathcal C).$$ Moreover, $i_!(A)$ sends
+    every manifold $M$ to $$\colim((\Disk_n^{(X,e)})_{/M}\to\Disk_n^{(X,e)}
+    \xrightarrow{A}\cal C),$$ which coincides with the definition of 
+    factorization homology. Therefore, it suffices to show that the image of 
+    $\Disk_n^{(X,e)}\-\Alg(\mathcal C)$ under $i_!$ lies in $\Alg(\Mfld_n^{(X,e)},
+    \mathcal C)$.
+
+    To prove this, it is equivalent to prove that for any $A\in\Disk_n^{(X,e)}
+    \-\Alg(\mathcal C)$, and for any map $f\:\<n\>\to\<m\>$, the following diagram
+    commutes, up to an equivalence: $$\xymatrix{(\Mfld_n^{(X,e)})^n
+    \ar[rrr]^{(i_!(A))^n}\ar[d]_{f_*}&&&\mathcal C^n\ar[d]^{f_*}\\
+    (\Mfld_n^{(X,e)})^m\ar[rrr]^{(i_!(A))^m}&&&\mathcal C^m.}$$ 
+    Since every map $f$ can be factored to be the composition
+    of a surjective active map followed by an injective active map followed by
+    an inert map (where an \term{active map} is a map such that the inverse image
+    of $*$ is $*$), it suffices to prove this in these three cases.
+
+    If $f$ is inert, then $f_*$ is a projection, the commutativity is obvious.
+
+    If $f$ is injective and active, since $A$ is symmetric monoidal, $A$
+    preserves the monoidal unit, thus $i_!(A)$ also preserves the monoidal unit,
+    therefore $f_*$ is the canonical inclusion, the commutativity follows.
+
+    If $f$ is surjective and active, by taking all fibers of the map $f$,
+    we may assume that $m=1$. Then the map $f_*$ is the $n$-fold tensor product.
+    For any $(M_1,\cdots,M_n)\in(\Mfld_n^{(X,e)})^n$, we consider the following 
+    diagram:
+    $$\xymatrix{\prod\limits_{i=1}^n(\Disk_n^{(X,e)})_{/M_i}\ar[r]^{\coprod}\ar[d]
+    &(\Disk_n^{(X,e)})_{/\coprod\limits_{i=1}^nM_i}\ar[d]\\(\Disk_n^{(X,e)})^n
+    \ar[r]^{\coprod}\ar[d]_{A^n}&\Disk_n^{(X,e)}\ar[d]^A\\\mathcal C^n
+    \ar[r]^{\bigox}&\mathcal C.}$$
+    This diagram is commutative. Moreover the top row is fully faithful and
+    essentially surjective, which means that it is an equivalence. Therefore, 
+    we obtain the following natural equivalence $$\begin{aligned}&\colim\9(\Disk_n^{(X,e)})
+    _{/\coprod\limits_{i=1}^nM_i}\to\Disk_n^{(X,e)}\xrightarrow{A}\mathcal C\0
+    \\&\hspace{2em}\cong\colim\9\prod_{i=1}^n(\Disk_n^{(X,e)})_{/M_i}\to
+    (\Disk_n^{(X,e)})^n\xrightarrow{A^n}\mathcal C^n\xrightarrow{\bigox}
+    \mathcal C\0.\end{aligned}$$ On the other hand, since $\ox$ and $\colim$ commute
+    in $\cal C$, there exists a natural equivalence $$\begin{aligned}&\colim\9\prod_{i=1}^n
+    (\Disk_n^{(X,e)})_{/M_i}\to(\Disk_n^{(X,e)})^n\xrightarrow{A^n}\mathcal C^n
+    \xrightarrow{\bigox}\mathcal C\0\\&\hspace{2em}\cong\bigox_{i=1}^n\colim
+    \9(\Disk_n^{(X,e)})_{/M_i}\to\Disk_n^{(X,e)}\xrightarrow{A}\mathcal C\0.\end{aligned}$$
+    The composition of the two equivalences yields the commutativity of the diagram,
+    as desired.
+\end{proof}
+
+The above proposition shows that factorization homology can be expressed as
+symmetric monoidal left Kan extension, at least when $\cal C$ is
+$\ox$-presentable. In particular, factorization homology is symmetric monoidal
+on $M$.
+
+Next we show the independence of factorization homology with respect to $X$.
+
+\begin{proposition}
+    Suppose $\vp\:(X,e)\to(X',e')$ is a map of spaces over $B\Aut(\R^n)$, $M$ is an
+    $(X,e)$-manifold, $A$ is an $\Disk_n^{(X',e')}$-algebra Let $\vp M$ denote the
+    $(X',e')$-manifold $M$, $\vp A$ denote the $\Disk_n^{(X,e)}$-algebra $A$,
+    then there exists a natural equivalence $$\int_{\vp M}A\cong\int_M\vp A.$$
+\end{proposition}
+
+\begin{proof}
+It suffices to show that the $\infty$-categories $(\Disk_n^{(X,e)})_{/M}$
+and $(\Disk_n^{(X',e')})_{/M}$ are equivalent. By definition of 
+$\Disk_n^{(X,e)}$ and $\Disk_n^{(X',e')}$, it suffices to show that
+the map $$((\S_{/B\Aut(\R^n)})_{/X})_{/M}\to((\S_{/B\Aut(\R^n)})_{/X'})_{/M}$$
+is an equivalence of $\infty$-categories. But this map is an isomorphism.
+\end{proof}
+
+\begin{remark}
+Factorization homology \textit{does} depend on the choice of the map 
+$M\to B\Aut(\R^n)$. For example, if $M=\R^n$ is equipped with its standard
+framing and $A$ is an $E_n$-algebra, then $\int_MA=A$. However, if $M=\R^n$
+is equipped with the opposite framing, then $\int_MA=A^{op}$.
+In particular, factorization homology is not homotopy invariant on manifolds.
+\end{remark}
+
+Next we discuss the excision property of factorization homology.
+
+\begin{proposition}
+    Factorization homology satisfies the excision property:
+    for any $(X,e)$-manifold $M$, if there exists a codimension $1$
+    submanifold $N$ of $M$ and a trivialization $N\times\R$ of its neighborhood
+    such that $M$ is decomposable as $R\coprod_{N\times\R}L$, where $R, L$ are
+    submanifolds of $M$ glued along $N\times\R$, then the map
+    $$\int_LA\oxx_{\int_{N\times\R}A}\int_RA\to\int_MA$$ is an equivalence.
+\end{proposition}
+
+\begin{proof}
+    First, we write the definition of a factorization algebra in another way. The
+    objects in $(\Disk_n^{(X,e)})_{/M}$ are those open subsets in $M$, that is
+    homeomorphic to a disjoint union of disks. Then if we define $\Ball(M)$
+    to be the collection of the open subsets in $M$ that are homeomorphic to a disk, then $$\int_MA
+    =\colim_{U_1,\cdots,U_l\in\Ball(M),\text{ pairwise disjoint}}\bigox_{i=1}^l
+    \int_{U_i}A.$$
+
+    Now, the tensor product $$\int_LA\oxx_{\int_{N\times\R}A}\int_RA$$ can be
+    interpreted as $$\colim\9\int_LA\ox\int_{N\times\R}A\ox\int_RA\rightrightarrows
+    \int_LA\ox\int_RA\0,$$ where the two maps are the two module structures. 
+    Define $L_0$ and $R_0$ to be $L-N\times(-\infty,0]$ and $R-N\times[0,\infty)$,
+    respectively. Then we have canonical equivalences $$\int_LA\cong\int_{L_0}A,
+    \qquad\int_RA\cong\int_{R_0}A.$$ Under this equivalence, using
+    the definition of the module structure, the colimit above is equivalent to
+    $$\colim_{U_1,\cdots,U_l\in\widetilde{\Ball},\text{ pairwise disjoint}}
+    \bigox_{i=1}^l\int_{U_i}A,$$ where $\widetilde{\Ball}=\Ball(L_0)\cup\Ball(R_0)
+    \cup\Ball(N\times\R)$. Therefore, it suffices to show that the map
+    $$\colim_{U_1,\cdots,U_l\in\widetilde{\Ball},\text{ pairwise disjoint}}
+    \bigox_{i=1}^l\int_{U_i}A\to\colim_{U_1,\cdots,U_l\in\Ball(M),
+    \text{ pairwise disjoint}}\bigox_{i=1}^l\int_{U_i}A$$ is an equivalence.
+    But if $U\in\Ball(M)$ intersects $N\times\{0\}$, we may take
+    an open set $U'\subseteq U$ such that $U'\in\Ball(N\times\R)$, thus inducing
+    a map $\int_{U'}A\to\int_UA$, which is an equivalence since both sides
+    are naturally equivalent to $A$. Thus the colimit on the right hand side 
+    is equivalent to the colimit on the left hand side, completing the proof.
+\end{proof}
+
+Combining the results above, we obtain the following result:
+
+\begin{proposition}
+    For any $\Disk_n^{(X,e)}$-algebra $A$, the functor $\int_- A$ is a
+    homology theory for $(X,e)$-manifolds.
+\end{proposition}
+
+\begin{example}[The relationship with Hochschild homology]
+    Hochschild homology is an example of factorization homology.
+    Take $M=S^1$ and take a framing on $M$ induced by its Lie group structure. 
+    Then $M$ can be viewed as the gluing: $M=\R\coprod_{\{1,-1\}\times\R}\R$,
+    where $\R$ is endowed with the trivial framing. Now, let $A$ be an associative
+    algebra (or more generally an $A_\infty$-algebra), then $A$ is a
+    $\Disk_1^{\mathrm{fr}}$-algebra, and the factorization homology on $M$ with coefficient
+    $A$ is $$\int_MA\cong\int_{\R}A\oxx_{\int_{\{1\}\times\R}A\ox\int
+    _{\{-1\}\times\R}A}\int_{\R}A=A\oxx_{A\ox A^{op}}A,$$ which is the 
+    Hochschild homology of $A$.
+\end{example}
+
+We may now prove Theorem \ref{e}:
+
+\begin{theorem}
+    If $\cal C$ is a symmetric monoidal $\ox$-presentable $\infty$-category,
+    then there exists a pair of equivalence 
+    $$\int\:\Disk_n^{(X,e)}\-\Alg(\mathcal C)\rightleftarrows\HT(\Mfld_n^{(X,e)},
+    \mathcal C):\!\mathrm{ev}_{\R^n}$$ between $\Disk_n^{(X,e)}$-algebras
+    and homology theories for $(X,e)$-manifolds.
+\end{theorem}
+
+\begin{proof}
+    By Proposition \ref{r}, $\int$ is a left adjoint to the functor 
+    $\mathrm{ev}_{\R^n}$. The unit of the adjunction is an equivalence, because
+    $\Disk_n^{(X,e)}\to\Mfld_n^{(X,e)}$ is fully faithful, and the Kan extension
+    along a fully faithful functor restricts as the original functor. The counit
+    of the adjuntion evaluates on a symmetric monoidal functor $F$ as a morphism
+    $\int F(\R^n)\to F$. It suffices to show that this map is an equivalence, which
+    means we only have to prove that the map $\int_M F(\R^n)\to F(M)$ is an
+    equivalence for any $(X,e)$-manifold $M$. We denote $A:=F(\R^n)$.
+
+    If $M$ is the disjoint union of some copies of $\R^n$, this is obvious. Suppose that it is true for
+    $M=S^i\times\R^{n-i}$ for some $0\le i<n$. Then for the case 
+    $S^{i+1}\times\R^{n-i-1}$, it can be decomposed as $\R^{i+1}_-\times\R^{n-i-1}
+    \coprod_{S^{i+1}\times\R^{n-i}}\R^i_+\times\R^{n-i-1},$ since both
+    $F$ and $\int_- A$ have the excision property, we have
+    $$\begin{aligned}\int_{S^{i+1}\times\R^{n-i-1}}A
+    &\cong\int_{\R^{i+1}_-\times\R^{n-i-1}}A
+    \mathop{\operatorname{\ox}}\limits_{\int_{S^i\times\R^{n-i}}A}
+    \int_{\R^{i+1}_+\times\R^{n-i-1}}A\\&\cong F(\R^{i+1}_-\times\R^{n-i-1})
+    \mathop{\operatorname{\ox}}\limits_{F(S^i\times\R^{n-i})}
+    F(\R^{i+1}_+\times\R^{n-i-1})\\&\cong F(S^{i+1}\times\R^{n-i-1}).\end{aligned}$$
+    Thus the map is an equivalence for $M=S^{i+1}\times\R^{n-i-1}$. By induction,
+    for any $0\le i\le n$, the above map is an equivalence 
+    for $M=S^i\times\R^{n-i}$.
+
+    Now, for any manifold $M$ that is obtained from a manifold $N$ making the 
+    counit map an equivalence by adding a handle of index $i+1$, $M$ can be
+    expressed as the coproduct $N\coprod_{S^i\times\R^{n-i}}\R^n$. Similarly as above,
+    since $N,S^i\times\R^{n-i},\R^n$ all make the counit map an equivalence,
+    so does $M$. Therefore, by induction, the counit map is an equivalence for all
+    handlebodies.
+
+    We finish the proof by noticing that all smooth manifolds can be regarded as the direct
+    colimit of inclusions of handlebodies, and the functors $\int A$ and $F$
+    preserve sequential colimits.
+\end{proof}
+
+\subsection{Relation to factorization algebra and applications to
+\texorpdfstring{$E_n$}{En}-algebras}
+
+We now explain the relation between factorization homology and
+locally constant factorization algebras. We will prove the following theorem,
+which is from \cite{GTZ10}:
+
+\begin{theorem}\label{f}
+    There exists an equivalence of $\infty$-categories from the $\infty$-category of
+    $\Disk_n^{(M,TM)}$-algebras to the $\infty$-category of locally constant
+    factorization algebras on $M$, for any manifold $M$.
+\end{theorem}
+
+We will need a lemma, which is stated in \cite{Lur16} and will not be proved
+here:
+
+\begin{lemma}\label{newb}
+    Suppose $A$ is an $E_n$-algebra, $\mathscr U$ is a collection
+    of open sets in $\R^n$ covering $\R^n$, each homeomorphic to $\R^n$. The natural
+    $\mathscr U$-prefactorization algebra with respect to $A$, given by
+    $U\mapsto A(U)$, is a $\mathscr U$-factorization algebra.
+\end{lemma}
+
+We will also use the following lemma,
+which presents the excision property of locally constant factorization algebras:
+
+\begin{lemma}\label{newa}
+    Suppose $M$ is a manifold such that it can be decomposed as 
+    $R\coprod_{N\times\R}L$, and $A$ is a locally constant factorization algebra
+    on $M$. Then $A(R)$ and $A(L)$ are right and left $E_1$-modules over $A(N\times\R)$,
+    and $$A(M)\cong A(R)\mathop{\operatorname{\ox}}_{A(N\times\R)}A(L).$$
+\end{lemma}
+
+\begin{proof}
+    By the proof of Proposition \ref{s}, to prove that $A(R)$ and $A(L)$ are
+    right and left $E_1$-modules over $A(N\times\R)$, it suffices to show that the map
+    $A(R-N\times[t,+\infty))\to A(R)$ is an equivalence for all $t\in\R$. This is
+    since by Proposition \ref{b}, the map $A(N\times(a,b))\to A(N\times(a',b'))$
+    is an equivalence for all $a'\le a<b\le b'$, thus the \v{C}ech complexes
+    of the covers $$\{R-N\times[t-1,+\infty)\}\cup\{N\times(a,b)\mid t-2\le a<b\}$$
+    and $$\{R-N\times[t-1,+\infty)\}\cup\{N\times(a,b)\mid t-2\le a<b\le t\}$$
+    are naturally equivalent, since $A$ is a factorization algebra, the map
+    $A(R-N\times[t,+\infty))\to A(R)$ is an equivalence for all $t\in\R$. Using
+    the same argument in Proposition \ref{s}, it is shown that
+    $A(R)$ and $A(L)$ are right and left $E_1$-$A(N\times\R)$-modules.
+
+    To show that the excision property holds, we take the following
+    factorizing cover of $M$: $$\begin{aligned}\mathscr U&:=\{R-N\times[t,+\infty)
+    \mid-\infty<t\le\infty\}\\&\qquad\cup\{L-N\times(-\infty,t]
+    \mid-\infty\le t<\infty\}\cup\{N\times(a,b)\mid-\infty\le a<b\le\infty\}.
+    \end{aligned}$$
+    Then we know that $A(M)$ is equivalent to the \v{C}ech complex 
+    $\check{C}(\mathscr U,A)$. But by direct computation, the \v{C}ech complex
+    is given by the classical two-sided Bar construction
+    $B(A(R),A(N\times\R),A(L))$, which is equivalent to the tensor product
+    $A(R)\ox_{A(N\times\R)}A(L)$ (by \cite{CG16}). Thus $A(M)$ is equivalent to
+    $A(R)\ox_{A(N\times\R)}A(L)$, completing the proof.
+\end{proof}
+
+Using these lemmas, we state the following proposition:
+
+\begin{proposition}\label{i}
+    Suppose $M$ is an $(X,e)$-manifold. Then for any $\Disk_n^{(X,e)}$-algebra
+    $A$, the map $U\mapsto\int_UA$ for any open set $U$ of $M$ defines a 
+    locally constant factorization algebra, which we will denote by $i(A)$.
+\end{proposition}
+
+\begin{proof}
+    Since the inclusion of open sets of $M$ are 
+    $(X,e)$-embeddings, the map $U\mapsto\int_UA$ is 
+    a prefactorization algebra. To prove that it is a factorization algebra, we 
+    construct a factorization algebra that is locally constant, and show that
+    it is naturally equivalent to $i(A)$. We deduce this by a path similar to the
+    proof of Theorem \ref{e}.
+
+    We begin with the case $M\cong\R^n$. Then $A$ is a
+    $(\Disk_n^{(X,e)})_{/M}$-algebra. But by definition $(\Disk_n^{(X,e)})_{/M}$
+    is naturally isomorphic to $\Disk_n^{(M,TM)}$, thus if $M=\R^n$, then $A$ is
+    naturally a $\Disk_n^{(\R^n,T\R^n)}$-algebra, which is equivalent to a
+    $\Disk_n^{\mathrm{fr}}$-algebra. By Lemma \ref{newb} and Proposition \ref{c}, we obtain
+    a factorization algebra on $\R^n$, whose value on each open subset that is
+    homeomorphic to a disk is $A$. We will denote it by $i'(A)$. 
+
+    To prove that $i(A)$ and $i'(A)$ are naturally equivalent, we again mimic
+    the proof of Theorem \ref{e}. We recall that the essential part of the proof
+    of Theorem \ref{e} is the excision property. By Lemma \ref{newa},
+    similar to the proof of Theorem \ref{e}, we can show
+    that $i(A)(U)$ and $i'(A)(U)$ are naturally equivalent firstly for $U$
+    homeomorphic to some $S^i\times\R^{n-i}$, secondly for all handlebodies,
+    and finally for all open subsets. (Note that the \v{C}ech complex functor
+    preserves sequential colimits of inclusions of classes of coverings
+    by its definition.) Thus $i(A)$ is a factorization algebra when $M\cong\R^n$.
+
+    Now we show that $i(A)$ is a factorization algebra for all manifolds $M$.
+    By the proof of Theorem \ref{e}, we only have to consider the
+    following two cases:
+
+    \begin{enumerate}[i)]
+        \item $M$ can be decomposed as the gluing $R\amalg_{N}L$, where $R,N,L$ are
+        open subsets of $M$ such that $i(A)|_R,i(A)|_N,i(A)|_L$ are
+        factorization algebras. In this case $i(A)|_R,i(A)|_N,i(A)|_L$ together with
+        the restriction maps form a gluing data, thus defining a factorization algebra
+        $i'(A)$, that is locally constant by Proposition \ref{l}; which means that
+        the values of $i'(A)$ and $i(A)$ are naturally equivalent for all open disks
+        in $M$. Again using the lemma, $i(A)(U)$ and $i'(A)(U)$ are naturally equivalent
+        firstly for $U$ homeomorphic to some $S^i\times\R^{n-i}$, secondly for
+        all handlebodies, and finally for all open subsets. Thus $i(A)$ is a
+        factorization algebra.
+
+        \item $M$ is the colimit of a sequential colimit $\colim(M_1\hookrightarrow M_2
+        \hookrightarrow\cdots)$ of inclusions of open sets, such that each $M_n$
+        satisfies that $i(A)|_{M_n}$ is a factorization algebra. Although in this case
+        $i(A)|_{M_n}$ do not form a gluing data, the proof of Proposition \ref{t}
+        is still available in the case of sequential colimit of inclusions of open sets.
+        Thus the data $i(A)|_{M_n}$ defines a factorization algebra $i'(A)$, that is
+        locally constant by Proposition \ref{l}; which means that the values of 
+        $i'(A)$ and $i(A)$ are naturally equivalent for all open disks in $M$. 
+        Again using the lemma, $i(A)(U)$ and $i'(A)(U)$ are naturally equivalent
+        firstly for $U$ homeomorphic to some $S^i\times\R^{n-i}$, secondly for
+        all handlebodies, and finally for all open subsets. Thus $i(A)$ is a
+        factorization algebra.
+    \end{enumerate}
+
+    After discussing the two cases, we discovered that $i(A)$ is a factorization
+    algebra firstly for manifolds homeomorphic to some $S^i\times\R^{n-i}$,
+    secondly for all handlebodies, and finally for all $(X,e)$-manifolds,
+    completing the proof.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{f}]
+    By the above proposition, it suffices to show that the functor 
+    $$i\:\Disk_n^{(M,TM)}\-\Alg\to\FA^{lc}(M),\qquad A\mapsto\9U\mapsto\int_UA\0$$
+    induces an equivalence of $\infty$-categories. We take the functor $j$ from
+    $\FA^{lc}(M)$ to $\Disk_n^{(M,TM)}\-\Alg$ to be the evaluation at any
+    disk inside $M$, and verify that this functor is the inverse of the above one.
+
+    \begin{enumerate}[i)]
+        \item For any $A$ being a $\Disk_n^{(M,TM)}$-algebra, $j(i(A))$ is 
+        $\int_{\R^n}A$, which is naturally equivalent to $A$.
+
+        \item For any locally constant factorization algebra $B$, $i(j(B))$ sends
+        every subset $U$ of $M$ to $\int_UB(\R^n)$. Now, take a metric on $M$, and take
+        $\mathscr U$ to be the collection of all strictly convex subset of $M$.
+        Then $\mathscr U$ is stable under intersection, forms a basis of $M$, and
+        is a factorization basis of $M$. Moreover the values of $i(j(B))$ and $B$ on
+        $\mathscr U$ are naturally equivalent, since $\int_{\R^n}B(\R^n)$ and $B(\R^n)$
+        are naturally equivalent. By Proposition \ref{c}, $i(j(B))$ and $B$ are
+        naturally equivalent.
+    \end{enumerate}
+
+    The above discussion shows that $j$ is an inverse to $i$, which completes
+    the proof. 
+\end{proof}
+
+Using this theorem, we may make some interesting applications:
+
+\begin{example}
+    We take $M=\R^n$. Then a preferred choice of framing for $\R^n$ together
+    with the projective map $\R^n\to*$ induces an equivalence of $\infty$-categories
+    $\Disk_n^{(\R^n,T\R^n)}\to\Disk_n^{\mathrm{fr}}$, which induces equivalences of
+    $\infty$-categories $$\FA^{lc}(\R^n)\cong\Disk_n^{(\R^n,T\R^n)}\-\Alg
+    \cong\Disk_n^{\mathrm{fr}}\-\Alg\cong\E_n\-\Alg.$$ Hence we obtain the following theorem,
+    which also appears in \cite{Lur16}:
+
+    \begin{theorem}\label{k}
+        There exists an equivalence of $\infty$-categories $$\FA^{lc}(\R^n)\cong\E_n
+        \-\Alg.$$
+    \end{theorem}
+\end{example}
+
+\begin{example}\label{h}
+    Suppose $A$ is a locally constant prefactorization algebra. Then we may take its
+    value on any open subset of the underlying space that is homeomorphic to a disk,
+    which we denote by $A_0$. By Theorem \ref{f}, $i(A_0)$ is a factorization
+    algebra, whose value on open disks is naturally equivalent to $A$. This shows
+    that a locally constant prefactorization algebra can be reformed to
+    a factorization algebra, as stated in Remark \ref{g}.
+\end{example}
+
+\begin{example}
+    The notion of a factorization algebra is in some sense a generalization of 
+    factorization homology. Indeed, suppose $A$ is a $\Disk_n^{(X,e)}$-algebra,
+    and $M$ is an $(X,e)$-manifold. Then by Proposition \ref{i},
+    $A$ corresponds to a locally constant factorization algebra on $M$, which
+    is $i(A)$, in the language of Theorem \ref{f}. Take the map $p\:M\to *$,
+    we see that $$p_*(i(A))(*)=i(A)(M)=\int_AM.$$ From this observation, 
+    it is meaningful to make the following definition:
+
+    \begin{definition}
+        Suppose $A$ is a factorization algebra on a space $X$, $p\:X\to *$ is the 
+        unique map. The \term{factorization homology} of $A$ is defined to be 
+        $\int_XA:=p_*(A)(*)$.
+    \end{definition}
+
+    When $X$ is a manifold and $A$ is locally constant, this restricts to the 
+    original definition of factorization homology.
+\end{example}
+
+We now discuss the behavior of factorization homology in the case that
+the underlying space changes, again using Theorem \ref{f}.
+
+\begin{example}
+    Suppose $X$ and $Y$ are spaces, $f\:X\to Y$ is a continuous map. Then, if we set
+    $p_1\:X\to *$ and $p_2\:Y\to *$, we have $p_1=p_2\circ f$.
+    Thus for any factorization algebra $A$ on $X$, we have $$\int_XA=(p_1)_*(A)(*)
+    =(p_2)_*f_*(A)(*)=\int_Yf_*(A),$$ which we will call the \term{pushforward
+    formula}.
+\end{example}
+
+\begin{example}\label{u}
+    Suppose $X$ and $Y$ are spaces, $p_1\:X\to *$ and $p_2\:Y\to *$ are the canonical
+    maps. If we take $\pi\:X\times Y\to X$ to be the projection, then by Proposition
+    \ref{j}, there exists an equivalence of $\infty$-categories $\underline\pi_*\:
+    \FA^{lc}(X\times Y)\to\FA^{lc}(X,\FA^{lc}(Y))$, such that the following
+    diagram is commutative: $$\xymatrix{\FA^{lc}(X\times Y)\ar[rr]^{\pi_*}\ar[rd]
+    _{\underline\pi_*}^{\cong}&&\FA^{lc}(X)\\&\FA^{lc}(X,\FA^{lc}(Y))\ar[ru]
+    _{\FA^{lc}(X,(p_2)_*)}}$$ If we composite the diagram with $(p_1)_*$, 
+    we obtain that for any locally constant factorization algebra $A$ on $X\times Y$, there is
+    an equivalence $$\begin{aligned}\int_{X\times Y}A&=(p_1\times p_2)_*(A)(*)
+    \\&=(p_1)_*(\pi_*(A))(*)
+    =\int_X\FA^{lc}(X,(p_2)_*(A))(*)=\int_X\int_YA.\end{aligned}$$ Restricting to the case
+    of manifolds yields the \term{Fubini formula}:
+
+    \begin{proposition}
+        Suppose $M,N$ are manifolds with dimensions $m,n$, respectively, $A$
+        is a $\Disk_{m+n}^{(M\times N,TM\times TN)}$-algebra. Then $\int_NA$
+        is canonically a $\Disk_m^{(M,TM)}$-algebra, and $$\int_{M\times N}A
+        \cong\int_M\int_NA.$$
+    \end{proposition}
+
+    Furthermore, if we set $M=\R^m$, $N=\R^n$, using Theorem \ref{k}, we see that
+    the example is a generalization of the \term{Dunn's Theorem}, which is stated
+    in \cite{Dun88}, rewritten in \cite{Lur16}:
+
+    \begin{theorem}\label{v}
+        There exists an equivalence of $\infty$-categories $$\E_{m+n}\-\Alg\cong
+        \E_m\-\Alg(\E_n\-\Alg)$$ for any positive integers $m,n$.
+    \end{theorem}
+\end{example}
+
+\subsection{Stratified spaces and applications to \texorpdfstring{$E_n$}{En}-modules}
+
+In this section, we briefly discuss locally constant factorization algebras on
+stratified spaces, and take some important examples. The notion of
+stratified spaces is a slight generalization of manifolds without boundaries.
+Pointed manifolds (which are manifolds with a distinguished point),
+manifolds with or without boundaries can all be regarded as
+stratified spaces. Most results in this section can be proved
+using the strategies given in the previous sections, so we will mostly omit
+the proofs.
+
+\begin{definition}
+    By a \term{stratified space} of dimension $n$, we mean a Hausdorff paracompact
+    topological space $X$, together with a filtration $\varnothing=X_{-1}
+    \subseteq X_0\subseteq\cdots\subseteq X_n=X$ of closed subsets, such that for
+    any $x\in X_i-X_{i-1}$, there exists a neighborhood $U_x$ of $x$ that is
+    homeomorphic to $\R^i\times C(L)$, where $C(L)$ is the open cone on a
+    stratified space of dimension $n-i-1$ if $i<n$, $C(L)=*$ if $i=n$,
+    and the homeomorphism preserves
+    the filtration; and $X-X_{n-1}$ is dense in $X$. The connected components of
+    $X_i-X_{i-1}$ are called the \term{dimension $i$-strata} of $X$. In our
+    discussion, we always assume that $X$ has at most countable strata.
+\end{definition}
+
+For example, a manifold with boundary can be regarded as a stratified space,
+with its $(n-1)$-dimensional strata being its boundary; a pointed manifold
+can be regarded as a stratified space with its $0$-dimensional strata being the
+base point.
+
+\begin{definition}
+    An open subset $D$ of $X$ is called a \term{(stratified) disk}, if it is 
+    homeomorphic to $\R^i\times C(L)$, where $C(L)$ is the open cone on a
+    stratified space of dimension $n-i-1$ if $i<n$, $C(L)=*$ if $i=n$, 
+    and the homeomorphism preserves
+    the filtration, and further $D\cap X_i\ne\varnothing$ and 
+    $D\subseteq X-X_{i-1}$. The integer $i$ is called the \term{index} of $D$.
+
+    A (stratified) disk $D$ is called a \term{good neighborhood} at $X_i$
+    if $D$ has index $i$, and $D$ intersects only one connected component
+    of $X_i-X_{i-1}$.
+
+    A factorization algebra $A$ on a stratified space $X$ is called \term{locally
+    constant} if for any inclusion of (stratified) disks $U\hookrightarrow V$
+    such that $U$ and $V$ have the same index $i$ and $U,V$ are good neighborhoods
+    at $X_i$, the map $A(U)\to A(V)$ is an equivalence.
+\end{definition}
+
+\begin{remark}
+    In the case of pointed manifolds and manifolds with or without boundaries,
+    all (stratified) disks are homeomorphic to the euclidean plane or half plane.
+\end{remark}
+
+Some results on locally constant factorization algebras in the usual case
+remain true in the stratified case. We state some useful ones; the proofs
+are similar.
+
+\begin{proposition}[c.f.\ Proposition \ref{b}]
+    Suppose $f\:X\to Y$ is a locally trivial fibration between stratified spaces,
+    that is \term{adequately stratified}, in the sense that $Y$ has an open cover by
+    trivializing (stratified) disks $V$ which are good neighborhoods satisfying:
+    \begin{enumerate}[i)]
+        \item $f^{-1}(V)\cong V\times F$ has a cover by (stratified) disks of the form
+        $V\times D$ which are good neighborhoods in $X$;
+        \item For sub-disks $T\subseteq U$ which are good neighborhoods (in $V$) with
+        the same index, $T\times D$ is a good neighborhood in $X$ of same index as
+        $U\times D$.
+    \end{enumerate}
+    Then pushforward along $f$ preserves local constantness.
+\end{proposition}
+
+\begin{proposition}[c.f.\ Proposition \ref{j}]
+    Suppose $X,Y$ are stratified spaces with finitely many strata. Then the 
+    projections $X\times Y\to X$ and $X\times Y\to Y$ are adequately stratified,
+    and the functor $\underline\pi_*\:\FA(X\times Y)\to\FA(X,\FA(Y))$ restricts to
+    a functor $\underline\pi_*\:\FA^{lc}(X\times Y)\to\FA^{lc}(X,\FA^{lc}(Y))$,
+    which is an equivalence.
+\end{proposition}
+
+\begin{proposition}[c.f.\ Proposition \ref{l}]\label{m}
+    Suppose $X$ is a stratified space, $A$ is a factorization algebra on $X$.
+    If there exists an open cover $\mathscr U$ of $X$ such that $A|_U$ is
+    locally constant for every $U\in\mathscr U$, then $A$ is locally constant.
+\end{proposition}
+
+We furthermore have the following proposition:
+
+\begin{proposition}
+    Suppose $i:X\to Y$ is a stratified embedding of stratified spaces such
+    that $i(X)$ is a union of strata of $Y$. Then taking the pushforward along $i$ preserves
+    local constantness.
+\end{proposition}
+
+We will now focus on some examples.
+
+\begin{example}\label{n}
+    The half line, $X=[0,+\infty)$, with the dimension-$0$ stratum given by $\{0\}$.
+    Then all connected open subsets of $X$ form a factorization basis $\mathscr I$
+    of $X$.
+
+    An example of stratified locally constant prefactorization algebra
+    on $\mathscr I$ arises as follows: Choose an $E_1$-algebra $E$, a right
+    $E$-module $M$, and define the factorization algebra $A_{E,M}$ as follows:
+    \begin{enumerate}[i)]
+        \item For any $0<a<b$, define $A_{E,M}((a,b))=E$;
+        \item For any $0<a$, define $A_{E,M}([0,a))=M$;
+        \item The structure maps are given by the multiplication on $E$ and
+        the structure of $M$ being a right $E$-module.
+    \end{enumerate}
+
+    It is easy to verify that this forms an $\mathscr I$-prefactorization algebra,
+    and satisfies the locally constant condition. Furthermore, we have:
+
+    \begin{proposition}
+        \begin{enumerate}[i)]
+            \item The $\mathscr I$-prefactorization algebra $A_{E,M}$ given above is an 
+            $\mathscr I$-factorization algebra, and hence extends uniquely into a factorization
+            algebra on $X$, which we will still denote by $A_{E,M}$;
+            \item $A_{E,M}$ is locally constant on $X$;
+            \item Moreover, all locally constant factorization algebras on $X$ is equivalent
+            to some $A_{E,M}$;
+            \item Finally, there exists an equivalence between $\FA^{lc}([0,\infty))$
+            and the $\infty$-category $\E_1\-\RMod$ of (pointed) right modules over 
+            $E_1$-algebras (whose objects are ordered pairs $(E,M)$ such that $E$ is an
+            $E_1$-algebra and $M$ is a right $E_1$-module);
+            \item The equivalence of $\infty$-categories satisfies the following commutative
+            diagram up to equivalence: $$\xymatrix{\FA^{lc}([0,\infty))\ar[r]^{\cong}\ar[d]&\E_1\-\RMod
+            \ar[d]\\\FA^{lc}((0,\infty))\ar[r]^{\cong}&\E_1\-\Alg.}$$
+        \end{enumerate}
+    \end{proposition}
+
+    Hence this equivalence can be used to characterize right $E_1$-modules,
+    which may be regarded as a generalization of Theorem \ref{k} in the
+    one dimensional case. Similarly, there exists an equivalence between
+    $\FA^{lc}((-\infty,0])$ and the $\infty$-category $\E_1\-\LMod$ of
+    (pointed) left modules over $E_1$-algebras.
+\end{example}
+
+\begin{example}
+    The unit interval, $X=[0,1]$, with the dimension-$0$ stratum given by $\{0,1\}$.
+    Proposition \ref{m} shows that $$\FA^{lc}(X)\cong\FA^{lc}([0,1))
+    \mathop{\operatorname{\times}}\limits_{\FA^{lc}((0,1))}\FA^{lc}((0,1])
+    \cong\E_1\-\RMod\mathop{\operatorname{\times}}\limits_{\E_1\-\Alg}\E_1\-\LMod.$$
+    Thus, giving a locally constant factorization algebra $A$ on $X$ is equivalent
+    to giving a triple $(E,M_r,M_l)$, where $E$ is an $E_1$-algebra (where for any
+    $0\le a< b\le 1$ we have $A((a,b))=E$), $M_r$ is a 
+    right $E$-module (where for any $0<a\le 1$ we have $A([0,a))=M_r$), and 
+    $M_l$ is a left $E$-module (where for any $0\le a< 1$ we have $A((a,1])=M_l$).
+    Furthermore by discussion in the previous section, the factorization homology
+    of $A$ is $$\int_{[0,1]}A\cong M_r\mathop{\operatorname{\ox}}\limits_EM_l.$$
+\end{example}
+
+\begin{example}
+    The pointed euclidean space, $X=\R^n_*$, with the dimension-$0$ stratum given by 
+    $\{0\}$. Similar to the case above, we will discuss the relationship between 
+    locally constant factorization algebras on $X$ and $E_n$-modules.
+
+    To do this, we notice that there exists a factorization basis of $X$, the open
+    convex sets, which we will denote by $\mathscr C$. Suppose $M$ is a module
+    over an $E_n$-algebra $E$. We define a $\mathscr C$-prefactorization algebra
+    $A_{E,M}$ as follows:
+
+    \begin{enumerate}[i)]
+        \item For any $U\in\mathscr C,0\in U$, define $A_{E,M}(U)=M$;
+        \item For any $U\in\mathscr C,0\notin U$, define $A_{E,M}(U)=E$;
+        \item The structure maps are given by the multiplication on $E$ and
+        the structure of $M$ being an $E$-module.
+    \end{enumerate}
+
+    It is easy to verify that this forms a $\mathscr C$-prefactorization algebra,
+    and satisfies the locally constant condition. Similar to Proposition \ref{m},
+    we have the following result:
+
+    \begin{proposition}\label{o}
+        \begin{enumerate}[i)]
+            \item The $\mathscr C$-prefactorization algebra $A_{E,M}$ given above is a 
+            $\mathscr C$-factorization algebra, and hence extends uniquely to a factorization
+            algebra on $X$, which we will still denote by $A_{E,M}$;
+            \item $A_{E,M}$ is locally constant on $X$;
+            \item We obtain a functor $\psi\:\E_n\-\Mod\to\FA^{lc}(X)$, which fits into
+            the following commutative diagram: $$\xymatrix{\E_n\-\Alg\ar[r]^{\cong}
+            \ar@{^(->}[d]&\FA^{lc}(\R^n)\ar[d]\\\E_n\-\Mod\ar[r]^\psi&\FA^{lc}(X);}$$
+            \item The map $$\E_n\-\Mod\xrightarrow{\psi}\FA^{lc}(X)\to\FA^{lc}(\R^n-\{0\})$$
+            and $$\E_n\-\Mod\to\E_n\-\Alg\cong\FA^{lc}(\R^n)\to\FA^{lc}(\R^n-\{0\})$$
+            are equivalent, and identify $\E_n\-\Mod$ with the pullback $\FA^{lc}(X)\times_
+            {\FA^{lc}(\R^n-\{0\})}\FA^{lc}(\R^n)$.
+        \end{enumerate}
+    \end{proposition}
+
+    Hence this proposition can be used to characterize $E_n$-modules,
+    which may be regarded as a generalization of Theorem \ref{k} in the
+    $n$-dimensional case. In particular, by taking the fiber we have the following
+    corollary:
+
+    \begin{corollary}
+        The functor $$\E_n\-\Mod(A)\to\FA^{lc}(\R^n_*)\mathop{\operatorname{\times}}
+        _{\FA^{lc}(\R^n-\{0\})}\{A\}$$ is an equivalence for any $E_n$-algebra $A$.
+    \end{corollary}
+
+    We may also use this example to characterize $E_1$-bimodules. We take $n=1$,
+    then there exists two (instead of one) strata of maximal dimension in $X$,
+    unlike the case of $n\ge 2$. Mimicking Example \ref{n}, we have the following proposition:
+
+    \begin{proposition}
+        There exists an equivalence of $\infty$-categories between $\FA^{lc}(\R_*)$
+        and the $\infty$-category $\E_1\-\BiMod$ of $E_1$-bimodules. The equivalence
+        assigns an $(L,R)$-bimodule $M$ to a locally constant factorization algebra $A$,
+        whose value on $(a,b)$ is $L$ if $b\le 0$, $R$ if $a\ge 0$, $M$ otherwise,
+        and the structure maps are given by the structure maps of a bimodule.
+    \end{proposition}
+\end{example}
+
+\begin{example}\label{q}
+    The closed unit disk, $X=D^n$, with the $(n-1)$-dimensional strata given by 
+    $S^{n-1}$. Then by Proposition \ref{m}, there exists an equivalence of 
+    $\infty$-categories $$\FA^{lc}(D^n)\cong\FA^{lc}(D^n-\{0\})
+    \mathop{\operatorname{\times}}\limits_{\FA^{lc}(D^n-S^{n-1}-\{0\})}
+    \FA^{lc}(D^n-S^{n-1}).$$ Furthermore, we have $$\begin{aligned}
+    \FA^{lc}(D^n-S^{n-1})&\cong\FA^{lc}(\R^n)\cong\E_n\-\Alg,\\
+    \FA^{lc}(D^n-S^{n-1}-\{0\})&\cong\FA^{lc}(\R^n-\{0\})\\&\hspace{2em}\cong
+    \FA^{lc}(S^{n-1}\times\R)\cong\E_1\-\Alg(\FA^{lc}(S^{n-1})),\\
+    \FA^{lc}(D^n-\{0\})&\cong\FA^{lc}(S^{n-1}\times(-\infty,0])\cong
+    \E_1\-\LMod(\FA^{lc}(S^{n-1})),
+    \end{aligned}$$ we obtain an equivalence $$\FA^{lc}(D^n)\cong\E_n\-\Alg
+    \mathop{\operatorname{\times}}\limits_{\E_1\-\Alg(\FA^{lc}(S^{n-1}))}
+    \E_1\-\LMod(\FA^{lc}(S^{n-1})).$$
+
+    Now, for any map $f\:E\to F$ of $E_n$-algebras, $F$ has an $E_n$-module
+    structure over $E$ induced by $f$. Furthermore, $E,F$ can be regarded as locally
+    constant factorization algebras on $\R^n$, hence on $\R^n-\{0\}\cong
+    S^{n-1}\times\R$. Define $q\:S^{n-1}\times\R\to S^{n-1}$ to be the projection,
+    then $q_*(E)$ is an $E_1$-algebra, and $q_*(F)$ is an $E_1$-module over $q_*(E)$.
+    Thus the equivalence above assigns the map $f$ with a locally constant
+    factorization algebra on $D^n$, which we will denote $\omega(f)$. Its value
+    on a good neighborhood of index $(n-1)$ is $F$, and its value
+    on a good neighborhood of index $n$ is $E$. Moreover, we may collapse
+    the boundary of $D^n$ into one point, making the locally constant factorization
+    algebra on $D^n$ be a locally constant factorization algebra on $S^n_*$.
+    We denote this locally constant factorization algebra on $S^n_*$ by
+    $\omega'(f)$.
+\end{example}
+
+\section{Further applications}
+
+In this section, we will briefly talk about two applications of the above
+results on factorization algebras and factorization homology: the Deligne
+conjecture and the Bar constructions. We will solve the Deligne conjecture
+by the tool of centralizers, and extend the study of Bar constructions on
+associative algebras to arbitrary $E_n$-algebras. We will mostly present ideas
+and sketches of proofs; the details can be found in \cite{Fra11} and
+\cite{GTZ12}.
+
+\subsection{Centralizers and (higher) Deligne conjecture}
+
+The original Deligne conjecture on the structure of Hochschild cohomology of
+an associative algebra (more generally an $A_\infty$-algebra) states that
+Hochschild cohomology naturally has the structure of a BV-algebra. 
+More generally, the full Hochschild cohomology complex has the structure of
+an algebra over the (framed) little disk operad. We will here prove
+the following result, which is mostly stated as the ``higher
+Deligne conjecture'':
+
+\begin{theorem}[Higher Deligne conjecture]\label{p}
+    Suppose $A$ is an $E_n$-algebra. Then the $E_n$-Hochschild cohomology 
+    $\HH_{E_n}(A,A)$ has an $E_{n+1}$-algebra structure.
+\end{theorem}
+
+We will first review the definition of the $E_n$-Hochschild cohomology.
+
+\begin{definition}
+    Suppose $\cal C$ is a closed symmetric monoidal $\infty$-category.
+    Let $M$ be an $E_n$-module over an $E_n$-algebra $A$. The \term{$E_n$-Hochschild
+    cohomology} of $A$ with values in $M$ is defined to be
+    $$\HH_{E_n}(A,M):=\Map_A^{E_n}(A,M):=\Map_{\E_n\-\Mod(A)}(A,M)\in \cal C.$$
+\end{definition}
+
+\begin{remark}
+    Notice that an $E_1$-$A$-module is equivalent to a left 
+    $E_1$-module over $A\ox A^{op}$, we find out that $$\HH_{E_1}(A,M)
+    =\Map_{\E_1\-\Mod(A)}(A,M)\cong\Map_{\E_1\-\LMod(A\ox A^{op})}(A,M)$$ coincides
+    with the usual definition of  Hochschild cohomology.
+\end{remark}
+
+Now we introduce the language of the center of a map of $E_n$-algebras, which is
+due to \cite{Lur16} and can be used to prove the Deligne conjecture:
+
+\begin{definition}
+    Suppose $f\:A\to B$ is an map of $E_n$-algebras. The \term{centralizer} of $f$
+    is an $E_n$-algebra $\mathfrak z_n(f)$ together with a map 
+    $e_f\:A\ox\mathfrak z_n(f)\to B$ of $E_n$-algebras, such that 
+    $e_f\circ(\mathbb1\ox 1_{\mathfrak z_n(f)})=f$; and for any $E_n$-algebra $C$
+    together with a map $\vp\:A\ox C\to B$ of $E_n$-algebras, such that
+    $\vp\circ(\mathbb1\ox 1_{C})=f$, there exists a unique map 
+    $\kappa\:C\to\mathfrak z_n(f)$ such that $\vp=e_f\circ(\mathbb1\ox\kappa)$.
+    We define the \term{center} of $A$ to be $\mathfrak z_n(A):=
+    \mathfrak z_n(\mathbb1_A)$.
+\end{definition}
+
+\begin{example}
+    Suppose $G$ is an $E_1$-algebra in the category $\Set$; that is a monoid.
+    Then $\mathfrak z_1(G)$ is the usual center $Z(G)$. If $f\:H\to G$ is
+    an inclusion of monoids, then $\mathfrak z_1(G)$ is the usual centralizer 
+    $Z_H(G)$. This explains the name ``centralizer''. Notice that in this example,
+    $Z(G)$ is commutative, meaning that it is an $E_2$-algebra.
+\end{example}
+
+\begin{remark}
+    By the definition, for any maps of $E_n$-algebras $f\:A\to B,\ g\:B\to C$,
+    there exists a commutative diagram $$\xymatrix{
+    &&A\ox\mathfrak z_n(f)\ox\mathfrak z_n(g)\ar[rd]^{e_f\ox\mathbb1}&&\\
+    &A\ox\mathfrak z_n(f)\ar[ru]^{\mathbb1\ox1_{\mathfrak z_n(g)}}
+    \ar[rd]^{e_f}&&B\ox\mathfrak z_n(g)\ar[rd]^{e_g}&\\
+    A\ar[rr]^f\ar[ru]^{\mathbb1\ox1_{\mathfrak z_n(f)}}&&B\ar[rr]^g
+    \ar[ru]^{\mathbb1\ox1_{\mathfrak z_n(g)}}&&C,}$$ which induces a natural map
+    $$\mathfrak z_n(\circ)\:\mathfrak z_n(f)\ox\mathfrak z_n(g)
+    \to\mathfrak z_n(g\circ f)$$ of $E_n$-algebras by the universal property.
+\end{remark}
+
+The following theorem, also known as the ``relative Deligne conjecture'',
+claims that the centralizer is computed by $E_n$-Hochschild cohomology:
+
+\begin{theorem}[Relative Deligne conjecture]
+    Suppose $f\:A\to B$ is a map of $E_n$-algebras. Denote $B_f$ to be $B$, endowed
+    with the $E_n$-module structure over $A$ induced by $f$. Then there is an
+    $E_n$-algebra structure on $\HH_{E_n}(A,B_f)$, making it the centralizer of
+    $f$. In particular, $\mathfrak z_n(f)$ exists. Moreover for any $g\:B\to C$
+    another map of $E_n$-algebras, the following diagram is commutative:
+    $$\xymatrix{
+    \mathfrak z_n(f)\ox\mathfrak z_n(g)\ar[d]_{\cong}\ar[rr]^{\mathfrak z_n(\circ)}
+    &&\mathfrak z_n(g\circ f)\ar[d]_{\cong}\\\Map_A^{E_n}(A,B_f)
+    \ox\Map_B^{E_n}(B,C_g)\ar[rr]^\circ&&\Map_A^{E_n}(A,C_{g\circ f}),}$$ where 
+    the lower arrow is induced by composition of maps.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+    Details can be found in \cite{GTZ12}. By the
+    characterization given in Proposition \ref{o}, $A,B$ can be regarded as
+    locally constant factorization algebras on $\R^n_*$, and a map of 
+    $E_n$-modules over $A$ from $A$ to $B_f$ is equivalent to a map of factorization
+    algebras on $\R^n_*$ from $A$ to $B$, whose restriction on $\R^n-\{0\}$ is 
+    $f$.
+
+    We first give the $E_n$-algebra structure on $\HH_{E_n}(A,B_f)
+    =\Map_A^{E_n}(A,B_f)$. To do so, it suffices to give a locally constant
+    factorization algebra on $\R^n$, whose global section is $\Map_A^{E_n}(A,B_f)$.
+    To do so, it will be enough to define it on $\mathscr C$, the basis of convex
+    open sets. To any $U\in\mathscr C$, we take a central point $x_U$, and associate
+    $U$ with the object $Z(U)=\Map_A^{E_n}(A,B_f)$, represented by all maps of
+    factorization algebras from $A|_U$ to $B|_U$ whose restriction to $U-\{x_U\}$
+    is $f$; i.e. $$\Map_{\FA(U)}(A|_U,B|_U)\mathop{\operatorname{\times}}\limits
+    _{\Map_{\FA(U-\{x_U\})}(A|_U,B|_U)}\{f\}.$$ For any $U_1,\cdots,U_r,V
+    \in\mathscr C$ such that $U_1,\cdots,U_r$ are pairwise disjoint and contained in
+    $V$, we need to define a map $$\rho_{U_1,\cdots,U_r,V}\:Z(U_1)\ox\cdots\ox Z(U_r)
+    \to Z(V).$$ For any $g_i:A|_{U_i}\to B|_{U_i}\in Z(U_i)$ for all $i$,
+    we define $\rho_{U_1,\cdots,U_r,V}(g_1,\cdots,g_r)$ to be a map of factorization
+    algebras from $A$ to $B$ on a factorizing basis on $V$. We take the following
+    basis:
+
+    \begin{itemize}
+        \item All open sets in $V$ such that it is either in some $U_i$, or is in
+        $V-\{x_{U_1},\cdots,x_{U_r}\}$;
+    \end{itemize}
+
+    and define the following map $\rho_{U_1,\cdots,U_r,V}(g_1,\cdots,g_r)$
+    of factorization algebras:
+    
+    \begin{itemize}
+        \item Its value on an open set $D$ contained in $U_i$ is given by $g_i$;
+        \item Its value on an open set $D$ contained in $V-\{x_{U_1},\cdots,x_{U_i}\}$
+        is given by $f$.
+    \end{itemize}
+
+    Then we observe that if we take a sufficient large closed disk $D'$ contained in
+    $V$ containing all $x_{U_i}$'s, and collapsing $D'$, $\rho_{U_1,\cdots,U_r,V}
+    (g_1,\cdots,g_r)$ turns into a map of factorization algebras on $V/D'$
+    from $A$ to $B$, whose restriction on $V-D'$ is $f$, hence lies in 
+    $\Map_A^{E_n}(A,B_f)=Z(V)$.
+
+    It can be checked that the constructions given above make $Z$ a 
+    locally constant $\mathscr C$-factorization algebra, thus extends to a locally
+    constant factorization algebra on $\R^n$, making $\Map_A^{E_n}(A,B_f)$ an
+    $E_n$-algebra. Moreover using the constructions above,
+    one can check that the map of evaluation
+    $\mathrm{ev}\:A\ox\Map_A^{E_n}(A,B_f)\to B$ is a map of $E_n$-algebras.
+
+    To prove that $\HH_{E_n}(A,B_f)$ is equivalent to $\mathfrak z_n(f)$, we choose
+    an arbitrary $E_n$-algebra $C$ together with a map $\vp\:A\ox C\to B$ of 
+    $E_n$-algebras, such that $\vp\circ(\mathbb1\ox 1_{C})=f$. Then $\vp$
+    induces a map $\theta_\vp\:C\to\Map_{\E_n\-\Alg}(A,B)$. On the other hand, there
+    exists a canonical functor $\Map_{\E_n\-\Alg}(A,B)\to
+    \Map_{\E_n\-\Mod(A)}(A,B_f)$; composition of the two maps yields a map 
+    $\tilde\theta_\vp\:C\to\HH_{E_n}(A,B_f)$, which, by the definition of
+    an adjunction, fits the identity $\mathrm{ev}\circ(\mathbb1\ox\tilde\theta_\vp)
+    =\vp$. Using the identity that $$\begin{aligned}\Map_A^{E_n}(A,B_f)
+    &\xrightarrow{\Map_A^{E_n}(A,A\ox\mathbb1)}
+    \Map_A^{E_n}(A,A\ox\Map_A^{E_n}(A,B_f))\\&\xrightarrow{\Map_A^{E_n}(A,\mathrm{ev})}
+    \Map_A^{E_n}(A,B_f)\end{aligned}$$ is the identity map, the uniqueness of the map
+    $\tilde\theta_\vp$ follows.
+
+    The commutativity of the diagram is immediately from the universal property.
+\end{proof}
+
+We can now prove Theorem \ref{p}.
+
+\begin{proof}[Proof of Theorem \ref{p}]
+    We first notice that for any object $X$ in $\cal C$, the composition map
+    $\circ\:\Map(X,X)\ox\Map(X,X)\to\Map(X,X)$
+    makes $\Map(X,X)$ an $E_1$-algebra. Now, by the relative Deligne conjecture,
+    $\HH_{E_n}(A,A)$ is an $E_1$-algebra in the $\infty$-category $\E_n\-\Alg$,
+    which means it is an $E_{n+1}$-algebra, by Dunn's Theorem.
+\end{proof}
+
+We state some examples.
+
+\begin{example}
+    Suppose $\cal A$ is a monoidal category, which is an $E_1$-algebra in
+    the category of categories. Then $\mathfrak z_1(\cal A)$ is an $E_2$-algebra in
+    the category of categories, which is a braided monoidal category. It is shown
+    in \cite{Lur16} that $\mathfrak z_1(\cal A)$ is actually the Drinfeld center
+    of $\cal A$.
+\end{example}
+
+\begin{example}
+    Suppose $A$ is an $E_n$-algebra, then the map $1_A:\mathbb1\to A$ has center
+    $\mathfrak z_n(1_A)=A$. The composition map $\mathfrak z_n(1_A)\ox
+    \mathfrak z_n(A)\to\mathfrak z_n(1_A)$ exhibits $\mathfrak z_n(1_A)=A$
+    a left module of $\mathfrak z_n(A)$ in the $\infty$-category $\E_n\-\Alg$,
+    which means that $A$ has a natural action on the $E_{n+1}$-algebra 
+    $\HH_{E_n}(A,A)$. This is also called the ``Swiss-Cheese version of
+    Deligne conjecture''.
+\end{example}
+
+\subsection{An introduction to the Bar constructions}
+
+Bar constructions have been introduced in topology as a model for the 
+coalgebra structure on the cochains on $\Omega X$, the loop space of a pointed
+space $X$. In this section, we will give a short introduction of the definition
+and basic properties of the Bar constructions. We refer to \cite{Fra11} and
+\cite{GTZ12} for those who are interested in more properties of the
+Bar constructions and its relationship to iterated loop spaces.
+
+We recall the original definition of the Bar construction.
+
+\begin{definition}
+    Suppose $A$ is an augmented associative algebra in a symmetric monoidal $\infty$-category
+    $\cal C$; that is, an associative algebra
+    together with an algebra homomorphism $A\to\mathbb1$, where $\mathbb1$ is the 
+    unit of the tensor product of $\cal C$. The 
+    \term{Bar object}\footnote{This is often called the ``Bar complex'', since
+    the underlying category is often taken to be the derived $\infty$-category
+    of chain complexes, $\Chinf(\Bbbk)$.} is given by $B(A):=\mathbb1\ox_A\mathbb1.$
+\end{definition}
+
+\begin{remark}
+    In the sense of chain complexes, if $A$ is flat over the base field
+    $\Bbbk$, $B(A)$ is computed by the usual standard chain complex 
+    $\bigoplus_{n\ge 0}\overline{A}^{\ox n}$, where $\overline A$ is the kernel
+    of the augmentation.
+\end{remark}
+
+It is well known that the Bar construction has a standard coalgebra structure.
+Moreover, if $A$ is a commutative algebra, then the Bar construction has a
+standard commutative algebra structure. We now generalize the results into the case of
+$E_n$-algebras.
+
+\begin{definition}
+    An \term{augmented $E_n$-algebra} is an $E_n$-algebra $A$ together with a map
+    $\ve:A\to\mathbb1$ of $E_n$-algebras, which is called the \term{augmentation}.
+    The $\infty$-category of augmented $E_n$-algebras is denoted $\E_n\-\Alg^{aug}$.
+\end{definition}
+
+Now, according to Example \ref{q}, an augmented $E_n$-algebra defines a locally
+constant factorization algebra on the closed disk $D^n$. Moreover, we have the
+following functors $$\omega_i\:\E_n\-\Alg^{aug}\to\E_i\-\Alg^{aug}
+(\E_{n-i}\-\Alg^{aug})\to\FA^{lc}(D^i,\E_{n-i}\-\Alg^{aug}),$$ where the first
+is induced by the equivalence $\E_n\-\Alg\cong\E_i\-\Alg(\E_{n-i}\-\Alg)$.
+
+\begin{definition}
+    Suppose $A$ is an augmented $E_n$-algebra. Define its \term{Bar object}
+    to be $$B(A):=\int_{I\times\R^{n-1}}A\mathop{\operatorname{\ox}}\limits_
+    {\int_{S^0\times\R^{n-1}}A}\mathbb1.$$
+\end{definition}
+
+It can be directly verified that the right hand side of the definition
+is equivalent to $p_*(\omega_1(A))$, where $p\:I\to *$ is the unique map.
+Thus the definition is just the factorization homology of the associated
+factorization algebra on $D^1$. In particular, this definition agrees with
+the definition for augmented associative algebras.
+
+Hence, the above discussion shows that $B(A)$ has a natural structure of an
+$E_{n-1}$-algebra. We can therefore iterate this construction at most $n$ times:
+
+\begin{definition}
+    Suppose $A$ is an augmented $E_n$-algebra, and $0\le i\le n$. The \term{$i$-th
+    iterated Bar object} of $A$ is the augmented $E_{n-i}$-algebra $$B^i(A)
+    =B(B(\cdots(B(A))\cdots)).$$
+\end{definition}
+
+By the definition of the Bar object, and the excision axiom of factorization
+homology, we may prove the following proposition:
+
+\begin{proposition}
+    Suppose $A$ is an augmented $E_n$-algebra, and $0\le i\le n$. There exist
+    natural equivalences of $E_{n-i}$-algebras $$B^i(A)\cong
+    \int_{D^i\times\R^{n-i}}A\mathop{\operatorname{\ox}}\limits_
+    {\int_{S^{i-1}\times\R^{n-i}}A}\mathbb1\cong p_*(\omega_i(A)),$$
+    where $p\:D^i\to *$ is the unique map. 
+\end{proposition}
+
+In particular, taking $n=\infty$, we obtain the $E_\infty$-structure on
+the iterated Bar objects $B^i(A)$ of an augmented $E_\infty$-algebra, which 
+restricts to the standard commutative algebra structure on the Bar object if $A$
+is a commutative algebra.
+
+We now sketch the construction of the $E_i$-coalgebra structure on the $i$-th
+iterated Bar construction of an $E_n$-algebra. To do so, we only
+need to construct a locally constant ``cofactorization algebra'' on $\R^i$,
+whose global section is $B^i(A)$, which, similar to the previous section,
+suffices to do so on $\mathscr C$, the basis of convex open sets.
+
+We take the locally constant factorization algebra on $\R^i$ with values in
+$\E_{n-i}\-\Alg^{aug}$ determined by $A$, which will be still denoted $A$.
+For any $V\in\mathscr C$, by Example \ref{q}, the augmentation
+gives a stratified locally constant factorization algebra $\omega'(A|_V)$
+on $V\cup\{\infty\}$. (Notice that $V\cup\{\infty\}$ is homeomorphic
+to $S^n_*$.) We assign $V$ with the object $$B^i(A)(V):=\int_{V\cup\{\infty\}}
+\omega'(A|_V).$$ By definition, $B^i(A)(V)$ is equivalent to $B^i(A)$. 
+For any $U_1,\cdots,U_r,V\in\mathscr C$ such that $U_1,\cdots,U_r$ are
+pairwise disjoint and contained in $V$, there exists a continuous map
+$\pi\:V\cup\{\infty\}\to U_1\cup\cdots\cup U_n\cup\{\infty\}$, and
+the augmentation defines a map $$\ve\:\pi_*(\omega'(A|_{V}))\to\bigox_{i=1}^r
+\omega'(A|_{U_i}).$$ We then obtain a structure map $$\begin{aligned}\nabla_{U_1,\cdots,U_s,V}\:
+B^i(A)(V)&=\int_{V\cup\{\infty\}}\omega'(A|_V)\\&\xrightarrow{\int\ve}
+\bigox_{k=1}^r\int_{U_i\cup\{\infty\}}\omega'(A|_{U_k})
+=\bigox_{k=1}^rB^i(A)(U_k).\end{aligned}$$ 
+
+The following theorem from \cite{GTZ12} proved that this indeed gives the
+$E_i$-coalgebra structure on $B^i(A)$:
+
+\begin{theorem}
+The maps $\nabla_{U_1,\cdots,U_s,V}$ form the structure maps of a 
+locally constant factorization coalgebra, making $B^i(A)$ into an 
+$E_i$-coalgebra. Thus $B^i$ lifts to a functor $$B^i\:\E_n\-\Alg^{aug}\to
+\E_i\-\coAlg(\E_{n-i}\-\Alg^{aug}).$$
+\end{theorem}
+
+In particular, taking $i=1$, we obtain the $E_1$-coalgebra structure on
+the Bar object $B(A)$ of an augmented $E_n$-algebra, which 
+restricts to the standard coalgebra structure on the Bar object if $A$
+is an associative algebra. 
+
+\printbibliography
+
+\end{document}
