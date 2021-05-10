@@ -17,8 +17,8 @@ restaurant at the middle point of the street and get more than half customers.
 	
 \begin{center}
     \begin{tikzpicture}
-	\draw[ultra thick][red](-3 , 0)--(0,0);
-	\draw[ultra thick][green](0,0)--(3,0);
+	\draw[ultra thick][black](-3 , 0)--(0,0);
+	\draw[ultra thick][gray](0,0)--(3,0);
 	\draw [fill] [gray](0,0) circle [radius=0.05];
 	\draw (0,0) circle [radius=0.05];
 	\node at (0,-0.35) [thick]{$C$};
@@ -37,12 +37,12 @@ middle point of each part.
 	
 \begin{center}
 	\begin{tikzpicture}[scale=2]
-		\draw[thick][blue](-3 , 0)--(-2,0);
-		\draw[thick][yellow](-2,0)--(-1.25,0);
-		\draw[thick][blue](-1.25 , 0)--(-0.55,0);
-		\draw[thick][yellow](-0.55,0)--(0.5,0);
-		\draw[thick][blue](0.5 , 0)--(2.35,0);
-		\draw[thick][yellow](2.35,0)--(3,0);
+		\draw[thick][black](-3 , 0)--(-2,0);
+		\draw[thick][gray](-2,0)--(-1.25,0);
+		\draw[thick][black](-1.25 , 0)--(-0.55,0);
+		\draw[thick][gray](-0.55,0)--(0.5,0);
+		\draw[thick][black](0.5 , 0)--(2.35,0);
+		\draw[thick][gray](2.35,0)--(3,0);
 		
 		\draw[fill][gray](-3,0) circle [radius=0.018];
 		\draw[fill][gray](-2,0) circle [radius=0.018];
@@ -52,22 +52,22 @@ middle point of each part.
 		\draw[fill][gray](2.35,0) circle [radius=0.018];
 		\draw[fill][gray](3,0) circle [radius=0.018];
 		
-		\draw [fill] [red](-2.25,0) circle [radius=0.03];
+		\draw [fill] [lightgray](-2.25,0) circle [radius=0.03];
 		\node at (-2.25,-0.15) {$A_1$};
-		\draw [fill] [red](-0.75,0) circle [radius=0.03];
+		\draw [fill] [lightgray](-0.75,0) circle [radius=0.03];
 		\node at (-0.75,-0.15) {$A_2$};
-		\draw [fill] [red](0.75,0) circle [radius=0.03];
+		\draw [fill] [lightgray](0.75,0) circle [radius=0.03];
 		\node at (0.75,-0.15) {$A_3$};
-		\draw [fill] [red](2.25,0) circle [radius=0.03];
+		\draw [fill] [lightgray](2.25,0) circle [radius=0.03];
 		\node at (2.25,-0.15) {$A_4$};
 		
-		\draw [fill] [green](-1.75,0) circle [radius=0.03];
+		\draw [fill] [lightgray](-1.75,0) circle [radius=0.03];
 		\node at (-1.75,-0.15) {$B_1$};
-		\draw [fill] [green](-0.35,0) circle [radius=0.03];
+		\draw [fill] [lightgray](-0.35,0) circle [radius=0.03];
 		\node at (-0.35,-0.15) {$B_2$};
-		\draw [fill] [green](0.25,0) circle [radius=0.03];
+		\draw [fill] [lightgray](0.25,0) circle [radius=0.03];
 		\node at (0.25,-0.15){$B_3$};
-		\draw [fill] [green](2.45,0) circle [radius=0.03];
+		\draw [fill] [lightgray](2.45,0) circle [radius=0.03];
 		\node at (2.45,-0.15) {$B_4$};
 		
 		\draw (-2.25,0) circle [radius=0.03];
