@@ -14,132 +14,137 @@
 \usepackage{unicode-math}
 
 \setCJKmainfont{NotoSerifCJKsc-Regular.otf}[
-    Path = ../../fonts/,
-    BoldFont = NotoSansCJKsc-Medium.otf,
-    ItalicFont = fzktk.ttf,
-    Scale = .97,
-    ItalicFeatures = {Scale = 1}
+    Path            = ../../fonts/,
+    BoldFont        = NotoSansCJKsc-Medium.otf,
+    ItalicFont      = fzktk.ttf,
+    Scale           = .97,
+    ItalicFeatures  = {Scale = 1}
 ]
 
 \setCJKsansfont{NotoSansCJKsc-DemiLight.otf}[
-    Path = ../../fonts/,
-    BoldFont = NotoSansCJKsc-Bold.otf,
-    Scale = .97
+    Path            = ../../fonts/,
+    BoldFont        = NotoSansCJKsc-Bold.otf,
+    Scale           = .97
 ]
 
 \setCJKmonofont{NotoSansCJKsc-DemiLight.otf}[
-    Path = ../../fonts/,
-    BoldFont = NotoSansCJKsc-Bold.otf,
-    Scale = .9
+    Path            = ../../fonts/,
+    BoldFont        = NotoSansCJKsc-Bold.otf,
+    Scale           = .9
 ]
 
 \newCJKfontfamily{\KaiTi}{fzktk.ttf}[
-    Path = ../../fonts/,
-    BoldFont = NotoSansCJKsc-Medium.otf,
-    BoldFeatures = {Scale = .97},
-    ItalicFont = NotoSerifCJKsc-Regular.otf,
-    ItalicFeatures = {Scale = .97}
+    Path            = ../../fonts/,
+    BoldFont        = NotoSansCJKsc-Medium.otf,
+    BoldFeatures    = {Scale = .97},
+    ItalicFont      = NotoSerifCJKsc-Regular.otf,
+    ItalicFeatures  = {Scale = .97}
 ]
 
-\setmainfont{STIX2Text}[
-    Path = ../../fonts/,
-    Extension = .otf,
-    UprightFont = *-Regular,
-    BoldFont = *-Bold,
-    ItalicFont = *-Italic,
-    BoldItalicFont = *-BoldItalic
+\setmainfont{XITS}[
+    Path            = ../../fonts/,
+    Extension       = .otf,
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
 ]
 
 \setsansfont{Lato}[
-    Path = ../../fonts/,
-    Scale = MatchUppercase,
-    Extension = .ttf,
-    UprightFont = *-Regular,
-    BoldFont = *-Bold,
-    ItalicFont = *-Italic,
-    BoldItalicFont = *-BoldItalic
+    Path            = ../../fonts/,
+    Scale           = MatchUppercase,
+    Extension       = .ttf,
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold,
+    ItalicFont      = *-Italic,
+    BoldItalicFont  = *-BoldItalic
 ]
 
 \setmonofont{FiraMono}[
-    Path = ../../fonts/,
-    Scale = .9,
-    Extension = .otf,
-    UprightFont = *-Regular,
-    BoldFont = *-Bold
+    Path            = ../../fonts/,
+    Scale           = .9,
+    Extension       = .otf,
+    UprightFont     = *-Regular,
+    BoldFont        = *-Bold
 ]
 
-\setmathfont{STIX2Math.otf}[
-    Path = ../../fonts/,
-    BoldFont = STIX2Math-Bold.otf
+\setmathfont{XITSMath-Regular.otf}[
+    Path            = ../../fonts/,
+    BoldFont        = XITSMath-Bold.otf
 ]
 
 \setmathfont{latinmodern-math.otf}[
-    Path = ../../fonts/,
-    range = {frak, bffrak},
-    BoldFont = latinmodern-math.otf
+    Path            = ../../fonts/,
+    range           = {frak, bffrak},
+    BoldFont        = latinmodern-math.otf
 ]
 
 \setmathfont{LatoMath.otf}[
-    Path = ../../fonts/,
-    Scale = .95,
-    BoldFont = LatoMath.otf,
-    version = sf
+    Path            = ../../fonts/,
+    Scale           = .95,
+    BoldFont        = LatoMath.otf,
+    version         = sf
 ]
 
 \setmathfont{LatoMath.otf}[
-    Path = ../../fonts/,
-    Scale = .95,
-    BoldFont = LatoMath.otf,
-    range = {bb, sfup -> up, sfit -> it, bfsfup -> bfup, bfsfit -> bfit}
+    Path            = ../../fonts/,
+    Scale           = .95,
+    BoldFont        = LatoMath.otf,
+    range           = {bb, sfup -> up, sfit -> it, bfsfup -> bfup, bfsfit -> bfit}
 ]
 
+\setmathfont{STIX2Math.otf}[
+    Path            = ../../fonts/,
+    BoldFont        = STIX2Math-Bold.otf,
+    range           = {\int, \sum, \prod, \coprod, \bigoplus, \bigotimes, \bigcup, \bigcap, \bigvee, \bigwedge}
+]
 
 \Umathcode`/  =  "0 "0 "2215    % / -> U+2215 division slash
 
 % patch 'text math' math alphabets in bold math
-\setmathfontface\mathrm{STIX2Text-Bold.otf}[
-    Path = ../../fonts/,
-    version = bold
+\setmathfontface\mathrm{XITS-Bold.otf}[
+    Path            = ../../fonts/,
+    version         = bold
 ]
 
-\setmathfontface\mathit{STIX2Text-BoldItalic.otf}[
-    Path = ../../fonts/,
-    version = bold
+\setmathfontface\mathit{XITS-BoldItalic.otf}[
+    Path            = ../../fonts/,
+    version         = bold
 ]
 
-\setmathfontface\mathbf{STIX2Text-Bold.otf}[
-    Path = ../../fonts/,
-    version = bold
+\setmathfontface\mathbf{XITS-Bold.otf}[
+    Path            = ../../fonts/,
+    version         = bold
 ]
 
 \setmathfontface\mathtt{FiraMono-Bold.otf}[
-    Path = ../../fonts/,
-    Scale = .9,
-    version = bold
+    Path            = ../../fonts/,
+    Scale           = .9,
+    version         = bold
 ]
 
 \setmathfontface\mathrm{Lato-Regular.ttf}[
-    Path = ../../fonts/,
-    Scale = MatchUppercase,
-    version = sf
+    Path            = ../../fonts/,
+    Scale           = MatchUppercase,
+    version         = sf
 ]
 
 \setmathfontface\mathit{Lato-Italic.ttf}[
-    Path = ../../fonts/,
-    Scale = MatchUppercase,
-    version = sf
+    Path            = ../../fonts/,
+    Scale           = MatchUppercase,
+    version         = sf
 ]
 
 \setmathfontface\mathbf{Lato-Bold.ttf}[
-    Path = ../../fonts/,
-    Scale = MatchUppercase,
-    version = sf
+    Path            = ../../fonts/,
+    Scale           = MatchUppercase,
+    version         = sf
 ]
 
 \setmathfontface\mathtt{FiraMono-Regular.otf}[
-    Path = ../../fonts/,
-    Scale = .9,
-    version = sf
+    Path            = ../../fonts/,
+    Scale           = .9,
+    version         = sf
 ]
 
 % bold math in bold text
