@@ -86,7 +86,7 @@ the divided power structure of $A$ extends to $B$.
 \end{definition}
 The crystalline cohomology is defined via the crystalline sites and topoi. 
 In the above discussion, 
-we may replace "rings" by "ringed topoi" 
+we may replace ``rings" by ``ringed topoi" 
 to define similar notions for divided power schemes. 
 For example:
 \begin{definition}
@@ -105,13 +105,13 @@ divided power de Rham complexes can be similarly defined.
 \end{definition}
 
 Like \'etale cohomology, crystalline cohomology works well 
-only in "finite" case (or "profinite" case). 
+only in ``finite" case (or ``profinite" case). 
 That is, we will assume $m \CO_S=0$ for some integer $m$ without mentioned.
 \begin{definition}
     Let $(S, \CI, \gamma)$ be a divided power scheme, 
     $S_0 = S / \CI$ and $X$ an $S_0$-scheme such that 
     the divided power structure extends. 
-    The big crystalline site $CRIS(X/S)$ contains objects defined by the diagram:
+    The big crystalline site $\CRIS(X/S)$ contains objects defined by the diagram:
     \[
         \begin{tikzcd}
             U \ar[r] \ar[d] & T \ar[d] \\
@@ -128,40 +128,40 @@ That is, we will assume $m \CO_S=0$ for some integer $m$ without mentioned.
     \[
         \begin{tikzcd}
             U_1 \ar[r] \ar[d] & T_1 \ar[d] \\
-            U_2 \ar[r] & T_2.
+            U_2 \ar[r] & T_2
         \end{tikzcd}
     \]
-The small crystalline site $Cris(X/S)$ contains those $U \to T$ 
-such that $U$ is an open subscheme of $X$ 
-with morphisms and coverings defined the same.
+    The small crystalline site $\Cris(X/S)$ contains those $U \to T$ 
+    such that $U$ is an open subscheme of $X$ 
+    with morphisms and coverings defined the same.
 \end{definition}
 
-It can be checked that $CRIS(X/S)$ and $Cris(X/S)$ are actually sites. 
-Then the big crystalline topos $(X/S)_{CRIS}$ is the topos 
+It can be checked that $\CRIS(X/S)$ and $\Cris(X/S)$ are actually sites. 
+Then the big crystalline topos $(X/S)_{\CRIS}$ is the topos 
 corresponding to the big crystalline site 
-and similarly for the small crystalline topos $(X/S)_{Cris}$.
+and similarly for the small crystalline topos $(X/S)_{\Cris}$.
 From the definition, one notices that 
 a sheaf on the crystalline site is a compatible collection of Zariski sheaves.
 
-The inclusion of sites $Cris(X/S) \to CRIS(X/S)$ is continuous and cocontinuous. 
-Hence we may define functors $i_*, i_! \colon Cris(X/S) \to CRIS(X/S)$ 
-and $i^{-1} \colon CRIS(X/S) \to Cris(X/S)$ respectively. 
+The inclusion of sites $\Cris(X/S) \to \CRIS(X/S)$ is continuous and cocontinuous. 
+Hence we may define functors $i_*, i_! \colon \Cris(X/S) \to \CRIS(X/S)$ 
+and $i^{-1} \colon \CRIS(X/S) \to \Cris(X/S)$ respectively. 
 Moreover, for a morphism $f\colon X/S \to Y/S'$, 
-the natural map $CRIS(X/S)\to CRIS(Y/S')$ defines $f^{-1}, f_*$ respectively.
+the natural map $\CRIS(X/S)\to \CRIS(Y/S')$ defines $f^{-1}, f_*$ respectively.
 
 Then we are able to define the push forward 
 and pull back of crystalline topoi. 
 For a morphism $f \colon X/S \to Y/S'$, we have arrows:
 \[
     \begin{tikzcd}
-        (X/S)_{Cris} \ar[r, "{i_*}", bend left] & 
-        (X/S)_{CRIS} \ar[l,"{i^{-1}}", bend left] \ar[r, "{f_*}", bend left] & 
-        (Y/S')_{CRIS} \ar[l, "{f^{-1}}", bend left] \ar[r, "{i^{-1}}", bend left] & 
-        (Y/S')_{Cris} \ar[l, "{i_!}", bend left].
+        (X/S)_{\Cris} \ar[r, "{i_*}", bend left] & 
+        (X/S)_{\CRIS} \ar[l,"{i^{-1}}", bend left] \ar[r, "{f_*}", bend left] & 
+        (Y/S')_{\CRIS} \ar[l, "{f^{-1}}", bend left] \ar[r, "{i^{-1}}", bend left] & 
+        (Y/S')_{\Cris} \ar[l, "{i_!}", bend left].
     \end{tikzcd}
 \]
 Then $i^{-1} \circ f_* \circ i_*$ and $i^{-1} \circ f^{-1} \circ i_!$ 
-are morphisms of topoi $(X/S)_{Cris}$ and $(Y/S)_{Cris}$, 
+are morphisms of topoi $(X/S)_{\Cris}$ and $(Y/S)_{\Cris}$, 
 also denoted by $f_*$ and $f^{-1}$. 
 From now on, we will consider the small crystalline site only.
 
@@ -175,19 +175,19 @@ denoted $f_*$ and $f^*$ respectively.
 The crystalline site and Zariski sites are linked. 
 There is a morphism of sites 
 \[
-    u_{X/S} \colon Cris(X/S) \to X_{Zar}, \quad (U \to T) \mapsto U.
+    u_{X/S} \colon \Cris(X/S) \to X_{\Zar}, \quad (U \to T) \mapsto U.
 \]
 Moreover, for an object $U \to T$ in the crystalline site, 
 those objects lying over it form a subsite, 
 which is equivalent to the Zariski site of $T$. 
-For a sheaf $\CF \in (X/S)_{cris}$, 
+For a sheaf $\CF \in (X/S)_{\Cris}$, 
 the corresponding Zariski sheaf is denoted by $\CF_T$.
 
 As in the Zariski case, 
 quasi-coherent modules are the mainly objects for study. 
 Those are, ``crystals" for some intuitive reasons.
 \begin{definition}
-    A crystal on $Cris(X/S)$ is a sheaf of $\CO_{X/S}$-modules 
+    A crystal on $\Cris(X/S)$ is a sheaf of $\CO_{X/S}$-modules 
     such that for any morphism $u\colon T' \to T$, 
     the map induced by $u$, $u^*\CF_T \to \CF_{T'}$ is an isomorphism 
     and for each $T$, $\CF_T$ is a quasi-coherent $\CO_T$ module. 
@@ -213,7 +213,7 @@ Here $X$ is a smooth scheme over a field of characteristic $0$, $K$.
 Those abelian categories are equivalent:
 \begin{itemize}
     \item 
-        Crystals on $Cris(X/K)$,
+        Crystals on $\Cris(X/K)$,
     \item 
         Integrable connections of quasi-coherent sheaves on $X$,
     \item 
@@ -235,7 +235,7 @@ $D_{X,\gamma}(Y^{n+1})$ is denoted by $D(n)$.
     The following categories are equivalent:
     \begin{itemize}
         \item 
-            Crystals on $Cris(X/S)$,
+            Crystals on $\Cris(X/S)$,
         \item 
             $D_{X,\gamma}(Y)$-modules with HPD-stratification as $\CO_Y$-modules,
         \item 
@@ -312,7 +312,7 @@ We shall use the notations in the above sections.
         \end{tikzcd}
     \]
     with $X, Y, S$ as above and $Y' = \BA^n_Y$. 
-    For a crystal $\CE \in (X/S)_{cris}$, 
+    For a crystal $\CE \in (X/S)_{\Cris}$, 
     there is a quasi-isomorphism of complexes:
     \[
         Rp_*(\CE_{D_X(Y')} \otimes \Omega_{Y'/S}^\bullet) 
@@ -364,7 +364,7 @@ We shall use the notations in the above sections.
     Moreover, $D(0)$ covers the ``final object" $*$ 
     by the lifting property of smooth maps.
     One applies the \v Cech resolution for $D(0) \to *$ to conclude 
-    by noticing $D(n) = D(0)^{n+1}$ in the category $Cris(X/S)$. 
+    by noticing $D(n) = D(0)^{n+1}$ in the category $\Cris(X/S)$. 
 \end{proof}
 
 \begin{lemma}
@@ -424,7 +424,7 @@ We shall use the notations in the above sections.
 
 \begin{theorem}
     Situations as above. 
-    $\CE$ corresponds to a crystal on $(X/S)_{Cris}$, 
+    $\CE$ corresponds to a crystal on $(X/S)_{\Cris}$, 
     also denoted by $\CE$. 
     Then there is a canonical isomorphism:
     \[
@@ -433,8 +433,8 @@ We shall use the notations in the above sections.
     \]
     In particular,
     \[
-        R \Gamma ((X/S)_{Cris},\CE) \simeq 
-        R \Gamma (X_{Zar}, \CE \otimes \Omega_{Y/S}^\bullet). 
+        R \Gamma ((X/S)_{\Cris},\CE) \simeq 
+        R \Gamma (X_{\Zar}, \CE \otimes \Omega_{Y/S}^\bullet). 
     \]
 \end{theorem}
 
@@ -523,7 +523,7 @@ The main reference here is \cite{BO} and \cite{Be2}.
     \[
         Lu^* Rf_{X/S*} \CE \simeq Rf'_{X'/S'*} Lu'^*\CE,
     \]
-    for any flat crystal $\CE$ on $(X/S)_{Cris}$.
+    for any flat crystal $\CE$ on $(X/S)_{\Cris}$.
 \end{theorem}
 
 \begin{proof}
@@ -556,15 +556,15 @@ The main reference here is \cite{BO} and \cite{Be2}.
     of cohomology of coherent sheaves in Zariski topology.
 \end{proof}
 
-We may then define the "completed" version. 
+We may then define the ``completed" version. 
 That is, $S$ is a $p$ -adically complete formal scheme with 
 $\CI = (p)$, $S_n = S / \CI^n$. 
-The completed crystalline site $Cris(X/\hat{S})$ is 
-the combination of all $Cris(X/S_n)$ and crystals similarly defined. 
+The completed crystalline site $\Cris(X/\hat{S})$ is 
+the combination of all $\Cris(X/S_n)$ and crystals similarly defined. 
 One defines the completed crystalline topos then.
 \begin{proposition}
-    For a crystal $\CE$ on $(X/S)_{Cris}$ 
-    with restriction $\CE_n$ on $(X/S_n)_{Cris}$, 
+    For a crystal $\CE$ on $(X/S)_{\Cris}$ 
+    with restriction $\CE_n$ on $(X/S_n)_{\Cris}$, 
     there is an isomorphism:
     \[
         Ru_{X/S*} \CE = R \lim_n Ru_{X/S_n*} \CE_n.
@@ -581,8 +581,8 @@ where $\hat{D}$ is the $p$-adic completion of $D_X(Y)$
 and the latter $\CE$ is a $\hat{D}$ -module.
 In particular, there is an isomorphism:
 \[
-    R \Gamma((X/S)_{Cris},\CE) \simeq
-    R \Gamma(X_{Zar}, \hat{\CE} \otimes \Omega_{\hat{D}/S}^\bullet).
+    R \Gamma((X/S)_{\Cris},\CE) \simeq
+    R \Gamma(X_{\Zar}, \hat{\CE} \otimes \Omega_{\hat{D}/S}^\bullet).
 \]
 Then the vanishing theorem, the base change theorem and the finiteness theorem 
 also hold in the completed case for coherent crystals, 
@@ -594,35 +594,35 @@ By Grothendieck's existence theorem,
 there exists a coherent $\CO_Y$-module, 
 also denoted by $\CE$ such that 
 \[
-    R\Gamma((X/S)_{Cris},\CE) \simeq 
-    R\Gamma(X_{Zar},\CE\otimes \Omega_{Y/S}^\bullet).
+    R\Gamma((X/S)_{\Cris},\CE) \simeq 
+    R\Gamma(X_{\Zar},\CE\otimes \Omega_{Y/S}^\bullet).
 \]
 In particular,
 \[
-    R\Gamma((X/S)_{Cris}, \CO_{X/S}) \simeq 
-    R \Gamma (X_{Zar}, \Omega_{Y/S}^\bullet).
+    R\Gamma((X/S)_{\Cris}, \CO_{X/S}) \simeq 
+    R \Gamma (X_{\Zar}, \Omega_{Y/S}^\bullet).
 \]
 We will denote the left hand side by $\HSd$. 
-We restrict to the case $S = \Spec (W(k))$ and 
+We restrict to the case $S = \Spec (\W(k))$ and 
 $S_0 = \Spec (k)$ for some perfect field $k$ of characteristic $p$, 
 which is the crystalline cohomology for characteristic $p$ varieties.
 
 We firstly discuss the case that $X/k$ is proper and $X$ admits a lifting. 
 Then there exists a cartesian diagram 
-(if there exists an embedding $W(k) \to \BC$, which is the case for $k$ finite):
+(if there exists an embedding $\W(k) \to \BC$, which is the case for $k$ finite):
 \[
     \begin{tikzcd}
-        X \ar[r] \ar[d] & \CX \ar[d] & X^{an} \ar[l] \ar[d] \\
-        \Spec (k) \ar[r] & \Spec (W(k)) & \Spec (\BC) \ar[l],
+        X \ar[r] \ar[d] & \CX \ar[d] & X^{\an} \ar[l] \ar[d] \\
+        \Spec (k) \ar[r] & \Spec (\W(k)) & \Spec (\BC) \ar[l],
     \end{tikzcd}
 \]
-with $\CX$ a proper smooth scheme over $W(k)$. 
+with $\CX$ a proper smooth scheme over $\W(k)$. 
 Then we have the following comparison theorem 
 between crystalline cohomology and Betti cohomology.
 \begin{theorem}
     There is a canonical isomorphism 
     \[
-        \Hkn \otimes \BC \simeq H^n(X^{an}, \BC),
+        \Hkn \otimes \BC \simeq H^n(X^{\an}, \BC),
     \]
     where the right hand side is the Betti cohomology.
 \end{theorem}
@@ -630,21 +630,21 @@ between crystalline cohomology and Betti cohomology.
 \begin{proof}
     There exists an canonical isomorphism:
     \[ 
-        \Hkn \simeq \BH^n (\Omega_{\CX/W(k)}^\bullet).
+        \Hkn \simeq \BH^n (\Omega_{\CX/\W(k)}^\bullet).
     \]
     There exists a spectral sequence 
     \[
-        E_1^{pq} = \BH^q(\Omega_{\CX/W(k)}^p) 
-        \Rightarrow \BH^{p+q} (\Omega_{\CX/W(k)}^\bullet).
+        E_1^{pq} = \BH^q(\Omega_{\CX/\W(k)}^p) 
+        \Rightarrow \BH^{p+q} (\Omega_{\CX/\W(k)}^\bullet).
     \]
     All the modules in the left hand side is locally free. 
     After tensoring $\BC$, it becomes the spectral sequence
     \[
-        E_1^{pq} = \BH^q(\Omega_{X^{an}/\BC}^p) 
-        \Rightarrow \BH^{p+q} (\Omega_{X^{an}/\BC}^\bullet).
+        E_1^{pq} = \BH^q(\Omega_{X^{\an}/\BC}^p) 
+        \Rightarrow \BH^{p+q} (\Omega_{X^{\an}/\BC}^\bullet).
     \]
     By (complex) Hodge theory, the spectral sequence degenerates 
-    and the right hand side is isomorphic to $H^{p+q} (X^{an},\BC)$. 
+    and the right hand side is isomorphic to $H^{p+q} (X^{\an},\BC)$. 
     Hence the original spectral sequence degenerates and the result follows.
 \end{proof}
 For example, $\BP^n$, and hypersurfaces in $\BP^n$ admits a lifting. 
@@ -656,8 +656,8 @@ In particular, this is the case when $X$ is a curve.
     For a crystal $\CE_1$ on $X_1$ and a crystal $\CE_2$ on $X_2$, 
     $\CE_1 \boxtimes \CE_2$ defines a crystal on $X_1\times X_2$ and 
     \[
-        R \Gamma ((X_1\times X_2/S)_{cris}, \CE_1 \boxtimes \CE_2) \simeq 
-        R \Gamma((X_1/S)_{cris}, \CE_1) \otimes^{L} R \Gamma ((X_2/S)_{cris}, \CE_2).
+        R \Gamma ((X_1\times X_2/S)_{\cris}, \CE_1 \boxtimes \CE_2) \simeq 
+        R \Gamma((X_1/S)_{\Cris}, \CE_1) \otimes^{L} R \Gamma ((X_2/S)_{\Cris}, \CE_2).
     \]
 \end{theorem}
 \begin{proof}
@@ -670,33 +670,33 @@ In particular, this is the case when $X$ is a curve.
 \end{proof}
 \begin{theorem}[Poincar\'e duality]
     For $X/k$ proper smooth of dimension $d$, 
-    there is a trace map $\tr\colon H^{2d}_{cris}(X)\simeq W(k)$, 
-    such that for all coherent crystal $\CE$ over $X/W(k)$, the pairing
+    there is a trace map $\tr\colon H^{2d}_{\cris}(X)\simeq \W(k)$, 
+    such that for all coherent crystal $\CE$ over $X/\W(k)$, the pairing
     \[
-        R\Gamma((X/W(k))_{cris}, \CE) \times 
-        R \Gamma((X/W(k))_{cris}, \CE^\vee) \to W(k)[2d]
+        R\Gamma((X/\W(k))_{\Cris}, \CE) \times 
+        R \Gamma((X/\W(k))_{\Cris}, \CE^\vee) \to \W(k)[2d]
     \]
     is perfect.
 \end{theorem}
 \begin{proof}
     We define the trace map firstly. 
-    Locally, $X$ lifts to a smooth scheme $\tilde{X}$ over $W(k)$ 
+    Locally, $X$ lifts to a smooth scheme $\tilde{X}$ over $\W(k)$ 
     with $p$-adic completion by $\CX$ (though it is no longer compact)
     . Take a compactification of $\tilde{X}$, $\bar{X}$. 
-    $\bar{X} \to \Spec (W(k))$ has a dualizing complex $\omega$. 
+    $\bar{X} \to \Spec (\W(k))$ has a dualizing complex $\omega$. 
     Then
     \[
-        \omega|_{\tilde{X}} \simeq \Omega_{\tilde{X}/W(k)}^d.
+        \omega|_{\tilde{X}} \simeq \Omega_{\tilde{X}/\W(k)}^d.
     \]
     The trace map is defined as (by the usual procedure, 
     one checks the map is independent of $\bar{X}$)
     \[
-        H^{2d}_{cris}(X) \simeq 
-        H^d(\CX,\Omega_{\CX}^d) \to H^d(\bar{X},\omega) \simeq W(k).
+        H^{2d}_{\cris}(X) \simeq 
+        H^d(\CX,\Omega_{\CX}^d) \to H^d(\bar{X},\omega) \simeq \W(k).
     \]
     By derived Nakayama lemma and the finiteness theorem, 
     it suffices to prove after tensoring $k$. By base change theorem, 
-    it suffices to prove similar results on $(X/k)_{cris}$. 
+    it suffices to prove similar results on $(X/k)_{\Cris}$. 
     Then the derived global sections is represented by de Rham complexes 
     and the result follows from the Serre duality.
 \end{proof}
@@ -732,7 +732,7 @@ In particular, this is the case when $X$ is a curve.
 \end{remark}
 
 \subsection{Frobenius action}
-For this section, let $S = \Spec (W(k))$ and $S_0 = \Spec (k)$, 
+For this section, let $S = \Spec (\W(k))$ and $S_0 = \Spec (k)$, 
 where $k$ is a characteristic $p$ perfect field. 
 $X$ be a smooth scheme over $k$. 
 The (absolute) Frobenius actions $F_X$ and $F_S$ induce a commutative diagram, 
@@ -748,7 +748,7 @@ Then a morphism $\CO_{X/S} \to RF_{X*} \CO_{X/S}$
 and morphism $\CO_{X'/S} \to RF_{X/S*} \CO_{X/S}$, 
 the first induces the Frobenius action on $\Hkd$ and the cohomology of $X$ 
 becomes an $F$ -crystal after modulo torsion 
-and the latter induces the $W(k)$ -linearization of such action.
+and the latter induces the $\W(k)$ -linearization of such action.
 
 As we have mentioned, the eigenvalues of the Frobenius action 
 provide informations of the zeta function. 
@@ -865,7 +865,7 @@ It can be proved that $L\eta$ is well-defined.
 
 \begin{definition}
     For an $F$-crystal $M$ 
-    (i.e. a finite rank free $W(k)$ -module with a semilinear Frobenius action), 
+    (i.e. a finite rank free $\W(k)$ -module with a semilinear Frobenius action), 
     choose a basis of it and then the Frobenius action is represented by a matrix. 
     The slopes of the action are the absolute values of the eigenvalues of the matrix 
     (the slopes are independent of the choice of bases). 
