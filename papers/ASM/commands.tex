@@ -1,0 +1,78 @@
+% \usepackage[pdf]{pstricks}
+% \usepackage{pst-all}
+
+\usetikzlibrary{decorations.markings}
+
+% \newcommand{\qed}{\relax{\ifhmode\unskip\nobreak\hfill$\Box$\fi
+% \ifmmode\ifinner\else\hskip5pt\fi \hfill\Box\fi}\relax}
+\newcommand{\ie}{{\em i.e.}}
+
+\newcommand{\mto}{\lput{:U}{\pspicture(0,0)(0,0)
+\psline[arrows=->,arrowscale=1.5](2.2pt,0)(2.3pt,0)\endpspicture}}
+\newcommand{\mfro}{\lput{:U}{\pspicture(0,0)(0,0)
+\psline[arrows=->,arrowscale=1.5](-2.2pt,0)(-2.3pt,0)\endpspicture}}
+
+\newcommand{\sixvertex}[6]{
+    \begin{tikzpicture}[
+        scale = .6,
+        thick,
+        decoration={
+            markings,
+            mark=at position 0.65 with {\arrow{stealth}}
+        }
+    ]
+        \begin{scope}[shift={(0,0)}]
+            \draw[postaction={decorate}] (-1, 0)--( 0, 0);
+            \draw[postaction={decorate}] ( 1, 0)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 0, 1);
+            \draw[postaction={decorate}] ( 0, 0)--( 0,-1);
+            \node at (0, -1.6) {#1};
+        \end{scope}
+        \begin{scope}[shift={(3,0)}]
+            \draw[postaction={decorate}] ( 0, 0)--( 1, 0);
+            \draw[postaction={decorate}] ( 0, 0)--(-1, 0);
+            \draw[postaction={decorate}] ( 0, 1)--( 0, 0);
+            \draw[postaction={decorate}] ( 0,-1)--( 0, 0);
+            \node at (0, -1.6) {#2};
+        \end{scope}
+        \begin{scope}[shift={(6,0)}]
+            \draw[postaction={decorate}] (-1, 0)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 1, 0);
+            \draw[postaction={decorate}] ( 0,-1)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 0, 1);
+            \node at (0, -1.6) {#3};
+        \end{scope}
+        \begin{scope}[shift={(9,0)}]
+            \draw[postaction={decorate}] ( 1, 0)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--(-1, 0);
+            \draw[postaction={decorate}] ( 0, 1)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 0,-1);
+            \node at (0, -1.6) {#4};
+        \end{scope}
+        \begin{scope}[shift={(12,0)}]
+            \draw[postaction={decorate}] ( 1, 0)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--(-1, 0);
+            \draw[postaction={decorate}] ( 0,-1)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 0, 1);
+            \node at (0, -1.6) {#5};
+        \end{scope}
+        \begin{scope}[shift={(15,0)}]
+            \draw[postaction={decorate}] (-1, 0)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 1, 0);
+            \draw[postaction={decorate}] ( 0, 1)--( 0, 0);
+            \draw[postaction={decorate}] ( 0, 0)--( 0,-1);
+            \node at (0, -1.6) {#6};
+        \end{scope}
+    \end{tikzpicture}
+}
+\newcounter{fignum}
+\setcounter{fignum}{0}
+\newcommand{\fig}{$$\stepcounter{fignum}\mbox{Figure \arabic{fignum}}$$}
+\newcommand{\df}{\em}
+\def\bqn {\begin{equation}}
+\def\eqn {\end{equation}}
+
+\theoremstyle{cjk-definition}
+\newtheorem*{problem}{问题}
+
+\renewcommand{\thetheorem}{\arabic{theorem}}
