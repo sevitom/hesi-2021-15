@@ -20,7 +20,7 @@
 \section{Introduction}
 
 In 1956, Milnor discovered that there exists a differentiable structure on $S^7$ that is different from the usual one in \cite{milnor7sphere}, where he introduced a differential  invariant and applied it to a collection of $S^3$-bundles over $S^4$. From the theory of h-cobordism discussed in \cite{milnor3} and \cite{smale}, there are exactly $28$ differentiable structures on $S^7$. In 1962, Eells and Kuiper introduced $\mu$ invariant which takes different values for different differentiable structures on $S^7$, completely classifying the $28$ differentiable structures on $S^7$. 
-In \cite{kervairemilnor}, the group $\Theta_n$ of homotopy  spheres is discussed, where for  $n \geq  5$, $\Theta_n$ describes exotic spheres of dimension $n$. 
+In \cite{kervairemilnor}, the group $\Theta_n$ of homotopy spheres is discussed, where for  $n \geq  5$, $\Theta_n$ describes exotic spheres of dimension $n$. 
 
 In this thesis, we introduce the invariants of Milnor and Eells--Kuiper, and apply the Eells--Kuiper invariant to the collection of $S^3$-bundles over $S^4$ defined in \cite{milnor7sphere} to find $16$ differentiable structures on $S^7$, and then using connected sum to find the $28$ differentiable structures on $S^7$. 
 
@@ -92,9 +92,10 @@ and then
 becomes trivial. In essentially the same way as above we can show that the $\lambda$ invariant is well-defined, since two definitions will differ by some top Pontrjagin number which is an integer. 
 
 In the special case where $k = 2$, 
-\[
-\lambda(M) = \frac{45}{7}({\tau(W)-\langle(7j^{-1}p_2-j^{-1}p_1^2)/45,[W,M]\rangle}) \equiv  \frac{3}{7}\tau(W) + \frac{1}{7}\langle j^{-1}p_1^2,[W,M]\rangle  \bmod  1.  
-\]
+\begin{gather*}
+\lambda(M) = \frac{45}{7}({\tau(W)-\langle(7j^{-1}p_2-j^{-1}p_1^2)/45,[W,M]\rangle}) \\
+\equiv  \frac{3}{7}\tau(W) + \frac{1}{7}\langle j^{-1}p_1^2,[W,M]\rangle  \bmod  1.  
+\end{gather*}
 Trivially for integers $a,b$, $2(a + 3b) \equiv 2a-b  \bmod  7$ and $4(2a-b) \equiv  a + 3b \bmod  7$. Consequently this $\lambda$ invariant and the previous one defined for $7$-manifolds indeed determine each other.  
 
 
@@ -238,7 +239,7 @@ Let $a_k = 1$ if $k$ is even, and $a_k = 2$ if $k$ is odd.
 	
 	Since 
 	\[
-	H^{r}(M) \stackrel{\text { zero }}{\leftarrow} H^{r}\left(W_{1}\right) \stackrel{\text { isom. }}{\leftarrow} H^{r}\left(W_{1}, M\right) \stackrel{\text { zero }}{\leftarrow} H^{r-1}(M), 
+	H^{r}(M) \stackrel{\text { zero }}{\leftarrow} H^{r}(W_{1}) \stackrel{\text { isom. }}{\leftarrow} H^{r}(W_{1}, M) \stackrel{\text { zero }}{\leftarrow} H^{r-1}(M), 
 	\]
 	we find $H^r(X) \to  H^r(W_1)\stackrel{\text { zero }}{ \to }H^{r}(M)$ is the zero map. Thus
 	\[
@@ -248,24 +249,33 @@ Let $a_k = 1$ if $k$ is even, and $a_k = 2$ if $k$ is odd.
 	
 	It follows from easy diagram chasing that $j$ is an isomorphism and thus $k$ is an isomorphism. 
 	
-	If $\alpha = j h^{-1}\left(\alpha_{1}  \oplus  \alpha_{2}\right)  \in   H^{2k}(X),$ then
-	\[
-	\left\langle\nu, \alpha^{2}\right\rangle = \left\langle\nu, j h^{-1}\left(\alpha_{1}^{2}  \oplus  \alpha_{2}^{2}\right)\right\rangle = \left\langle\nu_{1}  \oplus \left(-\nu_{2}\right), \alpha_{1}^{2}  \oplus  \alpha_{2}^{2}\right\rangle = \left\langle\nu_{1}, \alpha_{1}^{2}\right\rangle-\left\langle\nu_{2}, \alpha_{2}^{2}\right\rangle
-	\]
+	If $\alpha = j h^{-1}(\alpha_{1}  \oplus  \alpha_{2})  \in   H^{2k}(X),$ then
+	\begin{gather*}
+	\left\langle\nu, \alpha^{2}\right\rangle = \left\langle\nu, j h^{-1}(\alpha_{1}^{2}  \oplus  \alpha_{2}^{2})\right\rangle \\
+	= \left\langle\nu_{1}  \oplus (-\nu_{2}), \alpha_{1}^{2}  \oplus  \alpha_{2}^{2}\right\rangle = \left\langle\nu_{1}, \alpha_{1}^{2}\right\rangle-\left\langle\nu_{2}, \alpha_{2}^{2}\right\rangle
+	\end{gather*}
 	where $\nu = [X], \nu_1 = [W_1,M], \nu_2 = [W_2,M]$ are orientation classes. Thus the intersection form of $X$ splits into the direct sum of those of $W_1$ and $W_2$, and 
 	\[
 	\tau(X) = \tau(W_1)-\tau(W_2). 
 	\]
 	
-	Clearly, the pullback of the tangent bundle of $X$ by inclusion $i_l \colon W_l\to X$ is the tangent bundle of $W_l$, $l = 1,2$. By naturality, $H^*(X) \to  H^*(W_1) \oplus  H^*(W_2) \to  H^*(W_l), p_s(X)\mapsto p_s(W_l)$ for any Pontrjagin class $p_s$. So $k(p_s(X)) = p_s(W_1) \oplus  p_s(W_2)$. As above, for any monomial $f$, $f(p(X))$ becomes the direct sum of $f(p(W_1))$ and $f(p(W_2))$, so
+	Clearly, the pullback of the tangent bundle of $X$ by inclusion $i_l \colon W_l\to X$ is the tangent bundle of $W_l$, $l = 1,2$. 
+	By naturality, $H^*(X) \to  H^*(W_1) \oplus  H^*(W_2) \to  H^*(W_l), p_s(X)\mapsto p_s(W_l)$ for any Pontrjagin class $p_s$. 
+	So $k(p_s(X)) = p_s(W_1) \oplus  p_s(W_2)$. 
+	As above, for any monomial $f$, $f(p(X))$ becomes the direct sum of $f(p(W_1))$ and $f(p(W_2))$, so
 	\begin{align*}
-	f\left(p_{1}, \ldots, p_{k-1}, 0\right)[X] = \langle     f\left(j_1^{-1}p_{1}(W_1), \ldots, j_1^{-1}p_{k-1}(W_1), 0\right),\left[W_{1},M\right]\rangle  \\
-	-\langle f\left(j_2^{-1}p_{1}(W_2), \ldots, j_2^{-1}p_{k-1}(W_2), 0\right),\left[W_{2},M\right]\rangle. 
+	f(p_{1}, \ldots, p_{k-1}, 0)[X] = \langle f(j_1^{-1}p_{1}(W_1), \ldots, j_1^{-1}p_{k-1}(W_1), 0),[W_{1},M]\rangle  \\
+	-\langle f(j_2^{-1}p_{1}(W_2), \ldots, j_2^{-1}p_{k-1}(W_2), 0),[W_{2},M]\rangle. 
 	\end{align*}
 	
-	For simplicity, write $f\left(p_{1}, \ldots, p_{k-1}, 0\right)\left[W\right]$ for $\langle f\left(j^{-1}p_{1}(W), \ldots, j^{-1}p_{k-1}(W), 0\right),\left[W,M\right]\rangle $. The equality above becomes
+	For simplicity, write 
 	\[
-	f\left(p_{1}, \ldots, p_{k-1}, 0\right)[X] = f\left(p_{1}, \ldots, p_{k-1}, 0\right)\left[W_{1}\right]-f\left(p_{1}, \ldots, p_{k-1}, 0\right)\left[W_{2}\right]. 
+	    f(p_{1}, \ldots, p_{k-1}, 0)[W] =
+	    \langle f(j^{-1}p_{1}(W), \ldots, j^{-1}p_{k-1}(W), 0),[W,M]\rangle. 
+	\]
+	The equality above becomes
+	\[
+	f(p_{1}, \ldots, p_{k-1}, 0)[X] = f(p_{1}, \ldots, p_{k-1}, 0)[W_{1}]-f(p_{1}, \ldots, p_{k-1}, 0)[W_{2}]. 
 	\]
 	
 	Combining results above, with $f$ replaced by $N_k$, 
@@ -276,8 +286,8 @@ Let $a_k = 1$ if $k$ is even, and $a_k = 2$ if $k$ is odd.
 	
 	Now we show that $X$ is spin. From the exact sequence
 	\begin{align*}
-	\dots   \leftarrow H^{2}\left(W_{1} ; \mathbb{Z}_{2}\right)  \oplus  H^{2}\left(W_{2} ; \mathbb{Z}_{2}\right)& \stackrel{k_{1}^{*}  \oplus  k_{2}^{*}}{\leftarrow} {H^{2}}\left(X ; \mathbb{Z}_{2}\right) \stackrel{\Delta}{\leftarrow}{H}^{1}\left(M ; \mathbb{Z}_{2}\right) \\
-	\stackrel{i_{1}^{*} - i_{2}^{*}}{\leftarrow}H^{1}\left(W_{1} ; \mathbb{Z}_{2}\right) & \oplus  H^{1}\left(W_{2} ; \mathbb{Z}_{2}\right)\leftarrow  \dots  
+	\dots   \leftarrow H^{2}(W_{1} ; \mathbb{Z}_{2})  \oplus  H^{2}(W_{2} ; \mathbb{Z}_{2})& \stackrel{k_{1}^{*}  \oplus  k_{2}^{*}}{\leftarrow} {H^{2}}(X ; \mathbb{Z}_{2}) \stackrel{\Delta}{\leftarrow}{H}^{1}(M ; \mathbb{Z}_{2}) \\
+	\stackrel{i_{1}^{*} - i_{2}^{*}}{\leftarrow}H^{1}(W_{1} ; \mathbb{Z}_{2}) & \oplus  H^{1}(W_{2} ; \mathbb{Z}_{2})\leftarrow  \dots  
 	\end{align*}
 	we see that $i_{1}^{*} - i_{2}^{*}$ is surjective by condition (b), so $\Delta$ is zero. Therefore $k_{1}^{*}  \oplus  k_{2}^{*}$ is injective. Since by naturality $k_{1}^{*}  \oplus  k_{2}^{*}(w_2(X)) = w_2(W_1) \oplus  w_2(W_2) = 0 \oplus  0 = 0$, $X$ is spin. \qedhere}
 
@@ -314,12 +324,12 @@ The following facts can be found in \cite{saveliev}.
 
 The procedure of Dehn surgery along links in $S^3$ can be identified with the behavior of the boundary when one glue handles $D^2 \times  D^2$ to the boundary of $D^4$. 
 
-Let $\mathscr{L} = L_{1}   \cup   \cdots   \cup   L_{n}$ be an oriented framed link in $S^{3},$ the $i$-th component being framed by $e_{i}  \in   \mathbb{Z} .$ The symmetric matrix $A = \left(a_{i j}\right), i, j = 1, \ldots, n,$ with the entries
+Let $\mathscr{L} = L_{1}   \cup   \cdots   \cup   L_{n}$ be an oriented framed link in $S^{3},$ the $i$-th component being framed by $e_{i}  \in   \mathbb{Z} .$ The symmetric matrix $A = (a_{i j}), i, j = 1, \ldots, n,$ with the entries
 \[
 a_{i j} = \left \{ 
 \begin{array}{ll}
 e_{i}, & \text { if } i = j \\
-\operatorname{lk}\left(L_{i}, L_{j}\right), & \text { if } i          \neq   j
+\operatorname{lk}(L_{i}, L_{j}), & \text { if } i          \neq   j
 \end{array}\right. 
 \]
 is called the \textbf{linking matrix} of $\mathscr{L}$. 
@@ -432,12 +442,21 @@ Let $SE_{hj}$,  $DE_{hj}$, $E_{hj}$ be the sphere bundle, disk bundle and vector
 \begin{lem}
 	$\pi_3(SO_4)  \to  H^4(S^4;\mathbb{Z}), f\in \pi_3(SO_4)\mapsto $ the Euler class of the bundle determined by $f$, is a group homomorphism. The same is true for the first Pontrjagin class. 
 \end{lem}
-\proof{Let $E_f$ denote the bundle determined by $f$. Assume $f,g\in \pi_3(SO_4)$ are basepoint preserving maps. Their sum is a map $f + g \colon S^3\to S^3\vee S^3\stackrel{f\vee g}{ \to }SO_4$. $f\vee g$ determines a bundle on the reduced suspension $\Sigma(S^3\vee S^3) = S^4\vee S^4$, and the map $h \colon S^4\to S^4\vee S^4$ pulls back this bundle to get the bundle $E_{f + g}$. 
+\proof{Let $E_f$ denote the bundle determined by $f$. 
+Assume $f,g\in \pi_3(SO_4)$ are basepoint preserving maps. 
+Their sum is a map 
+$f + g \colon S^3\to S^3\vee S^3\stackrel{f\vee g}{ \to }SO_4$. $f\vee g$ 
+determines a bundle on the reduced suspension 
+$\Sigma(S^3\vee S^3) = S^4\vee S^4$, 
+and the map $h \colon S^4\to S^4\vee S^4$ 
+pulls back this bundle to get the bundle $E_{f + g}$. 
 	
-	Consequently, $h^*(e(E_f) \oplus  e(E_g)) = e(E_{f + g})$. But $h^*(a \oplus  b) = a + b$. The result follows. 
-	\qedhere}
+Consequently, $h^*(e(E_f) \oplus  e(E_g)) = e(E_{f + g})$. 
+But $h^*(a \oplus  b) = a + b$. The result follows. 
+\qedhere}
 
-From lemmas above, we deduce that after picking a generator $u\in H^4(S^4;\mathbb{Z})$, 
+From lemmas above, 
+we deduce that after picking a generator $u\in H^4(S^4;\mathbb{Z})$, 
 \[
 e(E_{ij}) = (\alpha i + \beta j)u  \in   H^4(S^4;\mathbb{Z})
 \]
@@ -506,7 +525,7 @@ p_1(E_{ij}) = 2(i- j)  \in   H^4(S^4;\mathbb{Z}) \cong \mathbb{Z}.
 
 If $k = 2$, the formula for the Eells--Kuiper invariant becomes
 \[
-    \mu\left(M^{7}\right)  \equiv \frac{\left(p_{1}^{2}[W]-4 \tau[W]\right) }{ (2^{7} \times 7)}  \bmod 1. 
+    \mu(M^{7})  \equiv \frac{(p_{1}^{2}[W]-4 \tau[W]) }{ (2^{7} \times 7)}  \bmod 1. 
 \]
 
 Since $SE_{hj}$ is homeomorphic to the standard sphere $S^7$ iff the Euler class of the bundle  $e(SE_{hj}) = \pm 1$, discussions in previous sections show that the Eells--Kuiper $\mu$ invariant applies to these topological spheres. Since by reversing the orientation of fiber we obtain  $\overline{E_{hj}} = E_{-j,-h}$, it suffices to consider the case $h + j = 1$. 
@@ -533,14 +552,20 @@ which is dual to
 \]
 is unimodular. Let $i_* \colon H_{2k}(\partial M) \to  H_{2k
 }(M)$. Since $\forall $ fixed $a\in \operatorname{im} i_*,\forall b\in H_{2k}(M)$, $Q(a,b) = 0$, it follows that $\operatorname{im} i_* = 0$. By Poincar\'e duality and universal coefficient theorem, $H_{2k + 1}(M,\partial M) = H^{2k-1}(M) = \operatorname{Hom}(H_{2k-1}(M),\mathbb{Z})$, so $H_{2k-1}(M) = 0$ implies $H_{2k + 1}(M,\partial M) = 0$. From the long exact sequence
-\[
-    \cdots\to H_{2k + 1}(M,\partial M)  \to  H_{2k}(\partial M)\stackrel{i_*}{ \to } H_{2k}(M) \to  H_{2k}(M,\partial M) \to  H_{2k-1}(\partial M) \to \cdots
-\]
+\begin{gather*}
+    \cdots\to H_{2k + 1}(M,\partial M)  \to  H_{2k}(\partial M)\stackrel{i_*}{ \to } H_{2k}(M) \\
+	\to H_{2k}(M,\partial M) \to  H_{2k-1}(\partial M) \to \cdots
+\end{gather*}
 we see that $\operatorname{im} i_* = 0$ implies $H_{2k}(\partial M) = 0$.  
 
-Conversely, if $H_{2k}(\partial M) = 0$, then $H_{2k-1}(\partial M) = 0$. Thus $H_{2k}(M) \cong  H_{2k}(M,\partial M)$ and $H^{2k}(M) \cong  H^{2k}(M,\partial M)$. From Poincar\'e duality we have that 
+Conversely, if $H_{2k}(\partial M) = 0$, 
+then $H_{2k-1}(\partial M) = 0$. 
+Thus $H_{2k}(M) \cong  H_{2k}(M,\partial M)$ and 
+$H^{2k}(M) \cong  H^{2k}(M,\partial M)$. 
+From Poincar\'e duality we have that 
 \[
-    H^{2k}(M) \otimes  H^{2k}(M,\partial M) \to  \mathbb{Z}, (a,b)\mapsto \langle a \cup  b,[M,\partial M]\rangle
+    H^{2k}(M) \otimes H^{2k}(M,\partial M) \to  \mathbb{Z}, 
+	(a,b)\mapsto \langle a \cup  b,[M,\partial M]\rangle
 \]
 is nondegenerate. The result follows. 
 \qedhere}
@@ -661,7 +686,15 @@ H^*(\mathbb{C}P^3;\mathbb{Z}) = \mathbb{Z}[v]/(v^4).
 \begin{lem}
 	$w_2(TDE_{d}) \equiv  d\cdot\pi^*v \bmod 2$. Consequently, $DE_{d}$ is spin iff $d$ is even, and in particular $DE_{-1}$ is not spin. 
 \end{lem}
-\proof{$w_2(TDE_{d}) = \pi^*(w_2(E_{d} \oplus  T\mathbb{C}P^3)) = \pi^*(w_2(E_{d}) + 0 + w_2( T\mathbb{C}P^3))  \equiv \pi^*(dv + 4v) \equiv  d\cdot\pi^*v \bmod 2$. Here we use the fact that when considering the real bundle underlying a complex rank $n$ vector bundle $E$, $w_2(E) \equiv  c_1(E)\bmod 2$.  \qedhere}
+\proof{
+\begin{gather*}
+w_2(TDE_{d}) = \pi^*(w_2(E_{d} \oplus  T\mathbb{C}P^3)) 
+= \pi^*(w_2(E_{d}) + 0 + w_2( T\mathbb{C}P^3)) \\
+\equiv \pi^*(dv + 4v) \equiv  d\cdot\pi^*v \bmod 2.
+\end{gather*}
+Here we use the fact that when considering the real bundle underlying a complex rank $n$ vector bundle $E$, 
+$w_2(E) \equiv  c_1(E)\bmod 2$. 
+\qedhere}
 
 It is possible to apply the Eells--Kuiper invariant to find out the diffeomorphism classes of the homotopy spheres $SE_1$ and $SE_{-1}$, which are spin. Also since $E_1$ is just the complex conjugate of $E_{-1}$, they are the same as real vector bundles and thus $SE_1$ and $SE_{-1}$ are diffeomorphic, via an orientation reversing diffeomorphism. It suffices to calculate the Eells--Kuiper invariant for $SE_{-1}$. However, $DE_{-1}$ is not spin. We cannot apply the formula in previous sections directly to the pair $(DE_{-1},SE_{-1})$. 
 
@@ -687,10 +720,18 @@ It is possible to apply the Eells--Kuiper invariant to find out the diffeomorphi
 We need to calculate $\mu$ for a nonspin coboundary when considering disk bundles with boundary circle bundles over homotopy $\mathbb{C}P^3$. This follows from \cite{kreckstolz2}, \cite{kreckstolz}. 
 
 
-Let $M$ be a $7$-dimensional nonspin closed manifold with $H^4(M; \mathbb{Q})  =  0$, together with a class $u  \in   H^2(M; \mathbb{Z})$ whose $\bmod  \ 2$ reduction is $w_2(M)$. Assume there exist an $8$-dimensional manifold
-$W$ and elemenst $z,c  \in   H^2(W; \mathbb{Z})$ restricting to $u,0$ respectively, such that $w_2(W) = z + c \bmod 2$. 
+Let $M$ be a $7$-dimensional nonspin closed manifold with 
+$H^4(M; \mathbb{Q})  =  0$, 
+together with a class $u  \in   H^2(M; \mathbb{Z})$ whose $\bmod  \ 2$ 
+reduction is $w_2(M)$. Assume there exist an $8$-dimensional manifold
+$W$ and elements $z,c \in H^2(W; \mathbb{Z})$ 
+restricting to $u,0$ respectively, 
+such that $w_2(W) = z + c \bmod 2$. 
 
-Similarly, if $M$ is a $7$-dimensional spin closed manifold with $H^4(M; \mathbb{Q})  =  0$, take $u = 0$, $z = 0$ and $c  \in   H^2(W; \mathbb{Z})$ restricting to $0$, such that $w_2(W) = c \bmod 2$. 
+Similarly, if $M$ is a $7$-dimensional spin closed manifold with 
+$H^4(M; \mathbb{Q})  =  0$, 
+take $u = 0$, $z = 0$ and $c  \in   H^2(W; \mathbb{Z})$ 
+restricting to $0$, such that $w_2(W) = c \bmod 2$. 
 
 Define invariants $s_i(M, u) = S_i(W,z,c) \in   \mathbb{Q}/\mathbb{Z}, i = 1,2,3$ as follows: 
 \[
@@ -711,23 +752,22 @@ s_1(M, 0) = \langle \widehat{A}(W),[W, \partial W]\rangle = \mu(M).
 \]
 So $s_1$ is a generalization of $\mu$. 
 
-If $c = 0$, explicit formulas are
+If $c = 0$, explicit formulas are:
+for spin case
 \[
-\text { Spin case: } S_{1}(W, z,0) = -\frac{1}{2^{5}  \cdot 7}  \tau(W) + \frac{1}{2^{7}  \cdot 7} p_{1}^{2},  
+S_{1}(W, z,0) = -\frac{1}{2^{5}  \cdot 7}  \tau(W) + \frac{1}{2^{7}  \cdot 7} p_{1}^{2},  
 \]
+for nonspin case
 \[
-\text { Nonspin case: } S_{1}(W, z,0) = -\frac{1}{2^{5}  \cdot 7} \tau(W) + \frac{1}{2^{7}  \cdot 7} p_{1}^{2} 
+S_{1}(W, z,0) = -\frac{1}{2^{5}  \cdot 7} \tau(W) + \frac{1}{2^{7}  \cdot 7} p_{1}^{2} 
 -\frac{1}{2^{6}  \cdot 3} z^{2} p_{1} + \frac{1}{2^{7}  \cdot 3} z^{4} , 
 \]
-where, by abuse of notation, everything is considered as a relative cohomology class and is evaluated on $[W, \partial W] = [W, M]$. If $M$ is spin but $W$ is not, then
+where, by abuse of notation, 
+everything is considered as a relative cohomology class and is evaluated on $[W, \partial W] = [W, M]$. If $M$ is spin but $W$ is not, then
 \[
 S_{1}(W, z,c) = -\frac{1}{2^{5}  \cdot 7} \tau(W) + \frac{1}{2^{7}  \cdot 7} p_{1}^{2} 
 -\frac{1}{2^{6}  \cdot 3} (z + c)^{2} p_{1} + \frac{1}{2^{7}  \cdot 3} (z + c)^{4} . 
 \]
-
-
-
-
 
 \subsection{Calculation for \texorpdfstring{$SE_{-1}$}{SE{-1}}}
 Take $u = 0$, $z = 0$, $c = \pi^*v$. Since $H^4(DE_{-1};\mathbb{Z}) \cong  H^4(DE_{-1},SE_{-1};\mathbb{Z}) = \mathbb{Z}$, the orientation may be chosen so that
@@ -742,7 +782,7 @@ p_1(TDE_{-1}) = \pi^*(p_1(E_{-1}) + p_1(T\mathbb{C}P^3)) = \pi^*(v^2 + 4v^2) = 5
 
 Substituting into the last formula in the previous section, we find
 \[
-\mu(SE_{-1}) = s_1(SE_{-1},0) = \frac{1}{32}\left(-\frac{1}{7} + \frac{25}{28}-\frac{5}{6} + \frac{1}{12}\right) = 0. 
+\mu(SE_{-1}) = s_1(SE_{-1},0) = \frac{1}{32}(-\frac{1}{7} + \frac{25}{28}-\frac{5}{6} + \frac{1}{12}) = 0. 
 \]
 This implies
 \begin{thm}
@@ -773,23 +813,30 @@ Write $E_d$ for the complex line bundle over $X_k$ with first Chern class $dv$, 
 
 $X_k$ is spin, so $w_2(TDE_d) \equiv  d\cdot \pi^* v \bmod 2$ and it is zero iff $d$ is divisible by $2$, and in particular $DE_{-1}$ is not spin. $SE_{-1}$ is spin, being a homotopy sphere. 
 
-Take $u = 0$, $z = 0$, $c = \pi^*v$. Since $H^4(DE_{-1};\mathbb{Z}) \cong  H^4(DE_{-1},SE_{-1};\mathbb{Z}) = \mathbb{Z}$, the orientation may be chosen so that
+Take $u = 0$, $z = 0$, $c = \pi^*v$. 
+Since 
+\[
+H^4(DE_{-1};\mathbb{Z}) \cong  H^4(DE_{-1},SE_{-1};\mathbb{Z}) = \mathbb{Z},
+\] 
+the orientation may be chosen so that
 \[
 \langle(j^{-1}\pi^*v)^4,[DE_{-1},SE_{-1}]\rangle = 1\text{ and }\tau(DE_{-1}) = 1, 
 \]
 where $\pi^*v^2\in H^4(DE_{-1};\mathbb{Z})$ is a generator. This can be done by the same reason. 
 
 The first Pontrjagin class is 
-\[
-p_1(TDE_{-1}) = \pi^*(p_1(E_{-1}) + p_1(TX_k)) = \pi^*(v^2 + (24k  +  4)v^2) = (24k  +  5)\pi^*v^2. 
-\]
+\begin{gather*}
+p_1(TDE_{-1}) = \pi^*(p_1(E_{-1}) + p_1(TX_k)) = \\
+\pi^*(v^2 + (24k  +  4)v^2) = (24k  +  5)\pi^*v^2. 
+\end{gather*}
 
 The $s_1$ invariant is 
 
-\[
+\begin{gather*}
 \mu(SE_{-1}) = s_1(SE_{-1},0) = -\frac{1}{2^{5}  \cdot 7}  + \frac{ (24k  +  5)^2}{2^{7}  \cdot 7} 
--\frac{(24k  +  5)}{2^{6}  \cdot 3} + \frac{1}{2^{7}  \cdot 3}  = \frac{9}{14}k^2 + \frac{1}{7}k\bmod 1 . 
-\]
+-\frac{(24k  +  5)}{2^{6}  \cdot 3} + \frac{1}{2^{7}  \cdot 3}  \\
+= \frac{9}{14}k^2 + \frac{1}{7}k\bmod 1 . 
+\end{gather*}
 
 Equivalently, we may consider
 \[
@@ -797,12 +844,13 @@ Equivalently, we may consider
 \]
 
 For $k$ ranging from $0$ to $27$, the values are
-\[
-0,22,24,6,24,22,0,14,8,10,20,10,8,14,0,22,24,6,24,22,0,14,8,10,
-20,10,8,14. 
-\]
+\begin{gather*}
+0,22,24,6,24,22,0,14,8,10,20,10,8,14,0 \\
+,22,24,6,24,22,0,14,8,10,20,10,8,14. 
+\end{gather*}
 
-So the possible values of $\mu(SE_{-1})$ (with the orientation chosen in the proof above) are 
+So the possible values of $\mu(SE_{-1})$ 
+(with the orientation chosen in the proof above) are 
 \[
 0,6,8,10,14,20,22,24. 
 \]
