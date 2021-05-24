@@ -1,21 +1,21 @@
 In this chapter we will give some trivial but useful lemmas for this problem.
 
 \begin{defn}
-	For any point $P\in A$ we call the set $\iT_P := \{ K \colon K\in T ,
+	For any point $P\in A$, we call the set $\iT_P := \{ K \colon K\in T ,
 	|KP| = \min_{i=1}^{n} |KA_i| \} $ the domain of $p$ and we call $P$
 	the origin point of $\iT_{P}$.
 \end{defn}	
 
 \begin{defn}
-	If $T$ and $n$ satisfies the condition in question we call the
-	pair $(T, n)$  a good pair.
+	If $T$ and $n$ satisfies the condition in question, we call the
+	pair $(T, n)$ a good pair.
 \end{defn}	
 
 In this section we just consider the properties of good pairs.
 
 \begin{lem}
 	The intersection line of two adjacent domains is the perpendicular
-	bisector  of the two origin points they corresponds to.
+	bisector of the two origin points they correspond to.
 \end{lem}
 This lemma can be shown by the definition of domain.
 
@@ -24,7 +24,7 @@ This lemma can be shown by the definition of domain.
 \end{lem}	
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.8]
+	\begin{tikzpicture}[scale=0.7]
 	
 	\draw[fill][lightgray](1.91,-3.56) circle [radius=0.05];
 	\draw(1.91,-3.56) circle [radius=0.05];
@@ -65,7 +65,7 @@ This lemma can be shown by the definition of domain.
 	be on the side of $\iT_{A_1}$. Then we get the contradiction.
 \end{proof}
 
-There ar some lemmas about the area of each domain. For convenience,
+There are some lemmas about the area of each domain. For convenience,
 we sometimes use $S_i$ to denote $S_{\iT_i}$,  
 $S_{A_i}$ to denote $S_{\iT_{Ai}}$
 
@@ -80,7 +80,7 @@ $S_{A_i}$ to denote $S_{\iT_{Ai}}$
 
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
+	\begin{tikzpicture}[scale=0.4]
 	
 	\draw[fill][lightgray](2.91,0.21) circle [radius=0.05];
 	\draw(2.91,0.21) circle [radius=0.05];
@@ -117,16 +117,16 @@ $S_{A_i}$ to denote $S_{\iT_{Ai}}$
 
 
 \begin{proof}
-	For any line $l$ passing through $A_1$, it divides $A$ into two parts,
-	we consider the line $k$ perpendicular to $l$ and go through $A_1$. 
+	For any line $l$ passing through $A_1$, it divides $A$ into two parts.
+	We consider the line $k$ perpendicular to $l$ and go through $A_1$. 
 	
 	$k$ divides $A_1$ into two parts $\iT_1$, $\iT_2$ (We assume 
 	$S_1 \geq S_2 $). Let the diameter of $A_1$ be $d$, 
 	choose a point $B_1$ on $k$ in $S_1$ such that 
-	$|B_1A_1| \leq \frac{\epsilon}{2d}$. This 
+	$|B_1A_1| \leq \frac{\epsilon}{2d}$. This
 	point meets the first requirement. Then choose another 
 	point $B_2$ on $k$ in $S_2$ such that $|B_2A_1| \leq 
-	\frac{\epsilon}{2d}$. The two points,  $B_1$ and $B_2$,  
+	\frac{\epsilon}{2d}$. The two points, $B_1$ and $B_2$,  
 	meet the second requirement.
 \end{proof}
 
@@ -136,7 +136,7 @@ $S_{A_i}$ to denote $S_{\iT_{Ai}}$
 
 \begin{proof}
 	Suppose that $S_{A_1} \geq S_{A_2} \geq ... \geq S_{A_n}$. 
-	By lemma1.3, for every $\epsilon$ we can choose two points 
+	By lemma 1.3, for every $\epsilon$ we can choose two points 
 	in $\iT_{A_1}$ one point in $\iT_{A_2}$ and one point in 
 	$\iT_{A_3}$ ... until one point in $\iT_{A_{n-1}}$ so that 
 	these points change the domain of area at least $S_{A_1} + 
@@ -156,8 +156,8 @@ $S_{A_i}$ to denote $S_{\iT_{Ai}}$
 	Using the same notation in lemma 3, for each line passing through 
 	$A_i$, choose a point $B$ which changes the area of area 
 	$\frac{S_1-S_2}{2}-\epsilon$ into green and we choose other $n-1$ 
-	points which change at almost half area left into green and 
-	we can get that $S_1 \leq S_2$, so $S_1 = S_2$.
+	points which change at almost half area left into green. 
+	We can get that $S_1 \leq S_2$, so $S_1 = S_2$.
 \end{proof}	
 
 We can get the most useful conclusion from lemma 4.
@@ -167,7 +167,7 @@ We can get the most useful conclusion from lemma 4.
 \end{lem}
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
+	\begin{tikzpicture}[scale=0.45]
 	
 	\draw[thick][black](0.66,-0.24)--(-2.96,3.84)--(-9.68,4.29)
 	--(-11.35,-0.74)--(-7.59,-5.29)--(0.32,-3.49)--cycle ;
@@ -200,13 +200,14 @@ We can get the most useful conclusion from lemma 4.
 \begin{proof}
 	For each line passing through $A_1$, it intersects the boundary 
 	of the domain at two points $B_1$ and $B_2$. If $|A_1B_1| > |A_2B_2|$, 
-	we rotate the line  by  a small angle $\theta$ and let the two new 
+	we rotate the line by a small angle $\theta$ and let the two new 
 	points of intersection $C_1$ and $C_2$ satisfies $|A_1C_1| \geq |A_2C_2|$. 
-	Then we know  $S_{A_1B_1C_1} = \frac{1}{2}|A_1B_1||A_1C_1|sin\theta >  \frac{1}{2}|A_1B_2||A_1C_2|sin\theta = S_{A_1B_2C_2}$. From lemma 4
+	Then we know  $S_{A_1B_1C_1} = \frac{1}{2}|A_1B_1||A_1C_1|sin\theta >  \frac{1}{2}|A_1B_2||A_1C_2|sin\theta = S_{A_1B_2C_2}$. 
+	From lemma 4
 	$S_{A_1B_1C_1}=S_{A_1B_2C_2}$, then we get the 
-	contradiction. So $|A_1B_1|=|A_2B_2|$ for any line, 
-	which implies that $\iT_{A_1}$ is centrally symmetric
+	contradiction. Hence $|A_1B_1|=|A_2B_2|$ for any line, 
+	which implies that $\iT_{A_1}$ is centrally symmetric.
 \end{proof}
 
-Now we have gotten all tools we need and then discuss an example
+Now we have got all tools we need. Then we will discuss an example
 to use these tools.

@@ -1,8 +1,8 @@
 In this section we will prove that if $T$ is a square, the only $n$ to 
 make $(T,n)$ a good pair is $1$. We can get an idea to consider general 
 questions from this special case. To achieve our goal, we need to consider 
-what the shape $\iT_{A1} , \iT_{A_2} ... $ would be by lemma 6. And then 
-discuss some situations and details
+what the shape $\iT_{A1} , \iT_{A_2} ... $ would be by lemma 6, and then 
+discuss some situations and details.
 
 In the following discussion if we say lines and points without specified, 
 we mean the intersection line segments of domains and the endpoints 
@@ -15,7 +15,7 @@ of lines. \newline
 We prove this with lemma 5.
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
+	\begin{tikzpicture}[scale=0.5]
 	
 	\draw[thick][black](0,0)--(10,0)--(10,10)--(0,10)--cycle ;
 	
@@ -58,16 +58,16 @@ We prove this with lemma 5.
 	
 	Let $C_1$, $C_2$... $C_n$ be points on $AB$. For a line $i$ which 
 	has an end point on $AB$, call the angle between $i$ and $AB$  
-	$\angle iC_iB$
+	$\angle iC_iB$.
 	
 	We will show that for two lines $i$ and $h$ which has endpoints 
 	$C_k$ and $C_{k+1}$, the $\angle iAB \leq \angle hAB $. Assume 
 	that $i$ is the rightest line which has endpoint $C_k$ and $k$ 
-	is the leftest line which has endpoint $C_{k+1}$(or we can 
+	is the leftest line which has endpoint $C_{k+1}$ (or we can 
 	compare the rightest line which has endpoint $C_k$ and the 
 	leftest line which has endpoint $C_{k+1}$ first). $i$ and $h$ 
 	are the sides of the same domain. Because this domain is centrally 
-	symmetric and convex. We get that $\angle iC_kC_{k+1}+\angle 
+	symmetric and convex, we get that $\angle iC_kC_{k+1}+\angle 
 	hC_{k+1}C_{k} \leq \pi$ for any $k$.
 	
 	We know that the other two adjacent sides of the square are both 
@@ -80,7 +80,7 @@ rectangles. If we draw it it can be naturally found out that whole
 graph must look like a table, so there is naturally next theorem.
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
+	\begin{tikzpicture}[scale=0.5]
 	\draw[ultra thick][black](0,0)--(10,0)--(10,10)--(0,10)--cycle ;
 	\draw[fill][lightgray](0,-0) circle [radius=0.07];
 	\draw(0,-0) circle [radius=0.07];
@@ -107,22 +107,22 @@ graph must look like a table, so there is naturally next theorem.
 
 \begin{proof}
 	At first we show that the domains on one side are congruent
-	rectangles(Picture1). For any two adjacent domains $\iT_{A_1}$ 
+	rectangles (Picture 1). For any two adjacent domains $\iT_{A_1}$ 
 	and $\iT_{A_2}$, the intersection of them must be perpendicular bisector 
 	of the two origin points $A_1$ and $A_2$. Thus $\iT_{A_1}$ and 
 	$\iT_{A_2}$ are congruent rectangles since they have the same area. 
-	Then we prove that all the domains are congruent rectangles(Picture2). 
+	Then we prove that all the domains are congruent rectangles (Picture 2). 
 	For a rectangle $\iT_{A_3}$ in corner. The symmetric point of $A_3$
 	about the topside $A_4$ is another origin point and we can prove that 
 	$\iT_{A_4}$ is also a rectangle by using theorem 3.1 again for the
 	topside of all the domains on the downside of the square. Then 
 	we can prove that $\iT_{A_4}$ is congruent to $\iT_{A_3}$ and 
 	we can show that there are a rows of rectangles on the domain 
-	of the first row(Picture3). We can repeat this operation until 
+	of the first row (Picture 3). We can repeat this operation until 
 	prove that all the domains are congruent rectangles.
 	
 	\begin{center}
-		\begin{tikzpicture}[scale=0.6]
+		\begin{tikzpicture}[scale=0.5]
 		\draw[ultra thick][black](0,0)--(5,0)--(5,5)--(0,5)--cycle ;
 		\draw[fill][lightgray](0,-0) circle [radius=0.07];
 		\draw(0,-0) circle [radius=0.07];
@@ -197,18 +197,18 @@ graph must look like a table, so there is naturally next theorem.
 	
 \end{proof}
 
-Now it's only needed to discuss the situation theorem 3.2 gives.
-If n=1, it's clear that one can choose $A$ in the middle of the 
+Now it only needs to discuss the situation theorem 3.2 gives.
+If $n=1$, it is clear that one can choose $A$ in the middle of the 
 square to turn at least half of the square into green. Now we want 
 to show that $n=1$ is the only good situation.
 
-If $n>1$, there are only two cases, the one is that the table has 
-two or more rows and columns, another is that it has only one row
+If $n>1$, there are only two cases. The one is that the table has 
+two or more rows and columns and the other is that it has only one row
 or one column.
 
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
+	\begin{tikzpicture}[scale=0.5]
 	\draw[thick][black][fill=gray](0,6.25)--(4,6.25)--(4.78125,5)
 	--(4,3.75)--(0,3.75)--cycle;
 	\draw[ultra thick][black](0,0)--(8,0)--(8,10)--(0,10)--cycle ;
@@ -268,7 +268,7 @@ a positive number and other points can change $\frac{S_T-ab}{2}
 
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
+	\begin{tikzpicture}[scale=0.5]
 	\draw[thick][black][fill=lightgray](5,6)--(0,4)--(0,2.75)--cycle;
 	\draw[thick][black][fill=gray](5,6)--(5,0)--(6,0)--cycle;
 	
@@ -329,20 +329,20 @@ For the second case, select two adjacent rectangles $\iT_{A_1},
 \iT_{A_2}$. Because the length of the rectangles $a$ are twice
 more then there width $b$, we can choose a point $O$ on the 
 perpendicular bisector of $A_1A_2$ such that $2|OA_1|<|OT|$ 
-by choosing $|OT|$ an suitable number(for example $\frac{5a}{9}$), 
-here $T$ is an endpoint of the intersection line of two domains. 
+by choosing $|OT|$ an suitable number (for example $\frac{5a}{9}$). 
+Here $T$ is an endpoint of the intersection line of two domains. 
 Let the intersection of $|OA_1|$ and the left side of $\iT_{A_1}$ be $E$,
 rotate $OE$ counterclockwise a small angle $\theta$ which makes 
 $|OD|\leq|OT|$. Find a point $D'$ on the bottom side of $\iT_{A_2}$
-which makes $\angle TOD'$ be $\theta$. So $S_{EOD} \leq S_{TOD'}$. 
+which makes $\angle TOD'$ be $\theta$. Then $S_{EOD} \leq S_{TOD'}$. 
 Choose $B$ as the symmetry point of $A_1$ about $OP$.
-Call the lower left corner $A_1$ $F$, then we find that B changes 
+Call the lower left corner $A_1$ be $F$. Then we find that $B$ changes 
 the area $DOD'F$ into green. The area of $DOD'F$ is $S_{TOD'}-S_{EOD}$, 
 more than half area of a rectangle. Choose other points suitably to
 change $\frac{S_T-ab}{2}-\epsilon$ and we get the contradiction.\newline
 
 Now we have solved the case that $T$ is a square. It shows a basic 
-idea to solve the question. And we will see in the next section 
+idea to solve the question, and we will see in the next section 
 that this example is more important than we think. The idea of the 
-first main theorem comes from here and it's a case needed to be 
+first main theorem comes from here and it is a case needed to be 
 discussed in the second main theorem.

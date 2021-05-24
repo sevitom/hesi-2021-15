@@ -1,8 +1,8 @@
-Before the formal discussion of this question. Let's consider a 
+Before the formal discussion of this question. Let us consider a 
 question in daily life: why the McDonald's and KFC are always together
 on a street. To solve this problem, we should establish a mathematical
 model. Assume that the population density on this street is invariant
-and everyone would choose the closest restaurant to have meal ( If the
+and everyone would choose the closest restaurant to have meal (If the
 two restaurants are at the same point, people will choose one
 randomly). If you are the owner of McDonald's and you want to build
 a restaurant first before KFC. You want to get as more customers
@@ -36,7 +36,7 @@ the best choice is dividing the street into $n$ equal parts and choose
 middle point of each part.
 	
 \begin{center}
-	\begin{tikzpicture}[scale=2]
+	\begin{tikzpicture}[scale=1.7]
 		\draw[thick][black](-3 , 0)--(-2,0);
 		\draw[thick][gray](-2,0)--(-1.25,0);
 		\draw[thick][black](-1.25 , 0)--(-0.55,0);
@@ -88,14 +88,14 @@ he get at least half of the customers?
 We express this question in another way:
 	
 For a convex set $T$ in $\R^2$ and a constant $n$, can we find a set
-of points $A = \{ A_1, A_2 ... A_n \}$ of $n$ points in $T$   which
+of points $A = \{ A_1, A_2 ... A_n \}$ of $n$ points in $T$ which
 satisfy the following conditions?
 For any set $B = \{ B_1, B_2 ... B_n \} $ of $n$ points on the plane
 , we color $T$ by two colors. For a point $s$ in $T$, find the closet
 point to it in $A\cup B$. If it is a point in $A$, color it in red,
 otherwise color it in green. The area of red parts in the diagram
-is always not less than the green parts. (Here the metric is always
-the Euclidean metric)
+is always not less than the green parts (Here the metric is always
+the Euclidean metric).
 	
 In this article we will try to find out all pairs of $(T, n)$ which meets
 the requirement. At first we would give some lemmas in the second
@@ -103,6 +103,7 @@ section. Then we would consider a special case ($T$ is a square)
 as an example in the third section. In the forth section, we will
 give out two strong conclusion to solve the case when $n$ is big enough.
 		
-We always use capital letters for points and domains, lower-case lette
-rs for lines,  $|AB| := d(A, B)$. For a domain $T$ we always use $S_T$
+We always use capital letters for points and domains, 
+lower-case letters for lines, 
+$|AB| := d(A, B)$. For a domain $T$ we always use $S_T$
 to denote the area of $T$.
