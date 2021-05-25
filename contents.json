@@ -57,6 +57,11 @@
                     "fileName": "KFC",
                     "title": "A Game About Competing Area",
                     "author": "尚鉴桥"
+                },
+				{
+                    "fileName": "ASM",
+                    "title": "变号矩阵与可积系统",
+                    "author": "徐凯"
                 }
             ]
 		}
